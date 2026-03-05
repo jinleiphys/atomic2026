@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幻灯片播放器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: #1a1a2e;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* 幻灯片图片 */
+        .slide-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: none;
+            cursor: pointer;
+        }
+
+        .slide-image.active {
+            display: block;
+        }
+
+        /* 视频播放器 - 全屏拉伸 */
+        .video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            display: none;
+            cursor: pointer;
+        }
+
+        .video-player.active {
+            display: block;
+        }
+
+        /* 页码指示器 */
+        .indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            user-select: none;
+        }
+
+        /* 导航按钮 */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 32px;
+            padding: 20px 15px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s;
+            opacity: 0;
+            border-radius: 8px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .container:hover .nav-btn {
+            opacity: 1;
+        }
+
+        .nav-btn.prev {
+            left: 20px;
+        }
+
+        .nav-btn.next {
+            right: 20px;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* 控制提示 */
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            font-size: 14px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transition: opacity 0.3s;
+            user-select: none;
+        }
+
+        .controls.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .controls span {
+            margin: 0 10px;
+            color: #888;
+        }
+
+        /* 进度条 */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+            z-index: 100;
+        }
+
+        /* 缩略图导航 */
+        .thumbnail-nav {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            gap: 8px;
+            max-width: 90vw;
+            overflow-x: auto;
+            z-index: 100;
+        }
+
+        .thumbnail-nav.visible {
+            display: flex;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 45px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+
+        .thumbnail:hover {
+            opacity: 1;
+        }
+
+        .thumbnail.active {
+            border-color: #667eea;
+            opacity: 1;
+        }
+
+        /* 视频图标标记 */
+        .has-video::after {
+            content: "▶";
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            font-size: 10px;
+            color: #667eea;
+        }
+
+        /* 加载指示 */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            z-index: 200;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- 内容通过JS动态生成 -->
+    </div>
+
+    <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+    <button class="nav-btn next" id="nextBtn">&#10095;</button>
+
+    <div class="indicator">
+        <span id="current">1</span> / <span id="total">33</span>
+    </div>
+
+
+    <div class="progress-bar" id="progress"></div>
+
+    <div class="thumbnail-nav" id="thumbnails">
+        <!-- 缩略图通过JS生成 -->
+    </div>
+
+    <div class="loading" id="loading">加载中</div>
+
+    <script>
+        // 数据
+        const slidesData = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png", "18.png", "19.png", "20.png", "21.png", "22.png", "23.png", "24.png", "25.png", "26.png", "27.png", "28.png", "29.png", "30.png", "31.png", "32.png", "33.png"];
+        const videosData = {"1": "1.mp4"};
+
+        class SlideShowPlayer {
+            constructor() {
+                this.slides = slidesData;
+                this.videos = videosData;
+                this.currentSlide = 0;
+                this.isVideoPlaying = false;
+                this.showThumbnails = false;
+
+                this.container = document.getElementById('container');
+                this.currentIndicator = document.getElementById('current');
+                this.totalIndicator = document.getElementById('total');
+                this.progressEl = document.getElementById('progress');
+                this.thumbnailsEl = document.getElementById('thumbnails');
+                this.loadingEl = document.getElementById('loading');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+
+                this.videoElement = null;
+                this.imageElements = [];
+
+                this.init();
+            }
+
+            init() {
+                // 创建图片元素
+                this.slides.forEach((slidePath, index) => {
+                    const img = document.createElement('img');
+                    img.src = slidePath;
+                    img.className = 'slide-image';
+                    img.alt = `幻灯片 ${index + 1}`;
+                    img.addEventListener('click', () => this.onSlideClick());
+                    this.container.appendChild(img);
+                    this.imageElements.push(img);
+                });
+
+                // 创建视频元素
+                this.videoElement = document.createElement('video');
+                this.videoElement.className = 'video-player';
+                this.videoElement.preload = 'auto';
+                this.videoElement.addEventListener('click', () => this.toggleVideo());
+                this.videoElement.addEventListener('ended', () => this.onVideoEnded());
+                this.container.appendChild(this.videoElement);
+
+                // 创建缩略图
+                this.createThumbnails();
+
+                // 更新总页数
+                this.totalIndicator.textContent = this.slides.length;
+
+                // 绑定事件
+                this.bindEvents();
+
+                // 显示第一页
+                this.showSlide(0);
+
+            }
+
+            createThumbnails() {
+                this.slides.forEach((slidePath, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = slidePath;
+                    thumb.className = 'thumbnail';
+                    thumb.addEventListener('click', () => this.goToSlide(index));
+                    this.thumbnailsEl.appendChild(thumb);
+                });
+            }
+
+            bindEvents() {
+                // 键盘控制
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                        case 'ArrowUp':
+                        case 'PageUp':
+                            e.preventDefault();
+                            this.previousSlide();
+                            break;
+                        case 'ArrowRight':
+                        case 'ArrowDown':
+                        case 'PageDown':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case ' ':
+                            e.preventDefault();
+                            this.onSlideClick();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.goToSlide(0);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.goToSlide(this.slides.length - 1);
+                            break;
+                        case 'f':
+                        case 'F':
+                            this.toggleFullscreen();
+                            break;
+                        case 't':
+                        case 'T':
+                            this.toggleThumbnails();
+                            break;
+                        case 'Escape':
+                            if (this.showThumbnails) {
+                                this.toggleThumbnails();
+                            }
+                            break;
+                    }
+                });
+
+                // 导航按钮
+                this.prevBtn.addEventListener('click', () => this.previousSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+                // 触摸滑动支持
+                let touchStartX = 0;
+                this.container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                });
+
+                this.container.addEventListener('touchend', (e) => {
+                    const touchEndX = e.changedTouches[0].clientX;
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.previousSlide();
+                        }
+                    }
+                });
+            }
+
+            showSlide(index) {
+                if (index < 0 || index >= this.slides.length) return;
+
+                this.currentSlide = index;
+                this.isVideoPlaying = false;
+
+                // 隐藏所有
+                this.imageElements.forEach(img => img.classList.remove('active'));
+                this.videoElement.classList.remove('active');
+                this.videoElement.pause();
+
+                // 显示当前图片
+                this.imageElements[index].classList.add('active');
+
+                // 更新UI
+                this.updateUI();
+            }
+
+            updateUI() {
+                // 更新页码
+                this.currentIndicator.textContent = this.currentSlide + 1;
+
+                // 更新进度条
+                const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressEl.style.width = progress + '%';
+
+                // 更新按钮状态
+                this.prevBtn.disabled = this.currentSlide === 0;
+                this.nextBtn.disabled = this.currentSlide === this.slides.length - 1;
+
+                // 更新缩略图
+                const thumbs = this.thumbnailsEl.querySelectorAll('.thumbnail');
+                thumbs.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+
+            onSlideClick() {
+                const slideNum = (this.currentSlide + 1).toString();
+
+                if (this.isVideoPlaying) {
+                    // 正在播放视频，点击暂停/播放
+                    this.toggleVideo();
+                } else if (this.videos[slideNum]) {
+                    // 有视频，播放视频
+                    this.playVideo(this.videos[slideNum]);
+                } else {
+                    // 没有视频，下一页
+                    this.nextSlide();
+                }
+            }
+
+            playVideo(videoPath) {
+                this.loadingEl.classList.add('active');
+
+                this.imageElements[this.currentSlide].classList.remove('active');
+                this.videoElement.src = videoPath;
+                this.videoElement.classList.add('active');
+
+                // 第1页（封面）循环播放
+                this.videoElement.loop = (this.currentSlide === 0);
+
+                this.videoElement.onloadeddata = () => {
+                    this.loadingEl.classList.remove('active');
+                    this.videoElement.play();
+                    this.isVideoPlaying = true;
+                };
+
+                this.videoElement.onerror = () => {
+                    this.loadingEl.classList.remove('active');
+                    this.showSlide(this.currentSlide);
+                };
+            }
+
+            toggleVideo() {
+                if (this.videoElement.paused) {
+                    this.videoElement.play();
+                } else {
+                    this.videoElement.pause();
+                }
+            }
+
+            onVideoEnded() {
+                this.isVideoPlaying = false;
+                // 视频播放完，显示当前页图片
+                this.showSlide(this.currentSlide);
+            }
+
+            nextSlide() {
+                if (this.isVideoPlaying) {
+                    // 跳过视频
+                    this.videoElement.pause();
+                    this.isVideoPlaying = false;
+                }
+
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.showSlide(this.currentSlide + 1);
+                }
+            }
+
+            previousSlide() {
+                if (this.isVideoPlaying) {
+                    this.videoElement.pause();
+                    this.isVideoPlaying = false;
+                }
+
+                if (this.currentSlide > 0) {
+                    this.showSlide(this.currentSlide - 1);
+                }
+            }
+
+            goToSlide(index) {
+                if (this.isVideoPlaying) {
+                    this.videoElement.pause();
+                    this.isVideoPlaying = false;
+                }
+                this.showSlide(index);
+            }
+
+            toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+
+            toggleThumbnails() {
+                this.showThumbnails = !this.showThumbnails;
+                this.thumbnailsEl.classList.toggle('visible', this.showThumbnails);
+            }
+        }
+
+        // 启动播放器
+        window.addEventListener('DOMContentLoaded', () => {
+            new SlideShowPlayer();
+        });
+    </script>
+</body>
+</html>
