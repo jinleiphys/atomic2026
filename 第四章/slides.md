@@ -47,10 +47,6 @@ $U(r)$ 不依赖于时间，因此满足定态薛定谔方程
 
 <img src="/images/CNX_UPhysics_41_01_HydAtom-1-26259.jpg" style="max-width: 429px; max-height: 400px;" />
 
-<img src="/images/equation-26314.pdf" style="max-width: 280px; max-height: 400px;" />
-
-<img src="/images/equation-26354.pdf" style="max-width: 65px; max-height: 400px;" />
-
 ---
 
 # 一维薛定谔方程的解
@@ -70,8 +66,6 @@ $0<x<a$
 <img src="/images/Screen Shot 2022-03-28 at 15.36.27-30332.png" style="max-width: 500px; max-height: 400px;" />
 
 <img src="/images/CodeCogsEqn-2-30381.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-30419.pdf" style="max-width: 155px; max-height: 400px;" />
 
 ---
 
@@ -99,14 +93,6 @@ Ansatz：薛定谔方程的解为 $\psi(x)=A \mathrm{e}^{\mathrm{i} k x}+B \math
 
 <img src="/images/Screen Shot 2022-03-28 at 15.36.27-30332.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-30451.pdf" style="max-width: 90px; max-height: 400px;" />
-
-<img src="/images/equation-30506.pdf" style="max-width: 336px; max-height: 400px;" />
-
-<img src="/images/equation-30527.pdf" style="max-width: 207px; max-height: 400px;" />
-
-<img src="/images/equation-30524.pdf" style="max-width: 164px; max-height: 400px;" />
-
 ---
 
 # 一维薛定谔方程的解
@@ -122,12 +108,6 @@ $\psi(x)=2 \mathrm{i} A \sin \left(\frac{n \pi}{a} x\right)=C \sin \left(\frac{n
 由归一化条件有
 
 <img src="/images/Screen Shot 2022-03-28 at 15.36.27-30332.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-30627.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-30529.pdf" style="max-width: 207px; max-height: 400px;" />
-
-<img src="/images/equation-30603.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -150,16 +130,6 @@ $E=0$
 若 $p=\sqrt{2 m E}=0$ ， $\Delta p =0$ ,  $\Delta x \to \infty$ , 则 $\Delta x = a$ ，但势阱中 $E$ ，所以￼不能为零。
 
 <img src="/images/Screen Shot 2022-03-28 at 15.36.27-30332.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-30670.pdf" style="max-width: 166px; max-height: 400px;" />
-
-<img src="/images/equation-30672.pdf" style="max-width: 117px; max-height: 400px;" />
-
-<img src="/images/equation-30680.pdf" style="max-width: 451px; max-height: 400px;" />
-
-<img src="/images/equation-30693.pdf" style="max-width: 84px; max-height: 400px;" />
-
-<img src="/images/equation-30699.pdf" style="max-width: 250px; max-height: 400px;" />
 
 ---
 
@@ -189,10 +159,6 @@ $p \geq \Delta p \geq \frac{h}{2 a} \Rightarrow E_{\min }=\frac{p_{\min }^2}{2 m
 
 同时可得
 
-<img src="/images/equation-35797.pdf" style="max-width: 198px; max-height: 400px;" />
-
-<img src="/images/equation-35800.pdf" style="max-width: 113px; max-height: 400px;" />
-
 ---
 
 # 一维无限深势阱V.S.有限深方势阱
@@ -202,8 +168,6 @@ $E_{\mathrm{pot}}= \begin{cases}E_0 & \text { elsewhere } \\ 0 &  \text { for } 
 how about  $E> E_0$ ?
 
 <img src="/images/Screenshot 2023-04-03 at 13.18.12-35842.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-35863.pdf" style="max-width: 110px; max-height: 400px;" />
 
 ---
 
@@ -257,11 +221,7 @@ $E(n_x,n_y)=\frac{\pi^{2} \hbar^{2}}{2 m } \Big(\frac{n_x^{2}}{a^{2}}+\frac{n_y^
 
 $a>b$
 
-<img src="/images/equation-35878.pdf" style="max-width: 446px; max-height: 400px;" />
-
 <img src="/images/Screenshot 2023-04-03 at 13.35.38-35880.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-35887.pdf" style="max-width: 65px; max-height: 400px;" />
 
 ---
 
@@ -272,8 +232,6 @@ $\psi(x, y)=\frac{2}{\sqrt{ab}} \sin \left(\frac{n_{x} \pi x}{a}\right) \sin \le
 波函数：
 
 ￼
-
-<img src="/images/equation-35897.pdf" style="max-width: 500px; max-height: 400px;" />
 
 <img src="/images/Screenshot 2023-04-03 at 13.46.16-35904.png" style="max-width: 500px; max-height: 400px;" />
 
@@ -301,10 +259,6 @@ $\hat{L}_x=\hat{y}\hat{p}_z-\hat{z}\hat{p}_y,$
 
 $x,y,z \in (-\infty,\infty)$
 
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
 <img src="/images/3D_Cartesian.svg-31297.png" style="max-width: 500px; max-height: 400px;" />
 
 <img src="/images/480px-3D_Spherical.svg-26376.png" style="max-width: 480px; max-height: 400px;" />
@@ -319,10 +273,6 @@ $\hat{L}_z=-i\hbar (x\frac{\partial }{\partial y}-y\frac{\partial }{\partial x})
 
 需要求解的项
 
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
 ---
 
 # 球坐标下的角动量（量子）
@@ -331,19 +281,11 @@ $r^{2}=x^{2}+y^{2}+z^{2}$
 
 对等式两边分别求导
 
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
 ---
 
 # 球坐标下的角动量（量子）
 
 $\cos \theta=\frac{z}{r} \underset{\frac{\partial}{\partial y}}{\Longrightarrow}-\sin \theta \frac{\partial \theta}{\partial y}=z \frac{\partial}{\partial y}\left(\frac{1}{r}\right)$
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
 
 ---
 
@@ -351,27 +293,11 @@ $\cos \theta=\frac{z}{r} \underset{\frac{\partial}{\partial y}}{\Longrightarrow}
 
 $\tan \varphi=\frac{y}{x} \underset{\frac{\partial}{\partial y}}{\Longrightarrow}  \frac{1}{\cos ^{2} \varphi} \frac{\partial \varphi}{\partial y}=\frac{1}{x}$
 
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
 ---
 
 # 球坐标下的角动量（量子）
 
 $\frac{\partial}{\partial y}=\sin \theta \sin \varphi \frac{\partial}{\partial r}+\frac{\cos \theta \sin \varphi}{r} \frac{\partial}{\partial \theta}+\frac{\cos \varphi}{r \sin \theta} \frac{\partial}{\partial \varphi}$
-
-<img src="/images/equation-31856.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-30938.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/equation-31862.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-31874.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-31908.pdf" style="max-width: 337px; max-height: 400px;" />
 
 ---
 
@@ -417,8 +343,6 @@ Ansatz：方程的解 $f(r, \theta, \varphi)=R(r) Y(\theta, \varphi)$ ，代入�
 
 上式左右两边同时乘以 $Y\frac{1}{r^{2}} \frac{\partial}{\partial r}\left(r^{2} \frac{\partial R}{\partial r}\right)-\frac{R}{\hbar^{2} r^{2}} \hat{L}^{2} Y=0$ ,可得
 
-<img src="/images/equation-32173.pdf" style="max-width: 121px; max-height: 400px;" />
-
 ---
 
 # 球谐函数
@@ -435,12 +359,6 @@ $\hat{L}^2Y= \lambda\hbar^2 Y$ 的取值范围为 $\ell$
 
 $\hat{L}_z$ 的取值范围为 $\hat{L}_z\  Y_\ell ^m(\theta, \varphi ) = m\hbar \ Y_\ell ^m(\theta, \varphi )$
 
-<img src="/images/equation-32249.pdf" style="max-width: 36px; max-height: 400px;" />
-
-<img src="/images/equation-32254.pdf" style="max-width: 172px; max-height: 400px;" />
-
-<img src="/images/equation-32263.pdf" style="max-width: 423px; max-height: 400px;" />
-
 ---
 
 # 球坐标下的定态薛定谔方程
@@ -454,8 +372,6 @@ $-\frac{\hbar^{2}}{2 m_e}\left[\frac{1}{r^{2}} \frac{\partial}{\partial r}\left(
 即
 
 当U为中心势场，只依赖于r时
-
-<img src="/images/equation-26646.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -473,8 +389,6 @@ $\ell$
 
 量子化，只能取离散的值
 
-<img src="/images/equation-26750.pdf" style="max-width: 24px; max-height: 400px;" />
-
 ---
 
 # 球谐函数与量子角动量
@@ -486,8 +400,6 @@ $Y_{l}^{m}(\theta, \varphi)=(-1)^{m} \sqrt{\frac{(2 l+1)(l-m) !}{4 \pi(l+m) !}} 
 把 $\theta$ 和 $\varphi$ 相关的量分离可得
 
 其中
-
-<img src="/images/equation-32418.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -528,8 +440,6 @@ $Y_{0}^{0}(\theta, \varphi)=\frac{1}{\sqrt{4 \pi}}$
 # 球谐函数的可视化
 
 $Y_{l}^{m}(\theta, \varphi)=\frac{(-1)^{l}}{2^{l} l !} \sqrt{\frac{(2 l+1)(l+m) !}{4 \pi(l-m) !}} e^{i m \varphi}(\sin \theta)^{-m} \frac{d^{l-m}}{d(\cos \theta)^{l-m}}(\sin \theta)^{2 l}$
-
-<img src="/images/equation-32989.pdf" style="max-width: 467px; max-height: 400px;" />
 
 ---
 
@@ -597,8 +507,6 @@ $rY$
 
 等高线图,颜色表示大小，计算￼
 
-<img src="/images/equation-26827.pdf" style="max-width: 39px; max-height: 400px;" />
-
 <video controls style="max-width: 445px;">
   <source src="/images/Rotating_spherical_harmonics-26522.gif" />
 </video>
@@ -625,8 +533,6 @@ $(r+|Y|)Y$
 
 Earth Syst. Sci. Data, 11, 647–674, 2019
 
-<img src="/images/equation-26847.pdf" style="max-width: 171px; max-height: 400px;" />
-
 <img src="/images/ICGEM_-15_years_of_successful_collection_and_distr-26851.jpg" style="max-width: 500px; max-height: 400px;" />
 
 <img src="/images/ICGEM_-15_years_of_successful_collection_and_distr-26872.jpg" style="max-width: 500px; max-height: 400px;" />
@@ -648,10 +554,6 @@ $\begin{aligned}
 已知
 
 以及
-
-<img src="/images/equation-35917.pdf" style="max-width: 493px; max-height: 400px;" />
-
-<img src="/images/equation-35929.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -683,10 +585,6 @@ $\hat{L}_x \psi = ?$
 
 但是我们知道 $L_x^2+L_y^2=L^2 - L^2_z$
 
-<img src="/images/equation-36002.pdf" style="max-width: 131px; max-height: 400px;" />
-
-<img src="/images/equation-36008.pdf" style="max-width: 294px; max-height: 400px;" />
-
 ---
 
 # 薛定谔方程的解
@@ -694,8 +592,6 @@ $\hat{L}_x \psi = ?$
 $\frac{1}{R} \frac{d}{d r}\left(r^{2} \frac{d R}{d r}\right)-\frac{2 m_e r^{2}}{\hbar^{2}}[U(r)-E]=\ell(\ell+1)$
 
 注意径向波函数与能量都不依赖于 $\frac{1}{Y}\left\{\frac{1}{\hbar^2}\hat{L}^2Y\right\}=\ell(\ell+1)$
-
-<img src="/images/equation-26646.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -706,10 +602,6 @@ $\left[-\frac{\hbar^{2}}{2 \mu} \frac{1}{r} \frac{d^{2}}{d r^{2}} r+\frac{l(l+1)
 令 $R_{k l}(r)=\frac{1}{r} u_{k l}(r)$ ，则
 
 已知 $\left[-\frac{\hbar^{2}}{2 \mu} \frac{d^{2}}{d r^{2}}+\frac{l(l+1) \hbar^{2}}{2 \mu r^{2}}-\frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{r}\right] u_{k l}(r)=E_{k l} u_{k l}(r)$ ，则 $u_{k l}(r)=r R_{k l}(r)$
-
-<img src="/images/equation-33500.pdf" style="max-width: 200px; max-height: 400px;" />
-
-<img src="/images/equation-33506.pdf" style="max-width: 133px; max-height: 400px;" />
 
 ---
 
@@ -722,8 +614,6 @@ $\left[-\frac{\hbar^{2}}{2 \mu} \frac{d^{2}}{d r^{2}}+\frac{l(l+1) \hbar^{2}}{2 
 离散能级
 
 波函数平方可积
-
-<img src="/images/equation-33582.pdf" style="max-width: 48px; max-height: 400px;" />
 
 ---
 
@@ -757,8 +647,6 @@ $\left[\frac{d^{2}}{d \rho^{2}}-\frac{l(l+1)}{\rho^{2}}+\frac{2}{\rho}-\lambda_{
 
 当 $\rho \longrightarrow \infty$ 时，Ansatz方程的解为
 
-<img src="/images/equation-34072.pdf" style="max-width: 142px; max-height: 400px;" />
-
 ---
 
 # 径向薛定谔方程的解
@@ -767,17 +655,11 @@ $\frac{d^{2}}{d \rho^{2}}\left[e^{-\lambda_{k l} \rho} v_{k l}(\rho)\right]=\lef
 
 代入上式可得
 
-<img src="/images/equation-34194.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 径向薛定谔方程的解
 
 $\left[\frac{d^{2}}{d \rho^{2}}-2 \lambda_{k l} \frac{d}{d \rho}+\frac{2}{\rho}-\frac{l(l+1)}{\rho^{2}}\right] v_{k l}(\rho)=0$
-
-<img src="/images/equation-34248.pdf" style="max-width: 62px; max-height: 400px;" />
-
-<img src="/images/equation-34268.pdf" style="max-width: 84px; max-height: 400px;" />
 
 ---
 
@@ -799,10 +681,6 @@ $(q+l+1)(q+l)-l(l+1)=q^{2}+q l+q(l+1)+l(l+1)-l(l+1)$
 
 …
 
-<img src="/images/equation-34629.pdf" style="max-width: 83px; max-height: 400px;" />
-
-<img src="/images/equation-34632.pdf" style="max-width: 102px; max-height: 400px;" />
-
 ---
 
 # 径向薛定谔方程的解
@@ -814,12 +692,6 @@ $\left[\frac{d^{2}}{d \rho^{2}}-2 \lambda_{k l} \frac{d}{d \rho}+\frac{2}{\rho}-
 考虑收敛性条件 $v_{k l}(\rho)=\sum_{q=0}^{\infty} c_{q} \rho^{q+s}$ 时 $\frac{c_{q}}{c_{q-1}}=\frac{2\left(\lambda_{k l}(q+l)-1\right)}{q(q+2 l+1)} \quad c_{0} \neq 0$ （当 $c_{q} \propto c_{0} \ \ \Longrightarrow \ \  v_{k l}(\rho) \propto c_{0}$ ），可得
 
 能级与玻尔模型一致
-
-<img src="/images/equation-34891.pdf" style="max-width: 69px; max-height: 400px;" />
-
-<img src="/images/equation-34893.pdf" style="max-width: 242px; max-height: 400px;" />
-
-<img src="/images/equation-34895.pdf" style="max-width: 69px; max-height: 400px;" />
 
 ---
 
@@ -873,13 +745,7 @@ $2p$
 
 $m=0$
 
-<img src="/images/equation-36214.pdf" style="max-width: 25px; max-height: 400px;" />
-
-<img src="/images/equation-36218.pdf" style="max-width: 28px; max-height: 400px;" />
-
 <img src="/images/Screen Shot 2023-04-10 at 20.35.10-36204.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-36223.pdf" style="max-width: 72px; max-height: 400px;" />
 
 ---
 
@@ -898,8 +764,6 @@ $P(r) \mathrm{d} r=\int_{\vartheta=0}^\pi \int_{\varphi=0}^{2 \pi}|\psi(r, \vart
 对于基态，即 $n=1, \ \ell =0,\  m=0$
 
 电子和原子核之间平均距离 $P(r) \mathrm{d} r=\frac{4 Z^3}{a_0^3} r^2 \mathrm{e}^{-2 Z r / a_0} \mathrm{~d} r$
-
-<img src="/images/equation-36258.pdf" style="max-width: 326px; max-height: 400px;" />
 
 ---
 
@@ -929,16 +793,6 @@ $n$
 
 $m=0$ ， ￼
 
-<img src="/images/equation-27405.pdf" style="max-width: 20px; max-height: 400px;" />
-
-<img src="/images/equation-27572.pdf" style="max-width: 20px; max-height: 400px;" />
-
-<img src="/images/equation-27574.pdf" style="max-width: 27px; max-height: 400px;" />
-
-<img src="/images/equation-27576.pdf" style="max-width: 27px; max-height: 400px;" />
-
-<img src="/images/equation-27593.pdf" style="max-width: 97px; max-height: 400px;" />
-
 <img src="/images/The-Shape-of-s-Orbitals-700x327-27596.png" style="max-width: 500px; max-height: 400px;" />
 
 ---
@@ -954,18 +808,6 @@ $n$
 磁量子数 $m$ ，表示轨道的方向， $m=-\ell, (-\ell+1),...,0,...,(\ell-1),\ell$ 的取值范围为 $\ell =1$
 
 $m=-1,0,1$ ，  $m=1$
-
-<img src="/images/equation-27405.pdf" style="max-width: 20px; max-height: 400px;" />
-
-<img src="/images/equation-27572.pdf" style="max-width: 20px; max-height: 400px;" />
-
-<img src="/images/equation-27574.pdf" style="max-width: 27px; max-height: 400px;" />
-
-<img src="/images/equation-27576.pdf" style="max-width: 27px; max-height: 400px;" />
-
-<img src="/images/equation-27612.pdf" style="max-width: 86px; max-height: 400px;" />
-
-<img src="/images/equation-27614.pdf" style="max-width: 190px; max-height: 400px;" />
 
 <img src="/images/CNX_UPhysics_41_01_EOrbitals-1-27608.jpg" style="max-width: 500px; max-height: 400px;" />
 
@@ -1037,10 +879,6 @@ $\mu_B$ 玻尔磁子
 
 磁矩在 $z$ 方向的投影 $\mu_z$ 为
 
-<img src="/images/equation-28216.pdf" style="max-width: 15px; max-height: 400px;" />
-
-<img src="/images/equation-28218.pdf" style="max-width: 31px; max-height: 400px;" />
-
 ---
 
 # 习题
@@ -1075,17 +913,11 @@ $\begin{aligned}
 
 \end{aligned}$
 
-<img src="/images/equation-28888.pdf" style="max-width: 492px; max-height: 400px;" />
-
-<img src="/images/equation-28890.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # §19 施特恩—盖拉赫(Stern-Gerlach)实验
 
 Stern-Gerlach 1921年首次对原子在磁场中（角动量/磁矩）的空间量子化进行了实验观察，1943年Nobel奖
-
-<img src="/images/pasted-image-29166.pdf" style="max-width: 465px; max-height: 400px;" />
 
 ---
 
@@ -1108,8 +940,6 @@ $\mu$
 目的：证明原子在外磁场中的空间量子化。
 
 原理：磁矩为￼的小磁体，在横向非均匀磁场中受到的合力不为零：
-
-<img src="/images/equation-28511.pdf" style="max-width: 20px; max-height: 400px;" />
 
 <video controls style="max-width: 500px;">
   <source src="/images/spin-28555.mp4" />
@@ -1183,10 +1013,6 @@ $m_s$ 的取值范围为
 
 <img src="/images/CNX_UPhysics_41_03_SpinDir-1-28845.jpg" style="max-width: 380px; max-height: 400px;" />
 
-<img src="/images/equation-28855.pdf" style="max-width: 37px; max-height: 400px;" />
-
-<img src="/images/equation-28874.pdf" style="max-width: 94px; max-height: 400px;" />
-
 ---
 
 # 氢原子中电子的状态
@@ -1208,10 +1034,6 @@ $\begin{aligned}
 对于电子 $g_s \approx 2$
 
 实际上g因子可以表示为
-
-<img src="/images/equation-29431.pdf" style="max-width: 97px; max-height: 400px;" />
-
-<img src="/images/pasted-image-28941.pdf" style="max-width: 456px; max-height: 400px;" />
 
 ---
 
@@ -1235,8 +1057,6 @@ $L = \sqrt{\ell(\ell+1)} \hbar$
 
 当 $J = \sqrt{j(j+1)}\hbar$ 时，共 $\geq 0$ 个值
 
-<img src="/images/equation-29091.pdf" style="max-width: 492px; max-height: 400px;" />
-
 <img src="/images/Screen Shot 2022-02-21 at 13.00.33-29150.png" style="max-width: 346px; max-height: 400px;" />
 
 ---
@@ -1248,14 +1068,6 @@ $\vec{\mu} =  \vec{\mu}_s + \vec{\mu}_l$
 $\vec{J} = \vec{L} + \vec{S}$ 在 $\vec{\mu}$ 方向的分量 $\vec{J}$ 叫原子的总磁矩
 
 其中 $\vec{\mu}_j$
-
-<img src="/images/equation-29211.pdf" style="max-width: 39px; max-height: 400px;" />
-
-<img src="/images/equation-29213.pdf" style="max-width: 42px; max-height: 400px;" />
-
-<img src="/images/equation-29217.pdf" style="max-width: 43px; max-height: 400px;" />
-
-<img src="/images/equation-29243.pdf" style="max-width: 222px; max-height: 400px;" />
 
 <img src="/images/WechatIMG1114-29260.png" style="max-width: 220px; max-height: 400px;" />
 
@@ -1317,12 +1129,6 @@ $E_{n}=-E_0 \frac{1}{n^2}$
 
 因此
 
-<img src="/images/equation-29505.pdf" style="max-width: 208px; max-height: 400px;" />
-
-<img src="/images/equation-29587.pdf" style="max-width: 205px; max-height: 400px;" />
-
-<img src="/images/equation-29562.pdf" style="max-width: 244px; max-height: 400px;" />
-
 ---
 
 # 能级分裂
@@ -1334,10 +1140,6 @@ $s$
 量子力学中只有本征态下的平均值才有意义
 
 精细结构常数
-
-<img src="/images/equation-29665.pdf" style="max-width: 14px; max-height: 400px;" />
-
-<img src="/images/equation-29674.pdf" style="max-width: 86px; max-height: 400px;" />
 
 <img src="/images/Screen Shot 2022-02-22 at 15.13.53-29676.png" style="max-width: 500px; max-height: 400px;" />
 
@@ -1357,8 +1159,6 @@ E_{n, l, s} \uparrow -  E_{n, l, s} \downarrow  &=\langle a\rangle\left(l+\frac{
 
 已知 $E_{n} \propto Z^{2} / n^{2}$
 
-<img src="/images/equation-29837.pdf" style="max-width: 163px; max-height: 400px;" />
-
 ---
 
 # §22 塞曼效应
@@ -1371,24 +1171,6 @@ $\vec{\mu} = - \frac{e}{2m_e} \vec{L}$
 
 <img src="/images/Screen Shot 2022-02-23 at 14.02.48-29868.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-29889.pdf" style="max-width: 228px; max-height: 400px;" />
-
-<img src="/images/equation-29892.pdf" style="max-width: 38px; max-height: 400px;" />
-
-<img src="/images/equation-29895.pdf" style="max-width: 130px; max-height: 400px;" />
-
-<img src="/images/equation-29901.pdf" style="max-width: 36px; max-height: 400px;" />
-
-<img src="/images/equation-29926.pdf" style="max-width: 43px; max-height: 400px;" />
-
-<img src="/images/equation-29928.pdf" style="max-width: 131px; max-height: 400px;" />
-
-<img src="/images/equation-29938.pdf" style="max-width: 39px; max-height: 400px;" />
-
-<img src="/images/equation-29943.pdf" style="max-width: 131px; max-height: 400px;" />
-
-<img src="/images/equation-29968.pdf" style="max-width: 131px; max-height: 400px;" />
-
 ---
 
 # 塞曼效应
@@ -1398,10 +1180,6 @@ $n=2$
 例如: 氢灯（观察氢光的光谱仪）放在足够强的外磁场中时，有些谱线(如 $l=1$ ,  $\vec{\mu} = - \frac{e}{2m_e} \vec{L}$ 对应的谱线)会分裂为三条：
 
 磁矩 $\vec{B}$ 在外磁场 $-\vec{\mu}\cdot \vec{B}$ 中具有势能 $\vec{L}$ 。角动量 $m_\ell$ 沿外磁场的分量量子数 $(2\ell +1)$ 有 $\vec{\mu}$ 个值， $(2\ell + 1)$ 就有 $(2\ell +1 )$ 个取向，所以一个能级在外磁场中将分裂成￼
-
-<img src="/images/equation-35644.pdf" style="max-width: 88px; max-height: 400px;" />
-
-<img src="/images/equation-35636.pdf" style="max-width: 74px; max-height: 400px;" />
 
 <img src="/images/pasted-image-35639.png" style="max-width: 500px; max-height: 400px;" />
 

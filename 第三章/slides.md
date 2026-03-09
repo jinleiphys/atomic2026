@@ -51,12 +51,6 @@ $V_P  = - \int_R^P F(x) dx$
 
 <img src="/images/Screen Shot 2022-03-09 at 12.24.21-26215.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-26247.pdf" style="max-width: 183px; max-height: 400px;" />
-
-<img src="/images/equation-26260.pdf" style="max-width: 162px; max-height: 400px;" />
-
-<img src="/images/equation-26274.pdf" style="max-width: 280px; max-height: 400px;" />
-
 <img src="/images/Screen Shot 2022-03-09 at 12.35.38-26277.png" style="max-width: 500px; max-height: 400px;" />
 
 ---
@@ -84,20 +78,6 @@ $y (x,t)= A\sin [2\pi (x/\lambda -t/T)]$
 角频率： $y (x,t)= A\sin [kx  -\omega t)]$
 
 <img src="/images/Screen Shot 2022-03-09 at 12.47.48-26290.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-26313.pdf" style="max-width: 160px; max-height: 400px;" />
-
-<img src="/images/equation-26322.pdf" style="max-width: 111px; max-height: 400px;" />
-
-<img src="/images/equation-26333.pdf" style="max-width: 104px; max-height: 400px;" />
-
-<img src="/images/equation-26336.pdf" style="max-width: 128px; max-height: 400px;" />
-
-<img src="/images/equation-26352.pdf" style="max-width: 458px; max-height: 400px;" />
-
-<img src="/images/equation-26364.pdf" style="max-width: 117px; max-height: 400px;" />
-
-<img src="/images/equation-26371.pdf" style="max-width: 235px; max-height: 400px;" />
 
 ---
 
@@ -155,10 +135,6 @@ $y_{1}(x)=A \sin (k x-\omega t)$
 
 光的波动说
 
-<img src="/images/parentheses-left-118829-22463.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/parentheses-left-118829-22463.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 光的波粒二象性
@@ -181,14 +157,6 @@ $E=h\nu=pc$
 
 在能量转移时显示粒子性
 
-<img src="/images/parentheses-left-118829-22463.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/parentheses-left-118829-22463.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22579.pdf" style="max-width: 117px; max-height: 400px;" />
-
-<img src="/images/parentheses-left-118829-22463.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 德布罗意假设（1923年提出，1929年获诺奖）
@@ -202,12 +170,6 @@ $E=h\nu=pc$
 ---
 
 # 德布罗意假设（1923年提出，1929年获诺奖）
-
-<img src="/images/112540a0-28300.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/112540a0-28300.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/112540a0-28300.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -259,12 +221,6 @@ $\nu$
 
 \end{aligned}$ ，满足
 
-<img src="/images/equation-22686.pdf" style="max-width: 17px; max-height: 400px;" />
-
-<img src="/images/equation-22688.pdf" style="max-width: 17px; max-height: 400px;" />
-
-<img src="/images/equation-22766.pdf" style="max-width: 17px; max-height: 400px;" />
-
 ---
 
 # 习题
@@ -299,16 +255,6 @@ $K /\left(K+E_{0}\right) \ll 1$
 
 ￼
 
-<img src="/images/equation-22919.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22927.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22931.pdf" style="max-width: 264px; max-height: 400px;" />
-
-<img src="/images/equation-22939.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-29222.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 习题
@@ -327,18 +273,6 @@ TIPS:
 
 可以得出￼
 
-<img src="/images/equation-29224.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22978.pdf" style="max-width: 184px; max-height: 400px;" />
-
-<img src="/images/equation-22931.pdf" style="max-width: 264px; max-height: 400px;" />
-
-<img src="/images/equation-23031.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-23002.pdf" style="max-width: 246px; max-height: 400px;" />
-
-<img src="/images/equation-23009.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 习题
@@ -346,12 +280,6 @@ TIPS:
 $K=108~keV$
 
 (b)当 $K /\left(K+E_{0}\right)= 108 / 619$ 时， $\lambda=\frac{h}{p}=\frac{h c}{\sqrt{K\left(K+2 E_{0}\right)}}=\frac{1.241 \mathrm{eVm}}{\sqrt{108 \mathrm{keV}[108 \mathrm{keV}+2(511 \mathrm{keV})]}}=3.55 \mathrm{pm}$ ，相对论效应不能忽略￼
-
-<img src="/images/equation-23040.pdf" style="max-width: 212px; max-height: 400px;" />
-
-<img src="/images/equation-23049.pdf" style="max-width: 372px; max-height: 400px;" />
-
-<img src="/images/equation-23062.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -403,8 +331,6 @@ $\Delta V = 54~eV$ ， $\varphi = 50^\circ$ 时最大
 
 <img src="/images/CNX_UPhysics_39_05_davisson2-1-23136.jpg" style="max-width: 347px; max-height: 400px;" />
 
-<img src="/images/119558a0-2-26655.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 戴维孙-革末实验
@@ -412,10 +338,6 @@ $\Delta V = 54~eV$ ， $\varphi = 50^\circ$ 时最大
 $X$
 
 特别注意是电子散射与 $X$ 射线散射不同， $p=\sqrt{2 m e \Delta V}=2.478 \times 10^{-5}~ eVs/m$ 射线可以穿透物体表面，但是（低能）电子只能与物体表面发生作用
-
-<img src="/images/equation-23295.pdf" style="max-width: 27px; max-height: 400px;" />
-
-<img src="/images/equation-23297.pdf" style="max-width: 27px; max-height: 400px;" />
 
 <img src="/images/CNX_UPhysics_39_05_bragg-1-23265.jpg" style="max-width: 333px; max-height: 400px;" />
 
@@ -454,8 +376,6 @@ $K_{T}=\frac{3}{2} k_{B} T=\frac{3}{2}\left(8.6210^{-5} \mathrm{eV} / \mathrm{K}
 单原子气体（monatomic gas）在室温下的动能为
 
 https://en.wikipedia.org/wiki/Monatomic_gas
-
-<img src="/images/equation-23328.pdf" style="max-width: 137px; max-height: 400px;" />
 
 ---
 
@@ -651,8 +571,6 @@ $\Delta p_x = p\sin\theta_1$
 
 $\sin\theta_1 = \frac{h}{p \Delta x }$    或： $\Delta p \geq \frac{h}{\Delta x }$
 
-<img src="/images/equation-26897.pdf" style="max-width: 217px; max-height: 400px;" />
-
 ---
 
 # 测不准关系的实验验证（单缝衍射）
@@ -721,10 +639,6 @@ $p^{2} c^{2}=E^{2}-m_{0}^{2} c^{4}$
 
 两边微分可得
 
-<img src="/images/equation-27053.pdf" style="max-width: 214px; max-height: 400px;" />
-
-<img src="/images/equation-27061.pdf" style="max-width: 283px; max-height: 400px;" />
-
 ---
 
 # 练习
@@ -738,8 +652,6 @@ $\Delta t=10^{-8}~s$
 ---
 
 # 当h=1时
-
-<img src="/images/wlsjqyj-27109.pdf" style="max-width: 500px; max-height: 400px;" />
 
 <img src="/images/pasted-image-27117.tiff" style="max-width: 310px; max-height: 400px;" />
 
@@ -897,14 +809,6 @@ $|E|^2$
 
 <img src="/images/CNX_UPhysics_40_01_TwoSlit-1-24365.jpg" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-24401.pdf" style="max-width: 72px; max-height: 400px;" />
-
-<img src="/images/equation-24406.pdf" style="max-width: 25px; max-height: 400px;" />
-
-<img src="/images/equation-24432.pdf" style="max-width: 248px; max-height: 400px;" />
-
-<img src="/images/equation-24401.pdf" style="max-width: 72px; max-height: 400px;" />
-
 ---
 
 # 波函数的统计解释（M.Born, 1926）
@@ -916,14 +820,6 @@ $|\Psi(x,t)|^2$
 即：波函数的模方 $t$ (波在空间某点的强度)与 $x$ 时刻在空间某点 $t$ 处单位体积内发现粒子的几率成正比
 
 或, $x$ 时刻在 $x+dx$ 到 $P(x, x+d x)$ 的区间内找到粒子的几率 $|\Psi(x,t)|^2 dx$ 与￼成正比
-
-<img src="/images/equation-24571.pdf" style="max-width: 150px; max-height: 400px;" />
-
-<img src="/images/equation-24578.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-24583.pdf" style="max-width: 186px; max-height: 400px;" />
-
-<img src="/images/equation-24585.pdf" style="max-width: 189px; max-height: 400px;" />
 
 <video controls style="max-width: 320px;">
   <source src="/images/1-24677.mp4" />
@@ -1069,12 +965,6 @@ $t$ －在 $V$ 时刻粒子出现在 $\alpha$ 体积内的概率。
 
 当 $\psi$ 为实数时， $e^{i\alpha}\psi$ 与￼代表同一个态
 
-<img src="/images/equation-27724.pdf" style="max-width: 164px; max-height: 400px;" />
-
-<img src="/images/equation-27727.pdf" style="max-width: 10px; max-height: 400px;" />
-
-<img src="/images/equation-27729.pdf" style="max-width: 24px; max-height: 400px;" />
-
 ---
 
 # 电子双缝干涉实验的统计学解释
@@ -1094,12 +984,6 @@ $\psi_A(r,t)$
 玻恩用概率解释把微观粒子的波动性和粒子性统一起来，
 
 玻恩的统计诠释成为量子力学的一个基本假设。
-
-<img src="/images/equation-27391.pdf" style="max-width: 106px; max-height: 400px;" />
-
-<img src="/images/equation-27396.pdf" style="max-width: 106px; max-height: 400px;" />
-
-<img src="/images/equation-27401.pdf" style="max-width: 406px; max-height: 400px;" />
 
 <img src="/images/pasted-image-27416.png" style="max-width: 494px; max-height: 400px;" />
 
@@ -1149,13 +1033,7 @@ $k=2\pi/\lambda$ 为波数，区间外波函数为0
 
 应用归一化条件可得 $A \cos (k L / 2)=0$ ，可得
 
-<img src="/images/equation-24721.pdf" style="max-width: 22px; max-height: 400px;" />
-
 <img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 426px; max-height: 400px;" />
-
-<img src="/images/equation-24743.pdf" style="max-width: 140px; max-height: 400px;" />
-
-<img src="/images/equation-24792.pdf" style="max-width: 169px; max-height: 400px;" />
 
 ---
 
@@ -1171,11 +1049,7 @@ $L$
 
 小球的波长
 
-<img src="/images/equation-24721.pdf" style="max-width: 22px; max-height: 400px;" />
-
 <img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 426px; max-height: 400px;" />
-
-<img src="/images/equation-24792.pdf" style="max-width: 169px; max-height: 400px;" />
 
 <video controls style="max-width: 500px;">
   <source src="/images/v2-4fcebba5e210f33cd800759166c495fe_720w.webp-24870.gif" />
@@ -1221,8 +1095,6 @@ $\Psi(x, t)=A \sin (k x-\omega t)$
 
 当被观测时，粒子“跳入”特定的状态 $P(x, x+d x)=|\Psi(x, t)|^{2} d x$ ，概率为￼，这个过程叫做“坍缩”
 
-<img src="/images/equation-25023.pdf" style="max-width: 374px; max-height: 400px;" />
-
 ---
 
 # 波函数的复数形式
@@ -1244,14 +1116,6 @@ $x(t)$
 宏观上，运动方程的解是一个可测量量的函数，例如  $x$ ，其中 $t$ 是位置， $t$ 是时间。请注意，粒子在任何时间 $\Psi(x,t)$ 都有一个位置值。
 
 在量子力学中，运动方程的解是波函数 $t$ 。粒子在任何时间 $|\Psi(x,t)|^2$ 都有许多位置值，并且只能知道找到粒子的概率密度 $\langle x\rangle=\int_{-\infty}^{\infty} x P(x, t) d x=\int_{-\infty}^{\infty} x \Psi *(x, t) \Psi(x, t) d x$ 。粒子的位置平均值为
-
-<img src="/images/equation-25147.pdf" style="max-width: 54px; max-height: 400px;" />
-
-<img src="/images/equation-25149.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-25151.pdf" style="max-width: 10px; max-height: 400px;" />
-
-<img src="/images/equation-25154.pdf" style="max-width: 10px; max-height: 400px;" />
 
 ---
 
@@ -1277,10 +1141,6 @@ $\sigma_{x} \sigma_{p}=\frac{\hbar}{2}$
 
 为了方便计算，
 
-<img src="/images/equation-25440.pdf" style="max-width: 91px; max-height: 400px;" />
-
-<img src="/images/equation-25462.pdf" style="max-width: 102px; max-height: 400px;" />
-
 ---
 
 # 波包
@@ -1292,8 +1152,6 @@ $\Psi(x, t)= A e^{i(kx-\omega t)}$
 确定动量时，粒子完全无法确定位置，无处不在
 
 波包是平面波在 $|\Psi(x,t)|^2 =|A|^2$ 区间内的叠加态
-
-<img src="/images/equation-25531.pdf" style="max-width: 114px; max-height: 400px;" />
 
 <video controls style="max-width: 313px;">
   <source src="/images/reality_wavepacket-25511.gif" />
@@ -1383,10 +1241,6 @@ $\frac{\partial^{2} \Psi}{\partial x^{2}}=-k^2 \Psi(x, t), \quad \frac{\partial 
 
 考虑到： $E= \frac{(\hbar k)^2}{2m}$ ，有
 
-<img src="/images/equation-25739.pdf" style="max-width: 273px; max-height: 400px;" />
-
-<img src="/images/equation-25749.pdf" style="max-width: 165px; max-height: 400px;" />
-
 ---
 
 # 非自由粒子的波函数
@@ -1398,8 +1252,6 @@ $\Psi(x,y,z,t)$
 一般情况下，是一个坐标与时间的函数￼,  但具体形式要根据具体问题来确定。
 
 用波函数描述微观粒子的状态，这是量子力学的基本假设之一,  这种新的描述方法, 充分体现了粒子的波粒二象性。
-
-<img src="/images/equation-25823.pdf" style="max-width: 165px; max-height: 400px;" />
 
 ---
 
@@ -1437,10 +1289,6 @@ $U$
 
 波函数 $-\frac{\hbar^{2}}{2 m} \frac{d^{2} \psi(x)}{d x^{2}}+U(x) \psi(x)=E \psi(x)$ : 单值、有限、连续、可归一
 
-<img src="/images/equation-27857.pdf" style="max-width: 293px; max-height: 400px;" />
-
-<img src="/images/equation-26115.pdf" style="max-width: 67px; max-height: 400px;" />
-
 ---
 
 # Ansatz
@@ -1452,8 +1300,6 @@ is an educated guess or an additional assumption made to help solve a problem, a
 假设
 
 代入上式求解系数 $y(x) = a x^3 + b x^2 + c x + d$
-
-<img src="/images/equation-26205.pdf" style="max-width: 128px; max-height: 400px;" />
 
 ---
 
@@ -1509,20 +1355,6 @@ $(E-H) \Psi = 0$
 
 当 $\Psi = \lim_{\epsilon -> 0}\frac{1}{E-T+i\epsilon} V \Psi$ 时，￼
 
-<img src="/images/equation-28986.pdf" style="max-width: 224px; max-height: 400px;" />
-
-<img src="/images/equation-28994.pdf" style="max-width: 173px; max-height: 400px;" />
-
-<img src="/images/equation-29003.pdf" style="max-width: 257px; max-height: 400px;" />
-
-<img src="/images/equation-29011.pdf" style="max-width: 93px; max-height: 400px;" />
-
-<img src="/images/equation-29019.pdf" style="max-width: 238px; max-height: 400px;" />
-
-<img src="/images/equation-29023.pdf" style="max-width: 93px; max-height: 400px;" />
-
-<img src="/images/equation-29025.pdf" style="max-width: 384px; max-height: 400px;" />
-
 ---
 
 # 总结
@@ -1545,16 +1377,6 @@ $k$ 和 $E=\hbar \omega, \quad  p=\hbar k$ 表达下的德布罗意关系：￼
 
 波包：在某个有限区域之外为零（或极小）的波
 
-<img src="/images/equation-28097.pdf" style="max-width: 419px; max-height: 400px;" />
-
-<img src="/images/equation-28126.pdf" style="max-width: 32px; max-height: 400px;" />
-
-<img src="/images/equation-28162.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-28166.pdf" style="max-width: 25px; max-height: 400px;" />
-
-<img src="/images/equation-28171.pdf" style="max-width: 17px; max-height: 400px;" />
-
 ---
 
 # 总结
@@ -1574,10 +1396,6 @@ $\int_{\Omega}|\Psi|^{2} d V=1 \quad(\Omega-\text { 全空间 })$
 不确定性原理的统计学解释：￼
 
 经典力学与量子力学的对比：特点，状态描述，运动方程，联系
-
-<img src="/images/equation-28212.pdf" style="max-width: 456px; max-height: 400px;" />
-
-<img src="/images/equation-28215.pdf" style="max-width: 366px; max-height: 400px;" />
 
 ---
 

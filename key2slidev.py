@@ -40,17 +40,21 @@ def build_id_to_filename_map(zf: zipfile.ZipFile) -> Dict[str, str]:
     """
     建立 Data identifier -> 文件名 的映射
     Keynote Data/ 文件名格式: name-{id}.ext 或 name-small-{id}.ext
+    排除 PDF 文件（公式渲染和论文等，浏览器无法直接显示为图片）
     """
     id_map = {}
+    SKIP_EXTS = {'.pdf'}
     for name in zf.namelist():
         if not name.startswith('Data/'):
             continue
         fname = os.path.basename(name)
+        ext = Path(fname).suffix.lower()
+        if ext in SKIP_EXTS:
+            continue
         # 提取文件名中最后的数字 ID (在扩展名之前)
         match = re.search(r'-(\d+)\.[^.]+$', fname)
         if match:
             fid = match.group(1)
-            ext = Path(fname).suffix.lower()
             # 优先保留非 small 版本
             if fid not in id_map or 'small' not in fname.lower():
                 id_map[fid] = fname
@@ -303,7 +307,7 @@ def extract_media(key_path: str, output_dir: str) -> Dict[str, str]:
                 fname = os.path.basename(name)
                 ext = Path(fname).suffix.lower()
                 if ext in ('.png', '.jpg', '.jpeg', '.gif', '.svg',
-                           '.mp4', '.mov', '.m4v'):
+                           '.mp4', '.mov', '.m4v') and ext != '.pdf':
                     out_path = os.path.join(media_dir, fname)
                     if not os.path.exists(out_path):
                         with zf.open(name) as src, open(out_path, 'wb') as dst:

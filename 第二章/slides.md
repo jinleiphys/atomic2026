@@ -98,12 +98,6 @@ Gustav Robert Kirchhoff
 
 <img src="/images/bracket-right-18578.png" style="max-width: 336px; max-height: 400px;" />
 
-<img src="/images/equation-25064.pdf" style="max-width: 137px; max-height: 400px;" />
-
-<img src="/images/equation-25066.pdf" style="max-width: 130px; max-height: 400px;" />
-
-<img src="/images/equation-25068.pdf" style="max-width: 77px; max-height: 400px;" />
-
 ---
 
 # 基尔霍夫热辐射定律（1859）
@@ -130,12 +124,6 @@ Gustav Robert Kirchhoff
 
 <img src="/images/bracket-right-18578.png" style="max-width: 336px; max-height: 400px;" />
 
-<img src="/images/equation-24809.pdf" style="max-width: 137px; max-height: 400px;" />
-
-<img src="/images/equation-24811.pdf" style="max-width: 130px; max-height: 400px;" />
-
-<img src="/images/equation-24813.pdf" style="max-width: 77px; max-height: 400px;" />
-
 <video controls style="max-width: 500px;">
   <source src="/images/τâ¡Φ╛Éσ░ä-22283.mov" />
 </video>
@@ -158,8 +146,6 @@ Gustav Robert Kirchhoff
 
 当周围的温度低于黑体的温度时，黑体是发光的
 
-<img src="/images/Pages from Atoms, Molecules and Photons An Introduction to Atomic-, Molecular- and Quantum Physics by Wolfgang Demtro╠êder (z-lib.org)-24426.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 基尔霍夫热辐射定律（1859）
@@ -179,10 +165,6 @@ $e(\lambda,T)$ 到底如何变化？
 如何做相关的研究？
 
 <img src="/images/Gustav_Robert_Kirchhoff-18470.jpg" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-25070.pdf" style="max-width: 77px; max-height: 400px;" />
-
-<img src="/images/equation-25072.pdf" style="max-width: 77px; max-height: 400px;" />
 
 <img src="/images/CNX_UPhysics_39_01_blackbody-1-18725.jpg" style="max-width: 487px; max-height: 400px;" />
 
@@ -218,8 +200,6 @@ $\lambda_{\max }^{(\mathrm{red})} T_{(\mathrm{red})}=2.89810^{-3} \mathrm{mK}=\l
 
 <img src="/images/CNX_UPhysics_39_01_orion-1-18871.jpg" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-18953.pdf" style="max-width: 488px; max-height: 400px;" />
-
 ---
 
 # 瑞利-金斯辐射
@@ -233,12 +213,6 @@ k_{x}=\frac{\pi}{L} n_{1}, \quad k_{y}=\frac{\pi}{L} n_{2}, \quad k_{z}=\frac{\p
 \Rightarrow k=|\boldsymbol{k}|=\frac{\pi}{L} \sqrt{n_{1}^{2}+n_{2}^{2}+n_{3}^{2}}
 
 \end{aligned}$ 的叠加，并满足驻波条件（辐射场在立方体边缘为0，即辐射场在黑体边缘被完全吸收）
-
-<img src="/images/equation-22350.pdf" style="max-width: 99px; max-height: 400px;" />
-
-<img src="/images/equation-22360.pdf" style="max-width: 22px; max-height: 400px;" />
-
-<img src="/images/equation-22393.pdf" style="max-width: 242px; max-height: 400px;" />
 
 <img src="/images/Screen Shot 2022-02-23 at 21.52.35-22413.png" style="max-width: 500px; max-height: 400px;" />
 
@@ -262,10 +236,6 @@ $\omega = kc$
 
 <img src="/images/Screen Shot 2022-02-23 at 21.52.35-22413.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-22469.pdf" style="max-width: 110px; max-height: 400px;" />
-
-<img src="/images/equation-22491.pdf" style="max-width: 155px; max-height: 400px;" />
-
 ---
 
 # 瑞利-金斯辐射
@@ -286,18 +256,6 @@ N\left(\omega \leq \omega_{\mathrm{m}}\right) &=2\left(\frac{L}{\pi}\right)^{3} 
 
 <img src="/images/Screen Shot 2022-02-23 at 22.15.16-22535.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-22547.pdf" style="max-width: 17px; max-height: 400px;" />
-
-<img src="/images/equation-22556.pdf" style="max-width: 256px; max-height: 400px;" />
-
-<img src="/images/equation-22560.pdf" style="max-width: 155px; max-height: 400px;" />
-
-<img src="/images/equation-22584.pdf" style="max-width: 45px; max-height: 400px;" />
-
-<img src="/images/equation-22590.pdf" style="max-width: 122px; max-height: 400px;" />
-
-<img src="/images/equation-22634.pdf" style="max-width: 36px; max-height: 400px;" />
-
 ---
 
 # 瑞利-金斯辐射
@@ -311,12 +269,6 @@ $n\left(\omega \leq \omega_{\mathrm{m}}\right)=\frac{1}{L^{3}} N\left(\omega<\om
 用频率 $n_{\omega}=\frac{\mathrm{d}}{\mathrm{d} \omega}(n(\omega))=\frac{\omega^{2}}{\pi^{2} c^{3}}$ 表示谱辐射密度
 
 每单位体积，频率在 $\nu = \omega / (2 \pi)$ 与 $n_{v}(v)=\frac{8 \pi v^{2}}{c^{3}}$ 的辐射模式密度
-
-<img src="/images/equation-22708.pdf" style="max-width: 175px; max-height: 400px;" />
-
-<img src="/images/equation-22729.pdf" style="max-width: 17px; max-height: 400px;" />
-
-<img src="/images/equation-22734.pdf" style="max-width: 101px; max-height: 400px;" />
 
 ---
 
@@ -358,8 +310,6 @@ $E_n = n h \nu \ \ \ n=1,2,3...$
 
 每吸收特定的能量就会激发到下个量子态
 
-<img src="/images/equation-19199.pdf" style="max-width: 426px; max-height: 400px;" />
-
 ---
 
 # 普朗克黑体辐射公式
@@ -371,8 +321,6 @@ $E$
 那么能量为 $E=n h v$ 的概率为
 
 以及归一化条件
-
-<img src="/images/equation-22899.pdf" style="max-width: 56px; max-height: 400px;" />
 
 ---
 
@@ -466,10 +414,6 @@ $10^7$
 
 实际上￼s
 
-<img src="/images/equation-19595.pdf" style="max-width: 48px; max-height: 400px;" />
-
-<img src="/images/equation-19609.pdf" style="max-width: 108px; max-height: 400px;" />
-
 ---
 
 # 经典理论无法解释的光电效应特性
@@ -515,12 +459,6 @@ $h$ 普朗克常数
 在爱因斯坦的解释中，单个电子与光子直接发生相互作用
 
 <img src="/images/60468-18860.jpg" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-19831.pdf" style="max-width: 36px; max-height: 400px;" />
-
-<img src="/images/equation-19833.pdf" style="max-width: 17px; max-height: 400px;" />
-
-<img src="/images/equation-19838.pdf" style="max-width: 124px; max-height: 400px;" />
 
 ---
 
@@ -658,12 +596,6 @@ $\lambda$
 
 In 1901, Max Planck used quanta to mean "quanta of matter and electricity", gas, and heat. In 1905, in response to Planck's work and the experimental work of Lenard (who explained his results by using the term quanta of electricity), Albert Einstein suggested that radiation existed in spatially localized packets which he called "quanta of light"
 
-<img src="/images/equation-23374.pdf" style="max-width: 17px; max-height: 400px;" />
-
-<img src="/images/equation-23379.pdf" style="max-width: 56px; max-height: 400px;" />
-
-<img src="/images/equation-23382.pdf" style="max-width: 44px; max-height: 400px;" />
-
 ---
 
 # 谱线
@@ -717,12 +649,6 @@ $n$
 
 
 •不同的 $n$ 构成不同的光谱系；同一 $n'$ ，不同的 $\frac{1}{\lambda} = R_H \Big[\frac{1}{n^2}-\frac{1}{n'^2}\Big] = T(n) - T(n')$ 构成同一谱系的不同谱线
-
-<img src="/images/equation-20425.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-20427.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-20429.pdf" style="max-width: 28px; max-height: 400px;" />
 
 ---
 
@@ -794,12 +720,6 @@ Proceedings of the Royal Society of London A.
 
 <img src="/images/440px-Gold_foil_experiment_conclusions.svg-25007.png" style="max-width: 440px; max-height: 400px;" />
 
-<img src="/images/rspa.1908.0067-25010.pdf" style="max-width: 453px; max-height: 400px;" />
-
-<img src="/images/rspa.1909.0054-25013.pdf" style="max-width: 453px; max-height: 400px;" />
-
-<img src="/images/rspa.1910.0038-25016.pdf" style="max-width: 453px; max-height: 400px;" />
-
 ---
 
 # 原子的经典模型
@@ -827,14 +747,6 @@ E &=\frac{1}{2} m_{e} v^{2}-\frac{1}{4 \pi \epsilon_{0}} \frac{e^{2}}{r} \\
 &=-\frac{1}{2} \frac{e^{2}}{4 \pi \epsilon_{0} r}
 
 \end{aligned}$
-
-<img src="/images/equation-20696.pdf" style="max-width: 38px; max-height: 400px;" />
-
-<img src="/images/equation-20704.pdf" style="max-width: 14px; max-height: 400px;" />
-
-<img src="/images/equation-20724.pdf" style="max-width: 16px; max-height: 400px;" />
-
-<img src="/images/equation-20795.pdf" style="max-width: 187px; max-height: 400px;" />
 
 ---
 
@@ -866,22 +778,6 @@ $n$
 
 即￼
 
-<img src="/images/equation-21029.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-21040.pdf" style="max-width: 34px; max-height: 400px;" />
-
-<img src="/images/equation-21051.pdf" style="max-width: 414px; max-height: 400px;" />
-
-<img src="/images/equation-21067.pdf" style="max-width: 190px; max-height: 400px;" />
-
-<img src="/images/equation-21447.pdf" style="max-width: 171px; max-height: 400px;" />
-
-<img src="/images/equation-21087.pdf" style="max-width: 36px; max-height: 400px;" />
-
-<img src="/images/equation-24317.pdf" style="max-width: 43px; max-height: 400px;" />
-
-<img src="/images/equation-24319.pdf" style="max-width: 255px; max-height: 400px;" />
-
 ---
 
 # 玻尔模型的三点假设
@@ -897,20 +793,6 @@ $n$
 电子可以从能量为 $E_{n'}$ 的轨道跃迁到能量为 $h \nu=\left|E_{n}-E_{n'}\right|$ 的轨道，当原子吸收光子时电子会跃迁到高能量的轨道上，当原子发射光子时，电子会退激发到低能量的轨道上
 
 即￼
-
-<img src="/images/equation-21029.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-21040.pdf" style="max-width: 34px; max-height: 400px;" />
-
-<img src="/images/equation-21051.pdf" style="max-width: 414px; max-height: 400px;" />
-
-<img src="/images/equation-21067.pdf" style="max-width: 190px; max-height: 400px;" />
-
-<img src="/images/equation-21087.pdf" style="max-width: 36px; max-height: 400px;" />
-
-<img src="/images/equation-21247.pdf" style="max-width: 43px; max-height: 400px;" />
-
-<img src="/images/equation-24321.pdf" style="max-width: 255px; max-height: 400px;" />
 
 <video controls style="max-width: 275px;">
   <source src="/images/Bohr_atom_animation_2-20962.gif" />
@@ -932,14 +814,6 @@ $\frac{1}{\lambda} = R_H \Big[\frac{1}{n^2}-\frac{1}{n'^2}\Big] = T(n) - T(n')$
 
 半经典
 
-<img src="/images/equation-21237.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-21265.pdf" style="max-width: 290px; max-height: 400px;" />
-
-<img src="/images/equation-21318.pdf" style="max-width: 216px; max-height: 400px;" />
-
-<img src="/images/equation-21292.pdf" style="max-width: 265px; max-height: 400px;" />
-
 ---
 
 # 玻尔模型、经典模型与里德伯方程
@@ -958,14 +832,6 @@ $\frac{1}{\lambda} = R_H \Big[\frac{1}{n^2}-\frac{1}{n'^2}\Big] = T(n) - T(n')$
 
 特别需要说明的是玻尔模型仍满足能量守恒和动量守恒
 
-<img src="/images/equation-21237.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-21265.pdf" style="max-width: 290px; max-height: 400px;" />
-
-<img src="/images/equation-21318.pdf" style="max-width: 216px; max-height: 400px;" />
-
-<img src="/images/equation-21292.pdf" style="max-width: 265px; max-height: 400px;" />
-
 ---
 
 # 电子轨道的量子化（半经典）
@@ -982,12 +848,6 @@ $\frac{1}{4 \pi \epsilon_{0}} \frac{e^{2}}{r_n^{2}}=m_{e} \frac{v_n^{2}}{r_n}$
 
 电子的速率和半径只依赖于 $r_n = 4\pi\epsilon_{0} \frac{\hbar^2}{m_e e^2} n^2$
 
-<img src="/images/equation-21397.pdf" style="max-width: 263px; max-height: 400px;" />
-
-<img src="/images/equation-21444.pdf" style="max-width: 190px; max-height: 400px;" />
-
-<img src="/images/parentheses-left-118829-21475.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 电子轨道的数值计算
@@ -998,8 +858,6 @@ $a_0 = 4\pi\epsilon_{0} \frac{\hbar^2}{m_e e^2} \approx 5.29 \times 10^{-11} m =
 
 即电子轨道半径只能取特定的值 $a_0$
 
-<img src="/images/equation-21580.pdf" style="max-width: 31px; max-height: 400px;" />
-
 ---
 
 # 电子能量的量子化（半经典）
@@ -1009,14 +867,6 @@ $n$
 电子在轨道 $E_n$ 上的能量 $T_n$ 是其动能 $U_n$ 和势能 $T_{n}=\frac{1}{2} m_{e} v_{n}^{2}=\frac{1}{32 \pi^{2} \epsilon_{0}^{2}} \frac{m_{e} e^{4}}{\hbar^{2}} \frac{1}{n^{2}}$ 之和
 
 精细结构常数
-
-<img src="/images/equation-21652.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-21658.pdf" style="max-width: 36px; max-height: 400px;" />
-
-<img src="/images/equation-21654.pdf" style="max-width: 31px; max-height: 400px;" />
-
-<img src="/images/equation-21656.pdf" style="max-width: 36px; max-height: 400px;" />
 
 ---
 
@@ -1033,10 +883,6 @@ $E_{0}=\frac{1}{32 \pi^{2} \epsilon_{0}^{2}} \frac{m_{e} e^{4}}{\hbar^{2}}=2.171
 $E_{n}=-E_{0} \frac{1}{n^{2}}$ ，称为基态
 
 $n=1$
-
-<img src="/images/equation-23459.pdf" style="max-width: 84px; max-height: 400px;" />
-
-<img src="/images/equation-23471.pdf" style="max-width: 251px; max-height: 400px;" />
 
 ---
 
@@ -1060,16 +906,6 @@ $E_3 = -13.6~eV/9 = -1.51~eV$
 
 电离能：把电子从氢原子第一玻尔轨道移到无穷远所需能量。
 
-<img src="/images/equation-23479.pdf" style="max-width: 84px; max-height: 400px;" />
-
-<img src="/images/equation-23488.pdf" style="max-width: 88px; max-height: 400px;" />
-
-<img src="/images/equation-23492.pdf" style="max-width: 86px; max-height: 400px;" />
-
-<img src="/images/equation-23510.pdf" style="max-width: 478px; max-height: 400px;" />
-
-<img src="/images/equation-23512.pdf" style="max-width: 498px; max-height: 400px;" />
-
 ---
 
 # 氢原子能谱
@@ -1083,10 +919,6 @@ $n'$
 里德伯常数
 
 <img src="/images/CNX_UPhysics_39_04_H-energy-1-2-21744.jpg" style="max-width: 490px; max-height: 400px;" />
-
-<img src="/images/equation-21938.pdf" style="max-width: 28px; max-height: 400px;" />
-
-<img src="/images/equation-21940.pdf" style="max-width: 18px; max-height: 400px;" />
 
 ---
 
@@ -1104,10 +936,6 @@ $\frac{1}{\lambda}=R_{\mathrm{H}}\left(\frac{1}{1^{2}}-\frac{1}{n^{2}}\right) \R
 
 如果一个处于基态的氢原子吸收了一个93.7 nm 的光子，对应于莱曼级数中的一条线，这对原子的能量和大小有何影响？ 当原子处于这种激发态时，需要多少能量才能使原子电离？
 
-<img src="/images/equation-22330.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22334.pdf" style="max-width: 500px; max-height: 400px;" />
-
 ---
 
 # 习题
@@ -1115,8 +943,6 @@ $\frac{1}{\lambda}=R_{\mathrm{H}}\left(\frac{1}{1^{2}}-\frac{1}{n^{2}}\right) \R
 $E_n - E_1 = \frac{E_1}{n^2} -  E_1 \leq 12.6~eV$
 
 用 12.6eV 的电子轰击基态氢原子，这些氢原子所能达到最高态。
-
-<img src="/images/parentheses-left-118829-21475.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -1140,8 +966,6 @@ $m_\mu$ 为折合质量
 
 <img src="/images/pasted-image-23660.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/equation-22078.pdf" style="max-width: 40px; max-height: 400px;" />
-
 ---
 
 # 反冲效应
@@ -1157,14 +981,6 @@ $m_e/m_A=0.000544617021489$
 $\frac{1}{4 \pi \epsilon_{0}} \frac{e^{2}}{r_n^{2}}=m_{\mu} \frac{v_n^{2}}{r_n}$
 
 不依赖于质量
-
-<img src="/images/equation-22119.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22126.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-22129.pdf" style="max-width: 478px; max-height: 400px;" />
-
-<img src="/images/parentheses-left-118829-21475.pdf" style="max-width: 500px; max-height: 400px;" />
 
 ---
 
@@ -1188,8 +1004,6 @@ Be+++    Z=4
 
 电子与原子核外电子的碰撞，导致了新的电离，这时有两类电子，一个时之前的自由电子， 一个是刚电离出来的电子
 
-<img src="/images/equation-22185.pdf" style="max-width: 87px; max-height: 400px;" />
-
 <img src="/images/Electron_avalanche-23795.gif" style="max-width: 500px; max-height: 400px;" />
 
 ---
@@ -1203,10 +1017,6 @@ $\frac{1}{\lambda}=\frac{E_{0}}{h c}\left(\frac{1}{n'^{2}}-\frac{1}{n^{2}}\right
 在第 $n$ 轨道电子的半径
 
 在第 $r_{n}=\frac{a_{0}}{Z} n^{2}$ 轨道电子的能量
-
-<img src="/images/equation-22223.pdf" style="max-width: 18px; max-height: 400px;" />
-
-<img src="/images/equation-22223.pdf" style="max-width: 18px; max-height: 400px;" />
 
 ---
 
@@ -1231,10 +1041,6 @@ $\Delta E =0$ 为原子内部能量增量
 a).若 $\Delta E >0$ 表示只有平移能量交换，原子内部能量不变 ——称为弹性碰撞
 
 b).若￼表示一部分平移能量转换为原子内部能量使原子激发——称为非弹性碰撞
-
-<img src="/images/equation-23983.pdf" style="max-width: 26px; max-height: 400px;" />
-
-<img src="/images/equation-23985.pdf" style="max-width: 29px; max-height: 400px;" />
 
 ---
 
@@ -1296,16 +1102,6 @@ $h=6.63 \times 10^{-34}~J\cdot s$
 
 里德伯方程：￼
 
-<img src="/images/equation-24247.pdf" style="max-width: 345px; max-height: 400px;" />
-
-<img src="/images/equation-24253.pdf" style="max-width: 112px; max-height: 400px;" />
-
-<img src="/images/equation-24259.pdf" style="max-width: 230px; max-height: 400px;" />
-
-<img src="/images/equation-24311.pdf" style="max-width: 208px; max-height: 400px;" />
-
-<img src="/images/equation-24624.pdf" style="max-width: 291px; max-height: 400px;" />
-
 ---
 
 # 总结
@@ -1322,18 +1118,6 @@ $L = n\hbar$
 
 类氢离子：半径 $E_{n}=-Z^{2} E_{0} \frac{1}{n^{2}}$ ， 能量￼
 
-<img src="/images/equation-24341.pdf" style="max-width: 114px; max-height: 400px;" />
-
-<img src="/images/equation-24354.pdf" style="max-width: 144px; max-height: 400px;" />
-
-<img src="/images/equation-24356.pdf" style="max-width: 212px; max-height: 400px;" />
-
-<img src="/images/equation-24371.pdf" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/equation-24403.pdf" style="max-width: 155px; max-height: 400px;" />
-
-<img src="/images/equation-24406.pdf" style="max-width: 247px; max-height: 400px;" />
-
 ---
 
 <!-- 此页内容待补充 -->
@@ -1346,14 +1130,6 @@ $\Phi(\lambda, T) d\lambda = \frac{8\pi kT}{\lambda^4} d\lambda$
 
 <img src="/images/CNX_UPhysics_39_01_rayleigh-1-18998.jpg" style="max-width: 333px; max-height: 400px;" />
 
-<img src="/images/equation-24552.pdf" style="max-width: 483px; max-height: 400px;" />
-
 ---
 
 # Proceedings of the Royal Society of London A.
-
-<img src="/images/rspa.1908.0067-25010.pdf" style="max-width: 453px; max-height: 400px;" />
-
-<img src="/images/rspa.1909.0054-25013.pdf" style="max-width: 453px; max-height: 400px;" />
-
-<img src="/images/rspa.1910.0038-25016.pdf" style="max-width: 453px; max-height: 400px;" />
