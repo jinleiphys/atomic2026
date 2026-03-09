@@ -6,7 +6,7 @@ Keynote → Slidev 可编辑 Markdown 转换工具
 生成可编辑的 Slidev slides.md 文件。
 
 用法:
-  python key2slidev.py "原子物理第二章.key" -o ./第二章/slidev -t "原子的量子态：玻尔模型"
+  python key2slidev.py "原子物理第二章.key" -o ./第二章 -t "原子的量子态：玻尔模型"
 """
 
 import os
