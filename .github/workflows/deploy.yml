@@ -1,0 +1,75 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: 第二章/package-lock.json
+
+      # Build chapter 2 (Slidev)
+      - name: Build chapter 2
+        working-directory: 第二章
+        run: |
+          npm ci
+          npx slidev build --base /atomic2026/第二章/dist/ --out dist
+
+      # Assemble site
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+
+          # Root files
+          cp index.html _site/
+
+          # Chapter 1 (static HTML, not Slidev)
+          mkdir -p _site/第一章
+          cp -r 第一章/slideshow.html 第一章/*.png 第一章/*.mp4 _site/第一章/ 2>/dev/null || true
+          if [ -d "第一章/slidev" ]; then
+            cp -r 第一章/slidev _site/第一章/slidev
+          fi
+
+          # Chapter 2 (Slidev build output only)
+          mkdir -p _site/第二章/dist
+          cp -r 第二章/dist/* _site/第二章/dist/
+
+          # AI workshop
+          if [ -d "AI-workshop" ]; then
+            cp -r AI-workshop _site/AI-workshop
+          fi
+
+          # Disable Jekyll
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
