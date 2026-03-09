@@ -12,7 +12,8 @@ css: unocss
 
 <style>
 .slidev-layout {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .katex-display {
   overflow-x: auto;
@@ -21,6 +22,38 @@ css: unocss
 img {
   max-width: 100%;
   height: auto;
+}
+.slidev-layout.two-columns {
+  gap: 1rem;
+}
+.slidev-layout.two-columns .col-left,
+.slidev-layout.two-columns .col-right {
+  min-height: 0;
+}
+.slidev-layout.two-columns .col-left {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.slidev-layout.two-columns .col-left h1 {
+  margin-bottom: 0.75rem;
+}
+.slidev-layout.two-columns .col-left ul,
+.slidev-layout.two-columns .col-left ol,
+.slidev-layout.two-columns .col-left p {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.slidev-layout.two-columns .col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.slidev-layout.two-columns .col-right img,
+.slidev-layout.two-columns .col-right video {
+  max-height: 220px !important;
+  margin: 0 auto !important;
+  object-fit: contain;
 }
 </style>
 
