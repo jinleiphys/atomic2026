@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@slidev/cli": "latest",
-    "@slidev/theme-academic": "latest",
     "katex": "latest"
   }
 }

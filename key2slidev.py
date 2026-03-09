@@ -2,7 +2,7 @@
 """
 Keynote → Slidev 可编辑 Markdown 转换工具
 
-从 .key 文件中提取结构化文本、LaTeX 公式和图片引用，
+从 .key 文件中提取结构化文本、LaTeX 公式、图片和视频，
 生成可编辑的 Slidev slides.md 文件。
 
 用法:
@@ -24,7 +24,6 @@ import yaml
 
 
 EQUATION_SOURCE_KEY = '[TSWP.EquationInfoArchive.equation_source_text]'
-EQUATION_DEPTH_KEY = '[TSWP.EquationInfoArchive.equation_depth]'
 OBJ_REPLACEMENT = '￼'  # U+FFFC - object replacement character
 
 
@@ -37,20 +36,47 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
+def build_id_to_filename_map(zf: zipfile.ZipFile) -> Dict[str, str]:
+    """
+    建立 Data identifier -> 文件名 的映射
+    Keynote Data/ 文件名格式: name-{id}.ext 或 name-small-{id}.ext
+    """
+    id_map = {}
+    for name in zf.namelist():
+        if not name.startswith('Data/'):
+            continue
+        fname = os.path.basename(name)
+        # 提取文件名中最后的数字 ID (在扩展名之前)
+        match = re.search(r'-(\d+)\.[^.]+$', fname)
+        if match:
+            fid = match.group(1)
+            ext = Path(fname).suffix.lower()
+            # 优先保留非 small 版本
+            if fid not in id_map or 'small' not in fname.lower():
+                id_map[fid] = fname
+    return id_map
+
+
 # ─────────────── 1. 解析 Keynote 文件 ───────────────
 
-def parse_keynote(key_path: str) -> List[Dict]:
+def parse_keynote(key_path: str) -> Tuple[List[Dict], Dict[str, str]]:
     """
-    解析 .key 文件，按顺序提取每页幻灯片的文本和元数据
+    解析 .key 文件，按顺序提取每页幻灯片的文本、公式、图片和视频
+
+    Returns:
+        (slides, id_to_filename)
     """
     key_path = os.path.abspath(key_path)
 
     with zipfile.ZipFile(key_path, 'r') as zf:
-        # 1) 获取幻灯片顺序
+        # 建立 ID -> 文件名映射
+        id_to_fname = build_id_to_filename_map(zf)
+
+        # 获取幻灯片顺序
         slide_order = _get_slide_order(zf)
         print(f"  幻灯片顺序: {len(slide_order)} 页")
 
-        # 2) 建立 id -> 文件名映射
+        # 建立 slide id -> 文件名映射
         slide_files = [
             n for n in zf.namelist()
             if re.match(r'Index/Slide(-\d+)?\.iwa$', n)
@@ -67,7 +93,7 @@ def parse_keynote(key_path: str) -> List[Dict]:
                         if obj.get('_pbtype') == 'KN.SlideArchive':
                             slide_map[sid] = sf
 
-        # 3) 按顺序提取每页内容
+        # 按顺序提取每页内容
         slides = []
         for sid in slide_order:
             if sid not in slide_map:
@@ -76,10 +102,10 @@ def parse_keynote(key_path: str) -> List[Dict]:
             data = zf.read(sf)
             iwa = IWAFile.from_buffer(data)
             d = iwa.to_dict()
-            slide_data = _extract_slide_content(d)
+            slide_data = _extract_slide_content(d, id_to_fname)
             slides.append(slide_data)
 
-    return slides
+    return slides, id_to_fname
 
 
 def _get_slide_order(zf: zipfile.ZipFile) -> List[str]:
@@ -115,31 +141,58 @@ def _get_slide_order(zf: zipfile.ZipFile) -> List[str]:
     return slide_ids
 
 
-def _extract_slide_content(iwa_dict: dict) -> Dict:
-    """从单个 slide 的 IWA 字典中提取标题、正文、公式等"""
+def _extract_slide_content(iwa_dict: dict, id_to_fname: Dict[str, str]) -> Dict:
+    """从单个 slide 的 IWA 字典中提取标题、正文、公式、图片、视频"""
     result = {
         'title': '',
         'body_parts': [],
-        'notes': '',
-        'has_image': False,
-        'image_refs': [],
+        'images': [],      # [(filename, width, height)]
+        'videos': [],      # [(filename, width, height)]
     }
 
     chunks = iwa_dict.get('chunks', [])
 
-    # 第一遍：收集所有公式 (按 archive identifier 索引)
-    equations_by_id = {}
+    # 第一遍：收集公式
+    all_equations = []
     for chunk in chunks:
         for archive in chunk.get('archives', []):
-            aid = archive.get('header', {}).get('identifier', '')
             for obj in archive.get('objects', []):
                 if EQUATION_SOURCE_KEY in obj:
                     latex = obj[EQUATION_SOURCE_KEY]
                     if isinstance(latex, str):
-                        equations_by_id[aid] = latex.strip()
+                        all_equations.append(latex.strip())
 
-    # 第二遍：收集所有 StorageArchive 的文本（带公式替换）
-    # 建立 storage_id -> 富文本 的映射
+    # 第二遍：收集图片和视频引用
+    for chunk in chunks:
+        for archive in chunk.get('archives', []):
+            for obj in archive.get('objects', []):
+                pbtype = obj.get('_pbtype', '')
+
+                if pbtype == 'TSD.ImageArchive':
+                    data_ref = obj.get('data', {})
+                    if isinstance(data_ref, dict):
+                        img_id = data_ref.get('identifier', '')
+                        if img_id and img_id in id_to_fname:
+                            fname = id_to_fname[img_id]
+                            ns = obj.get('naturalSize', {})
+                            w = ns.get('width', 0)
+                            h = ns.get('height', 0)
+                            # 排除 0 尺寸的（公式图片等）
+                            if w > 0 and h > 0:
+                                result['images'].append((fname, w, h))
+
+                elif pbtype == 'TSD.MovieArchive':
+                    movie_ref = obj.get('movieData', {})
+                    if isinstance(movie_ref, dict):
+                        mov_id = movie_ref.get('identifier', '')
+                        if mov_id and mov_id in id_to_fname:
+                            fname = id_to_fname[mov_id]
+                            ns = obj.get('naturalSize', {})
+                            w = ns.get('width', 0)
+                            h = ns.get('height', 0)
+                            result['videos'].append((fname, w, h))
+
+    # 第三遍：收集 StorageArchive 文本
     storage_texts = {}
     for chunk in chunks:
         for archive in chunk.get('archives', []):
@@ -150,42 +203,32 @@ def _extract_slide_content(iwa_dict: dict) -> Dict:
                     combined = '\n'.join(
                         t for t in raw_texts if isinstance(t, str)
                     ).strip()
-                    if not combined:
-                        continue
-                    storage_texts[aid] = combined
+                    if combined:
+                        storage_texts[aid] = combined
 
-    # 第三遍：找到 StorageArchive 关联的公式
-    # 公式在 StorageArchive 中以 ￼ 占位，对应的 LaTeX 在同一 slide 的
-    # EquationInfoArchive 中。按出现顺序匹配。
-    all_equations = list(equations_by_id.values())
+    # 公式替换
     eq_idx = 0
 
-    def replace_equations_in_text(text: str) -> str:
-        """将文本中的 ￼ 替换为对应的 LaTeX 公式"""
+    def replace_equations(text: str) -> str:
         nonlocal eq_idx
-        result_parts = []
+        parts = []
         for char in text:
             if char == OBJ_REPLACEMENT and eq_idx < len(all_equations):
-                latex = all_equations[eq_idx]
+                parts.append(f' ${all_equations[eq_idx]}$ ')
                 eq_idx += 1
-                result_parts.append(f' ${latex}$ ')
             else:
-                result_parts.append(char)
-        return ''.join(result_parts)
+                parts.append(char)
+        return ''.join(parts)
 
-    # 第四遍：提取 placeholder 信息 (title/body)
+    # 第四遍：placeholder 信息
     title_storage_ids = []
     body_storage_ids = []
-    other_storage_ids = []
-    all_storage_ids_ordered = []
 
     for chunk in chunks:
         for archive in chunk.get('archives', []):
             for obj in archive.get('objects', []):
-                pbtype = obj.get('_pbtype', '')
-                kind = obj.get('kind', '')
-
-                if pbtype == 'KN.PlaceholderArchive':
+                if obj.get('_pbtype') == 'KN.PlaceholderArchive':
+                    kind = obj.get('kind', '')
                     storage_id = _get_storage_id(obj)
                     if storage_id and storage_id in storage_texts:
                         if kind == 'kKindTitlePlaceholder':
@@ -193,10 +236,8 @@ def _extract_slide_content(iwa_dict: dict) -> Dict:
                         elif kind == 'kKindBodyPlaceholder':
                             body_storage_ids.append(storage_id)
 
-                if pbtype in ('TSD.ImageArchive', 'TSD.MovieArchive'):
-                    result['has_image'] = True
-
     # 收集所有 storage IDs（按出现顺序）
+    all_storage_ids_ordered = []
     seen = set()
     for chunk in chunks:
         for archive in chunk.get('archives', []):
@@ -205,54 +246,41 @@ def _extract_slide_content(iwa_dict: dict) -> Dict:
                 seen.add(aid)
                 all_storage_ids_ordered.append(aid)
 
-    # 构建文本（按公式出现顺序替换）
-    # 重置公式索引，按正确顺序处理
+    # 按顺序处理文本（公式替换）
     eq_idx = 0
-    processed_texts = {}
+    processed = {}
     for sid in all_storage_ids_ordered:
-        text = storage_texts[sid]
-        processed_texts[sid] = replace_equations_in_text(text)
+        processed[sid] = replace_equations(storage_texts[sid])
 
-    # 组装结果
+    # 组装
     if title_storage_ids:
-        result['title'] = processed_texts.get(title_storage_ids[0], '')
+        result['title'] = processed.get(title_storage_ids[0], '')
     elif all_storage_ids_ordered:
-        result['title'] = processed_texts.get(all_storage_ids_ordered[0], '')
+        result['title'] = processed.get(all_storage_ids_ordered[0], '')
         all_storage_ids_ordered = all_storage_ids_ordered[1:]
 
-    # body: placeholder body 优先，否则用其余 storage
     if body_storage_ids:
         result['body_parts'] = [
-            processed_texts[sid] for sid in body_storage_ids
-            if sid in processed_texts
+            processed[sid] for sid in body_storage_ids if sid in processed
         ]
     else:
-        # 排除 title 已用的
         title_sids = set(title_storage_ids)
         result['body_parts'] = [
-            processed_texts[sid] for sid in all_storage_ids_ordered
-            if sid in processed_texts and sid not in title_sids
+            processed[sid] for sid in all_storage_ids_ordered
+            if sid in processed and sid not in title_sids
         ]
 
-    # 去重: body 中与 title 相同的
+    # 去重
     if result['title']:
-        title_clean = clean_text(result['title'])
-        result['body_parts'] = [
-            p for p in result['body_parts']
-            if clean_text(p) != title_clean
-        ]
+        tc = clean_text(result['title'])
+        result['body_parts'] = [p for p in result['body_parts'] if clean_text(p) != tc]
 
-    # 过滤纯空白的 body parts
-    result['body_parts'] = [
-        p for p in result['body_parts']
-        if clean_text(p)
-    ]
+    result['body_parts'] = [p for p in result['body_parts'] if clean_text(p)]
 
     return result
 
 
 def _get_storage_id(placeholder_obj: dict) -> Optional[str]:
-    """从 PlaceholderArchive 获取关联的 StorageArchive identifier"""
     super_obj = placeholder_obj.get('super', {})
     for key in ('ownedStorage', 'deprecatedStorage'):
         storage = super_obj.get(key, {})
@@ -264,8 +292,7 @@ def _get_storage_id(placeholder_obj: dict) -> Optional[str]:
 # ─────────────── 2. 提取媒体资源 ───────────────
 
 def extract_media(key_path: str, output_dir: str) -> Dict[str, str]:
-    """从 .key 包中提取图片和视频到输出目录"""
-    os.makedirs(output_dir, exist_ok=True)
+    """从 .key 包中提取图片和视频到输出目录，返回 filename -> url 映射"""
     media_dir = os.path.join(output_dir, 'public', 'images')
     os.makedirs(media_dir, exist_ok=True)
 
@@ -291,7 +318,7 @@ def extract_media(key_path: str, output_dir: str) -> Dict[str, str]:
 
 def generate_slidev_md(slides: List[Dict], title: str = "课程演示",
                        output_dir: str = ".") -> str:
-    """生成 Slidev slides.md"""
+    """生成 Slidev slides.md，包含文本、公式、图片和视频"""
     os.makedirs(output_dir, exist_ok=True)
 
     lines = []
@@ -299,8 +326,7 @@ def generate_slidev_md(slides: List[Dict], title: str = "课程演示",
     # Frontmatter
     lines.append('---')
     lines.append(f'title: "{title}"')
-    lines.append('theme: academic')
-    lines.append('class: text-center')
+    lines.append('theme: default')
     lines.append('highlighter: shiki')
     lines.append('drawings:')
     lines.append('  persist: false')
@@ -317,6 +343,8 @@ def generate_slidev_md(slides: List[Dict], title: str = "课程演示",
 
         slide_title = clean_text(slide.get('title', ''))
         body_parts = slide.get('body_parts', [])
+        images = slide.get('images', [])
+        videos = slide.get('videos', [])
 
         # 标题
         if slide_title:
@@ -328,8 +356,6 @@ def generate_slidev_md(slides: List[Dict], title: str = "课程演示",
             text = part.strip()
             if not text or text == OBJ_REPLACEMENT:
                 continue
-
-            # 按段落处理
             paragraphs = text.split('\n')
             for p in paragraphs:
                 p = p.strip()
@@ -339,8 +365,25 @@ def generate_slidev_md(slides: List[Dict], title: str = "课程演示",
                 lines.append(p)
                 lines.append('')
 
+        # 图片
+        if images:
+            for fname, w, h in images:
+                # 限制最大宽度
+                display_w = min(int(w), 500)
+                lines.append(f'<img src="/images/{fname}" style="max-width: {display_w}px; max-height: 400px;" />')
+                lines.append('')
+
+        # 视频
+        if videos:
+            for fname, w, h in videos:
+                display_w = min(int(w), 500)
+                lines.append(f'<video controls style="max-width: {display_w}px;">')
+                lines.append(f'  <source src="/images/{fname}" />')
+                lines.append(f'</video>')
+                lines.append('')
+
         # 空页占位
-        if not slide_title and not body_parts:
+        if not slide_title and not body_parts and not images and not videos:
             lines.append('<!-- 此页内容待补充 -->')
             lines.append('')
 
@@ -350,7 +393,10 @@ def generate_slidev_md(slides: List[Dict], title: str = "课程演示",
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(md_content)
 
-    print(f"\n生成 slides.md: {len(slides)} 页")
+    # 统计
+    img_count = sum(len(s.get('images', [])) for s in slides)
+    vid_count = sum(len(s.get('videos', [])) for s in slides)
+    print(f"\n生成 slides.md: {len(slides)} 页, {img_count} 张图片, {vid_count} 个视频")
     print(f"  路径: {md_path}")
 
     return md_path
@@ -369,7 +415,6 @@ def generate_package_json(output_dir: str, name: str = "slidev-presentation"):
         },
         "dependencies": {
             "@slidev/cli": "latest",
-            "@slidev/theme-academic": "latest",
             "katex": "latest"
         }
     }
@@ -401,11 +446,11 @@ def main():
     print(f"解析 Keynote 文件: {key_path}")
 
     # 1. 解析幻灯片内容
-    slides = parse_keynote(key_path)
+    slides, _ = parse_keynote(key_path)
     print(f"  共解析 {len(slides)} 页幻灯片")
 
     # 2. 提取媒体资源
-    media = extract_media(key_path, output_dir)
+    extract_media(key_path, output_dir)
 
     # 3. 生成 Slidev markdown
     generate_slidev_md(slides, args.title, output_dir)
