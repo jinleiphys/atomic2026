@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workshop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', 'Noto Serif SC', sans-serif;
+            background: #ffffff;
+            color: #1a1d2e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 24px 48px;
+            background: linear-gradient(170deg, #f0f1ff 0%, #ffffff 50%);
+            border-bottom: 1px solid #d8dbe6;
+        }
+        header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1d2e;
+        }
+        header p {
+            color: #4a4e6a;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .projects {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            flex: 1;
+        }
+        .projects h2 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #5046e5;
+            margin-bottom: 24px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: #ffffff;
+            border: 1px solid #d8dbe6;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            border-color: #5046e5;
+            box-shadow: 0 6px 24px rgba(80,70,229,0.12);
+            transform: translateY(-3px);
+        }
+        .project-card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+        }
+        .tag-physics {
+            background: rgba(80,70,229,0.1);
+            color: #5046e5;
+        }
+        .project-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            color: #4a4e6a;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .project-card .meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.78rem;
+            color: #8b90a8;
+        }
+        .project-card .arrow {
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #d8dbe6;
+            transition: all 0.3s;
+        }
+        .project-card:hover .arrow {
+            color: #5046e5;
+            right: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: #8b90a8;
+            font-size: 0.78rem;
+            border-top: 1px solid #d8dbe6;
+            background: #f5f6fa;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AI Workshop</h1>
+    <p>数据驱动的物理实验分析 &mdash; 交互式教学工坊</p>
+</header>
+
+<div class="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+
+        <a href="millikan.html" class="project-card">
+            <span class="tag tag-physics">Physics</span>
+            <h3>密立根油滴实验数据分析</h3>
+            <p>
+                基于 Millikan 1913 年 58 组油滴数据，用最小二乘法（GCD 搜索）与贝叶斯模型比较两种方法，
+                从数据中检验电荷是否量子化。包含完整的概念讲解、交互图表和蒙特卡罗模拟。
+            </p>
+            <div class="meta">
+                <span>Bayesian &middot; Least Squares</span>
+                <span>58 data points</span>
+            </div>
+            <span class="arrow">&rarr;</span>
+        </a>
+
+    </div>
+</div>
+
+<footer>
+    AI Workshop &middot; Interactive Data Analysis for Physics Education
+</footer>
+
+</body>
+</html>

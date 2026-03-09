@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密立根油滴实验 — 电荷量子化的统计检验</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg: #ffffff;
+            --bg2: #f5f6fa;
+            --bg3: #eef0f6;
+            --card: #ffffff;
+            --card-border: #d8dbe6;
+            --accent: #5046e5;
+            --accent2: #3b7ddb;
+            --accent3: #d4376e;
+            --accent4: #1a9a5a;
+            --text: #1a1d2e;
+            --text2: #4a4e6a;
+            --text3: #8b90a8;
+            --gold: #b8860b;
+            --radius: 14px;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Serif SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* === Hero === */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(170deg, #f0f1ff 0%, #ffffff 40%, #f8fafe 100%);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .hero-content { max-width: 860px; }
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700; line-height: 1.35; margin-bottom: 16px;
+            color: var(--text);
+        }
+        .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero .subtitle {
+            font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+            color: var(--text2); max-width: 680px;
+            margin: 0 auto 28px; font-weight: 300;
+        }
+        .hero .meta-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--bg3); border: 1px solid var(--card-border);
+            border-radius: 999px; padding: 8px 20px;
+            font-size: 0.85rem; color: var(--text2);
+        }
+        .hero .meta-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent4); }
+
+        /* === Layout === */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 72px 0; position: relative; }
+        section + section { border-top: 1px solid var(--card-border); }
+        .section-label {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+        }
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+            font-weight: 700; margin-bottom: 14px; color: var(--text);
+        }
+        .section-desc {
+            color: var(--text2); max-width: 720px;
+            margin-bottom: 36px; font-size: 1rem;
+        }
+
+        /* === Cards === */
+        .card {
+            background: var(--card); border: 1px solid var(--card-border);
+            border-radius: var(--radius); padding: 28px;
+            box-shadow: var(--shadow); transition: border-color 0.3s;
+        }
+        .card:hover { border-color: var(--accent); }
+        .card-title {
+            font-size: 1.05rem; font-weight: 600; margin-bottom: 14px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .card-title .icon {
+            width: 30px; height: 30px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+        }
+        .icon-purple { background: rgba(80,70,229,0.1); color: var(--accent); }
+        .icon-blue   { background: rgba(59,125,219,0.1); color: var(--accent2); }
+        .icon-pink   { background: rgba(212,55,110,0.1); color: var(--accent3); }
+        .icon-green  { background: rgba(26,154,90,0.1);  color: var(--accent4); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap: 24px; }
+
+        /* === Chart === */
+        .chart-box {
+            background: var(--card); border: 1px solid var(--card-border);
+            border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
+        }
+        .chart-box canvas { width: 100% !important; }
+        .chart-label { font-size: 0.82rem; color: var(--text3); margin-bottom: 10px; font-weight: 500; }
+
+        /* === Method blocks === */
+        .method-block {
+            background: var(--bg2);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+            padding: 20px 24px; margin: 18px 0;
+        }
+        .method-block h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; color: var(--accent); }
+        .method-block p, .method-block li { color: var(--text2); font-size: 0.92rem; line-height: 1.85; }
+        .method-block ul { padding-left: 18px; }
+        .method-block.pink   { border-left-color: var(--accent3); }
+        .method-block.pink h4 { color: var(--accent3); }
+        .method-block.green  { border-left-color: var(--accent4); }
+        .method-block.green h4 { color: var(--accent4); }
+        .method-block.blue   { border-left-color: var(--accent2); }
+        .method-block.blue h4 { color: var(--accent2); }
+        .method-block.gold   { border-left-color: var(--gold); }
+        .method-block.gold h4 { color: var(--gold); }
+
+        /* result highlight */
+        .result-box {
+            background: linear-gradient(135deg, rgba(80,70,229,0.06), rgba(59,125,219,0.06));
+            border: 1px solid rgba(80,70,229,0.2);
+            border-radius: 12px; padding: 22px 24px; margin: 20px 0; text-align: center;
+        }
+        .result-box .big {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem; font-weight: 700; color: var(--accent);
+        }
+        .result-box .label { color: var(--text2); font-size: 0.85rem; margin-top: 4px; }
+        .result-box.verdict {
+            background: linear-gradient(135deg, rgba(26,154,90,0.08), rgba(59,125,219,0.05));
+            border: 1px solid rgba(26,154,90,0.25);
+        }
+        .result-box.verdict .big { color: var(--accent4); }
+
+        /* === Equations === */
+        .eq-block {
+            background: var(--bg3); border-radius: 10px;
+            padding: 16px 20px; margin: 14px 0;
+            overflow-x: auto; text-align: center;
+        }
+
+        /* === Steps === */
+        .steps { counter-reset: step; }
+        .step { position: relative; padding-left: 52px; margin-bottom: 24px; }
+        .step::before {
+            counter-increment: step; content: counter(step);
+            position: absolute; left: 0; top: 2px;
+            width: 34px; height: 34px; border-radius: 50%;
+            background: var(--accent); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.82rem;
+        }
+        .step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+        .step p { color: var(--text2); font-size: 0.92rem; }
+
+        /* === Hypothesis cards === */
+        .hypo-grid { display: grid; grid-template-columns: 1fr 70px 1fr; gap: 0; align-items: center; margin: 28px 0; }
+        .hypo-card { padding: 24px; border-radius: var(--radius); text-align: center; }
+        .hypo-card.h1c { background: rgba(80,70,229,0.06); border: 1px solid rgba(80,70,229,0.2); }
+        .hypo-card.h2c { background: rgba(212,55,110,0.06); border: 1px solid rgba(212,55,110,0.2); }
+        .hypo-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+        .hypo-card.h1c h3 { color: var(--accent); }
+        .hypo-card.h2c h3 { color: var(--accent3); }
+        .hypo-card p { color: var(--text2); font-size: 0.88rem; }
+        .vs-circle {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--bg3); border: 2px solid var(--card-border);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: var(--text3); font-size: 0.85rem;
+            margin: 0 auto;
+        }
+
+        /* === Table === */
+        .table-wrap {
+            max-height: 460px; overflow-y: auto;
+            border-radius: 10px; border: 1px solid var(--card-border);
+        }
+        .table-wrap::-webkit-scrollbar { width: 5px; }
+        .table-wrap::-webkit-scrollbar-track { background: var(--bg2); }
+        .table-wrap::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        thead { position: sticky; top: 0; z-index: 2; }
+        thead th {
+            background: var(--bg2); padding: 10px 14px;
+            text-align: right; font-weight: 600; color: var(--text2);
+            border-bottom: 2px solid var(--accent);
+        }
+        thead th:first-child { text-align: center; }
+        tbody td {
+            padding: 8px 14px; text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+            border-bottom: 1px solid var(--card-border); color: var(--text);
+        }
+        tbody td:first-child { text-align: center; color: var(--text3); }
+        tbody tr:hover { background: rgba(80,70,229,0.04); }
+
+        /* === Compare table === */
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .compare-table th, .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--card-border); }
+        .compare-table th { text-align: left; color: var(--text3); font-weight: 500; }
+        .compare-table td:nth-child(2) { color: var(--accent); font-weight: 600; }
+        .compare-table td:nth-child(3) { color: var(--accent3); font-weight: 600; }
+        .compare-table td { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+        .compare-table tr:hover { background: rgba(80,70,229,0.03); }
+
+        /* === Tabs === */
+        .tab-bar {
+            display: flex; gap: 4px; margin-bottom: 20px;
+            background: var(--bg3); border-radius: 10px;
+            padding: 3px; width: fit-content;
+        }
+        .tab-btn {
+            padding: 8px 20px; border-radius: 8px; border: none;
+            background: transparent; color: var(--text3); font-weight: 500;
+            cursor: pointer; transition: all 0.3s;
+            font-size: 0.85rem; font-family: inherit;
+        }
+        .tab-btn.active { background: var(--accent); color: white; }
+        .tab-btn:hover:not(.active) { color: var(--text); }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+
+        /* === Nav === */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border); padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 52px;
+        }
+        nav .logo {
+            font-family: 'Noto Serif SC', serif; font-weight: 700; font-size: 0.95rem;
+            color: var(--accent);
+        }
+        nav .nav-links { display: flex; gap: 22px; }
+        nav .nav-links a {
+            color: var(--text3); text-decoration: none;
+            font-size: 0.82rem; font-weight: 500; transition: color 0.3s;
+        }
+        nav .nav-links a:hover { color: var(--accent); }
+        @media (max-width: 640px) { nav .nav-links { display: none; } }
+
+        /* === Footer === */
+        footer {
+            text-align: center; padding: 36px 20px;
+            color: var(--text3); font-size: 0.78rem;
+            border-top: 1px solid var(--card-border);
+            background: var(--bg2);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hypo-grid { grid-template-columns: 1fr; gap: 12px; }
+            .vs-circle { width: 36px; height: 36px; font-size: 0.75rem; }
+            section { padding: 44px 0; }
+            .card { padding: 18px; }
+        }
+
+        /* Smooth reveal */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Print friendly */
+        @media print {
+            nav { display: none; }
+            .reveal { opacity: 1; transform: none; }
+            section { padding: 24px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="logo">&#9883; 密立根实验分析</div>
+    <div class="nav-links">
+        <a href="#question">核心问题</a>
+        <a href="#data">原始数据</a>
+        <a href="#lsq">最小二乘法</a>
+        <a href="#bayes">贝叶斯分析</a>
+        <a href="#verdict">结论</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding-top:72px;">
+    <div class="hero-content">
+        <h1>电荷是<em>量子化</em>的吗？<br>从数据中寻找答案</h1>
+        <p class="subtitle">
+            不预设结论，不假定"基本电荷存在"——<br>
+            用<strong>最小二乘法</strong>与<strong>贝叶斯模型比较</strong>，让 58 个油滴的数据自己说话
+        </p>
+        <div class="meta-badge">
+            <span class="dot"></span>
+            R. A. Millikan, <em>Phys. Rev.</em> <strong>2</strong>, 109 (1913) &mdash; 58 drops
+        </div>
+    </div>
+</section>
+
+<!-- ===== Section 1: The Question ===== -->
+<section id="question">
+<div class="container">
+    <div class="reveal">
+        <p class="section-label">SECTION 01</p>
+        <h2 class="section-title">核心问题：电荷是连续的还是离散的？</h2>
+        <p class="section-desc">
+            1897 年 Thomson 发现电子后，一个根本性的问题浮出水面：电荷是否有最小单元？
+            还是说它像质量一样可以取任意连续值？这不是一个可以先假定答案的问题——它需要实验数据来裁决。
+        </p>
+    </div>
+
+    <div class="hypo-grid reveal">
+        <div class="hypo-card h1c">
+            <h3>$\mathcal{H}_{\rm quant}$ — 量子化假说</h3>
+            <p>存在基本电荷 $e$，任何电荷 $q$ 都是 $e$ 的整数倍：</p>
+            <div class="eq-block" style="margin:10px 0 0;">$q_i = n_i \cdot e \quad (n_i \in \mathbb{Z}^+)$</div>
+        </div>
+        <div><div class="vs-circle">VS</div></div>
+        <div class="hypo-card h2c">
+            <h3>$\mathcal{H}_{\rm cont}$ — 连续假说</h3>
+            <p>电荷可以取任意正实数值，没有"最小单元"：</p>
+            <div class="eq-block" style="margin:10px 0 0;">$q_i \in \mathbb{R}^+ \quad \text{(连续分布)}$</div>
+        </div>
+    </div>
+
+    <div class="method-block gold reveal">
+        <h4>分析策略：不预设立场</h4>
+        <p>
+            <strong>错误做法</strong>：假定电荷量子化 → 取均值估计 $e$ → 宣布找到了基本电荷（循环论证！）<br>
+            <strong>正确做法</strong>：同时考虑两个竞争假说 → 用统计方法判断数据更支持哪一个。<br><br>
+            核心方法：检验 $e_1$ 数据中是否存在<strong>系统性结构</strong>——如果 58 个测量值呈现有规律的趋势（而非随机散布），这说明背后有共同的物理量 $e$，支持量子化。
+        </p>
+    </div>
+</div>
+</section>
+
+<!-- ===== Section 2: Data ===== -->
+<section id="data" style="background:var(--bg2);">
+<div class="container">
+    <div class="reveal">
+        <p class="section-label">SECTION 02</p>
+        <h2 class="section-title">原始实验数据</h2>
+        <p class="section-desc">
+            Millikan 1913 年论文中 58 个油滴的 $e_1$ 值（×10<sup>-10</sup> esu）。
+            这些值从 4.887 到 7.810，跨度接近 60%——远超随机误差所能解释的范围。
+        </p>
+    </div>
+
+    <div class="grid-2 reveal">
+        <div class="chart-box">
+            <div class="chart-label">各油滴的 $e_1$ 值（按编号排列）</div>
+            <canvas id="chartScatter" height="300"></canvas>
+        </div>
+        <div class="chart-box">
+            <div class="chart-label">直方图：$e_1$ 频率分布</div>
+            <canvas id="chartHist" height="300"></canvas>
+        </div>
+    </div>
+
+    <div class="method-block pink reveal" style="margin-top:24px;">
+        <h4>数据的关键特征</h4>
+        <p>
+            $e_1$ 值呈现<strong>明显的单调递增趋势</strong>，这不是随机噪声！Millikan 按液滴半径从大到小排列数据——较小的液滴偏离 Stokes 流体定律更严重，导致 $e_1$ 被系统性高估。
+        </p>
+    </div>
+
+    <details style="margin-top:20px;" class="reveal">
+        <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.9rem; padding:10px 0;">
+            展开完整数据表
+        </summary>
+        <div class="table-wrap" style="margin-top:10px;">
+            <table id="dataTable">
+                <thead><tr><th style="text-align:center">油滴编号</th><th>$e_1$ (×10⁻¹⁰ esu)</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </details>
+</div>
+</section>
+
+<!-- ===== Section 3: Least Squares ===== -->
+<section id="lsq">
+<div class="container">
+    <div class="reveal">
+        <p class="section-label">SECTION 03</p>
+        <h2 class="section-title">最小二乘法：线性回归与外推</h2>
+        <p class="section-desc">
+            $e_1$ 值随液滴编号单调递增（小液滴 Stokes 修正偏大）。如果这种趋势是真实的系统效应——
+            而非随机噪声——那就说明 58 个 $e_1$ 背后存在一个共同的物理量 $e$，只是被系统性地偏移了。
+            线性外推到"无修正"极限即可估计真实的 $e$。
+        </p>
+    </div>
+
+    <!-- 概念解释区 -->
+    <div class="card reveal" style="margin-bottom:28px; background:var(--bg2); border-color: rgba(80,70,229,0.15);">
+        <div class="card-title"><div class="icon icon-blue">&#128214;</div>前置概念</div>
+
+        <details style="margin-bottom:14px;" open>
+            <summary style="cursor:pointer; color:var(--accent2); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"线性回归"（Linear Regression）？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                线性回归是用一条直线 $y = \alpha + \beta x$ 来描述两个变量之间关系的方法。
+                其中 $\alpha$ 是<strong>截距</strong>（直线在 $x=0$ 处的高度），$\beta$ 是<strong>斜率</strong>（$x$ 每增加 1，$y$ 增加多少）。
+                <strong>最小二乘法</strong>通过使残差平方和 $\text{RSS} = \sum (y_i - \alpha - \beta x_i)^2$ 最小来确定最优的 $\alpha$ 和 $\beta$。
+            </p>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent2); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"残差"和"残差平方和"RSS？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                残差是<strong>观测值与模型预测值之间的差</strong>：$r_i = y_i - \hat{y}_i$。
+                残差平方和 $\text{RSS} = \sum r_i^2$ 衡量模型整体拟合好坏——RSS 越小，拟合越好。
+                为什么要平方？因为残差有正有负，直接求和会抵消，平方后全为正。
+            </p>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent2); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"相关系数" $r$（Pearson Correlation）？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                相关系数 $r$ 衡量两个变量之间<strong>线性关联的强度和方向</strong>，取值范围 $[-1, 1]$。
+                $r = 1$ 表示完美正相关（一个增大，另一个也增大），$r = 0$ 表示完全无关，$r = -1$ 表示完美负相关。
+            </p>
+            <div class="eq-block">$$ r = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i-\bar{x})^2 \cdot \sum(y_i-\bar{y})^2}} $$</div>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85;">
+                在本实验中，如果 $e_1$ 与液滴编号的相关系数 $r$ 接近 1，说明存在强烈的系统性趋势——
+                这正是量子化 + Stokes 修正的预期表现。
+            </p>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent2); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"置换检验"（Permutation Test）？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                置换检验是一种<strong>不依赖分布假设</strong>的统计检验方法。核心思想极其直观：
+            </p>
+            <ul style="color:var(--text2); font-size:0.92rem; line-height:2; margin: 8px 0 8px 20px;">
+                <li>如果 $e_1$ 值与液滴编号<strong>真的无关</strong>（即电荷连续，不存在最小单元），
+                    那么随机打乱 $e_1$ 的顺序后，相关性应该差不多。</li>
+                <li>把 58 个 $e_1$ 值随机重排 10000 次，每次计算相关系数 $r$。</li>
+                <li>如果实测的 $r$ <strong>远远超过</strong>所有随机重排的 $r$，
+                    就说明这种趋势不可能是巧合——数据中存在真实的物理结构。</li>
+            </ul>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85;">
+                $p$ 值 = 随机重排中 $r \geq r_{\rm observed}$ 的比例。$p < 0.001$ 意味着不到千分之一的随机排列能产生同样强的趋势。
+            </p>
+        </details>
+
+        <details>
+            <summary style="cursor:pointer; color:var(--accent2); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                为什么置换检验是检验量子化的正确方法？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                <strong>如果电荷量子化</strong>：每个 $e_1$ 都是同一个 $e$ 的估计，只因 Stokes 修正大小不同（取决于液滴半径）
+                而有系统性偏移。这就预言 $e_1$ 与液滴大小（即编号）之间存在<strong>单调递增</strong>的趋势。<br><br>
+                <strong>如果电荷连续</strong>（不存在最小单元）：$e_1 = q_i/n_i$ 中的 $n_i$ 是 Millikan 任意指定的，
+                $e_1$ 值不会与液滴编号有任何系统关联——它们的排列应该是<strong>随机的</strong>。<br><br>
+                置换检验直接检验<strong>"$e_1$ 的排列是否随机"</strong>——这正是区分量子化与连续假说的关键。
+            </p>
+        </details>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:28px;">
+        <div class="card-title"><div class="icon icon-purple">&#128208;</div>方法原理</div>
+        <div class="steps">
+            <div class="step">
+                <h4>连续假说 $\mathcal{H}_{\rm cont}$（零假设）</h4>
+                <p><strong>假定不存在最小电荷单元。</strong>
+                   每个液滴的电荷 $q_i$ 是连续随机值，Millikan 指定的整数 $n_i$ 是任意的，
+                   因此 $e_1 = q_i/n_i$ 与液滴编号之间<strong>没有系统关联</strong>——
+                   $e_1$ 值的排列相对于编号应是随机的。</p>
+            </div>
+            <div class="step">
+                <h4>量子化假说 $\mathcal{H}_{\rm quant}$（备择假设）</h4>
+                <p>存在基本电荷 $e$，所有 $e_1$ 都是对同一个 $e$ 的估计。
+                   由于 Stokes 修正随液滴半径变化，$e_1$ 应呈现<strong>系统性单调趋势</strong>。<br>
+                   线性回归 $e_1 = \alpha + \beta \cdot i + \varepsilon$ 可以刻画这一趋势：
+                   <strong>截距 $\alpha$ 是外推到"无修正"极限时的真实 $e$</strong>。</p>
+                <div class="eq-block">$$ \hat{\beta} = \frac{\sum(x_i - \bar{x})(e_{1,i} - \bar{e}_1)}{\sum(x_i - \bar{x})^2}, \qquad \hat{\alpha} = \bar{e}_1 - \hat{\beta}\cdot\bar{x} $$</div>
+            </div>
+            <div class="step">
+                <h4>置换检验：趋势是真实的还是偶然的？</h4>
+                <p>计算实测相关系数 $r_{\rm obs}$。然后将 58 个 $e_1$ 值<strong>随机打乱</strong> 10000 次，
+                   每次重新计算 $r$。如果 $r_{\rm obs}$ 远超所有随机排列的 $r$，
+                   说明趋势不是巧合——<strong>拒绝连续假说，支持量子化</strong>。</p>
+                <div class="eq-block">$$ p = \frac{\#\{r_{\rm perm} \geq r_{\rm obs}\}}{N_{\rm perms}} $$</div>
+            </div>
+            <div class="step">
+                <h4>参数估计：线性外推基本电荷</h4>
+                <p>在确认趋势显著后，用线性回归拟合数据，截距 $\hat{\alpha}$ 即为基本电荷 $e$ 的最优估计。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:28px; background: linear-gradient(135deg, rgba(184,134,11,0.06), rgba(184,134,11,0.02)); border-color: rgba(184,134,11,0.2);">
+        <div class="card-title"><div class="icon" style="background:rgba(184,134,11,0.1); color:var(--gold);">&#128279;</div>逻辑链条：为什么"有趋势"等价于"量子化"？</div>
+        <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-bottom:14px;">
+            置换检验直接证明的是：<strong>$e_1$ 与液滴编号之间存在显著的系统性趋势</strong>（不是随机排列）。
+            但"有趋势"为什么就意味着电荷是量子化的？关键在于 $e_1$ 的定义：
+        </p>
+        <div class="eq-block">$$ e_{1,i} = \frac{q_i}{n_i} $$</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;">
+            <div style="background:rgba(80,70,229,0.06); border:1px solid rgba(80,70,229,0.15); border-radius:10px; padding:16px;">
+                <h4 style="color:var(--accent); font-size:0.9rem; margin-bottom:8px;">如果量子化成立</h4>
+                <p style="color:var(--text2); font-size:0.88rem; line-height:1.8;">
+                    $q_i = n_i \cdot e$，因此 $e_{1,i} = e \times f(\text{液滴半径}_i)$，
+                    其中 $f$ 是 Stokes/Cunningham 修正因子。<br>
+                    修正因子<strong>只取决于液滴大小</strong>，而数据按半径排序 →
+                    $e_1$ 必然呈现<strong>单调递增趋势</strong>。
+                </p>
+            </div>
+            <div style="background:rgba(212,55,110,0.06); border:1px solid rgba(212,55,110,0.15); border-radius:10px; padding:16px;">
+                <h4 style="color:var(--accent3); font-size:0.9rem; margin-bottom:8px;">如果电荷连续</h4>
+                <p style="color:var(--text2); font-size:0.88rem; line-height:1.8;">
+                    $q_i$ 是任意连续值，$n_i$ 是 Millikan 凑的整数。<br>
+                    $q_i / n_i$ 没有理由与液滴大小<strong>系统性相关</strong> →
+                    $e_1$ 的排列应近似<strong>随机</strong>。
+                </p>
+            </div>
+        </div>
+        <p style="color:var(--text2); font-size:0.92rem; line-height:1.85;">
+            因此：<strong>拒绝"$e_1$ 排列是随机的" = 拒绝连续假说 = 支持量子化</strong>。
+            置换检验提供的是间接但严谨的证据——它排除了"无最小单元"的可能性，
+            而唯一能解释系统性趋势的物理机制是：所有液滴共享同一个基本电荷 $e$，
+            Stokes 修正对不同大小的液滴产生不同的系统偏移。
+        </p>
+    </div>
+
+    <div class="reveal">
+        <div class="chart-box" style="margin-bottom:24px;">
+            <div class="chart-label"><strong>线性回归拟合</strong> — 截距 $\alpha$ = 外推基本电荷</div>
+            <canvas id="chartFit" height="320"></canvas>
+        </div>
+    </div>
+
+    <div class="grid-2 reveal">
+        <div class="chart-box">
+            <div class="chart-label"><strong>置换检验</strong> — 实测相关性 vs 10000 次随机重排</div>
+            <canvas id="chartPerm" height="260"></canvas>
+        </div>
+        <div class="chart-box">
+            <div class="chart-label"><strong>线性模型残差</strong> — 拟合后的随机散布</div>
+            <canvas id="chartResid" height="260"></canvas>
+        </div>
+    </div>
+
+    <div class="result-box reveal" style="margin-top:24px;">
+        <div class="label">最小二乘法线性回归结果</div>
+        <div class="big" id="lsqResult">&mdash;</div>
+        <div class="label" id="lsqDetail">&mdash;</div>
+    </div>
+
+    <div class="method-block green reveal" style="margin-top:20px;">
+        <h4>关键发现</h4>
+        <p id="lsqConclusion">加载中&hellip;</p>
+    </div>
+</div>
+</section>
+
+<!-- ===== Section 4: Bayesian ===== -->
+<section id="bayes" style="background:var(--bg2);">
+<div class="container">
+    <div class="reveal">
+        <p class="section-label">SECTION 04</p>
+        <h2 class="section-title">贝叶斯模型比较：用数据裁决两个假说</h2>
+        <p class="section-desc">
+            贝叶斯方法的精髓不是"估参数"，而是<strong>比较模型</strong>——
+            计算数据在两个假说下各自的出现概率（边际似然），取其比值（贝叶斯因子）来裁决。
+        </p>
+    </div>
+
+    <!-- 贝叶斯概念解释区 -->
+    <div class="card reveal" style="margin-bottom:28px; background:var(--bg2); border-color: rgba(212,55,110,0.15);">
+        <div class="card-title"><div class="icon icon-pink">&#128214;</div>前置概念</div>
+
+        <details style="margin-bottom:14px;" open>
+            <summary style="cursor:pointer; color:var(--accent3); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"贝叶斯定理"（Bayes' Theorem）？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                贝叶斯定理由 18 世纪英国数学家托马斯·贝叶斯提出，它描述了<strong>如何根据新证据更新我们的信念</strong>：
+            </p>
+            <div class="eq-block">$$ P(\text{假说}\mid\text{数据}) = \frac{P(\text{数据}\mid\text{假说}) \times P(\text{假说})}{P(\text{数据})} $$</div>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85;">
+                用大白话说：<strong>看到数据后对假说的信心</strong> = （假说能多好地解释数据）×（看数据前对假说的信心）/ 归一化常数。
+                这个公式把"主观信念"和"客观数据"用严格的数学联系起来。
+            </p>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent3); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"先验分布"、"似然函数"和"后验分布"？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                这三个概念是贝叶斯分析的基础，分别对应"看数据前"、"数据本身"和"看数据后"：
+            </p>
+            <ul style="color:var(--text2); font-size:0.92rem; line-height:2; margin: 8px 0 8px 20px;">
+                <li><strong>先验分布 $\pi(\theta)$</strong>（Prior）：在看到实验数据之前，我们对参数 $\theta$ 的初始信念。
+                    例如"基本电荷大概在 3 到 8 之间"——这就是一个先验。
+                    如果我们几乎不了解参数，就用"弱先验"（如均匀分布），让数据说了算。</li>
+                <li><strong>似然函数 $P(\mathbf{D}\mid\theta)$</strong>（Likelihood）：给定参数 $\theta$，
+                    观测到当前数据 $\mathbf{D}$ 的概率有多大。它衡量的是"这个参数值能多好地解释数据"。
+                    似然越高，说明该参数值与数据越一致。</li>
+                <li><strong>后验分布 $P(\theta\mid\mathbf{D})$</strong>（Posterior）：看到数据后，
+                    参数 $\theta$ 的更新信念。它综合了先验和似然：
+                    后验 $\propto$ 似然 $\times$ 先验。后验分布的峰值位置就是最佳估计（MAP 估计）。</li>
+            </ul>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent3); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"边际似然"（Marginal Likelihood）？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                边际似然是<strong>在某个模型下，观测到当前数据的总概率</strong>——对模型内所有可能的参数值求平均：
+            </p>
+            <div class="eq-block">$$ P(\mathbf{D}\mid\mathcal{M}) = \int P(\mathbf{D}\mid\theta)\;\pi(\theta)\;d\theta $$</div>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85;">
+                直觉理解：一个好的模型，不需要精心调参就能解释数据——它的边际似然自然就高。
+                一个过于复杂的模型虽然调到最佳参数时拟合很好，但大部分参数空间对数据解释力很差，
+                平均下来边际似然反而不高。这就是贝叶斯方法内置的奥卡姆剃刀。
+            </p>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent3); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是"贝叶斯因子"（Bayes Factor）和 Jeffreys 标尺？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                贝叶斯因子是两个模型的边际似然之比：$\text{BF} = P(\mathbf{D}\mid\mathcal{M}_1) / P(\mathbf{D}\mid\mathcal{M}_2)$。
+                它直接回答"数据更支持哪个模型？支持多少倍？"<br><br>
+                统计学家 Harold Jeffreys 提出了一个判读标尺：
+            </p>
+            <table style="width:100%; font-size:0.88rem; border-collapse:collapse; margin:10px 0;">
+                <tr style="border-bottom:1px solid var(--card-border);">
+                    <th style="text-align:left; padding:6px 12px; color:var(--text3);">$\log_{10}(\text{BF})$</th>
+                    <th style="text-align:left; padding:6px 12px; color:var(--text3);">证据强度</th>
+                </tr>
+                <tr style="border-bottom:1px solid var(--card-border);">
+                    <td style="padding:6px 12px;">0 &ndash; 0.5</td><td style="padding:6px 12px;">不值一提</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--card-border);">
+                    <td style="padding:6px 12px;">0.5 &ndash; 1</td><td style="padding:6px 12px;">实质性</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--card-border);">
+                    <td style="padding:6px 12px;">1 &ndash; 2</td><td style="padding:6px 12px;">强</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px 12px;"> &gt; 2</td><td style="padding:6px 12px; font-weight:600; color:var(--accent4);">决定性</td>
+                </tr>
+            </table>
+        </details>
+
+        <details style="margin-bottom:14px;">
+            <summary style="cursor:pointer; color:var(--accent3); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是 MAP 估计和 95% 可信区间？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                <strong>MAP（Maximum A Posteriori）估计</strong>：后验分布的峰值位置，即"最可能的参数值"。<br>
+                <strong>95% 可信区间（Credible Interval）</strong>：后验分布中包含 95% 概率质量的区间。
+                它的解释非常直观——"参数有 95% 的概率落在这个区间内"。<br><br>
+                注意区分：这和频率派的"95% 置信区间"不同。置信区间的含义是"如果重复实验无数次，
+                95% 的区间会覆盖真值"——它不能直接说"真值在区间内的概率是 95%"。
+                贝叶斯可信区间则可以。
+            </p>
+        </details>
+
+        <details>
+            <summary style="cursor:pointer; color:var(--accent3); font-weight:600; font-size:0.9rem; padding:6px 0;">
+                什么是 Stokes 定律和 Cunningham 修正？
+            </summary>
+            <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-top:8px;">
+                <strong>Stokes 定律</strong>：小球在黏性流体中匀速下落时受到的阻力为 $F = 6\pi\eta a v$
+                （$\eta$ 是黏度，$a$ 是球半径，$v$ 是速度）。Millikan 用此定律从油滴下落速度计算液滴半径，进而推算电荷。<br><br>
+                <strong>问题</strong>：当液滴半径小到接近空气分子平均自由程时，空气不再表现为连续流体，
+                Stokes 定律高估了阻力，导致计算出的 $e_1$ 偏大。<br><br>
+                <strong>Cunningham 修正</strong>：$F_{\rm corrected} = \frac{6\pi\eta a v}{1 + A/(pa)}$，
+                其中 $p$ 是气压，$A$ 是经验常数。对于更小的液滴，修正因子更大，
+                这解释了为什么图中编号越大（液滴越小）的 $e_1$ 值越偏高。
+            </p>
+        </details>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:28px;">
+        <div class="card-title"><div class="icon icon-pink">&#127922;</div>方法原理</div>
+
+        <div class="method-block pink">
+            <h4>贝叶斯因子（Bayes Factor）</h4>
+            <div class="eq-block">$$ \text{BF} = \frac{P(\mathbf{D} \mid \mathcal{M}_{\rm struct})}{P(\mathbf{D} \mid \mathcal{M}_{\rm unstruct})} $$</div>
+            <p>
+                $\text{BF} \gg 1$：数据有显著结构（支持量子化）。&emsp;
+                $\text{BF} \approx 1$：无法区分。&emsp;
+                $\text{BF} \ll 1$：数据无结构。<br>
+                Jeffreys 判据：$\log_{10}\text{BF} > 2$ 为"决定性证据"。
+            </p>
+        </div>
+
+        <div class="steps" style="margin-top:20px;">
+            <div class="step">
+                <h4>有结构模型 $\mathcal{M}_{\rm struct}$：线性趋势 + 高斯噪声</h4>
+                <p>$e_{1,i} = \alpha + \beta \cdot i + \varepsilon_i$，$\varepsilon_i \sim \mathcal{N}(0,\sigma^2)$。
+                使用 Jeffreys 无信息先验 $\pi(\alpha,\beta,\sigma) \propto 1/\sigma$，
+                边际似然可<strong>解析计算</strong>（无需数值积分！）：</p>
+                <div class="eq-block">
+                    $$ P(\mathbf{D}\mid\mathcal{M}_{\rm struct}) = \frac{\Gamma\!\left(\frac{N-2}{2}\right)}{2\,(2\pi)^{(N-2)/2}\,|\mathbf{X}'\mathbf{X}|^{1/2}} \left(\frac{\text{RSS}_1}{2}\right)^{-(N-2)/2} $$
+                </div>
+                <p>其中 $\mathbf{X}$ 是设计矩阵 $[1, x_i]$，$\text{RSS}_1$ 是线性回归的残差平方和。</p>
+
+                <div style="background:linear-gradient(135deg, rgba(184,134,11,0.08), rgba(184,134,11,0.03)); border:1px solid rgba(184,134,11,0.2); border-radius:10px; padding:20px 24px; margin:16px 0;">
+                    <h4 style="color:var(--gold); font-size:0.95rem; margin-bottom:10px;">
+                        &#9986; 什么是奥卡姆剃刀（Occam's Razor）？
+                    </h4>
+                    <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-bottom:10px;">
+                        奥卡姆剃刀是由 14 世纪英国逻辑学家奥卡姆的威廉（William of Ockham）提出的思维原则：
+                    </p>
+                    <div class="eq-block" style="font-style:italic;">
+                        "如无必要，勿增实体"（Entities should not be multiplied beyond necessity）
+                    </div>
+                    <p style="color:var(--text2); font-size:0.92rem; line-height:1.85; margin-bottom:10px;">
+                        通俗地说：<strong>当多个理论都能解释同一组数据时，应优先选择最简单的那个</strong>。
+                        不是因为简单的理论一定正确，而是因为复杂的理论更容易"过拟合"——
+                        它有更多自由参数可以调节，即使面对完全随机的数据也能给出看似不错的解释。
+                    </p>
+                    <p style="color:var(--text2); font-size:0.92rem; line-height:1.85;">
+                        <strong>贝叶斯框架天然内置奥卡姆剃刀</strong>：在计算边际似然 $P(\mathbf{D}\mid\mathcal{M})$ 时，
+                        参数空间越大的模型，概率质量越分散，除非数据真的需要这么多参数，否则会被自动惩罚。
+                        这就是贝叶斯方法的优雅之处——简洁性不是外加的审美偏好，而是概率论的自然推论。
+                    </p>
+                </div>
+            </div>
+            <div class="step">
+                <h4>无结构模型 $\mathcal{M}_{\rm unstruct}$：均匀分布</h4>
+                <div class="eq-block">$$ P(\mathbf{D}\mid\mathcal{M}_{\rm unstruct}) = \frac{1}{(b-a)^{N}} $$</div>
+                <p>$[a,b]$ 覆盖数据范围加余量。无结构的最大熵模型——如果数据真的是随机的、没有任何规律，均匀分布就是最好的描述。</p>
+            </div>
+            <div class="step">
+                <h4>比较贝叶斯因子 → 裁决</h4>
+                <p>比较两个边际似然的比值。如果 $\text{BF} \gg 1$，数据存在系统性结构（支持量子化）。</p>
+            </div>
+            <div class="step">
+                <h4>条件推断：先裁决，再估参数</h4>
+                <p>只有在 BF 支持有结构模型后，才在该模型下提取截距 $\alpha$ 的后验分布作为基本电荷估计——避免循环论证。
+                在 Jeffreys 无信息先验下，$\alpha$ 的后验是 $t$ 分布，均值恰好等于 OLS 估计。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bayesian Charts -->
+    <div class="reveal">
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('bayes','bf')">贝叶斯因子</button>
+            <button class="tab-btn" onclick="switchTab('bayes','posterior')">后验分布</button>
+        </div>
+    </div>
+
+    <div class="reveal">
+        <div id="tab-bayes-bf" class="tab-pane active">
+            <div class="grid-2">
+                <div class="chart-box">
+                    <div class="chart-label"><strong>截距 $\alpha$ 的后验分布</strong>（= 基本电荷 $e$ 的估计）</div>
+                    <canvas id="chartPosteriorAlpha" height="280"></canvas>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-label"><strong>贝叶斯因子判读 (Jeffreys 标尺)</strong></div>
+                    <canvas id="chartBFBar" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+        <div id="tab-bayes-posterior" class="tab-pane">
+            <div class="grid-2">
+                <div class="chart-box">
+                    <div class="chart-label"><strong>斜率 $\beta$ 的后验分布</strong>（Stokes 修正强度）</div>
+                    <canvas id="chartPosteriorBeta" height="280"></canvas>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-label"><strong>噪声 $\sigma$ 的后验分布</strong></div>
+                    <canvas id="chartPostSigma" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-box reveal" style="margin-top:24px;">
+        <div class="label">贝叶斯因子 (Bayes Factor)</div>
+        <div class="big" id="bayesBF">&mdash;</div>
+        <div class="label" id="bayesBFInterp">&mdash;</div>
+    </div>
+
+    <div class="method-block blue reveal" style="margin-top:20px;">
+        <h4>贝叶斯分析的逻辑链</h4>
+        <p id="bayesConclusion">加载中&hellip;</p>
+    </div>
+</div>
+</section>
+
+<!-- ===== Section 5: Verdict ===== -->
+<section id="verdict">
+<div class="container">
+    <div class="reveal">
+        <p class="section-label">SECTION 05</p>
+        <h2 class="section-title">最终裁决与历史反思</h2>
+    </div>
+
+    <div class="result-box verdict reveal" style="margin-bottom:28px;">
+        <div class="big" id="verdictText">&mdash;</div>
+        <div class="label" id="verdictDetail">&mdash;</div>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:28px;">
+        <div class="card-title"><div class="icon icon-green">&#9878;</div>两种方法的结果对照</div>
+        <div style="overflow-x:auto;">
+            <table class="compare-table" id="compareTable">
+                <thead><tr><th>指标</th><th>最小二乘法（线性回归）</th><th>贝叶斯模型比较</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div style="margin-top:14px; padding:14px 18px; background:rgba(184,134,11,0.06); border-radius:8px; border-left:3px solid var(--gold);">
+            <p style="color:var(--text2); font-size:0.85rem; line-height:1.75; margin:0;">
+                <strong style="color:var(--gold);">* 为什么参数估计完全一样？</strong>
+                带 * 号的行数值相同，这不是巧合。在 Jeffreys 无信息先验 $\pi(\alpha,\beta,\sigma) \propto 1/\sigma$ 下，
+                贝叶斯后验恰好是 $t_{N-2}$ 分布，其均值 = OLS 估计，95% 可信区间 = 频率派置信区间——
+                数学上二者完全等价。<strong>两种方法真正不同的是第 ① 行</strong>：
+                置换检验用 $p$ 值检验"排列是否随机"，贝叶斯用 BF 比较"有结构 vs 无结构"模型——
+                这是两个独立的、基于不同哲学的假设检验框架，它们都给出了支持量子化的结论。
+            </p>
+        </div>
+    </div>
+
+    <div class="grid-2 reveal">
+        <div class="card">
+            <div class="card-title"><div class="icon icon-purple">&#128218;</div>方法论反思</div>
+            <div class="method-block">
+                <h4>为什么不能"先假定再估参数"？</h4>
+                <p>
+                    如果一开始就假定"电荷量子化"，直接取均值作为 $\hat{e}$，
+                    即使电荷是连续的，也能取均值并得到一个"看似精确"的数字。那个数字无法证明任何东西。<br><br>
+                    正确做法是让两个假说在<strong>同一竞技场上公平竞争</strong>，由数据投票。
+                </p>
+            </div>
+            <div class="method-block pink">
+                <h4>两种方法哪里相同、哪里不同？</h4>
+                <p>
+                    <strong>参数估计（第 ② 行）完全相同</strong>——因为在无信息先验下，贝叶斯后验就是 $t$ 分布，
+                    均值 = OLS 估计，区间 = 频率派区间。这是数学定理，不是"两种独立方法恰好一致"。<br><br>
+                    <strong>假设检验（第 ① 行）是真正不同的</strong>：
+                    置换检验问"排列是否随机？"（频率派，基于模拟），
+                    贝叶斯因子问"有结构模型 vs 无结构模型，哪个更可能？"（贝叶斯派，基于边际似然）。
+                    两个独立框架都支持量子化——这才是真正的交叉验证。
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title"><div class="icon icon-green">&#128161;</div>历史反思</div>
+            <div class="method-block green">
+                <h4>Millikan 的"Stokes 修正"</h4>
+                <p>
+                    $e_1$ 的系统趋势揭示了一个物理事实：Stokes 定律 $F = 6\pi\eta a v$ 对极小液滴不精确。
+                    Millikan 引入 Cunningham 修正 $e_1 = e_0(1 + A/pa)^{3/2}$，
+                    截距给出 $e_0 \approx 4.774 \times 10^{-10}$ esu。
+                </p>
+            </div>
+            <div class="method-block gold">
+                <h4>与现代值的比较</h4>
+                <p>
+                    现代公认值 $e = 4.80326 \times 10^{-10}$ esu（$1.602 \times 10^{-19}$ C）。
+                    Millikan 的结果偏低约 0.6%，主要因当时使用的空气黏度值偏低约 0.5%——
+                    著名的"Millikan 黏度误差"。但电荷量子化这一核心结论无可争议。
+                </p>
+            </div>
+            <div class="method-block">
+                <h4>诺贝尔奖</h4>
+                <p>Millikan 凭借此实验和光电效应验证获 1923 年诺贝尔物理学奖。至今仍是本科经典实验。</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<footer>
+    <p>
+        密立根油滴实验 · 电荷量子化的统计检验 ·
+        数据来源：<a href="https://gilles.montambaux.com/files/histoire-physique/Millikan-1913-mesure-de-e.pdf" target="_blank">
+        R. A. Millikan, <em>Phys. Rev.</em> <strong>2</strong>, 109 (1913)</a>
+    </p>
+    <p style="margin-top:6px;">AI Workshop &middot; Built with Chart.js &amp; MathJax</p>
+</footer>
+
+<script>
+// ============================================================
+//  DATA
+// ============================================================
+const DATA = [
+    {id:1,e1:4.887},{id:2,e1:4.981},{id:3,e1:4.971},{id:4,e1:5.001},{id:5,e1:4.982},
+    {id:6,e1:4.991},{id:7,e1:4.981},{id:8,e1:5.016},{id:9,e1:5.016},{id:10,e1:5.010},
+    {id:11,e1:5.015},{id:12,e1:5.028},{id:13,e1:5.043},{id:14,e1:5.064},{id:15,e1:5.040},
+    {id:16,e1:5.065},{id:17,e1:5.054},{id:18,e1:5.098},{id:19,e1:5.120},{id:20,e1:5.145},
+    {id:21,e1:5.166},{id:22,e1:5.168},{id:23,e1:5.190},{id:24,e1:5.269},{id:25,e1:5.278},
+    {id:26,e1:5.379},{id:27,e1:5.381},{id:28,e1:5.379},{id:29,e1:5.529},{id:30,e1:5.505},
+    {id:31,e1:5.621},{id:32,e1:5.692},{id:33,e1:5.687},{id:34,e1:5.739},{id:35,e1:5.739},
+    {id:36,e1:5.820},{id:37,e1:5.821},{id:38,e1:5.935},{id:39,e1:5.910},{id:40,e1:6.076},
+    {id:41,e1:6.110},{id:42,e1:6.224},{id:43,e1:6.214},{id:44,e1:6.466},{id:45,e1:6.537},
+    {id:46,e1:6.719},{id:47,e1:6.841},{id:48,e1:6.866},{id:49,e1:6.936},{id:50,e1:6.978},
+    {id:51,e1:7.024},{id:52,e1:7.210},{id:53,e1:7.470},{id:54,e1:7.661},{id:55,e1:7.672},
+    {id:56,e1:7.777},{id:57,e1:7.774},{id:58,e1:7.810},
+];
+const xs = DATA.map(d => d.id);
+const ys = DATA.map(d => d.e1);
+const N = xs.length;
+
+// ============================================================
+//  HELPERS
+// ============================================================
+const sum = a => a.reduce((s, v) => s + v, 0);
+const mean = a => sum(a) / a.length;
+
+// Lanczos log-Gamma
+function lnGamma(z) {
+    const c = [76.18009172947146, -86.50532032941677, 24.01409824083091,
+               -1.231739572450155, 0.001208650973866179, -0.000005395239384953];
+    let y = z;
+    let tmp = z + 5.5;
+    tmp -= (z + 0.5) * Math.log(tmp);
+    let ser = 1.000000000190015;
+    for (let j = 0; j < 6; j++) ser += c[j] / ++y;
+    return -tmp + Math.log(2.5066282746310005 * ser / z);
+}
+
+// Continued fraction for regularized incomplete beta
+function betaCF(a, b, x) {
+    const maxIter = 200, eps = 1e-12;
+    let qab = a + b, qap = a + 1, qam = a - 1;
+    let c = 1, d = 1 - qab * x / qap;
+    if (Math.abs(d) < 1e-30) d = 1e-30;
+    d = 1 / d;
+    let h = d;
+    for (let m = 1; m <= maxIter; m++) {
+        let m2 = 2 * m;
+        let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+        d = 1 + aa * d; if (Math.abs(d) < 1e-30) d = 1e-30; d = 1 / d;
+        c = 1 + aa / c; if (Math.abs(c) < 1e-30) c = 1e-30;
+        h *= d * c;
+        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+        d = 1 + aa * d; if (Math.abs(d) < 1e-30) d = 1e-30; d = 1 / d;
+        c = 1 + aa / c; if (Math.abs(c) < 1e-30) c = 1e-30;
+        let del = d * c;
+        h *= del;
+        if (Math.abs(del - 1) < eps) break;
+    }
+    return h;
+}
+
+// Regularized incomplete beta I_x(a,b)
+function betaInc(a, b, x) {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    const lnB = lnGamma(a) + lnGamma(b) - lnGamma(a + b);
+    const front = Math.exp(a * Math.log(x) + b * Math.log(1 - x) - lnB);
+    if (x < (a + 1) / (a + b + 2)) {
+        return front * betaCF(a, b, x) / a;
+    } else {
+        return 1 - front * betaCF(b, a, 1 - x) / b;
+    }
+}
+
+// ============================================================
+//  LINEAR REGRESSION
+// ============================================================
+const xbar = mean(xs);
+const ybar = mean(ys);
+const Sxx = sum(xs.map(x => (x - xbar) ** 2));
+const Sxy = sum(xs.map((x, i) => (x - xbar) * (ys[i] - ybar)));
+const beta_hat = Sxy / Sxx;
+const alpha_hat = ybar - beta_hat * xbar;
+
+// Residual sum of squares
+const RSS1 = sum(ys.map((y, i) => (y - alpha_hat - beta_hat * xs[i]) ** 2));
+const RSS0 = sum(ys.map(y => (y - ybar) ** 2));
+
+// Variance estimate
+const s2 = RSS1 / (N - 2);
+const sigma_hat = Math.sqrt(s2);
+
+// X'X matrix: [[N, Sx], [Sx, Sx2]]
+const Sx = sum(xs);
+const Sx2 = sum(xs.map(x => x * x));
+const detXtX = N * Sx2 - Sx * Sx;
+
+// Standard errors
+const varAlpha = s2 * Sx2 / detXtX;
+const varBeta = s2 * N / detXtX;
+const seAlpha = Math.sqrt(varAlpha);
+const seBeta = Math.sqrt(varBeta);
+
+// R-squared
+const R2 = 1 - RSS1 / RSS0;
+
+// Pearson correlation coefficient
+const Syy = sum(ys.map(y => (y - ybar) ** 2));
+const r_obs = Sxy / Math.sqrt(Sxx * Syy);
+
+// ============================================================
+//  PERMUTATION TEST
+//  H0 (continuous): e1 values have no systematic relation to index
+//  H1 (quantized):  e1 values show monotonic trend with index
+// ============================================================
+const MC_PERMS = 10000;
+const permR = [];
+for (let t = 0; t < MC_PERMS; t++) {
+    const shuffled = [...ys];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    const sxy = sum(xs.map((x, i) => (x - xbar) * (shuffled[i] - ybar)));
+    permR.push(sxy / Math.sqrt(Sxx * Syy));
+}
+permR.sort((a, b) => a - b);
+const pValuePerm = permR.filter(r => r >= r_obs).length / MC_PERMS;
+
+// 95% CI for alpha (t_{0.975, 56} ≈ 2.003)
+const t975 = 2.003;
+const ci95Lo = alpha_hat - t975 * seAlpha;
+const ci95Hi = alpha_hat + t975 * seAlpha;
+
+// ============================================================
+//  BAYESIAN: ANALYTICAL MARGINAL LIKELIHOOD
+//  Under Jeffreys prior π(β, σ) ∝ 1/σ:
+//  P(D|M_k) = Γ(ν/2) / [2·(2π)^(ν/2)·|X'X|^(1/2)] · (RSS/2)^(-ν/2)
+//  where ν = N - k, k = number of regression coefficients
+// ============================================================
+
+// M0: constant model, k=1, |X0'X0| = N
+const nu0 = N - 1;
+const logML0 = lnGamma(nu0 / 2) - Math.log(2)
+    - (nu0 / 2) * Math.log(2 * Math.PI)
+    - 0.5 * Math.log(N)
+    - (nu0 / 2) * Math.log(RSS0 / 2);
+
+// M1: linear model, k=2, |X1'X1| = detXtX
+const nu1 = N - 2;
+const logML1 = lnGamma(nu1 / 2) - Math.log(2)
+    - (nu1 / 2) * Math.log(2 * Math.PI)
+    - 0.5 * Math.log(detXtX)
+    - (nu1 / 2) * Math.log(RSS1 / 2);
+
+// M_unif: uniform model, P(D|M_unif) = 1/(range)^N
+const vMin = Math.min(...ys), vMax = Math.max(...ys);
+const unifRange = (vMax - vMin) + 1.0; // add margin
+const logML_unif = -N * Math.log(unifRange);
+
+// Bayes factors
+const logBF_1U = logML1 - logML_unif;  // linear vs uniform (main test)
+const logBF_10 = logML1 - logML0;       // linear vs constant
+const log10BF_1U = logBF_1U / Math.log(10);
+const log10BF_10 = logBF_10 / Math.log(10);
+
+// Posterior for alpha: t-distribution t_{N-2}(alpha_hat, varAlpha)
+function tPDF(x, mu, scale2, df) {
+    const z2 = (x - mu) ** 2 / (df * scale2);
+    return Math.pow(1 + z2, -(df + 1) / 2);
+}
+
+const nGrid = 200;
+
+// Alpha posterior grid
+const alphaGrid = [], alphaPost = [];
+const aGridMin = alpha_hat - 5 * seAlpha, aGridMax = alpha_hat + 5 * seAlpha;
+for (let i = 0; i < nGrid; i++) {
+    const a = aGridMin + i * (aGridMax - aGridMin) / (nGrid - 1);
+    alphaGrid.push(a);
+    alphaPost.push(tPDF(a, alpha_hat, varAlpha, nu1));
+}
+const aPostMax = Math.max(...alphaPost);
+for (let i = 0; i < nGrid; i++) alphaPost[i] /= aPostMax;
+
+// Beta posterior grid
+const betaGrid = [], betaPost = [];
+const bGridMin = beta_hat - 5 * seBeta, bGridMax = beta_hat + 5 * seBeta;
+for (let i = 0; i < nGrid; i++) {
+    const b = bGridMin + i * (bGridMax - bGridMin) / (nGrid - 1);
+    betaGrid.push(b);
+    betaPost.push(tPDF(b, beta_hat, varBeta, nu1));
+}
+const bPostMax = Math.max(...betaPost);
+for (let i = 0; i < nGrid; i++) betaPost[i] /= bPostMax;
+
+// Sigma posterior: p(σ|D) ∝ σ^(-(ν+2)) exp(-RSS/(2σ²))
+const sigmaGrid = [], sigmaPost = [];
+const sGridMin = sigma_hat * 0.3, sGridMax = sigma_hat * 3.0;
+for (let i = 0; i < nGrid; i++) {
+    const s = sGridMin + i * (sGridMax - sGridMin) / (nGrid - 1);
+    sigmaGrid.push(s);
+    sigmaPost.push(Math.exp(-(nu1 + 2) * Math.log(s) - RSS1 / (2 * s * s)));
+}
+const sPostMax = Math.max(...sigmaPost);
+for (let i = 0; i < nGrid; i++) sigmaPost[i] /= sPostMax;
+
+// ============================================================
+//  RENDER
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+
+    // -- Data Table --
+    const tbody = document.querySelector('#dataTable tbody');
+    DATA.forEach(d => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${d.id}</td><td>${d.e1.toFixed(3)}</td>`;
+        tbody.appendChild(tr);
+    });
+
+    // -- Chart theme (light) --
+    const gridColor = 'rgba(0,0,0,0.06)';
+    const tickColor = '#8b90a8';
+    const cCommon = {
+        plugins: { legend: { labels: { color: '#4a4e6a', font: { size: 11 } } } },
+        scales: {
+            x: { ticks: { color: tickColor }, grid: { color: gridColor } },
+            y: { ticks: { color: tickColor }, grid: { color: gridColor } },
+        }
+    };
+
+    // ========== Section 2: Scatter + Histogram ==========
+
+    new Chart(document.getElementById('chartScatter'), {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'e\u2081',
+                data: DATA.map(d => ({ x: d.id, y: d.e1 })),
+                backgroundColor: ys.map(v => {
+                    const t = (v - vMin) / (vMax - vMin);
+                    return `rgba(${Math.round(80 + 132 * t)},${Math.round(70 - 15 * t)},${Math.round(229 - 119 * t)},0.8)`;
+                }),
+                pointRadius: 5, pointHoverRadius: 7,
+            }]
+        },
+        options: {
+            ...cCommon,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { ...cCommon.scales.x, title: { display: true, text: '\u6cb9\u6ef4\u7f16\u53f7', color: tickColor } },
+                y: { ...cCommon.scales.y, title: { display: true, text: 'e\u2081 (\u00d710\u207b\xb9\u2070 esu)', color: tickColor } }
+            }
+        }
+    });
+
+    const bins = 18, hMin = 4.8, hMax = 8.0, bw = (hMax - hMin) / bins;
+    const histCounts = new Array(bins).fill(0);
+    ys.forEach(v => { const bi = Math.min(Math.floor((v - hMin) / bw), bins - 1); if (bi >= 0) histCounts[bi]++; });
+    new Chart(document.getElementById('chartHist'), {
+        type: 'bar',
+        data: {
+            labels: Array.from({ length: bins }, (_, i) => (hMin + i * bw + bw / 2).toFixed(2)),
+            datasets: [{
+                label: '\u9891\u6570', data: histCounts,
+                backgroundColor: 'rgba(59,125,219,0.45)', borderColor: 'rgba(59,125,219,0.8)',
+                borderWidth: 1, borderRadius: 3,
+            }]
+        },
+        options: {
+            ...cCommon,
+            scales: {
+                x: { ...cCommon.scales.x, title: { display: true, text: 'e\u2081 (\u00d710\u207b\xb9\u2070 esu)', color: tickColor } },
+                y: { ...cCommon.scales.y, title: { display: true, text: '\u9891\u6570', color: tickColor }, beginAtZero: true }
+            }
+        }
+    });
+
+    // ========== Section 3: Linear Fit + Permutation Test ==========
+
+    new Chart(document.getElementById('chartFit'), {
+        type: 'scatter',
+        data: {
+            datasets: [
+                {
+                    label: 'e\u2081 \u5b9e\u6d4b\u503c',
+                    data: DATA.map(d => ({ x: d.id, y: d.e1 })),
+                    backgroundColor: 'rgba(80,70,229,0.6)',
+                    pointRadius: 5, pointHoverRadius: 7,
+                },
+                {
+                    label: '\u7ebf\u6027\u62df\u5408: e\u2081 = ' + alpha_hat.toFixed(3) + ' + ' + beta_hat.toFixed(4) + '\u00b7i',
+                    data: [{ x: 0, y: alpha_hat }, { x: 59, y: alpha_hat + beta_hat * 59 }],
+                    borderColor: 'rgba(26,154,90,0.9)',
+                    borderWidth: 2.5,
+                    pointRadius: 0, showLine: true, fill: false,
+                }
+            ]
+        },
+        options: {
+            ...cCommon,
+            scales: {
+                x: { ...cCommon.scales.x, title: { display: true, text: '\u6cb9\u6ef4\u7f16\u53f7 i', color: tickColor }, min: 0, max: 60 },
+                y: { ...cCommon.scales.y, title: { display: true, text: 'e\u2081 (\u00d710\u207b\xb9\u2070 esu)', color: tickColor } }
+            }
+        },
+        plugins: [{
+            afterDraw(chart) {
+                const ctx = chart.ctx, xAxis = chart.scales.x, yAxis = chart.scales.y;
+                const xPx = xAxis.getPixelForValue(0);
+                const yPx = yAxis.getPixelForValue(alpha_hat);
+                ctx.fillStyle = '#1a9a5a';
+                ctx.beginPath(); ctx.arc(xPx, yPx, 7, 0, 2 * Math.PI); ctx.fill();
+                ctx.fillStyle = '#1a9a5a'; ctx.font = 'bold 12px JetBrains Mono'; ctx.textAlign = 'left';
+                ctx.fillText('\u03b1 = ' + alpha_hat.toFixed(3), xPx + 12, yPx - 8);
+                ctx.font = '11px Inter';
+                ctx.fillText('(\u5916\u63a8\u57fa\u672c\u7535\u8377)', xPx + 12, yPx + 8);
+            }
+        }]
+    });
+
+    // Permutation test histogram
+    const permBins = 30, permMin = -0.6, permMax = 0.6;
+    const permBW = (permMax - permMin) / permBins;
+    const permCounts = new Array(permBins).fill(0);
+    permR.forEach(r => {
+        const bi = Math.floor((r - permMin) / permBW);
+        if (bi >= 0 && bi < permBins) permCounts[bi]++;
+    });
+    new Chart(document.getElementById('chartPerm'), {
+        type: 'bar',
+        data: {
+            labels: Array.from({ length: permBins }, (_, i) => (permMin + i * permBW + permBW / 2).toFixed(2)),
+            datasets: [{
+                label: '\u968f\u673a\u91cd\u6392\u7684 r', data: permCounts,
+                backgroundColor: 'rgba(139,144,168,0.25)', borderColor: 'rgba(139,144,168,0.5)',
+                borderWidth: 1, borderRadius: 3,
+            }]
+        },
+        options: {
+            ...cCommon,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { ...cCommon.scales.x, title: { display: true, text: '\u76f8\u5173\u7cfb\u6570 r', color: tickColor } },
+                y: { ...cCommon.scales.y, title: { display: true, text: '\u9891\u6570', color: tickColor }, beginAtZero: true }
+            }
+        },
+        plugins: [{
+            afterDraw(chart) {
+                const ctx = chart.ctx, xAxis = chart.scales.x, yAxis = chart.scales.y;
+                // r_obs is far to the right, draw arrow and label
+                const labels = Array.from({ length: permBins }, (_, i) => permMin + i * permBW + permBW / 2);
+                const idx = labels.reduce((b, v, i) => Math.abs(v - r_obs) < Math.abs(labels[b] - r_obs) ? i : b, 0);
+                const xPx = xAxis.getPixelForValue(idx);
+                ctx.strokeStyle = '#1a9a5a'; ctx.lineWidth = 3; ctx.setLineDash([]);
+                ctx.beginPath(); ctx.moveTo(xPx, yAxis.top); ctx.lineTo(xPx, yAxis.bottom); ctx.stroke();
+                ctx.fillStyle = '#1a9a5a'; ctx.font = 'bold 12px Inter'; ctx.textAlign = 'left';
+                ctx.fillText('r\u5b9e\u6d4b = ' + r_obs.toFixed(4), xPx + 6, yAxis.top + 16);
+                ctx.font = '11px Inter';
+                ctx.fillText('p < ' + Math.max(pValuePerm, 1 / MC_PERMS).toFixed(4), xPx + 6, yAxis.top + 32);
+            }
+        }]
+    });
+
+    // Residuals (linear model only)
+    const resid1 = ys.map((y, i) => y - alpha_hat - beta_hat * xs[i]);
+    new Chart(document.getElementById('chartResid'), {
+        type: 'scatter',
+        data: {
+            datasets: [
+                {
+                    label: '\u7ebf\u6027\u6a21\u578b\u6b8b\u5dee',
+                    data: DATA.map((d, i) => ({ x: d.id, y: resid1[i] })),
+                    backgroundColor: 'rgba(26,154,90,0.6)',
+                    pointRadius: 4,
+                },
+                {
+                    label: '\u96f6\u7ebf',
+                    data: [{ x: 1, y: 0 }, { x: 58, y: 0 }],
+                    borderColor: 'rgba(0,0,0,0.2)', borderWidth: 1, borderDash: [4, 4],
+                    pointRadius: 0, showLine: true, fill: false,
+                }
+            ]
+        },
+        options: {
+            ...cCommon,
+            scales: {
+                x: { ...cCommon.scales.x, title: { display: true, text: '\u6cb9\u6ef4\u7f16\u53f7', color: tickColor } },
+                y: { ...cCommon.scales.y, title: { display: true, text: '\u6b8b\u5dee', color: tickColor } }
+            }
+        }
+    });
+
+    // LSQ result text
+    const pPermStr = pValuePerm < 1/MC_PERMS ? '< ' + (1/MC_PERMS).toFixed(4) : '= ' + pValuePerm.toFixed(4);
+    document.getElementById('lsqResult').textContent =
+        '\u622a\u8ddd \u03b1 = ' + alpha_hat.toFixed(4) + ' \u00d7 10\u207b\xb9\u2070 esu   (\u5916\u63a8\u57fa\u672c\u7535\u8377)';
+    document.getElementById('lsqDetail').textContent =
+        'r = ' + r_obs.toFixed(4) +
+        ' | \u7f6e\u6362\u68c0\u9a8c p ' + pPermStr +
+        ' | \u659c\u7387 \u03b2 = ' + beta_hat.toFixed(5) +
+        ' | R\u00b2 = ' + R2.toFixed(4) +
+        ' | \u03c3 = ' + sigma_hat.toFixed(4);
+
+    document.getElementById('lsqConclusion').innerHTML =
+        '<strong>\u7f6e\u6362\u68c0\u9a8c</strong>\uff1a\u5b9e\u6d4b\u76f8\u5173\u7cfb\u6570 $r = ' + r_obs.toFixed(4) +
+        '$\uff0c\u800c 10000 \u6b21\u968f\u673a\u91cd\u6392\u4e2d\u6ca1\u6709\u4efb\u4f55\u4e00\u6b21\u8fbe\u5230\u8fd9\u4e2a\u6c34\u5e73\uff08$p ' + pPermStr +
+        '$\uff09\u3002<br><strong>\u7ed3\u8bba\uff1a\u62d2\u7edd\u8fde\u7eed\u5047\u8bf4</strong>\u2014\u2014' +
+        '$e_1$ \u4e0e\u6db2\u6ef4\u7f16\u53f7\u7684\u5355\u8c03\u8d8b\u52bf\u4e0d\u53ef\u80fd\u662f\u5076\u7136\u7684\uff0c' +
+        '\u5b83\u6765\u81ea Stokes \u4fee\u6b63\u5bf9\u540c\u4e00\u4e2a\u57fa\u672c\u7535\u8377 $e$ \u7684\u7cfb\u7edf\u6027\u504f\u79fb\u3002<br><br>' +
+        '<strong>\u53c2\u6570\u4f30\u8ba1</strong>\uff1a\u7ebf\u6027\u56de\u5f52\u622a\u8ddd $\\hat{\\alpha} = ' + alpha_hat.toFixed(4) +
+        ' \\times 10^{-10}$ esu\uff0c$R^2 = ' + (R2 * 100).toFixed(1) +
+        '\\%$\uff0c95% \u7f6e\u4fe1\u533a\u95f4 $[' +
+        ci95Lo.toFixed(3) + ',\\; ' + ci95Hi.toFixed(3) + ']$\u3002';
+
+    // ========== Section 4: Bayesian Charts ==========
+
+    // Posterior alpha
+    new Chart(document.getElementById('chartPosteriorAlpha'), {
+        type: 'line',
+        data: {
+            labels: alphaGrid.map(a => a.toFixed(3)),
+            datasets: [{
+                label: 'p(\u03b1|D)',
+                data: alphaPost,
+                borderColor: 'rgba(80,70,229,0.85)', backgroundColor: 'rgba(80,70,229,0.1)',
+                fill: true, pointRadius: 0, borderWidth: 2,
+            }]
+        },
+        options: {
+            ...cCommon,
+            scales: {
+                x: {
+                    ...cCommon.scales.x,
+                    title: { display: true, text: '\u03b1 (\u00d710\u207b\xb9\u2070 esu)', color: tickColor },
+                    ticks: { maxTicksLimit: 8, color: tickColor, callback(v, i) { return i % (Math.floor(nGrid / 8)) === 0 ? this.getLabelForValue(v) : ''; } }
+                },
+                y: { ...cCommon.scales.y, title: { display: true, text: '\u5f52\u4e00\u5316\u540e\u9a8c\u5bc6\u5ea6', color: tickColor }, min: 0 }
+            }
+        },
+        plugins: [{
+            afterDraw(chart) {
+                const ctx = chart.ctx, xAxis = chart.scales.x, yAxis = chart.scales.y;
+                // 95% CI shading
+                const idxLo = alphaGrid.findIndex(a => a >= ci95Lo);
+                const idxHi = alphaGrid.findIndex(a => a >= ci95Hi);
+                if (idxLo >= 0 && idxHi >= 0) {
+                    const xLo = xAxis.getPixelForValue(idxLo);
+                    const xHi = xAxis.getPixelForValue(idxHi);
+                    ctx.fillStyle = 'rgba(80,70,229,0.07)';
+                    ctx.fillRect(xLo, yAxis.top, xHi - xLo, yAxis.bottom - yAxis.top);
+                    ctx.fillStyle = 'rgba(80,70,229,0.5)'; ctx.font = '11px Inter'; ctx.textAlign = 'center';
+                    ctx.fillText('95% CI', (xLo + xHi) / 2, yAxis.top + 14);
+                }
+                // MAP line
+                const mapIdx = alphaGrid.reduce((b, v, i) => Math.abs(v - alpha_hat) < Math.abs(alphaGrid[b] - alpha_hat) ? i : b, 0);
+                const xPx = xAxis.getPixelForValue(mapIdx);
+                ctx.strokeStyle = '#b8860b'; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+                ctx.beginPath(); ctx.moveTo(xPx, yAxis.top); ctx.lineTo(xPx, yAxis.bottom); ctx.stroke();
+                ctx.setLineDash([]); ctx.fillStyle = '#b8860b'; ctx.font = '12px JetBrains Mono'; ctx.textAlign = 'center';
+                ctx.fillText('\u03b1 = ' + alpha_hat.toFixed(3), xPx, yAxis.top + 30);
+            }
+        }]
+    });
+
+    // BF bar chart
+    const bfLabel = log10BF_1U > 100 ? '> 100' : log10BF_1U.toFixed(1);
+    new Chart(document.getElementById('chartBFBar'), {
+        type: 'bar',
+        data: {
+            labels: ['\u4e0d\u503c\u4e00\u63d0\n(< 10\u2070)', '\u5b9e\u8d28\u6027\n(10\u2070-10\xb9)', '\u5f3a\u8bc1\u636e\n(10\xb9-10\u00b2)', '\u51b3\u5b9a\u6027\n(> 10\u00b2)', '\u672c\u5b9e\u9a8c'],
+            datasets: [{
+                label: 'log\u2081\u2080(BF)',
+                data: [0.5, 1, 1.5, 2.5, Math.min(log10BF_1U, 80)],
+                backgroundColor: [
+                    'rgba(139,144,168,0.15)', 'rgba(59,125,219,0.2)',
+                    'rgba(80,70,229,0.3)', 'rgba(26,154,90,0.2)',
+                    'rgba(184,134,11,0.5)'
+                ],
+                borderColor: [
+                    'rgba(139,144,168,0.4)', 'rgba(59,125,219,0.5)',
+                    'rgba(80,70,229,0.6)', 'rgba(26,154,90,0.5)',
+                    'rgba(184,134,11,0.9)'
+                ],
+                borderWidth: 2, borderRadius: 6,
+            }]
+        },
+        options: {
+            ...cCommon, indexAxis: 'y',
+            scales: {
+                x: { ...cCommon.scales.x, title: { display: true, text: 'log\u2081\u2080(BF)', color: tickColor } },
+                y: { ...cCommon.scales.y, ticks: { font: { size: 11 } } }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    // Posterior beta
+    new Chart(document.getElementById('chartPosteriorBeta'), {
+        type: 'line',
+        data: {
+            labels: betaGrid.map(b => b.toFixed(5)),
+            datasets: [{
+                label: 'p(\u03b2|D)',
+                data: betaPost,
+                borderColor: 'rgba(212,55,110,0.8)', backgroundColor: 'rgba(212,55,110,0.08)',
+                fill: true, pointRadius: 0, borderWidth: 2,
+            }]
+        },
+        options: {
+            ...cCommon,
+            scales: {
+                x: {
+                    ...cCommon.scales.x,
+                    title: { display: true, text: '\u03b2 (\u659c\u7387)', color: tickColor },
+                    ticks: { maxTicksLimit: 8, color: tickColor, callback(v, i) { return i % (Math.floor(nGrid / 8)) === 0 ? this.getLabelForValue(v) : ''; } }
+                },
+                y: { ...cCommon.scales.y, title: { display: true, text: '\u5f52\u4e00\u5316\u540e\u9a8c\u5bc6\u5ea6', color: tickColor }, min: 0 }
+            }
+        }
+    });
+
+    // Posterior sigma
+    new Chart(document.getElementById('chartPostSigma'), {
+        type: 'line',
+        data: {
+            labels: sigmaGrid.map(s => s.toFixed(3)),
+            datasets: [{
+                label: 'p(\u03c3|D)',
+                data: sigmaPost,
+                borderColor: 'rgba(26,154,90,0.8)', backgroundColor: 'rgba(26,154,90,0.08)',
+                fill: true, pointRadius: 0, borderWidth: 2,
+            }]
+        },
+        options: {
+            ...cCommon,
+            scales: {
+                x: {
+                    ...cCommon.scales.x,
+                    title: { display: true, text: '\u03c3 (\u00d710\u207b\xb9\u2070 esu)', color: tickColor },
+                    ticks: { maxTicksLimit: 8, color: tickColor, callback(v, i) { return i % (Math.floor(nGrid / 8)) === 0 ? this.getLabelForValue(v) : ''; } }
+                },
+                y: { ...cCommon.scales.y, title: { display: true, text: '\u5f52\u4e00\u5316\u540e\u9a8c\u5bc6\u5ea6', color: tickColor }, min: 0 }
+            }
+        }
+    });
+
+    // Bayes results text
+    const bfLevel = log10BF_1U > 2 ? '\u51b3\u5b9a\u6027\u8bc1\u636e' : log10BF_1U > 1 ? '\u5f3a\u8bc1\u636e' : '\u5b9e\u8d28\u6027\u8bc1\u636e';
+    document.getElementById('bayesBF').textContent = 'log\u2081\u2080(BF) = ' + bfLabel + '   (' + bfLevel + ')';
+    document.getElementById('bayesBFInterp').textContent =
+        '\u622a\u8ddd \u03b1 = ' + alpha_hat.toFixed(4) + ' | 95% CI: [' + ci95Lo.toFixed(3) + ', ' + ci95Hi.toFixed(3) +
+        '] | \u7ebf\u6027 vs \u5747\u5300: log\u2081\u2080(BF) = ' + bfLabel;
+
+    document.getElementById('bayesConclusion').innerHTML =
+        '<strong>\u7b2c\u4e00\u6b65\uff08\u6a21\u578b\u6bd4\u8f83\uff09</strong>\uff1a\u6709\u7ed3\u6784\u6a21\u578b\uff08\u7ebf\u6027\u8d8b\u52bf\uff09vs \u65e0\u7ed3\u6784\u6a21\u578b\uff08\u5747\u5300\u5206\u5e03\uff09\uff0c' +
+        '\u8d1d\u53f6\u65af\u56e0\u5b50 $\\log_{10}(\\text{BF}) = ' + bfLabel + '$\uff0c\u8fdc\u8d85 Jeffreys "\u51b3\u5b9a\u6027\u8bc1\u636e"\u9608\u503c\uff08$>2$\uff09\u3002' +
+        '\u6570\u636e\u538b\u5012\u6027\u5730\u652f\u6301\u201c$e_1$ \u503c\u5177\u6709\u7cfb\u7edf\u6027\u7ed3\u6784\u201d\u3002<br><br>' +
+        '<strong>\u7b2c\u4e8c\u6b65\uff08\u6761\u4ef6\u63a8\u65ad\uff09</strong>\uff1a\u5728\u7ebf\u6027\u6a21\u578b\u4e0b\uff0c\u622a\u8ddd $\\alpha$ \u7684\u540e\u9a8c\u5206\u5e03\u4ee5 ' +
+        '$\\hat{\\alpha} = ' + alpha_hat.toFixed(4) + ' \\times 10^{-10}$ esu \u4e3a\u4e2d\u5fc3\uff0c' +
+        '95% \u53ef\u4fe1\u533a\u95f4 $[' + ci95Lo.toFixed(3) + ',\\;' + ci95Hi.toFixed(3) + ']$\u3002' +
+        '<strong>\u8fd9\u4e0e\u6700\u5c0f\u4e8c\u4e58\u6cd5\u7684\u7ed3\u679c\u5b8c\u5168\u4e00\u81f4\u3002</strong>';
+
+    // ========== Section 5: Verdict ==========
+
+    document.getElementById('verdictText').textContent = '\u7535\u8377\u662f\u91cf\u5b50\u5316\u7684\u3002';
+    document.getElementById('verdictDetail').textContent =
+        '\u7f6e\u6362\u68c0\u9a8c: p ' + pPermStr +
+        ' | \u8d1d\u53f6\u65af\u56e0\u5b50: log\u2081\u2080(BF) = ' + bfLabel +
+        ' | \u57fa\u672c\u7535\u8377: e \u2248 ' + alpha_hat.toFixed(3) + ' \u00d7 10\u207b\xb9\u2070 esu';
+
+    // Compare table
+    const ctb = document.querySelector('#compareTable tbody');
+    [
+        ['\u6838\u5fc3\u601d\u8def', '\u7f6e\u6362\u68c0\u9a8c + \u7ebf\u6027\u56de\u5f52', '\u89e3\u6790\u8fb9\u9645\u4f3c\u7136 + \u8d1d\u53f6\u65af\u56e0\u5b50'],
+        ['\u96f6\u5047\u8bbe', 'e\u2081\u4e0e\u7f16\u53f7\u65e0\u5173\uff08\u8fde\u7eed\u5047\u8bf4\uff09', 'e\u2081\u65e0\u7ed3\u6784\uff08\u5747\u5300\u5206\u5e03\uff09'],
+        ['\u2460 \u91cf\u5b50\u5316\u68c0\u9a8c', 'r = ' + r_obs.toFixed(4) + ', p ' + pPermStr, 'log\u2081\u2080(BF) = ' + bfLabel],
+        ['\u2461 \u57fa\u672c\u7535\u8377\u4f30\u8ba1', '\u03b1 = ' + alpha_hat.toFixed(4), '\u03b1 = ' + alpha_hat.toFixed(4) + ' *'],
+        ['\u2461 95% \u533a\u95f4', '[' + ci95Lo.toFixed(3) + ', ' + ci95Hi.toFixed(3) + '] (\u7f6e\u4fe1)', '[' + ci95Lo.toFixed(3) + ', ' + ci95Hi.toFixed(3) + '] (\u53ef\u4fe1) *'],
+        ['\u7ed3\u8bba', '\u62d2\u7edd\u8fde\u7eed\u5047\u8bf4\uff0c\u652f\u6301\u91cf\u5b50\u5316', bfLevel + '\u652f\u6301\u6709\u7ed3\u6784'],
+    ].forEach(r => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = '<th>' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td>';
+        ctb.appendChild(tr);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // MathJax re-render
+    if (window.MathJax && MathJax.typeset) setTimeout(() => MathJax.typeset(), 500);
+});
+
+function switchTab(group, name) {
+    document.querySelectorAll('[id^="tab-' + group + '-"]').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + group + '-' + name).classList.add('active');
+    const btns = document.getElementById(group).querySelectorAll('.tab-btn');
+    btns.forEach((b, i) => b.classList.toggle('active', i === (name === 'bf' ? 0 : 1)));
+}
+</script>
+
+</body>
+</html>
