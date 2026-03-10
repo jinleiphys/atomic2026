@@ -70,6 +70,8 @@ img {
 
 # 第二章 原子的量子态：玻尔模型
 
+<img src="/images/qrcode.png" style="position: absolute; top: 30px; right: 30px; width: 180px; height: 180px;" />
+
 <br>
 
 <div class="text-center">
@@ -165,7 +167,9 @@ $$\frac{e(\nu, T)}{a(\nu, T)} = J(\nu, T)$$
 <img src="/images/Bbafter-18564.jpg" style="max-height: 300px; object-fit: contain;" />
 </div>
 
-**低温时**：可见波长 $e(\lambda,T) \to 0$ &emsp; **高温时**：可见波长 $e(\lambda,T) \neq 0$，波长变长（红外）
+**低温时**：辐射集中在红外，可见光波段 $e(\lambda,T) \approx 0$，物体看起来不发光。
+
+**高温时**：辐射峰值移向短波长（维恩位移律），可见光波段 $e(\lambda,T) \neq 0$，物体开始发光——从暗红→橙→黄白。
 
 ---
 
@@ -195,15 +199,13 @@ layout: two-cols
 
 ::right::
 
-<img src="/images/Gustav_Robert_Kirchhoff-18470.jpg" style="width: 70%; max-height: 220px; object-fit: contain; margin: 0 auto; display: block;" />
+<img src="/images/CNX_UPhysics_39_01_blackbody-1-18725.jpg" style="width: 85%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
 
 <div class="text-center text-xs opacity-60">
 
-Gustav Robert Kirchhoff 1824.3.12－1887.10.17
+黑体腔模型：小孔近似理想黑体
 
 </div>
-
-<img src="/images/CNX_UPhysics_39_01_blackbody-1-18725.jpg" style="width: 60%; max-height: 180px; object-fit: contain; margin: 10px auto; display: block;" />
 
 ---
 
@@ -368,7 +370,11 @@ $$w_\nu(\nu)\mathrm{d}\nu = n(\nu)\bar{w}_\nu(T)\mathrm{d}\nu$$
 
 其中 $\bar{w}_\nu(T)$ 为每种模式的平均振动能量。
 
-瑞利-金斯把辐射模式看成谐振子的振动，热平衡状态能量满足玻尔兹曼分布。
+瑞利-金斯把辐射模式看成谐振子的振动，由经典**能量均分定理**，每个自由度分配 $\frac{1}{2}kT$，谐振子有动能和势能两个自由度，因此：
+
+$$\bar{w}_\nu(T) = kT$$
+
+代入得 $w_\nu(\nu) = \frac{8\pi\nu^2}{c^3}kT$ ——这就是瑞利-金斯公式。
 
 ---
 
@@ -412,7 +418,9 @@ $$\begin{aligned}
 \bar{w}_\nu &= \sum_{n=0}^{\infty} nh\nu \cdot p(nh\nu) = \frac{\sum nh\nu\, e^{-nh\nu/kT}}{\sum e^{-nh\nu/kT}} = \frac{h\nu}{e^{h\nu/kT} - 1}
 \end{aligned}$$
 
-代入辐射场的谱辐射能量密度。
+代入谱辐射模式密度 $n_\nu = \frac{8\pi\nu^2}{c^3}$，得到**普朗克黑体辐射公式**：
+
+$$w_\nu(\nu) = \frac{8\pi h\nu^3}{c^3}\frac{1}{e^{h\nu/kT} - 1}$$
 
 ---
 
@@ -451,7 +459,7 @@ $$w_\nu(\nu)\mathrm{d}\nu = \frac{8\pi h\nu^3}{c^3}\frac{1}{e^{h\nu/kT} - 1}$$
 
 # §6-1 黑体辐射（小结）
 
-- **基尔霍夫定律**：$\varepsilon/\alpha = J(\nu,T)$ 是普适函数（仅由热力学第二定律证明）
+- **基尔霍夫定律**：$e/a = J(\nu,T)$ 是普适函数（仅由热力学第二定律证明）
 
 - **斯特藩-玻尔兹曼定律**：总辐射功率 $P = \sigma T^4$
 
