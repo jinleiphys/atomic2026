@@ -23,6 +23,17 @@ img {
   max-width: 100%;
   height: auto;
 }
+.slidev-layout {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif !important;
+}
+.slidev-layout h1 {
+  font-size: 1.85em !important;
+  white-space: nowrap !important;
+}
+.kaiti-accent {
+  color: #C71585 !important;
+  font-weight: bold !important;
+}
 .slidev-layout.two-columns {
   gap: 1rem;
 }
@@ -73,7 +84,7 @@ img {
 
 ---
 
-# §6-1 黑体辐射——从连续到离散
+# §6-1 黑体辐射——<span class="kaiti-accent">从连续到离散</span>
 
 <br>
 
@@ -91,15 +102,25 @@ layout: two-cols
 
 该定律描述了在热平衡状态下，一个物体对特定波长的电磁辐射的吸收和发射的关系。
 
-**热平衡的几个主要特征：**
+<div style="border: 1px solid #d4a574; border-radius: 8px; padding: 10px 14px; margin-top: 6px; background: #fdf6ee; font-size: 0.9em;">
 
-1. **温度均匀**：系统内部的所有部分都有相同的温度。
-2. **热流平衡**：系统内部的热流相互抵消，没有净热流动。
-3. **动态平衡**：尽管微观层面上的分子运动和能量交换仍在持续，但宏观层面上系统的状态不发生变化。
+1. **温度均匀**：系统内部所有部分有相同的温度。
+2. **热流平衡**：系统内部热流相互抵消，无净热流。
+3. **动态平衡**：微观运动持续，但宏观状态不变。
+
+</div>
+
+**表述一**：辐射本领 $e$ 与吸收比 $a$ 之比是普适函数：
+
+$$\frac{e(\nu, T)}{a(\nu, T)} = J(\nu, T) = e_{\text{黑体}}(\nu, T)$$
+
+**表述二**：定义发射率 $\varepsilon = e / e_{\text{黑体}}$，则发射率 = 吸收比：
+
+$$\varepsilon(\nu, T) = a(\nu, T)$$
 
 ::right::
 
-<img src="/images/Gustav_Robert_Kirchhoff-18470.jpg" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
+<img src="/images/Gustav_Robert_Kirchhoff-18470.jpg" style="width: 90%; max-height: 280px; object-fit: contain; margin: 10px auto; display: block;" />
 
 <div class="text-center text-sm opacity-60">
 
@@ -107,56 +128,52 @@ Gustav Robert Kirchhoff（1824.3.12－1887.10.17）
 
 </div>
 
-<br>
-
-对于一个特定的波长和温度，所有物体的发射率与吸收率与组成的物质无关，只与辐射的波长和温度有关：
-
-$$\frac{\varepsilon(\nu, T)}{\alpha(\nu, T)} = J(\nu, T)$$
-
 ---
 layout: two-cols
 ---
 
 # 基尔霍夫定律——热力学证明
 
-**吸收率** $\alpha$：物体表面吸收的辐射能量与入射辐射能量之比（0到1之间）。
+**吸收比** $a$：物体表面吸收的辐射能量与入射辐射能量之比（0到1之间）。
 
-**辐射本领** $\varepsilon$：单位面积单位时间辐射的能量。
+**辐射本领** $e$：单位面积单位时间辐射的能量。
 
 <br>
 
 **证明（反证法）**：设想两个不同材质的物体封闭在绝热容器中，达到热平衡后温度处处相同。
 
-- 若 $\varepsilon_1/\alpha_1 \neq \varepsilon_2/\alpha_2$，则 $\varepsilon/\alpha$ 较大者净辐射能量给另一方
+- 若 $e_1/a_1 \neq e_2/a_2$，则 $e/a$ 较大者净辐射能量给另一方
 - 一个变热、一个变冷 → 自发产生温差
 - **违反热力学第二定律！**
 
-因此 $\varepsilon/\alpha$ 必须是只依赖于 $\nu$ 和 $T$ 的普适函数。
+因此 $e/a$ 必须是只依赖于 $\nu$ 和 $T$ 的普适函数。
 
 ::right::
 
 <img src="/images/Gustav_Robert_Kirchhoff-18470.jpg" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
 
-$$\frac{\varepsilon(\nu, T)}{\alpha(\nu, T)} = J(\nu, T)$$
+$$\frac{e(\nu, T)}{a(\nu, T)} = J(\nu, T)$$
 
 > 证明只需要热力学第二定律，不涉及任何微观机制——这正是其普适性的来源。
 
 ---
-layout: two-cols
+
+# 基尔霍夫热辐射定律——温度效应
+
+<div class="flex justify-center gap-4">
+<img src="/images/Bbbefore-18560.jpg" style="max-height: 300px; object-fit: contain;" />
+<img src="/images/Bbafter-18564.jpg" style="max-height: 300px; object-fit: contain;" />
+</div>
+
+**低温时**：可见波长 $e(\lambda,T) \to 0$ &emsp; **高温时**：可见波长 $e(\lambda,T) \neq 0$，波长变长（红外）
+
 ---
 
 # 基尔霍夫热辐射定律——温度效应
 
-**低温时**：可见波长 $e(\lambda,T) \to 0$
-
-**高温时**：可见波长 $e(\lambda,T) \neq 0$，波长变长（红外）
-
-::right::
-
-<div class="flex gap-2 mt-4">
-<img src="/images/Bbbefore-18560.jpg" style="width: 90%; max-height: 300px; object-fit: contain;" />
-<img src="/images/Bbafter-18564.jpg" style="width: 90%; max-height: 300px; object-fit: contain;" />
-</div>
+<video controls style="max-width: 80%; max-height: 400px; margin: 10px auto; display: block;">
+  <source src="/images/热辐射.mov" />
+</video>
 
 ---
 layout: two-cols
@@ -168,15 +185,25 @@ layout: two-cols
 
 <br>
 
-对于黑体 $a(\lambda, T) = 1$，因此发射辐射的能力 $e(\lambda,T)$ 与组成的物质无关，只与辐射的波长和温度有关。
+<span style="color: #2266cc;">对于黑体</span> $a(\lambda, T) = 1$
 
-<br>
+对于黑体发射辐射 $e(\lambda,T)$ 的能力与组成的物质无关，只与辐射的波长和温度有关。
 
-**核心问题**：$e(\lambda,T)$ 到底如何变化？如何做相关的研究？
+<span style="color: #cc2222; font-size: 1.1em;">$e(\lambda,T)$ 到底如何变化？</span>
+
+<span style="color: #cc2222; font-size: 1.1em;">如何做相关的研究？</span>
 
 ::right::
 
-<img src="/images/CNX_UPhysics_39_01_blackbody-1-18725.jpg" style="width: 90%; margin: 10px auto; display: block;" />
+<img src="/images/Gustav_Robert_Kirchhoff-18470.jpg" style="width: 70%; max-height: 220px; object-fit: contain; margin: 0 auto; display: block;" />
+
+<div class="text-center text-xs opacity-60">
+
+Gustav Robert Kirchhoff 1824.3.12－1887.10.17
+
+</div>
+
+<img src="/images/CNX_UPhysics_39_01_blackbody-1-18725.jpg" style="width: 60%; max-height: 180px; object-fit: contain; margin: 10px auto; display: block;" />
 
 ---
 
@@ -186,6 +213,8 @@ layout: two-cols
 
 - 当周围的温度**高于**黑体的温度时，黑体是**黑色**的
 - 当周围的温度**低于**黑体的温度时，黑体是**发光**的
+
+<img src="/images/blackbody_H_shape.png" style="max-width: 60%; max-height: 250px; object-fit: contain; margin: 10px auto; display: block;" />
 
 ---
 
@@ -227,7 +256,11 @@ layout: two-cols
 
 已知参宿四（Betelgeuse）发偏红光，参宿七（Rigel）发蓝白光，若视为黑体：
 
-$$\lambda_{\max} T = 2.898 \times 10^{-3}\ \text{m·K}$$
+**问题：哪颗恒星温度更高？**
+
+<div v-click>
+
+由维恩位移律 $\lambda_{\max} T = 2.898 \times 10^{-3}$ m$\cdot$K
 
 $\lambda_{\text{blue}} < \lambda_{\text{red}} \Rightarrow T_{\text{Rigel}} > T_{\text{Betelgeuse}}$
 
@@ -236,6 +269,8 @@ $\lambda_{\text{blue}} < \lambda_{\text{red}} \Rightarrow T_{\text{Rigel}} > T_{
 | 参宿四 | 红色 | ~3500 K |
 | 太阳 | 黄白色 | ~5800 K |
 | 参宿七 | 蓝白色 | ~12000 K |
+
+</div>
 
 ::right::
 
@@ -247,12 +282,18 @@ layout: two-cols
 
 # 瑞利-金斯辐射
 
-考虑一个立方体，边长为 $L \gg \lambda$，在温度为 $T$ 时达到热平衡，辐射场可以看成多个波矢 $\boldsymbol{k}=\{k_x, k_y, k_z\}$ 的叠加，并满足驻波条件。
+考虑一个立方体，边长为 $L \gg \lambda$，在温度为 $T$ 时达到热平衡，辐射场可以看成多个波矢 $\boldsymbol{k}=\{k_x, k_y, k_z\}$ 的叠加，并满足驻波条件（辐射场在立方体边缘为0，即辐射场在黑体边缘被完全吸收）。
+
+<div v-click>
+
+即 $n \dfrac{\lambda}{2} = L$，$k = \dfrac{2\pi}{\lambda}$，因此：
 
 $$\begin{aligned}
 k_x &= \frac{\pi}{L} n_1, \quad k_y = \frac{\pi}{L} n_2, \quad k_z = \frac{\pi}{L} n_3 \\
 k &= |\boldsymbol{k}| = \frac{\pi}{L} \sqrt{n_1^2 + n_2^2 + n_3^2}
 \end{aligned}$$
+
+</div>
 
 ::right::
 
@@ -287,13 +328,15 @@ layout: two-cols
 
 在 $k = \frac{\pi}{L}(n_1, n_2, n_3)$ 空间下，每个格点的体积为 $\frac{\pi^3}{L^3}$。
 
+<br>
+
 当 $\omega = \omega_m$ 时，总的体积为 $V = \frac{1}{8}\frac{4}{3}\pi\left(\frac{\omega_m}{c}\right)^3$
+
+<br>
 
 考虑电场可能有两种垂直于 $\vec{k}$ 的偏振方向，共包含 $N$ 种辐射模式：
 
-$$\begin{aligned}
-N(\omega \leq \omega_m) &= 2\left(\frac{L}{\pi}\right)^3 V = \frac{1}{3}\frac{L^3\omega_m^3}{\pi^2 c^3}
-\end{aligned}$$
+$$N(\omega \leq \omega_m) = 2\left(\frac{L}{\pi}\right)^3 V = \frac{1}{3}\frac{L^3\omega_m^3}{\pi^2 c^3}$$
 
 ::right::
 
@@ -328,20 +371,16 @@ $$w_\nu(\nu)\mathrm{d}\nu = n(\nu)\bar{w}_\nu(T)\mathrm{d}\nu$$
 瑞利-金斯把辐射模式看成谐振子的振动，热平衡状态能量满足玻尔兹曼分布。
 
 ---
-layout: two-cols
----
 
 # 瑞利-金斯辐射（紫外灾难）
 
-$$w_\nu(\nu) = \frac{8\pi\nu^2}{c^3}kT$$
+<img src="/images/ultraviolet_catastrophe.png" style="height: 300px; object-fit: contain; display: block; margin: 0 auto;" />
 
-在高频（短波长）区域，能量密度趋于无穷大——这就是著名的**紫外灾难**。
+<div style="text-align: center; margin-top: 10px;">
 
-::right::
+$w_\nu(\nu) = \frac{8\pi\nu^2}{c^3}kT$ &nbsp;&nbsp; 在高频（短波长）区域，能量密度趋于无穷大——这就是著名的**紫外灾难**。
 
-<img src="/images/pasted-image-24940.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
-
-<img src="/images/pasted-image-24943.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
+</div>
 
 ---
 
