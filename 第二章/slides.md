@@ -42,8 +42,8 @@ img {
   min-height: 0;
 }
 .slidev-layout.two-columns .col-left {
-  font-size: 0.95rem;
-  line-height: 1.35;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 .slidev-layout.two-columns .col-left h1 {
   margin-bottom: 0.75rem;
@@ -62,7 +62,7 @@ img {
 }
 .slidev-layout.two-columns .col-right img,
 .slidev-layout.two-columns .col-right video {
-  max-height: 220px !important;
+  max-height: 380px !important;
   margin: 0 auto !important;
   object-fit: contain;
 }
@@ -857,13 +857,29 @@ layout: two-cols
 
 # 经典理论无法解释的光电效应特性
 
-**(一) 响应时间**
+<span style="color: #2255cc; font-size: 1.15em; font-weight: bold;">（一）响应时间</span>
 
 响应时间：电磁波照射到材料上到发出光电子的时间差。
 
-经典理论认为电子需要从电磁波中**逐渐积累能量**，才能获得足够的能量逃出金属表面。对于微弱的光，这个积累过程可能需要数秒甚至更长。
+**经典理论的预言**：光是连续的电磁波，电子从波中逐渐积累能量。一个原子能拦截的光功率约为 $P = I \cdot \pi a_0^2$（$a_0$ 为玻尔半径）。要积累 $E = 5$ eV 的能量：
+
+$$\tau = \frac{E}{I \cdot \pi a_0^2} \approx \frac{8 \times 10^{-19}}{1400 \times 8.8 \times 10^{-21}} \approx 0.07 \text{ s}$$
+
+<div v-click>
+
+即使在**太阳光**（$I \approx 1400$ W/m²）下，经典理论也预言要等 **~0.1 秒**。
+
+更弱的光（如月光，$I \sim 0.001$ W/m²）则需要等 **~100 秒**！
+
+</div>
+
+<div v-click>
 
 但实验表明，即使在极其微弱的光照下，光电子也几乎是**瞬间**出现的，响应时间 $< 10^{-9}$ s。
+
+经典预言与实验相差 **$10^8$ 倍以上**——这不是误差，是理论的根本失败。
+
+</div>
 
 ---
 layout: two-cols
@@ -871,7 +887,7 @@ layout: two-cols
 
 # 经典理论无法解释的光电效应特性
 
-**(二) 辐射强度与光电流之间的关系**
+<span style="color: #2255cc; font-size: 1.15em; font-weight: bold;">（二）辐射强度与光电流之间的关系</span>
 
 存在**遏止电压** $\Delta V_s$：恰好使所有光电子停下的反向电压，与光电子的最大动能有关
 
@@ -889,7 +905,7 @@ layout: two-cols
 
 # 经典理论无法解释的光电效应特性
 
-**(三) 存在截止频率（cut-off frequency）**
+<span style="color: #2255cc; font-size: 1.15em; font-weight: bold;">（三）存在截止频率（cut-off frequency）</span>
 
 对每种金属，存在一个最低频率 $\nu_0$，低于此频率则**无论光多强都打不出电子**。
 
@@ -921,6 +937,32 @@ layout: two-cols
 <div v-click>
 
 > 爱因斯坦正是做出了这个"不合理"的推广，而他因此获得了诺贝尔奖——不是因为相对论，而是因为光电效应。
+
+</div>
+
+---
+
+# 爱因斯坦的推理：从普朗克公式到光量子
+
+爱因斯坦并没有"凭空猜测" $E = h\nu$——他是从普朗克的黑体辐射公式中**推理**出来的。
+
+回忆我们讲过的：普朗克公式在**高频区**（$h\nu \gg k_BT$）退化为维恩公式，正是在这个区域，普朗克的量子修正起了关键作用——经典理论在这里彻底失败。
+
+<div v-click>
+
+**爱因斯坦的关键一步**：他计算了维恩区辐射的**熵**，发现其数学形式与理想气体的熵**完全相同**。
+
+而理想气体是由离散粒子组成的——因此爱因斯坦大胆推断：
+
+> 高频辐射在热力学上的行为，**就像**由能量为 $E = h\nu$ 的离散粒子组成。
+
+</div>
+
+<div v-click>
+
+普朗克只敢说**振子**的能量是量子化的（$E_n = nh\nu$），没敢说**光本身**也是一份一份的。爱因斯坦比普朗克多走了一步：不是振子量子化，而是**光量子化**。
+
+这就是为什么光电效应的三个困难会立刻迎刃而解——因为光本身就是一个个能量包。
 
 </div>
 
@@ -972,6 +1014,8 @@ $$\boxed{K_{\max} = h\nu - \phi}$$
 
 # 密立根的精密验证 (1916)
 
+这里的密立根就是用**油滴实验**精确测量电子电荷 $e$ 的那位 Robert Millikan——同一个人。他不仅测了 $e$，还花了十年来测 $h$。
+
 密立根本人对爱因斯坦的光量子假设深感怀疑，认为光是粒子的观点"完全不可思议"（quite unthinkable）。他花了**整整十年**，设计了极其精密的实验来**试图推翻**爱因斯坦的理论。
 
 他在超高真空中用刀片刮去碱金属（钠）表面的氧化层以获得清洁表面，然后用已知频率的紫外光照射，精确测量遏止电压。
@@ -998,27 +1042,21 @@ layout: two-cols
 
 **问题**：当波长为300 nm的电磁波照射在银金属表面时，能否产生光电子？
 
-$$\lambda_0 = \frac{hc}{\varphi} = \frac{1240\ \text{eV·nm}}{4.73\ \text{eV}} = 262\ \text{nm}$$
+<div v-click>
+
+$$\lambda_0 = \frac{hc}{\varphi} = \frac{1240\ \text{eV}\cdot\text{nm}}{4.73\ \text{eV}} = 262\ \text{nm}$$
+
+</div>
+
+<div v-click>
 
 300 nm > 262 nm（截止波长），因此**不能**产生光电子。
+
+</div>
 
 ::right::
 
 <img src="/images/Screen Shot 2022-01-24 at 16.11.38-20007.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
-
----
-
-# 🖥️ AI Workshop: 光电效应作业
-
-本章配有一份 AI Workshop 作业，涉及三个主题：
-
-（1）**让 AI 从密立根数据中重新发现光电方程**：用符号回归（PySR）从实验数据出发，看 AI 能否自动找出 $V_s = (h/e)\nu - \phi/e$。
-
-（2）**阿秒光电效应**：2023年诺贝尔物理学奖（阿秒光脉冲）使我们能够测量光电发射的**绝对时间延迟**。2024年 Driver 等人在 *Nature* 上报道了分子光电电离的阿秒级延迟，最长可达 700 阿秒。
-
-（3）**机器学习预测材料功函数**：用 AI 从元素周期表的基本属性预测功函数 $\phi$，并搜索低功函数材料——从爱因斯坦方程中的一个参数，到 AI 驱动的材料发现。
-
-[AI-workshop/homework-photoelectric.md](../AI-workshop/homework-photoelectric.md)
 
 ---
 
@@ -1052,35 +1090,36 @@ layout: two-cols
 
 ::right::
 
-<img src="/images/Screen Shot 2022-02-28 at 13.07.02-23046.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
+<img src="/images/Screen Shot 2022-02-28 at 13.07.02-23046.png" style="width: 100%; max-height: 450px; object-fit: contain; margin: 0 auto; display: block;" />
 
 ---
 
-# 唯像理论与第一性原理（续）
+# 符号回归：让机器从数据中发现公式
+
+物理学中的"唯像"过程——从实验数据中总结出数学规律——能否自动化？
+
+**符号回归**（Symbolic Regression）正是这样一种方法：不假设函数形式，在所有可能的数学表达式中搜索，找到既简洁又精确的公式。
+
+| 年代 | 里程碑 |
+|------|--------|
+| 1992 | Koza 提出符号回归：随机生成大量公式，保留拟合好的，反复迭代直到找到最优解 |
+| 2009 | Schmidt & Lipson 在 *Science* 上发表：从摆锤实验数据中**自动发现守恒律** |
+| 2020 | Cranmer 发布 **PySR**，成为最流行的符号回归工具 |
+| 2023 | Tenachi et al. 提出 **PhySO**：加入物理量纲约束，大幅缩小搜索空间 |
+
+<br>
+
+> 巴尔末1885年用人脑从四个数字中找到了 $\lambda = B \cdot n^2/(n^2-4)$——这是人类最早的"符号回归"。今天的算法在做同样的事，只是快了亿倍。
+
+---
+
+# 唯像理论与第一性原理（续）——PhySO 演示
 
 <img src="/images/Screen Shot 2023-03-20 at 19.08.25-24628.png" style="max-width: 70%; margin: 20px auto; display: block;" />
 
 <video controls style="max-width: 60%; margin: 10px auto; display: block;">
   <source src="/images/225642347-a07127da-a84e-4af3-96f4-4c7fef5a673b-24632.mp4" />
 </video>
-
----
-layout: two-cols
----
-
-# 为什么天是蓝色的？
-
-**瑞利散射**：
-
-$$I(\lambda)_{\text{scattering}} \propto \frac{I(\lambda)_{\text{incident}}}{\lambda^4}$$
-
-短波长（蓝光）散射更强。
-
-::right::
-
-<img src="/images/Rayleigh_sunlight_scattering-23200.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
-
-<img src="/images/Solar_spectrum_en.svg-23207.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />
 
 ---
 
@@ -1124,17 +1163,14 @@ layout: two-cols
 
 **谱线**：在均匀且连续的光谱上明亮或黑暗的线条，有**吸收谱线**或**发射谱线**两种。
 
-<div class="flex justify-center gap-2 mt-4">
-<img src="/images/2880px-Spectral-lines-continuous.svg-18398.png" style="width: 28%;" />
-<img src="/images/2880px-Spectral-lines-emission.svg-18412.png" style="width: 28%;" />
-<img src="/images/2880px-Spectral-lines-absorption.svg-18435.png" style="width: 28%;" />
-</div>
+<img src="/images/2880px-Spectral-lines-continuous.svg-18398.png" style="width: 85%; margin: 4px auto; display: block;" />
+<div style="text-align: center; font-size: 0.9em;">连续光谱</div>
 
-<div class="flex justify-center gap-8 mt-2 text-xs opacity-70">
-<span>连续光谱</span>
-<span>发射谱线</span>
-<span>吸收谱线</span>
-</div>
+<img src="/images/2880px-Spectral-lines-emission.svg-18412.png" style="width: 85%; margin: 4px auto; display: block;" />
+<div style="text-align: center; font-size: 0.9em;">发射谱线（离散光谱）</div>
+
+<img src="/images/2880px-Spectral-lines-absorption.svg-18435.png" style="width: 85%; margin: 4px auto; display: block;" />
+<div style="text-align: center; font-size: 0.9em;">吸收谱线（离散光谱）</div>
 
 ---
 
@@ -1270,7 +1306,7 @@ $$\frac{1}{\lambda} = R_H\left(\frac{1}{\textcolor{#C71585}{2^2}} - \frac{1}{n^2
 
 里德伯不是在"猜"——他有三条线索：
 
-**(一) 碱金属光谱的共性**
+<span style="color: #2255cc; font-size: 1.15em; font-weight: bold;">（一）碱金属光谱的共性</span>
 
 里德伯研究了锂、钠、钾等大量碱金属的光谱，发现它们也有类似的"线系"结构，每条谱线都可以写成**两个"项"(term)的差**：
 
@@ -1280,7 +1316,7 @@ $$\frac{1}{\lambda} = T(n_1) - T(n_2)$$
 
 <div v-click>
 
-**(二) 氢的特殊简洁性**
+<span style="color: #2255cc; font-size: 1.15em; font-weight: bold;">（二）氢的特殊简洁性</span>
 
 对氢原子，项函数恰好是最简单的 $T(n) = R_H / n^2$。巴尔末系就是 $T(2) - T(n)$。那 $T(1) - T(n)$、$T(3) - T(n)$ 对应什么？——**一定存在其他线系！**
 
@@ -1288,7 +1324,7 @@ $$\frac{1}{\lambda} = T(n_1) - T(n_2)$$
 
 <div v-click>
 
-**(三) 里兹组合原理(1908)**
+<span style="color: #2255cc; font-size: 1.15em; font-weight: bold;">（三）里兹组合原理（1908）</span>
 
 如果两条谱线的波数分别是 $T(a)-T(b)$ 和 $T(b)-T(c)$，那么它们的**和** $T(a)-T(c)$ 也应该对应一条谱线。实验验证了这一点！
 
@@ -1357,20 +1393,25 @@ $$\frac{1}{\lambda} = R_H\left[\frac{1}{n^2} - \frac{1}{n'^2}\right]$$
 3. 掌握如何使用玻尔模型解释氢原子光谱
 
 ---
-layout: two-cols
----
 
 # 盖革-马斯登实验
 
-汤姆逊1904年提出原子核的**布丁模型**。
+<div style="display: flex; gap: 1rem; align-items: flex-start;">
 
-*Proceedings of the Royal Society of London A.*
+<div style="flex: 1;">
+<div style="display: flex; gap: 0.5rem;">
+<img src="/images/PlumPuddingModel_ManyCorpuscles-25001.png" style="width: 48%; max-height: 160px; object-fit: contain;" />
+<img src="/images/Plum_pudding.png" style="width: 48%; max-height: 160px; object-fit: contain;" />
+</div>
+<div style="text-align: center; margin-top: 6px;">汤姆逊<b>1904</b>年提出原子核的<b>布丁模型</b></div>
+<img src="/images/geiger_marsden_papers.png" style="width: 100%; max-height: 200px; object-fit: contain; margin-top: 8px;" />
+<div style="text-align: center; font-size: 0.85em; margin-top: 4px;"><i>Proceedings of the Royal Society of London A.</i></div>
+</div>
 
-::right::
+<div style="flex: 1;">
+<img src="/images/440px-Gold_foil_experiment_conclusions.svg-25007.png" style="width: 100%; max-height: 420px; object-fit: contain;" />
+</div>
 
-<div class="flex flex-col gap-2 mt-4">
-<img src="/images/PlumPuddingModel_ManyCorpuscles-25001.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: auto;" />
-<img src="/images/440px-Gold_foil_experiment_conclusions.svg-25007.png" style="width: 90%; max-height: 300px; object-fit: contain; margin: auto;" />
 </div>
 
 ---
@@ -1386,6 +1427,14 @@ $$\frac{1}{4\pi\epsilon_0}\frac{e^2}{r^2} = m_e\frac{v^2}{r} \quad \Rightarrow \
 电子的总能量 = 动能 + 势能：
 
 $$E = \frac{1}{2}m_e v^2 - \frac{1}{4\pi\epsilon_0}\frac{e^2}{r} = -\frac{1}{2}\frac{e^2}{4\pi\epsilon_0 r}$$
+
+<div v-click style="font-size: 1.2em; margin-top: 0.5rem;">
+
+$r \uparrow \quad \Rightarrow \quad E \uparrow$ （能量升高，束缚变弱）
+
+$r \downarrow \quad \Rightarrow \quad E \downarrow$ （能量降低，束缚变强）
+
+</div>
 
 ---
 layout: two-cols
@@ -1437,13 +1486,15 @@ layout: two-cols
 
 # 玻尔模型的三点假设
 
-**假设一**：电子在某些**特定轨道**上围绕原子核做圆周运动。
+<br>
 
-**假设二**：角动量**量子化**：
+假设一：电子在某些特定轨道上围绕原子核做圆周运动。
+
+假设二：角动量量子化：
 
 $$L_n = m_e v_n r_n = n\hbar, \quad n = 1, 2, 3, \ldots$$
 
-**假设三**：电子在不同轨道间**跃迁**，辐射（吸收）光子：
+假设三：电子在不同轨道间跃迁，辐射（吸收）光子：
 
 $$h\nu = |E_n - E_{n'}|$$
 
@@ -1451,19 +1502,21 @@ $$h\nu = |E_n - E_{n'}|$$
 
 # 玻尔模型、经典模型与里德伯方程
 
-**里德伯方程**：
+<br>
 
-$$\frac{1}{\lambda} = R_H\left[\frac{1}{n^2} - \frac{1}{n'^2}\right]$$
+<span style="color: #2255cc;">里德伯方程</span>：$\quad\dfrac{1}{\lambda} = R_H\!\left[\dfrac{1}{n^2} - \dfrac{1}{n'^2}\right] = T(n) - T(n')$
 
-**玻尔模型**：$E_n = -R_H hc / n^2$
+<span style="color: #2255cc;">玻尔模型</span>：$\quad\dfrac{1}{\lambda} = \dfrac{1}{hc}|E_n - E_{n'}|$
 
-**经典模型**：$E_n = -e^2/(8\pi\epsilon_0 r_n)$
+<span style="color: #2255cc;">经典模型</span>：$\quad E_n = -\dfrac{1}{2}\dfrac{e^2}{4\pi\epsilon_0 r_n}$
 
-**半经典结合**：
+<div v-click>
 
-$$r_n = \frac{e^2 n^2}{8\pi\epsilon_0 R_H hc}$$
+<span style="color: #cc2222;">考虑从高能级 $E_{n'}$ 退激发到低能级 $E_n$</span>：$\quad E_n = -\dfrac{R_H hc}{n^2}$
 
-> 玻尔模型仍满足能量守恒和动量守恒。
+$$r_n = \frac{e^2}{4\pi\epsilon_0}\frac{n^2}{2R_H hc} \qquad \text{（半经典）}$$
+
+</div>
 
 ---
 
@@ -1572,19 +1625,31 @@ layout: two-cols
 
 # 习题1
 
+<br>
+
 **问题**：如果一个处于基态的氢原子吸收了一个93.7 nm的光子，对应于莱曼级数中的一条线，这对原子的能量和大小有何影响？当原子处于这种激发态时，需要多少能量才能使原子电离？
+
+<div v-click>
 
 $$\frac{1}{\lambda} = R_H\left(\frac{1}{1^2} - \frac{1}{n^2}\right)$$
 
 $$n = \frac{1}{\sqrt{1 - \frac{1}{\lambda R_H}}} \approx 6$$
 
+</div>
+
 ---
 
 # 习题2
 
+<br>
+
 **问题**：用12.6 eV的电子轰击基态氢原子，这些氢原子所能达到的最高态。
 
+<div v-click>
+
 $$E_n - E_1 = \frac{E_1}{n^2} - E_1 \leq 12.6\ \text{eV}$$
+
+</div>
 
 ---
 layout: two-cols

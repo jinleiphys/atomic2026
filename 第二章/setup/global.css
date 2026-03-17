@@ -1,0 +1,24 @@
+/* 投影仪优化：文字颜色加深、字号加大 */
+/* 通过 setup/main.ts 导入，确保全局生效 */
+
+#app .slidev-layout,
+#app .slidev-layout p,
+#app .slidev-layout li,
+#app .slidev-layout span,
+#app .slidev-layout strong,
+#app .slidev-layout b,
+#app .slidev-layout td,
+#app .slidev-layout th,
+#app .slidev-layout div,
+#app .slidev-layout blockquote,
+#app .slidev-layout h2,
+#app .slidev-layout h3,
+#app .slidev-layout h4,
+#app .slidev-layout h5,
+#app .slidev-layout h6 {
+  color: #141414 !important;
+}
+
+#app .slidev-layout {
+  font-size: 1.35rem !important;
+}

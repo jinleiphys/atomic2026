@@ -1,0 +1,23 @@
+/* 全局样式：投影仪优化 — 需要重启 slidev 才生效 */
+
+/* 强制所有文字为近黑色 */
+:root {
+  --slidev-slide-container-background: white;
+}
+
+.slidev-layout {
+  color: #141414 !important;
+  font-size: 1.35rem !important;
+}
+
+.slidev-layout p,
+.slidev-layout li,
+.slidev-layout span,
+.slidev-layout strong,
+.slidev-layout b,
+.slidev-layout td,
+.slidev-layout th,
+.slidev-layout div,
+.slidev-layout blockquote {
+  color: #141414 !important;
+}
