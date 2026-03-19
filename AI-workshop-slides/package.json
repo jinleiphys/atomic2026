@@ -1,0 +1,14 @@
+{
+  "name": "ai-workshop-slides",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "^0.25.0",
+    "katex": "latest"
+  }
+}
