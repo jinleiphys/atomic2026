@@ -1163,14 +1163,14 @@ layout: two-cols
 
 **谱线**：在均匀且连续的光谱上明亮或黑暗的线条，有**吸收谱线**或**发射谱线**两种。
 
-<img src="/images/2880px-Spectral-lines-continuous.svg-18398.png" style="width: 85%; margin: 4px auto; display: block;" />
-<div style="text-align: center; font-size: 0.9em;">连续光谱</div>
-
-<img src="/images/2880px-Spectral-lines-emission.svg-18412.png" style="width: 85%; margin: 4px auto; display: block;" />
-<div style="text-align: center; font-size: 0.9em;">发射谱线（离散光谱）</div>
-
-<img src="/images/2880px-Spectral-lines-absorption.svg-18435.png" style="width: 85%; margin: 4px auto; display: block;" />
-<div style="text-align: center; font-size: 0.9em;">吸收谱线（离散光谱）</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 8px;">
+  <img src="/images/2880px-Spectral-lines-continuous.svg-18398.png" style="width: 90%;" />
+  <div style="font-size: 0.85em; color: #C71585;">连续光谱</div>
+  <img src="/images/2880px-Spectral-lines-emission.svg-18412.png" style="width: 90%;" />
+  <div style="font-size: 0.85em; color: #C71585;">发射谱线（离散光谱）</div>
+  <img src="/images/2880px-Spectral-lines-absorption.svg-18435.png" style="width: 90%;" />
+  <div style="font-size: 0.85em; color: #C71585;">吸收谱线（离散光谱）</div>
+</div>
 
 ---
 
