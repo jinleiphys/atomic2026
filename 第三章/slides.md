@@ -100,15 +100,41 @@ img {
 layout: two-cols
 ---
 
+<style scoped>
+.prop-card { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-bottom: 0.6em; border-left: 3px solid #C71585; }
+.prop-card h4 { color: #C71585; margin: 0 0 0.2em 0; font-size: 1em; }
+.prop-card p { margin: 0.15em 0; font-size: 0.95em; }
+</style>
+
 # 什么是粒子性？
 
-动量： $\vec{p} = m \vec{v}$
+<div class="prop-card">
+<h4>动量</h4>
 
-角动量： $\vec{\ell } = \vec{r} \times \vec{p}$，$|\ell| = |r||p|\sin \theta$
+$\vec{p} = m \vec{v}$
 
-动能： $T=\frac{1}{2} m v^2$
+</div>
 
-势能： $V_P  = - \int_R^P F(x) dx$
+<div class="prop-card">
+<h4>角动量</h4>
+
+$\vec{\ell} = \vec{r} \times \vec{p}$，$|\ell| = |r||p|\sin\theta$
+
+</div>
+
+<div class="prop-card">
+<h4>动能</h4>
+
+$T = \frac{1}{2}mv^2$
+
+</div>
+
+<div class="prop-card">
+<h4>势能</h4>
+
+$V_P = -\int_R^P F(x)\,dx$
+
+</div>
 
 ::right::
 
@@ -120,19 +146,37 @@ layout: two-cols
 layout: two-cols
 ---
 
+<style scoped>
+.wave-card { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-bottom: 0.6em; border-left: 3px solid #5856d6; }
+.wave-card h4 { color: #5856d6; margin: 0 0 0.2em 0; font-size: 1em; }
+.wave-summary { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-top: 0.6em; border-left: 3px solid #C71585; }
+</style>
+
 # 什么是波动性？
 
-谐波： $\lambda = v T$，波长： $\lambda \nu = v$
+<div class="wave-card">
 
-波速： $\nu = 1/T$
+**基本参量**
 
-$y (x,t)= A\sin [2\pi (x/\lambda -t/T)]$
+谐波：$\lambda = vT$，频率：$\nu = 1/T$，波速：$\lambda\nu = v$
 
-波数： $k = \frac{2\pi}{\lambda}$
+</div>
 
-角频率： $\omega = \frac{2\pi}{T}= 2\pi \nu$
+<div class="wave-card">
 
-$y (x,t)= A\sin [kx -\omega t]$
+**波数与角频率**
+
+波数：$k = \frac{2\pi}{\lambda}$，角频率：$\omega = \frac{2\pi}{T} = 2\pi\nu$
+
+</div>
+
+<div class="wave-summary">
+
+<span style="color: #C71585; font-weight: bold;">谐波方程</span>
+
+$y(x,t) = A\sin[2\pi(x/\lambda - t/T)] = A\sin(kx - \omega t)$
+
+</div>
 
 ::right::
 
@@ -142,25 +186,36 @@ $y (x,t)= A\sin [kx -\omega t]$
 layout: two-cols
 ---
 
+<style scoped>
+.standing-card { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-bottom: 0.6em; border-left: 3px solid #30d158; }
+.standing-result { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-top: 0.6em; border-left: 3px solid #C71585; }
+</style>
+
 # 驻波：波的叠加/相干
 
-$y(x, t)=y_{1}(x, t)+y_{2}(x, t)$
+<div class="standing-card">
 
-考虑同时在一个弦上传播的两个波
+**叠加原理**：$y(x,t) = y_1(x,t) + y_2(x,t)$
 
-其中
+</div>
 
-从左向右
+<div class="standing-card">
 
-从右向左
+**向右传播**：$y_1 = A\sin(kx - \omega t)$
 
-即
+**向左传播**：$y_2 = A\sin(kx + \omega t)$
 
-上式为驻波方程
+</div>
 
-节点满足
+<div class="standing-result">
 
-$y_{1}(x)=A \sin (k x-\omega t)$
+<span style="color:#C71585;font-weight:bold;">驻波方程</span>
+
+$y(x,t) = 2A\sin(kx)\cos(\omega t)$
+
+节点条件：$\sin(kx) = 0$，即 $x = n\frac{\lambda}{2}$
+
+</div>
 
 ::right::
 
@@ -168,79 +223,102 @@ $y_{1}(x)=A \sin (k x-\omega t)$
 
 ---
 
+<style scoped>
+.timeline { position: relative; padding-left: 1.5em; }
+.timeline::before { content: ''; position: absolute; left: 0.35em; top: 0.2em; bottom: 0.2em; width: 2px; background: linear-gradient(to bottom, #C71585, #5856d6); }
+.timeline .era { position: relative; margin-bottom: 1em; }
+.timeline .era::before { content: ''; position: absolute; left: -1.28em; top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: #C71585; }
+.slidev-layout { font-size: 1.3rem; }
+.timeline .era h3 { font-size: 1.3em; color: #C71585; margin-bottom: 0.2em; }
+.timeline .era p { margin: 0.15em 0; font-size: 1.1em; line-height: 1.5; }
+.vs-box { display: flex; gap: 1em; margin: 0.3em 0; }
+.vs-box .side { flex: 1; padding: 0.4em 0.6em; border-radius: 8px; font-size: 0.9em; }
+.vs-box .side.newton { background: rgba(199,21,133,0.08); border-left: 3px solid #C71585; }
+.vs-box .side.huygens { background: rgba(88,86,214,0.08); border-left: 3px solid #5856d6; }
+</style>
+
 # 光的波粒二象性
 
-17世纪
+<div class="timeline">
+<div class="era">
+<h3>17世纪 — 两大学说之争</h3>
+<div class="vs-box">
+<div class="side newton"><b>牛顿：微粒说</b><br>解释反射、直线传播</div>
+<div class="side huygens"><b>惠更斯：波动说</b><br>解释折射、衍射</div>
+</div>
+</div>
 
-牛顿：光的微粒说
-
-惠更斯：光的波动说
-
-反射，直线传播
-
-折射，衍射
-
-19世纪
-
-菲涅尔
-
-夫琅禾费
-
-杨氏
-
-光的干涉衍射
-
-麦克斯韦&赫兹：光—电磁波
-
-确立了
-
-光的波动说
+<div class="era">
+<h3>19世纪 — 波动说的胜利</h3>
+<p>杨氏、菲涅尔、夫琅禾费：光的<b>干涉与衍射</b>实验</p>
+<p>麦克斯韦 & 赫兹：光是<b>电磁波</b> → 确立波动说</p>
+</div>
+</div>
 
 ---
 
+<style scoped>
+.timeline { position: relative; padding-left: 1.5em; }
+.timeline::before { content: ''; position: absolute; left: 0.35em; top: 0.2em; bottom: 0.2em; width: 2px; background: linear-gradient(to bottom, #C71585, #ff9f0a); }
+.timeline .era { position: relative; margin-bottom: 0.8em; }
+.timeline .era::before { content: ''; position: absolute; left: -1.28em; top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: #C71585; }
+.slidev-layout { font-size: 1.3rem; }
+.timeline .era h3 { font-size: 1.3em; color: #C71585; margin-bottom: 0.2em; }
+.timeline .era p { margin: 0.15em 0; font-size: 1.1em; line-height: 1.5; }
+.formula-box { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-top: 0.6em; border-left: 3px solid #C71585; font-size: 1.1em; }
+.duality-box { display: flex; gap: 0.8em; margin-top: 0.6em; }
+.duality-box .side { flex: 1; padding: 0.5em 0.6em; border-radius: 8px; text-align: center; font-size: 1.1em; }
+.duality-box .wave { background: rgba(88,86,214,0.08); border: 1px solid rgba(88,86,214,0.2); }
+.duality-box .particle { background: rgba(199,21,133,0.08); border: 1px solid rgba(199,21,133,0.2); }
+</style>
+
 # 光的波粒二象性
 
-$E=h\nu=pc$
+<div class="timeline">
+<div class="era">
+<h3>20世纪 — 粒子性的回归</h3>
+<p><b>光电效应</b>：光的能量是量子化的</p>
+<p><b>康普顿散射</b>：光子具有动量</p>
+</div>
+</div>
 
-20世纪
+<div class="formula-box">
 
-光电效应
+**光量子关系**：$E = h\nu = pc$，$p = \frac{h}{\lambda}$
 
-康普顿散射
+</div>
 
-光量子
-
-或
-
-波矢: $p=\frac{h}{\lambda}$
-
-光在传播时显示波动性
-
-在能量转移时显示粒子性
+<div class="duality-box">
+<div class="side wave">🌊 <b>传播</b>时显示<b>波动性</b></div>
+<div class="side particle">⚛ <b>能量转移</b>时显示<b>粒子性</b></div>
+</div>
 
 ---
 layout: two-cols
 ---
 
+<style scoped>
+.bio-card { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.8em 1em; border-left: 3px solid #C71585; }
+.bio-card h3 { color: #C71585; margin: 0 0 0.3em 0; font-size: 1.2em; }
+.bio-card p { margin: 0.2em 0; font-size: 1.05em; line-height: 1.6; }
+.quote-box { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-top: 0.8em; border-left: 3px solid #5856d6; font-style: italic; font-size: 1.05em; line-height: 1.5; }
+</style>
+
 # 德布罗意假设（1923年提出，1929年获诺奖）
 
-从辩证思维出发,法国青年物理学家德布罗意  (de Broglie)提出,既然光具有粒子性,是否实物粒子如电子也应当具有波动性？
+<div class="bio-card">
+<h3>L.V. de Broglie（法，1892—1987）</h3>
+<p>从辩证思维出发：既然光具有粒子性，实物粒子如电子是否也应当具有波动性？</p>
+<p>1924.11.29 博士论文"量子理论的研究"提交巴黎大学</p>
+</div>
 
-1924.11.29 德布罗意把题为”量子理论的研究”的博士论文提交巴黎大学。
+<div class="quote-box">
+"每一个运动的物体都伴随着一个波，而且不可能将物体的运动和波的传播分开。"
+</div>
 
 ::right::
 
-<img src=”/images/pasted-image-26528.png” style=”max-width: 100%; max-height: 400px; object-fit: contain;” />
-
----
-
-# 德布罗意假设（1923年提出，1929年获诺奖）
-
----
-
-# 德布罗意假设（1923年提出，1929年获诺奖）
-
-<img src="/images/1_340818701_171_85_3_672757067_dad948036dbc70047946090f01193cd4-28347.png" style="max-width: 400px; max-height: 400px;" />
+<img src="/images/de-broglie-portrait.png" style="max-width: 100%; max-height: 400px; object-fit: contain; border-radius: 10px;" />
 
 ---
 
@@ -260,31 +338,34 @@ layout: two-cols
 
 ---
 
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.core-box { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-bottom: 0.6em; border-left: 3px solid #C71585; }
+.alt-box { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-top: 0.6em; border-left: 3px solid #5856d6; }
+.note { font-size: 0.95em; color: #555; margin-top: 0.5em; }
+</style>
+
 # 德布罗意假设（1923年提出，1929年获诺奖）
 
-$\nu$
+任何具有能量和动量的粒子都伴随着频率为 $\nu$、波长为 $\lambda$ 的**德布罗意波**
 
-任何具有能量和动量的粒子都是频率为 $\lambda$ 和波长为 $\begin{aligned}
+<div class="core-box">
 
-&E=h \nu \\
+**德布罗意关系**
 
-&\lambda=\frac{h}{p}
+$$E = h\nu \qquad \lambda = \frac{h}{p}$$
 
-\end{aligned}$ 的德布罗意波
+</div>
 
-相对论能量
+<div class="alt-box">
 
-动量
+**等价形式**（$\hbar = h/2\pi$）
 
-或
+$$E = \hbar\omega \qquad \vec{p} = \hbar\vec{k}$$
 
-德布罗意物质波的群速率为粒子的速率 $\begin{aligned}
+</div>
 
-&E=\hbar \omega \\
-
-&\vec{p}=\hbar \vec{k}
-
-\end{aligned}$ ，满足
+<p class="note">德布罗意物质波的群速率等于粒子的速率</p>
 
 ---
 layout: two-cols
@@ -306,65 +387,134 @@ layout: two-cols
 
 ---
 
-# 习题
+<style scoped>
+.step { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-bottom: 0.5em; border-left: 3px solid #C71585; font-size: 0.95em; }
+.result { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.5em; border-left: 3px solid #5856d6; font-size: 0.95em; }
+</style>
 
-$K=m_{0} u^{2} / 2=(0.65 \mathrm{~kg})(10 \mathrm{~m} / \mathrm{s})^{2} / 2=32.5 \mathrm{~J}$
+# 习题 (a) 篮球的德布罗意波长
 
-(a) 篮球的动能为 $E_{0}=m_{0} c^{2}=(0.65 \mathrm{~kg})\left(2.998\times 10^{8} \mathrm{~m} / \mathrm{s}\right)^{2}=5.84\times 10^{16} \mathrm{~J}$
+<div class="step">
 
-篮球静止时的质能
+**篮球动能**：$K = \frac{1}{2}m_0 u^2 = (0.65~\mathrm{kg})(10~\mathrm{m/s})^2/2 = 32.5~\mathrm{J}$
 
-$K /\left(K+E_{0}\right) \ll 1$
+</div>
 
-可以发现 $p=m_{0} u=(0.65 \mathrm{~kg})(10 \mathrm{~m} / \mathrm{s})=6.5~\mathrm{Js} / \mathrm{m}$ ，因此 $\lambda=\frac{h}{p}=\frac{6.626\times10^{-34}~\mathrm{Js}}{6.5~\mathrm{Js} / \mathrm{m}}=1.02\times10^{-34} \mathrm{~m}$
+<div class="step">
 
-篮球的德布罗意波长为
+**静止质能**：$E_0 = m_0 c^2 = (0.65~\mathrm{kg})(2.998\times10^8~\mathrm{m/s})^2 = 5.84\times10^{16}~\mathrm{J}$
 
-￼
+</div>
 
----
+<div class="step">
 
-# 习题
+$K/(K+E_0) \ll 1$，非相对论近似成立，动量 $p = m_0 u = 6.5~\mathrm{kg \cdot m/s}$
 
-$E_{0}=m_{0} c^{2}=\left(9.109\times10^{-31} \mathrm{~kg}\right)\left(2.998\times10^{8} \mathrm{~m} / \mathrm{s}\right)^{2}=511~\mathrm{keV}$
+</div>
 
-(b)电子静止时的质能
+<div class="result">
 
-$K=1.0~eV$
+**篮球的德布罗意波长**：$\lambda = \frac{h}{p} = \frac{6.626\times10^{-34}~\mathrm{J\cdot s}}{6.5~\mathrm{kg\cdot m/s}} = 1.02\times10^{-34}~\mathrm{m}$
 
-尽管当 $K /\left(K+E_{0}\right) \ll 1$ ， $\lambda=\frac{h}{p}=\frac{h c}{\sqrt{K\left(K+2 E_{0}\right)}}=\frac{1.241 \mathrm{eV} \mu \mathrm{m}}{\sqrt{(1.0 \mathrm{eV})[1.0 \mathrm{eV}+2(511 \mathrm{keV})]}}=1.23 \mathrm{~nm}$ ，方便起见我们仍然采用 $E^2 = p^2 c^2 + E_0^2$
-
-TIPS:
-
-相对论情况下的质能守恒 $p=\sqrt{\left(E^{2}-E_{0}^{2}\right) / c^{2}}=\sqrt{K\left(K+2 E_{0}\right)} / c$
-
-可以得出￼
+</div>
 
 ---
 
-# 习题
+<style scoped>
+.step { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-bottom: 0.5em; border-left: 3px solid #C71585; font-size: 0.95em; }
+.tip { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.5em; border-left: 3px solid #30d158; font-size: 0.9em; }
+.result { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.5em; border-left: 3px solid #5856d6; font-size: 0.95em; }
+</style>
 
-$K=108~keV$
+# 习题 (b) 动能 $K=1.0~\mathrm{eV}$ 的电子
 
-(b)当 $K /\left(K+E_{0}\right)= 108 / 619$ 时， $\lambda=\frac{h}{p}=\frac{h c}{\sqrt{K\left(K+2 E_{0}\right)}}=\frac{1.241 \mathrm{eVm}}{\sqrt{108 \mathrm{keV}[108 \mathrm{keV}+2(511 \mathrm{keV})]}}=3.55 \mathrm{pm}$ ，相对论效应不能忽略￼
+<div class="step">
+
+**电子静止质能**：$E_0 = m_0 c^2 = 511~\mathrm{keV}$
+
+</div>
+
+<div class="step">
+
+$K/(K+E_0) \ll 1$，但方便起见仍采用相对论公式 $E^2 = p^2c^2 + E_0^2$
+
+</div>
+
+<div class="tip">
+
+**TIPS**：相对论动量 $p = \sqrt{K(K+2E_0)}/c$
+
+</div>
+
+<div class="result">
+
+**德布罗意波长**：$\lambda = \frac{hc}{\sqrt{K(K+2E_0)}} = \frac{1.241~\mathrm{eV\cdot\mu m}}{\sqrt{1.0~\mathrm{eV}\times[1.0~\mathrm{eV}+2(511~\mathrm{keV})]}} = 1.23~\mathrm{nm}$
+
+</div>
 
 ---
+
+<style scoped>
+.step { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-bottom: 0.5em; border-left: 3px solid #C71585; font-size: 0.95em; }
+.result { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.5em; border-left: 3px solid #5856d6; font-size: 0.95em; }
+</style>
+
+# 习题 (c) 动能 $K=108~\mathrm{keV}$ 的电子
+
+<div class="step">
+
+$K/(K+E_0) = 108/619$，**相对论效应不能忽略**
+
+</div>
+
+<div class="result">
+
+**德布罗意波长**：$\lambda = \frac{hc}{\sqrt{K(K+2E_0)}} = \frac{1.241~\mathrm{eV\cdot m}}{\sqrt{108~\mathrm{keV}\times[108~\mathrm{keV}+2(511~\mathrm{keV})]}} = 3.55~\mathrm{pm}$
+
+</div>
+---
+
+<style scoped>
+.slidev-layout { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+</style>
 
 # 戴维孙-革末实验
 
-<img src="/images/Screen Shot 2023-03-15 at 19.29.55-28397.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screen Shot 2023-03-15 at 19.29.55-28397.png" style="max-width: 85%; max-height: 75vh; object-fit: contain;" />
 
 ---
 layout: two-cols
 ---
 
+<style scoped>
+.timeline { position: relative; padding-left: 1.5em; margin-top: 0.5em; }
+.timeline::before { content: ''; position: absolute; left: 0.35em; top: 0.2em; bottom: 0.2em; width: 2px; background: linear-gradient(to bottom, #5856d6, #C71585); }
+.timeline .era { position: relative; margin-bottom: 1em; }
+.timeline .era::before { content: ''; position: absolute; left: -1.28em; top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: #5856d6; }
+.slidev-layout { font-size: 1.3rem; }
+.timeline .era p { margin: 0.15em 0; font-size: 1.2em; line-height: 1.6; }
+.highlight { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.6em 0.8em; margin-top: 0.8em; border-left: 3px solid #C71585; font-size: 1.2em; }
+</style>
+
 # 戴维孙-革末实验
 
-1926年： 了解德布罗意物质波假设；
+<div class="timeline">
+<div class="era">
+<p><b>1924年</b>：德布罗意提出物质波假设</p>
+</div>
+<div class="era">
+<p><b>1926年</b>：戴维孙、革末了解到德布罗意假设</p>
+</div>
+<div class="era" style="margin-bottom:0;">
+<p><b>1927年</b>：观察到电子衍射现象</p>
+</div>
+</div>
 
-1927年： 观察到电子衍射现象。
+<div class="highlight">
 
-<!-- TODO: 缺失图片 pasted-image-26563.tiff，需从Keynote重新导出 -->
+历史上**第一次**实验证实电子具有波动性
+
+</div>
 
 ::right::
 
@@ -382,17 +532,38 @@ layout: two-cols
 layout: two-cols
 ---
 
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.formula-box { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-bottom: 0.6em; border-left: 3px solid #5856d6; }
+.obs-card { background: rgba(199,21,133,0.04); border-radius: 10px; padding: 0.5em 0.8em; margin-bottom: 0.5em; border-left: 3px solid #C71585; font-size: 1.05em; line-height: 1.5; }
+.result-box { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.5em; border-left: 3px solid #30d158; font-size: 1.05em; }
+</style>
+
 # 戴维孙-革末实验
 
-$e \Delta V=K=\frac{p^{2}}{2 m} \Rightarrow p=\sqrt{2 m e \Delta V}$
+<div class="formula-box">
 
-历史上第一次证明电子具有波动性的实验
+$e\Delta V = K = \frac{p^2}{2m} \Rightarrow p = \sqrt{2me\Delta V}$
 
-当镍靶具有具有许多随机取向的微观晶体结构时，散射电子束的强度在任何方向上都大致相同。
+</div>
 
-当镍靶具有规则的晶体结构时，散射电子束的强度在特定角度显示出明显的最大值，结果显示出清晰的衍射图案
+<div class="obs-card">
 
-$\Delta V = 54~eV$ ， $\varphi = 50^\circ$ 时最大
+**随机晶体**：散射电子束强度在各方向大致相同
+
+</div>
+
+<div class="obs-card">
+
+**规则晶体**：特定角度出现明显最大值，呈现清晰的**衍射图案**
+
+</div>
+
+<div class="result-box">
+
+$\Delta V = 54~\mathrm{eV}$，$\varphi = 50°$ 时衍射极大
+
+</div>
 
 ::right::
 
@@ -402,9 +573,16 @@ $\Delta V = 54~eV$ ， $\varphi = 50^\circ$ 时最大
 layout: two-cols
 ---
 
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.paper-caption { text-align: center; font-size: 0.85em; color: #666; margin-top: 0.3em; }
+</style>
+
 # 戴维孙-革末实验
 
-具有明显的衍射图样
+<img src="/images/davisson-germer-nature-1927.jpg" style="max-width: 100%; max-height: 380px; object-fit: contain; border-radius: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);" />
+
+<p class="paper-caption">C. Davisson & L.H. Germer, <i>Nature</i>, 1927</p>
 
 ::right::
 
@@ -414,11 +592,27 @@ layout: two-cols
 layout: two-cols
 ---
 
-# 戴维孙-革末实验
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.diff-box { display: flex; gap: 0.8em; margin-top: 0.6em; }
+.diff-box .side { flex: 1; padding: 0.5em 0.7em; border-radius: 8px; font-size: 1.05em; line-height: 1.5; }
+.diff-box .xray { background: rgba(88,86,214,0.08); border-left: 3px solid #5856d6; }
+.diff-box .electron { background: rgba(199,21,133,0.08); border-left: 3px solid #C71585; }
+.formula-box { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.8em; border-left: 3px solid #30d158; font-size: 1.05em; }
+</style>
 
-$X$
+# 戴维孙-革末实验：电子散射 vs X射线散射
 
-特别注意是电子散射与 $X$ 射线散射不同， $p=\sqrt{2 m e \Delta V}=2.478 \times 10^{-5}~ eVs/m$ 射线可以穿透物体表面，但是（低能）电子只能与物体表面发生作用
+<div class="diff-box">
+<div class="side xray"><b>X射线</b><br>可以穿透物体表面，发生体散射（Bragg衍射）</div>
+<div class="side electron"><b>低能电子</b><br>只能与物体表面发生作用，属于表面散射</div>
+</div>
+
+<div class="formula-box">
+
+电子动量：$p = \sqrt{2me\Delta V}$
+
+</div>
 
 ::right::
 
@@ -1514,8 +1708,7 @@ $\psi_1$
 
 其中的系数 $1=\sum_{n} C_{n}^{2}$  为复数，它们模平方是在对应态粒子出现的概率。
 
-它们满足：           ￼
-
+它们满足：           
 ---
 
 # 为什么波函数用复数表示
@@ -1528,8 +1721,7 @@ $(E-H) \Psi = 0$
 
 当 $\Psi = \frac{1}{E-T} V \Psi$ 时， $E >0$
 
-当 $\Psi = \lim_{\epsilon -> 0}\frac{1}{E-T+i\epsilon} V \Psi$ 时，￼
-
+当 $\Psi = \lim_{\epsilon -> 0}\frac{1}{E-T+i\epsilon} V \Psi$ 时，
 ---
 
 # 总结
@@ -1548,8 +1740,7 @@ v=\lambda \nu$ 概率密度
 
 正弦波的参数： $\omega$
 
-$k$ 和 $E=\hbar \omega, \quad  p=\hbar k$ 表达下的德布罗意关系：￼
-
+$k$ 和 $E=\hbar \omega, \quad  p=\hbar k$ 表达下的德布罗意关系：
 波包：在某个有限区域之外为零（或极小）的波
 
 ---
@@ -1568,8 +1759,7 @@ $\int_{\Omega}|\Psi|^{2} d V=1 \quad(\Omega-\text { 全空间 })$
 
 不确定性关系： $\sigma  \equiv \sqrt{E[X^2]-(E[X])^2}$
 
-不确定性原理的统计学解释：￼
-
+不确定性原理的统计学解释：
 经典力学与量子力学的对比：特点，状态描述，运动方程，联系
 
 ---
