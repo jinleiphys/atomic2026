@@ -7,7 +7,66 @@ drawings:
 transition: slide-left
 mdc: true
 math: katex
+css: unocss
 ---
+
+<style>
+.slidev-layout {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.slidev-layout {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif !important;
+}
+.slidev-layout h1 {
+  font-size: 1.85em !important;
+  white-space: nowrap !important;
+}
+.kaiti-accent {
+  color: #C71585 !important;
+  font-weight: bold !important;
+}
+.slidev-layout.two-columns {
+  gap: 1rem;
+}
+.slidev-layout.two-columns .col-left,
+.slidev-layout.two-columns .col-right {
+  min-height: 0;
+}
+.slidev-layout.two-columns .col-left {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.slidev-layout.two-columns .col-left h1 {
+  margin-bottom: 0.75rem;
+}
+.slidev-layout.two-columns .col-left ul,
+.slidev-layout.two-columns .col-left ol,
+.slidev-layout.two-columns .col-left p {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.slidev-layout.two-columns .col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.slidev-layout.two-columns .col-right img,
+.slidev-layout.two-columns .col-right video {
+  max-height: 380px !important;
+  margin: 0 auto !important;
+  object-fit: contain;
+}
+</style>
 
 # 第三章 量子力学导论
 
@@ -18,6 +77,10 @@ math: katex
 邮箱：jinl@tongji.edu.cn
 
 ---
+
+<style scoped>
+.slidev-layout { font-size: 1.35rem; line-height: 1.8; }
+</style>
 
 # §12 波粒二象性
 
@@ -34,51 +97,49 @@ math: katex
 （5）使用德布罗意假设解释电子衍射现象
 
 ---
+layout: two-cols
+---
 
 # 什么是粒子性？
 
-$\vec{p} = m \vec{v}$
+动量： $\vec{p} = m \vec{v}$
 
-动量： $\vec{\ell } = \vec{r} \times \vec{p}$
-
-角动量： $|\ell| = |r||p|\sin \theta$
+角动量： $\vec{\ell } = \vec{r} \times \vec{p}$，$|\ell| = |r||p|\sin \theta$
 
 动能： $T=\frac{1}{2} m v^2$
 
-势能：
+势能： $V_P  = - \int_R^P F(x) dx$
 
-$V_P  = - \int_R^P F(x) dx$
+::right::
 
-<img src="/images/Screen Shot 2022-03-09 at 12.24.21-26215.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screen Shot 2022-03-09 at 12.24.21-26215.png" style="max-width: 100%; max-height: 200px; object-fit: contain;" />
 
-<img src="/images/Screen Shot 2022-03-09 at 12.35.38-26277.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screen Shot 2022-03-09 at 12.35.38-26277.png" style="max-width: 100%; max-height: 200px; object-fit: contain;" />
 
+---
+layout: two-cols
 ---
 
 # 什么是波动性？
 
-$y = \sin \omega t$
-
-脉冲
-
-谐波
-
-谐波： $\lambda = v T$
-
-波长： $\lambda \nu = v$
+谐波： $\lambda = v T$，波长： $\lambda \nu = v$
 
 波速： $\nu = 1/T$
 
 $y (x,t)= A\sin [2\pi (x/\lambda -t/T)]$
 
-谐波是时间和空间的函数： $k =  \frac{2\pi}{\lambda }$
+波数： $k = \frac{2\pi}{\lambda}$
 
-波数： $\omega = \frac{2\pi}{T}= 2\pi \nu$
+角频率： $\omega = \frac{2\pi}{T}= 2\pi \nu$
 
-角频率： $y (x,t)= A\sin [kx  -\omega t)]$
+$y (x,t)= A\sin [kx -\omega t]$
 
-<img src="/images/Screen Shot 2022-03-09 at 12.47.48-26290.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/Screen Shot 2022-03-09 at 12.47.48-26290.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 驻波：波的叠加/相干
@@ -101,9 +162,9 @@ $y(x, t)=y_{1}(x, t)+y_{2}(x, t)$
 
 $y_{1}(x)=A \sin (k x-\omega t)$
 
-<video controls style="max-width: 500px;">
-  <source src="/images/Waventerference-28289.gif" />
-</video>
+::right::
+
+<img src="/images/Waventerference-28289.gif" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -158,14 +219,18 @@ $E=h\nu=pc$
 在能量转移时显示粒子性
 
 ---
+layout: two-cols
+---
 
 # 德布罗意假设（1923年提出，1929年获诺奖）
 
 从辩证思维出发,法国青年物理学家德布罗意  (de Broglie)提出,既然光具有粒子性,是否实物粒子如电子也应当具有波动性？
 
-1924.11.29 德布罗意把题为“量子理论的研究”的博士论文提交巴黎大学。
+1924.11.29 德布罗意把题为”量子理论的研究”的博士论文提交巴黎大学。
 
-<img src="/images/pasted-image-26528.png" style="max-width: 470px; max-height: 400px;" />
+::right::
+
+<img src=”/images/pasted-image-26528.png” style=”max-width: 100%; max-height: 400px; object-fit: contain;” />
 
 ---
 
@@ -181,11 +246,11 @@ $E=h\nu=pc$
 
 # 德布罗意假设（1923年提出，1929年获诺奖）
 
-<img src="/images/pasted-image-28355.tiff" style="max-width: 500px; max-height: 400px;" />
+<!-- TODO: 缺失图片 pasted-image-28355.tiff，需从Keynote重新导出 -->
 
 <img src="/images/WeChatc972adbd697068c605064e09c291962c-28365.png" style="max-width: 500px; max-height: 400px;" />
 
-<img src="/images/pasted-image-28373.tiff" style="max-width: 500px; max-height: 400px;" />
+<!-- TODO: 缺失图片 pasted-image-28373.tiff，需从Keynote重新导出 -->
 
 ---
 
@@ -222,6 +287,8 @@ $\nu$
 \end{aligned}$ ，满足
 
 ---
+layout: two-cols
+---
 
 # 习题
 
@@ -233,9 +300,9 @@ $\nu$
 
 （c）动能为108 keV的电子
 
-<video controls style="max-width: 400px;">
-  <source src="/images/400px-Wavelet-22901.gif" />
-</video>
+::right::
+
+<img src="/images/400px-Wavelet-22901.gif" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -288,6 +355,8 @@ $K=108~keV$
 <img src="/images/Screen Shot 2023-03-15 at 19.29.55-28397.png" style="max-width: 500px; max-height: 400px;" />
 
 ---
+layout: two-cols
+---
 
 # 戴维孙-革末实验
 
@@ -295,9 +364,11 @@ $K=108~keV$
 
 1927年： 观察到电子衍射现象。
 
-<img src="/images/pasted-image-26563.tiff" style="max-width: 334px; max-height: 400px;" />
+<!-- TODO: 缺失图片 pasted-image-26563.tiff，需从Keynote重新导出 -->
 
-<img src="/images/pasted-image-26569.png" style="max-width: 500px; max-height: 400px;" />
+::right::
+
+<img src="/images/pasted-image-26569.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -307,6 +378,8 @@ $K=108~keV$
 
 <img src="/images/Screen Shot 2023-03-15 at 19.42.00-28451.png" style="max-width: 500px; max-height: 400px;" />
 
+---
+layout: two-cols
 ---
 
 # 戴维孙-革末实验
@@ -321,16 +394,24 @@ $e \Delta V=K=\frac{p^{2}}{2 m} \Rightarrow p=\sqrt{2 m e \Delta V}$
 
 $\Delta V = 54~eV$ ， $\varphi = 50^\circ$ 时最大
 
-<img src="/images/CNX_UPhysics_39_05_davisson-1-23088.jpg" style="max-width: 457px; max-height: 400px;" />
+::right::
 
+<img src="/images/CNX_UPhysics_39_05_davisson-1-23088.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 戴维孙-革末实验
 
 具有明显的衍射图样
 
-<img src="/images/CNX_UPhysics_39_05_davisson2-1-23136.jpg" style="max-width: 347px; max-height: 400px;" />
+::right::
 
+<img src="/images/CNX_UPhysics_39_05_davisson2-1-23136.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 戴维孙-革末实验
@@ -339,7 +420,9 @@ $X$
 
 特别注意是电子散射与 $X$ 射线散射不同， $p=\sqrt{2 m e \Delta V}=2.478 \times 10^{-5}~ eVs/m$ 射线可以穿透物体表面，但是（低能）电子只能与物体表面发生作用
 
-<img src="/images/CNX_UPhysics_39_05_bragg-1-23265.jpg" style="max-width: 333px; max-height: 400px;" />
+::right::
+
+<img src="/images/CNX_UPhysics_39_05_bragg-1-23265.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -350,13 +433,19 @@ $X$
 </video>
 
 ---
+layout: two-cols
+---
 
 # 汤姆逊衍射实验
 
 同年，英国的汤姆逊用多晶体做电子衍射实验,也得到了电子衍射照片。
 
-<img src="/images/Screen Shot 2023-03-15 at 20.04.58-28471.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/Screen Shot 2023-03-15 at 20.04.58-28471.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 汤姆逊衍射实验
@@ -365,7 +454,9 @@ $X$
 
 十年后，戴维逊、汤姆逊因电子衍射实验的成果共获1937年度诺贝尔物理奖。
 
-<img src="/images/Screen Shot 2022-03-09 at 16.19.29-26625.png" style="max-width: 500px; max-height: 400px;" />
+::right::
+
+<img src="/images/Screen Shot 2022-03-09 at 16.19.29-26625.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -377,6 +468,8 @@ $K_{T}=\frac{3}{2} k_{B} T=\frac{3}{2}\left(8.6210^{-5} \mathrm{eV} / \mathrm{K}
 
 https://en.wikipedia.org/wiki/Monatomic_gas
 
+---
+layout: two-cols
 ---
 
 # 德布罗意波和量子态
@@ -393,49 +486,65 @@ $l=n \lambda / 2$
 
 玻尔量子化条件
 
-<img src="/images/CNX_UPhysics_39_05_string-1-23413.jpg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/CNX_UPhysics_39_05_string-1-23413.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 波粒二象性（电子散射实验）
 
 1961年，Claus Jönsson在德国进行了第一个电子束双缝实验，证明电子束确实形成了干涉图案，这意味着电子集体表现为波。
 
-<img src="/images/Screen Shot 2023-03-15 at 23.04.28-28494.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/Screen Shot 2023-03-15 at 23.04.28-28494.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 波粒二象性（电子散射实验）
 
 1961年，Claus Jönsson在德国进行了第一个电子束双缝实验，证明电子束确实形成了干涉图案，这意味着电子集体表现为波。
 
-<img src="/images/CNX_UPhysics_39_06_duality-1-24258.jpg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<video controls style="max-width: 500px;">
-  <source src="/images/Wave-particle_duality-24264.gif" />
-</video>
+<img src="/images/CNX_UPhysics_39_06_duality-1-24258.jpg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
+<img src="/images/Wave-particle_duality-24264.gif" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 波粒二象性（电子散射实验）
 
 1974 年意大利的Giulio Pozzi和1989年日本的Akira Tonomura进行了第一个单电子通过狭缝的双缝实验。他们表明，即使电子单独通过狭缝，干涉条纹也会逐渐形成。这最终证明了电子衍射图像是由于电子的波动性而形成的。
 
-<img src="/images/4e86ca73913ca43ca418deaf3e209739_1440w-26675.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/4e86ca73913ca43ca418deaf3e209739_1440w-26675.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 波粒二象性（电子散射实验）
 
 电子不是每次只是随机通过其中的一条缝，而是“同时”通过了两条缝，并和“自己”发生了干涉。
 
-<img src="/images/9e67b1b3aaf9576626f97f20e055da11_1440w-26683.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/9e67b1b3aaf9576626f97f20e055da11_1440w-26683.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
-<img src="/images/14677f39105af01a5a05e422c912ae59_1440w-26691.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/14677f39105af01a5a05e422c912ae59_1440w-26691.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
-<img src="/images/99380bf24481838b19a0e60b1ffcb2e3_1440w-26699.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<img src="/images/300db4aa0a9cc4ccd804cae19213610c_1440w-26705.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/99380bf24481838b19a0e60b1ffcb2e3_1440w-26699.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+
+<img src="/images/300db4aa0a9cc4ccd804cae19213610c_1440w-26705.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
 ---
 
@@ -504,12 +613,16 @@ $l=n \lambda / 2$
 （3）描述能量-时间不确定性关系的物理意义
 
 ---
+layout: two-cols
+---
 
 # 唯像的测不准关系(Observer effect)
 
 胎压测量时会导致轮胎内部气体的溢出，无法准确的测量轮胎的胎压
 
-<img src="/images/aid120258-v4-728px-Check-Air-Pressure-in-Tires-Step-10-Version-2.jpg.webp-28524.jpeg" style="max-width: 500px; max-height: 400px;" />
+::right::
+
+<img src="/images/aid120258-v4-728px-Check-Air-Pressure-in-Tires-Step-10-Version-2.jpg.webp-28524.jpeg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -530,6 +643,8 @@ $\Delta p \sim \frac{h}{\lambda}$
 位置测定得越准确，动量就变得越测不准，反之亦然
 
 ---
+layout: two-cols
+---
 
 # 测不准关系的实验验证（单缝衍射）
 
@@ -549,11 +664,13 @@ $\Delta p_x = p\sin\theta_1$      (1)
 
 x方向上的动量不确定量为：
 
-<img src="/images/pasted-image-26779.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<img src="/images/pasted-image-26786.png" style="max-width: 342px; max-height: 400px;" />
+<img src="/images/pasted-image-26779.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
-<img src="/images/pasted-image-26793.png" style="max-width: 464px; max-height: 400px;" />
+<img src="/images/pasted-image-26786.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+
+<img src="/images/pasted-image-26793.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
 ---
 
@@ -653,7 +770,7 @@ $\Delta t=10^{-8}~s$
 
 # 当h=1时
 
-<img src="/images/pasted-image-27117.tiff" style="max-width: 310px; max-height: 400px;" />
+<!-- TODO: 缺失图片 pasted-image-27117.tiff，需从Keynote重新导出 -->
 
 <img src="/images/Screen Shot 2022-03-21 at 10.23.20-27128.png" style="max-width: 500px; max-height: 400px;" />
 
@@ -676,27 +793,37 @@ $\Delta t=10^{-8}~s$
 计算位置的期望值
 
 ---
+layout: two-cols
+---
 
 # 波函数
 
 问题：那么，粒子性和波动性这两个完全不同的性质又是如何统一到了微观粒子上呢？
 
-<img src="/images/img-02.proxy.5ce.com-27163.jpeg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<img src="/images/pasted-image-27178.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/img-02.proxy.5ce.com-27163.jpeg" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
-<img src="/images/pasted-image-27167.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/pasted-image-27178.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
+<img src="/images/pasted-image-27167.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 子弹、水波和电子分别通过双缝的理想实验
 
 理查德·费曼Richard Feynman（1918－1988）美国物理学家。1965年诺贝尔物理奖得主。
 
-<img src="/images/pasted-image-27189.jpeg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<img src="/images/pasted-image-27196.jpeg" style="max-width: 412px; max-height: 400px;" />
+<img src="/images/pasted-image-27189.jpeg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
+<img src="/images/pasted-image-27196.jpeg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 子弹的双缝实验
@@ -711,8 +838,12 @@ $\Delta t=10^{-8}~s$
 
 “非相干叠加”。即主要表现了粒子性。
 
-<img src="/images/pasted-image-27233.jpeg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/pasted-image-27233.jpeg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 水波的双缝实验
@@ -721,8 +852,12 @@ $\Delta t=10^{-8}~s$
 
 因为水波通过双缝时被分为两个相干的次波源，它们在空间将进行相干叠加，所以在屏上将呈现出双缝干涉图样。
 
-<img src="/images/pasted-image-27271.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/pasted-image-27271.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 电子的双缝实验
@@ -741,7 +876,9 @@ $\Delta t=10^{-8}~s$
 
 经典物理学无法说明粒子性和波动性之间的关系
 
-<img src="/images/pasted-image-27296.png" style="max-width: 494px; max-height: 400px;" />
+::right::
+
+<img src="/images/pasted-image-27296.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -764,6 +901,8 @@ $\Delta t=10^{-8}~s$
 德布罗意波：是概率波
 
 ---
+layout: two-cols
+---
 
 # 什么是波函数
 
@@ -775,16 +914,16 @@ $\Delta t=10^{-8}~s$
 
 但是位置和动量不能同时确定
 
-<img src="/images/600px-Wave_Sinusoidal_Cosine_wave_sine_Blue.svg-2-24291.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<video controls style="max-width: 120px;">
-  <source src="/images/AC_wave_Positive_direction-2-24272.gif" />
-</video>
+<img src="/images/600px-Wave_Sinusoidal_Cosine_wave_sine_Blue.svg-2-24291.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
-<video controls style="max-width: 300px;">
-  <source src="/images/Plane_Wave_3D_Animation_300x216_255Colors-2-24278.gif" />
-</video>
+<img src="/images/AC_wave_Positive_direction-2-24272.gif" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
+<img src="/images/Plane_Wave_3D_Animation_300x216_255Colors-2-24278.gif" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 光的波函数
@@ -807,8 +946,12 @@ $|E|^2$
 
 正比于电场在该点的强度的平方
 
-<img src="/images/CNX_UPhysics_40_01_TwoSlit-1-24365.jpg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/CNX_UPhysics_40_01_TwoSlit-1-24365.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 波函数的统计解释（M.Born, 1926）
@@ -821,10 +964,14 @@ $|\Psi(x,t)|^2$
 
 或, $x$ 时刻在 $x+dx$ 到 $P(x, x+d x)$ 的区间内找到粒子的几率 $|\Psi(x,t)|^2 dx$ 与￼成正比
 
-<video controls style="max-width: 320px;">
+::right::
+
+<video controls style="max-width: 100%; max-height: 400px; object-fit: contain;">
   <source src="/images/1-24677.mp4" />
 </video>
 
+---
+layout: two-cols
 ---
 
 # 波函数的统计解释（M.Born, 1926）
@@ -835,7 +982,9 @@ $|\Psi(x,t)|^2$
 
 1954年Nobel物理奖
 
-<img src="/images/CNX_UPhysics_40_01_Prob_Square-1-24588.jpg" style="max-width: 486px; max-height: 400px;" />
+::right::
+
+<img src="/images/CNX_UPhysics_40_01_Prob_Square-1-24588.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -888,34 +1037,46 @@ Niels Bohr reportedly replied to Einstein's later expression of this sentiment b
 不确定性原理: 海森堡提出不确定性原理，指出粒子的位置和动量不能同时被精确地知道。这不是测量技术的限制，而是自然界的基本性质。
 
 ---
+layout: two-cols
+---
 
 # 量子力学的其他解释
 
 多世界解释: 由休·埃弗雷特提出，认为波函数从不坍缩，而是所有可能的量子事件都在一个广阔的多宇宙中实现，每个可能的历史都在不同的宇宙中发生。
 
-<img src="/images/Schroedingers_cat_film.svg-29098.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<img src="/images/9780691645926.jpg-29105.jpeg" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Schroedingers_cat_film.svg-29098.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
-<img src="/images/1_340818701_171_85_3_824378794_c0eab89545593cfdca20f31f5498b98c-29121.png" style="max-width: 400px; max-height: 400px;" />
+<img src="/images/9780691645926.jpg-29105.jpeg" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
 
+<img src="/images/1_340818701_171_85_3_824378794_c0eab89545593cfdca20f31f5498b98c-29121.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 量子力学的其他解释
 
 隐变量理论: 如德布罗意-玻姆理论，提出除了波函数之外还有隐藏的变量决定粒子的行为，这些变量在标准量子力学中没有被考虑。
 
-<img src="/images/Screen Shot 2024-03-27 at 21.37.11-29145.png" style="max-width: 500px; max-height: 400px;" />
+::right::
 
-<img src="/images/Screen Shot 2024-03-27 at 21.37.19-29152.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screen Shot 2024-03-27 at 21.37.11-29145.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
+<img src="/images/Screen Shot 2024-03-27 at 21.37.19-29152.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 量子力学的其他解释
 
 客观坍缩理论: 在Penrose解释中，当一个物体的量子态与不同的时空几何相互叠加时，这种叠加状态是不稳定的，会自发地坍缩到一个确定的状态。彭罗斯认为，这种坍缩与引力有关，当量子叠加产生的时空曲率差异达到一个阈值时，就会触发坍缩。
 
-<img src="/images/Screen Shot 2024-03-27 at 21.57.51-29187.png" style="max-width: 500px; max-height: 400px;" />
+::right::
+
+<img src="/images/Screen Shot 2024-03-27 at 21.57.51-29187.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -966,6 +1127,8 @@ $t$ －在 $V$ 时刻粒子出现在 $\alpha$ 体积内的概率。
 当 $\psi$ 为实数时， $e^{i\alpha}\psi$ 与￼代表同一个态
 
 ---
+layout: two-cols
+---
 
 # 电子双缝干涉实验的统计学解释
 
@@ -985,13 +1148,15 @@ $\psi_A(r,t)$
 
 玻恩的统计诠释成为量子力学的一个基本假设。
 
-<img src="/images/pasted-image-27416.png" style="max-width: 494px; max-height: 400px;" />
+::right::
 
-<img src="/images/pasted-image-27446.png" style="max-width: 344px; max-height: 400px;" />
+<img src="/images/pasted-image-27416.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
 
-<img src="/images/pasted-image-27453.png" style="max-width: 344px; max-height: 400px;" />
+<img src="/images/pasted-image-27446.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
 
-<img src="/images/pasted-image-27459.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/pasted-image-27453.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
+
+<img src="/images/pasted-image-27459.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
 
 ---
 
@@ -1012,13 +1177,19 @@ $\psi_A(r,t)$
 •不是经典的波 不代表实在物理量的波动
 
 ---
+layout: two-cols
+---
 
 # 电子云
 
 用密或稀表示空间各处概率密度的大小，很像在原子核外有一层疏密不等的“云”，人们把它形象地叫做“电子云”。
 
-<img src="/images/pasted-image-27530.jpeg" style="max-width: 500px; max-height: 400px;" />
+::right::
 
+<img src="/images/pasted-image-27530.jpeg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 习题
@@ -1033,8 +1204,12 @@ $k=2\pi/\lambda$ 为波数，区间外波函数为0
 
 应用归一化条件可得 $A \cos (k L / 2)=0$ ，可得
 
-<img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 426px; max-height: 400px;" />
+::right::
 
+<img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 习题
@@ -1049,12 +1224,14 @@ $L$
 
 小球的波长
 
-<img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 426px; max-height: 400px;" />
+::right::
 
-<video controls style="max-width: 500px;">
-  <source src="/images/v2-4fcebba5e210f33cd800759166c495fe_720w.webp-24870.gif" />
-</video>
+<img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
+<img src="/images/v2-4fcebba5e210f33cd800759166c495fe_720w.webp-24870.gif" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+
+---
+layout: two-cols
 ---
 
 # 态叠加原理
@@ -1069,7 +1246,9 @@ $x_1$
 
 薛定谔的猫
 
-<img src="/images/CNX_UPhysics_40_01_Two_State-1-25192.jpg" style="max-width: 500px; max-height: 400px;" />
+::right::
+
+<img src="/images/CNX_UPhysics_40_01_Two_State-1-25192.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
 
 ---
 
@@ -1153,13 +1332,9 @@ $\Psi(x, t)= A e^{i(kx-\omega t)}$
 
 波包是平面波在 $|\Psi(x,t)|^2 =|A|^2$ 区间内的叠加态
 
-<video controls style="max-width: 313px;">
-  <source src="/images/reality_wavepacket-25511.gif" />
-</video>
+<img src="/images/reality_wavepacket-25511.gif" style="max-width: 313px;" />
 
-<video controls style="max-width: 360px;">
-  <source src="/images/Sequential_superposition_of_plane_waves-25514.gif" />
-</video>
+<img src="/images/Sequential_superposition_of_plane_waves-25514.gif" style="max-width: 360px;" />
 
 ---
 
@@ -1447,9 +1622,7 @@ $$$
 
 傅里叶逆变换
 
-<video controls style="max-width: 500px;">
-  <source src="/images/1*ww6y2-OzmWfB5M_igMwuog-28805.gif" />
-</video>
+<img src="/images/1*ww6y2-OzmWfB5M_igMwuog-28805.gif" style="max-width: 500px;" />
 
 ---
 

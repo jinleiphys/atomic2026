@@ -363,6 +363,9 @@
         .card[data-color="pink"]:hover {
             box-shadow: 0 16px 48px rgba(255,55,95,0.1), 0 0 0 1px rgba(255,255,255,0.8) inset;
         }
+        .card[data-color="cyan"]:hover {
+            box-shadow: 0 16px 48px rgba(50,215,230,0.1), 0 0 0 1px rgba(255,255,255,0.8) inset;
+        }
 
         /* SVG 动画 */
         @keyframes alphaFly {
@@ -557,7 +560,35 @@
             </div>
         </a>
 
-        <!-- Ch3 (暂时隐藏) -->
+        <!-- Ch3 -->
+        <a class="card" href="第三章/dist/index.html" data-color="cyan" data-delay="200">
+            <div class="card-glow"></div>
+            <span class="card-num">03</span>
+            <div class="card-icon-wrap">
+                <svg viewBox="0 0 80 80" fill="none">
+                    <!-- 波函数 ψ 可视化 -->
+                    <path d="M4 50 Q12 20 20 40 Q28 60 36 30 Q44 0 52 40 Q60 80 68 35 Q72 20 76 40" stroke="#32d7e6" stroke-width="2" opacity="0.5" fill="none"/>
+                    <path d="M4 50 Q12 25 20 42 Q28 58 36 32 Q44 5 52 42 Q60 75 68 37 Q72 22 76 42" stroke="#30d158" stroke-width="1.2" opacity="0.3" fill="none" stroke-dasharray="3 2"/>
+                    <!-- 概率密度 |ψ|² -->
+                    <rect x="18" y="42" width="4" height="8" rx="1" fill="#32d7e6" opacity="0.15"/>
+                    <rect x="34" y="32" width="4" height="18" rx="1" fill="#32d7e6" opacity="0.2"/>
+                    <rect x="50" y="38" width="4" height="12" rx="1" fill="#32d7e6" opacity="0.15"/>
+                    <!-- ℏ 符号暗示 -->
+                    <text x="62" y="18" font-size="14" fill="#32d7e6" opacity="0.25" font-style="italic">ℏ</text>
+                    <!-- 量子隧穿势垒 -->
+                    <rect x="30" y="55" width="20" height="15" rx="2" fill="#32d7e6" opacity="0.06" stroke="#32d7e6" stroke-width="0.5" opacity="0.15"/>
+                    <path d="M20 62 Q30 62 35 58" stroke="#30d158" stroke-width="1" opacity="0.4" fill="none"/>
+                    <path d="M45 62 Q55 66 65 62" stroke="#30d158" stroke-width="1" opacity="0.2" fill="none" stroke-dasharray="2 2"/>
+                </svg>
+            </div>
+            <h3>量子力学导论</h3>
+            <p>波粒二象性、不确定性关系、薛定谔方程、量子力学基本概念</p>
+            <div class="card-footer">
+                <span>开始学习</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+
         <!-- Ch4 (暂时隐藏) -->
 
     </div>
