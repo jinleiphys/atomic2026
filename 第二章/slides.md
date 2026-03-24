@@ -1729,6 +1729,45 @@ $$\frac{1}{\lambda} = \frac{E_0}{hc}\left(\frac{1}{n'^2} - \frac{1}{n^2}\right)Z
 
 ---
 
+<style scoped>
+.slidev-layout { font-size: 1.25rem; }
+.derive { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #5856d6; line-height: 1.8; }
+.result { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #C71585; line-height: 1.8; }
+.modern { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #30d158; line-height: 1.8; }
+</style>
+
+# 元素存在的极限——最大原子序数
+
+<div class="derive">
+
+类氢离子第 $n$ 轨道电子速度：$v_n = \dfrac{Ze^2}{4\pi\epsilon_0 \hbar} \cdot \dfrac{1}{n} = \dfrac{Z\alpha c}{n}$
+
+其中 $\alpha = \dfrac{e^2}{4\pi\epsilon_0 \hbar c} \approx \dfrac{1}{137}$ 为**精细结构常数**
+
+</div>
+
+<v-click>
+<div class="result">
+
+对最内层电子（$n=1$），要求 $v_1 = Z\alpha c < c$，即：
+
+$$Z < \frac{1}{\alpha} \approx 137$$
+
+这意味着 $Z \geq 137$ 的原子，其 $1s$ 电子速度将超过光速——**违反狭义相对论**！
+
+</div>
+</v-click>
+
+<v-click>
+<div class="modern">
+
+**相对论量子力学（Dirac方程）**：点核极限同样给出 $Z_c = 137$（1s能级的解变为虚数）。但考虑有限核尺寸后，极限推至 $Z_c \approx 170$，此时真空会自发产生正负电子对。目前人类合成的最重元素是 $\textbf{Og}$（$Z=118$），元素119和120的合成正在进行中。
+
+</div>
+</v-click>
+
+---
+
 # 🧪 思考实验：如果你是1914年的实验物理学家
 
 **背景**：1913年玻尔发表了他的原子理论，预言原子只能处于离散的能级上。但这只是理论推导——光谱数据是间接证据。你想设计一个实验，**不通过光谱**，直接验证原子能级的离散性。

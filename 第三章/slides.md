@@ -593,53 +593,70 @@ layout: two-cols
 ---
 
 <style scoped>
-.slidev-layout { font-size: 1.2rem; }
-.diff-box { display: flex; gap: 0.8em; margin-top: 0.6em; }
-.diff-box .side { flex: 1; padding: 0.5em 0.7em; border-radius: 8px; font-size: 1.05em; line-height: 1.5; }
-.diff-box .xray { background: rgba(88,86,214,0.08); border-left: 3px solid #5856d6; }
-.diff-box .electron { background: rgba(199,21,133,0.08); border-left: 3px solid #C71585; }
-.formula-box { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin-top: 0.8em; border-left: 3px solid #30d158; font-size: 1.05em; }
+.slidev-layout { font-size: 1.05rem; }
+.step { background: rgba(88,86,214,0.06); border-radius: 8px; padding: 0.4em 0.7em; margin-bottom: 0.5em; border-left: 3px solid #5856d6; }
+.step-result { background: rgba(48,209,88,0.06); border-radius: 8px; padding: 0.4em 0.7em; margin-bottom: 0.5em; border-left: 3px solid #30d158; }
+.step-final { background: rgba(199,21,133,0.06); border-radius: 8px; padding: 0.4em 0.7em; border-left: 3px solid #C71585; font-size: 1.1em; }
 </style>
 
-# 戴维孙-革末实验：电子散射 vs X射线散射
+# 戴维孙-革末实验：数值验证
 
-<div class="diff-box">
-<div class="side xray"><b>X射线</b><br>可以穿透物体表面，发生体散射（Bragg衍射）</div>
-<div class="side electron"><b>低能电子</b><br>只能与物体表面发生作用，属于表面散射</div>
-</div>
+<img src="/images/CNX_UPhysics_39_05_bragg-1-23265.jpg" style="max-width: 90%; max-height: 200px; object-fit: contain; margin-bottom: 0.3em;" />
 
-<div class="formula-box">
+<div class="step">
 
-电子动量：$p = \sqrt{2me\Delta V}$
+**电子动量**：$p = \sqrt{2me\Delta V} = 2.478 \times 10^{-5}~\mathrm{eV \cdot s/m}$
 
 </div>
+
+<v-click>
+<div class="step">
+
+**德布罗意波长**：$\lambda = \dfrac{h}{p} = \dfrac{4.136 \times 10^{-15}~\mathrm{eV \cdot s}}{2.478 \times 10^{-5}~\mathrm{eV \cdot s/m}} = 1.67~\mathrm{\AA}$
+
+</div>
+</v-click>
 
 ::right::
 
-<img src="/images/CNX_UPhysics_39_05_bragg-1-23265.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+<v-click>
+<div class="step-result">
+
+**晶面间距**：$a = 2.15~\mathrm{\AA}$（镍晶体）
+
+**衍射条件**：$n\lambda = a \sin\varphi$
+
+$\Rightarrow \sin\varphi = \dfrac{n\lambda}{a} = 0.776\,n$
+
+</div>
+</v-click>
+
+<v-click>
+<div class="step-final">
+
+$n=1$：$\varphi \approx 50°$ ✓ 与实验完全吻合！
+
+</div>
+</v-click>
 
 ---
 
 # 戴维孙-革末实验
 
-<video controls style="max-width: 400px;">
+<video controls style="width: 95%; max-height: 85vh;">
   <source src="/images/videoplayback-29034.mp4" />
 </video>
 
----
-layout: two-cols
 ---
 
 # 汤姆逊衍射实验
 
 同年，英国的汤姆逊用多晶体做电子衍射实验,也得到了电子衍射照片。
 
-::right::
+<div style="text-align: center; margin-top: 1em;">
+<img src="/images/Screen Shot 2023-03-15 at 20.04.58-28471.png" style="max-width: 70%; object-fit: contain;" />
+</div>
 
-<img src="/images/Screen Shot 2023-03-15 at 20.04.58-28471.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
-
----
-layout: two-cols
 ---
 
 # 汤姆逊衍射实验
@@ -648,151 +665,343 @@ layout: two-cols
 
 十年后，戴维逊、汤姆逊因电子衍射实验的成果共获1937年度诺贝尔物理奖。
 
-::right::
-
-<img src="/images/Screen Shot 2022-03-09 at 16.19.29-26625.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+<div style="text-align: center; margin-top: 1em;">
+<img src="/images/Screen Shot 2022-03-09 at 16.19.29-26625.png" style="max-width: 70%; object-fit: contain;" />
+</div>
 
 ---
 
-# 德布罗意波长 $\lambda=1 \AA$ 时各粒子动能
+<style scoped>
+.slidev-layout { font-size: 1.4rem; }
+table { font-size: 1.3em; margin: 0.8em auto; }
+th, td { padding: 0.4em 1.2em !important; }
+</style>
 
-$K_{T}=\frac{3}{2} k_{B} T=\frac{3}{2}\left(8.6210^{-5} \mathrm{eV} / \mathrm{K}\right)(300 \mathrm{~K})=38.8~\mathrm{meV}$
+# 德布罗意波长 $\lambda=1~\AA$ 时各粒子动能
+
+| 光子 | 电子 | 中子 | 氦原子 |
+|:---:|:---:|:---:|:---:|
+| 12.4 keV | 150 eV | 81 meV | 20 meV |
 
 单原子气体（monatomic gas）在室温下的动能为
 
-https://en.wikipedia.org/wiki/Monatomic_gas
+$K_{T}=\frac{3}{2} k_{B} T=\frac{3}{2}\left(8.62 \times 10^{-5}~\mathrm{eV/K}\right)(300~\mathrm{K})=38.8~\mathrm{meV}$
 
 ---
-layout: two-cols
----
+
+<style scoped>
+.slidev-layout { font-size: 1.3rem; }
+.concept { color: #1e90ff; font-size: 1.2em; font-weight: bold; margin-bottom: 0.3em; }
+.formula-row { display: flex; align-items: center; gap: 0.8em; margin-top: 0.5em; flex-wrap: wrap; }
+.formula-row .arrow { color: #C71585; font-size: 1.5em; }
+.bohr { color: #C71585; font-weight: bold; font-size: 1.1em; text-align: right; }
+</style>
 
 # 德布罗意波和量子态
 
-$l=n \lambda / 2$
+<p class="concept">定态 ⟺ 驻波</p>
 
-定态
+<img src="/images/CNX_UPhysics_39_05_string-1-23413.jpg" style="width: 95%; object-fit: contain;" />
 
-驻波
+<div class="formula-row">
 
-电子绕一周之后相位不变
+$l = n\lambda/2$
 
-圆周长是波长的整数倍
+<span style="width: 2em;"></span>
 
-玻尔量子化条件
+电子绕一周之后相位不变，圆周长是波长的整数倍
 
-::right::
+</div>
 
-<img src="/images/CNX_UPhysics_39_05_string-1-23413.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+<div class="formula-row">
+
+$2\pi r_n = n\lambda = n\dfrac{h}{p}$
+
+<span class="arrow">➡</span>
+
+$L_n = pr_n = n\dfrac{h}{2\pi} = n\hbar$
+
+</div>
+
+<p class="bohr">玻尔量子化条件</p>
 
 ---
-layout: two-cols
----
+
+<style scoped>
+.slidev-layout { font-size: 1.4rem; }
+</style>
 
 # 波粒二象性（电子散射实验）
 
 1961年，Claus Jönsson在德国进行了第一个电子束双缝实验，证明电子束确实形成了干涉图案，这意味着电子集体表现为波。
 
-::right::
-
-<img src="/images/Screen Shot 2023-03-15 at 23.04.28-28494.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+<div style="display: flex; justify-content: center; margin-top: 1em;">
+<img src="/images/Screen Shot 2023-03-15 at 23.04.28-28494.png" style="width: 85%; object-fit: contain;" />
+</div>
 
 ---
-layout: two-cols
----
+
+<style scoped>
+.slidev-layout { font-size: 1.4rem; }
+</style>
 
 # 波粒二象性（电子散射实验）
 
 1961年，Claus Jönsson在德国进行了第一个电子束双缝实验，证明电子束确实形成了干涉图案，这意味着电子集体表现为波。
 
-::right::
-
-<img src="/images/CNX_UPhysics_39_06_duality-1-24258.jpg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
-
-<img src="/images/Wave-particle_duality-24264.gif" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+<div style="display: flex; flex-direction: column; align-items: center; gap: 0.5em; margin-top: 0.5em;">
+<img src="/images/Wave-particle_duality-24264.gif" style="width: 55%; object-fit: contain;" />
+<img src="/images/CNX_UPhysics_39_06_duality-1-24258.jpg" style="width: 85%; object-fit: contain;" />
+</div>
 
 ---
-layout: two-cols
----
+
+<style scoped>
+.slidev-layout { font-size: 1.4rem; }
+</style>
 
 # 波粒二象性（电子散射实验）
 
 1974 年意大利的Giulio Pozzi和1989年日本的Akira Tonomura进行了第一个单电子通过狭缝的双缝实验。他们表明，即使电子单独通过狭缝，干涉条纹也会逐渐形成。这最终证明了电子衍射图像是由于电子的波动性而形成的。
 
-::right::
-
-<img src="/images/4e86ca73913ca43ca418deaf3e209739_1440w-26675.png" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+<div style="display: flex; justify-content: center; margin-top: 1em;">
+<img src="/images/4e86ca73913ca43ca418deaf3e209739_1440w-26675.png" style="width: 70%; object-fit: contain;" />
+</div>
 
 ---
-layout: two-cols
+
+<style scoped>
+table { border-collapse: collapse; width: 95%; margin: 0 auto; }
+td { padding: 0.3em; border: none; width: 50%; }
+td img { width: 85%; }
+.caption { margin-top: 0.5em; font-size: 2rem; text-align: center; }
+</style>
+
+# 波粒二象性（电子散射实验）
+
+| | |
+|---|---|
+| ![](/images/9e67b1b3aaf9576626f97f20e055da11_1440w-26683.png) | ![](/images/14677f39105af01a5a05e422c912ae59_1440w-26691.png) |
+| ![](/images/99380bf24481838b19a0e60b1ffcb2e3_1440w-26699.png) | ![](/images/300db4aa0a9cc4ccd804cae19213610c_1440w-26705.png) |
+
+<p class=”caption”>电子不是每次只是随机通过其中的一条缝，而是”同时”通过了两条缝，并和”自己”发生了干涉。</p>
+
 ---
 
 # 波粒二象性（电子散射实验）
 
-电子不是每次只是随机通过其中的一条缝，而是“同时”通过了两条缝，并和“自己”发生了干涉。
+<img src="/images/Screen Shot 2023-03-15 at 23.21.35-28505.png" style="max-width: 70%;" />
 
-<img src="/images/9e67b1b3aaf9576626f97f20e055da11_1440w-26683.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
-
-<img src="/images/14677f39105af01a5a05e422c912ae59_1440w-26691.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
-
-::right::
-
-<img src="/images/99380bf24481838b19a0e60b1ffcb2e3_1440w-26699.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
-
-<img src="/images/300db4aa0a9cc4ccd804cae19213610c_1440w-26705.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
-
----
-
-# 波粒二象性（电子散射实验）
-
-<img src="/images/Screen Shot 2023-03-15 at 23.21.35-28505.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/1_340818701_171_85_3_673605011_57003a3890cf1f96ae77fb258dad939c-28511.png" style="max-width: 400px; max-height: 400px;" />
+<img src="/images/1_340818701_171_85_3_673605011_57003a3890cf1f96ae77fb258dad939c-28511.png" style="width: 280px; position: absolute; right: 2em; bottom: 2em;" />
 
 ---
 
 # 波粒二象性
 
-<img src="/images/23722e3c2ff6ac38e138ab4aba38c01a_1440w-2-26732.png" style="max-width: 500px; max-height: 400px;" />
+<div style="display: flex; justify-content: center;">
+<img src="/images/23722e3c2ff6ac38e138ab4aba38c01a_1440w-2-26732.png" style="width: 80%;" />
+</div>
 
 ---
 
 # 波粒二象性
 
-<img src="/images/2aab38f5e9704e365ecf9e118ee0306e_1440w-2-26738.png" style="max-width: 500px; max-height: 400px;" />
+<div style="display: flex; justify-content: center;">
+<img src="/images/2aab38f5e9704e365ecf9e118ee0306e_1440w-2-26738.png" style="width: 80%;" />
+</div>
 
 ---
 
 # 波粒二象性
 
-<video controls style="max-width: 500px;">
-  <source src="/images/Wave-28480.mp4" />
+<div style="display: flex; justify-content: center;">
+<video controls style="width: 95%; max-height: 85vh;">
+  <source src="/images/Wave-28480-h264.mp4" type="video/mp4" />
 </video>
+</div>
 
 ---
+
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.frontier { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #5856d6; line-height: 1.7; }
+.question { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #C71585; line-height: 1.7; font-size: 1.1em; }
+</style>
+
+# 🔬 前沿：量子世界的边界在哪里？
+
+<div class="frontier">
+
+**2019年**：维也纳大学Arndt团队让含 **~2000个原子** 的有机大分子（25,000道尔顿）产生了干涉条纹，德布罗意波长仅 **53飞米**——比氢原子直径小1000倍
+
+</div>
+
+<v-click>
+<div class="frontier">
+
+**2026年1月**：同一团队将记录推至含 **7000+原子的钠纳米粒子**（170,000道尔顿，直径~8nm），质量已接近小型**病毒**！
+
+</div>
+</v-click>
+
+<v-click>
+<div class="frontier">
+
+**2020年**：天然抗生素多肽**短杆菌肽**（gramicidin，15个氨基酸）也展示了物质波干涉——这是**活细胞产生的分子**
+
+</div>
+</v-click>
+
+<v-click>
+<div class="question">
+
+**思考**：量子力学有尺寸上限吗？是什么阻止我们看到篮球的干涉条纹？
+
+</div>
+</v-click>
+
+<v-click>
+<div class="frontier">
+
+**估算**：一个篮球（$m=0.65~\mathrm{kg}$，$v=10~\mathrm{m/s}$）的德布罗意波长 $\lambda = h/mv \approx 10^{-34}~\mathrm{m}$，比质子直径还小 $10^{19}$ 倍——根本不存在这么小的"狭缝"。而且篮球每时每刻都在与 $10^{23}$ 量级的空气分子和热光子碰撞，每次碰撞都会泄露位置信息，在 $10^{-30}~\mathrm{s}$ 内就彻底**退相干**。量子力学本身没有尺寸上限，是**环境**消灭了宏观物体的量子行为。
+
+</div>
+</v-click>
+
+---
+
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.exp-box { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #5856d6; line-height: 1.7; }
+.mind-blow { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #C71585; line-height: 1.7; font-size: 1.1em; }
+</style>
+
+# 🧪 思考实验：现在的决定能改变过去吗？
+
+<div class="exp-box">
+
+**Wheeler延迟选择实验**：粒子**已经通过了双缝**之后，你再决定是观测"干涉图案"（波）还是"经过哪条缝"（粒子）——结果取决于你**之后**的选择！
+
+</div>
+
+<v-click>
+<div class="exp-box">
+
+**2015年实验验证**：澳大利亚国立大学用**单个氦原子**在Mach-Zehnder干涉仪中实现了这一实验。原子进入装置后，实验者才随机决定是否插入第二个分束器。结果完美符合量子力学预言。
+
+</div>
+</v-click>
+
+<v-click>
+<div class="mind-blow">
+
+**物理学家的解释**：不是"现在改变了过去"，而是**在你测量之前，粒子的"过去"根本就没有确定的状态**。"粒子走了哪条路？"——这个问题在测量之前没有答案，甚至没有意义。
+
+</div>
+</v-click>
+
+---
+
+<style scoped>
+.slidev-layout { font-size: 1.2rem; }
+.item { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #5856d6; line-height: 1.7; }
+.highlight-item { background: rgba(48,209,88,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.5em 0; border-left: 3px solid #30d158; line-height: 1.7; }
+</style>
+
+# 🌌 前沿：物质波的新应用
+
+<div class="item">
+
+**反物质也是波**：2025年，东京大学首次观测到**正电子偶素**（电子-正电子束缚态）通过石墨烯膜的物质波衍射，证实德布罗意假设对反物质同样成立
+
+</div>
+
+<v-click>
+<div class="item">
+
+**太空中的物质波**：2024年，NASA在国际空间站的冷原子实验室（CAL）实现了首次**太空原子干涉**，微重力下原子可自由漂浮150ms以上，灵敏度远超地面实验
+
+</div>
+</v-click>
+
+<v-click>
+<div class="item">
+
+**中子量子弹跳球**：在法国ILL实验室，超冷中子在镜面上方的引力场中形成**离散的量子能级**——这是引力与量子力学直接交汇的罕见实验
+
+</div>
+</v-click>
+
+<v-click>
+<div class="highlight-item">
+
+**未来**：全球正在建造百米级原子干涉仪（MAGIS-100@费米实验室、ZAIGA@中国），用物质波探测**暗物质**和**引力波**——德布罗意假设正在成为探索宇宙的工具
+
+</div>
+</v-click>
+
+---
+
+<style scoped>
+.slidev-layout { font-size: 1.4rem; }
+.highlight { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.6em 0; border-left: 3px solid #5856d6; line-height: 1.8; }
+.key-point { background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.6em 0; border-left: 3px solid #C71585; line-height: 1.8; }
+</style>
 
 # 电子显微镜
 
-第一台电子显微镜是由德国鲁斯卡（E·Ruska）研制成功，荣获1986年诺贝尔物理奖。
+<div class="highlight">
 
-从波动光学可知，由于显微镜的分辨本领与波长成反比，光学显微镜的最大分辨距离大于0.2 μm，最大放大倍数也只有1000倍左右。
+第一台电子显微镜是由德国鲁斯卡（E·Ruska）研制成功，荣获**1986年诺贝尔物理奖**。
 
-自从发现电子有波动性后，电子束德布罗意波长比光波波长短得多。而且极方便改变电子波的波长。这样就能制造出用电子波代替光波的电子显微镜。
+</div>
+
+<div class="highlight">
+
+从波动光学可知，由于显微镜的分辨本领与波长成反比，光学显微镜的最大分辨距离大于 $0.2~\mu\mathrm{m}$，最大放大倍数也只有1000倍左右。
+
+</div>
+
+<div class="key-point">
+
+自从发现电子有波动性后，电子束德布罗意波长比光波波长短得多，而且极方便改变电子波的波长。这样就能制造出用**电子波代替光波**的电子显微镜。
+
+</div>
 
 ---
 
-<video controls style="max-width: 500px;">
-  <source src="/images/Untitled-26745.mp4" />
+<div style="display: flex; justify-content: center;">
+<video controls style="width: 95%; max-height: 85vh;">
+  <source src="/images/Untitled-26745.mp4" type="video/mp4" />
 </video>
+</div>
 
 ---
+
+<style scoped>
+.slidev-layout { font-size: 1.4rem; }
+.summary-item { background: rgba(88,86,214,0.06); border-radius: 10px; padding: 0.5em 0.8em; margin: 0.7em 0; border-left: 3px solid #5856d6; line-height: 1.8; }
+</style>
 
 # 小结
 
-德布罗意的物质波假设任何具有动量的粒子也是波。波长与粒子的动量大小成反比。物质波的速度就是粒子的速度。
+<div class="summary-item">
 
-德布罗意物质波概念为玻尔氢原子模型中电子角动量的量化提供了基本原理。
+**德布罗意物质波假设**：任何具有动量的粒子也是波。波长与粒子的动量大小成反比。物质波的速度就是粒子的速度。
 
-在戴维孙-革末实验中，电子从结晶镍表面散射。观察到电子物质波的衍射图案。它们是物质波存在的证据。在各种粒子的衍射实验中观察到物质波。
+</div>
+
+<div class="summary-item">
+
+**玻尔模型的解释**：德布罗意物质波概念为玻尔氢原子模型中电子角动量的量化提供了基本原理。
+
+</div>
+
+<div class="summary-item">
+
+**戴维孙-革末实验**：电子从结晶镍表面散射，观察到电子物质波的衍射图案。它们是物质波存在的证据。在各种粒子的衍射实验中观察到物质波。
+
+</div>
 
 ---
 
