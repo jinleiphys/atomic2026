@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>波包与傅里叶变换</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+    background: #1a1a2e;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  h1 {
+    font-size: 1.6em;
+    margin-bottom: 6px;
+    color: #f0c040;
+  }
+  .subtitle {
+    font-size: 1.0em;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+  .plots {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+  .plot-box {
+    text-align: center;
+  }
+  .plot-box h2 {
+    font-size: 1.15em;
+    margin-bottom: 8px;
+    color: #ccc;
+  }
+  canvas {
+    background: #0d0d1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 18px 0 10px;
+    font-size: 1.1em;
+  }
+  .controls label {
+    color: #ccc;
+  }
+  input[type="range"] {
+    width: 360px;
+    accent-color: #C71585;
+    cursor: pointer;
+    height: 6px;
+  }
+  .observation {
+    margin-top: 16px;
+    padding: 14px 28px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    font-size: 1.15em;
+    text-align: center;
+    max-width: 700px;
+    line-height: 1.6;
+  }
+  .observation .highlight {
+    color: #f0c040;
+    font-weight: bold;
+  }
+  .hint {
+    margin-top: 12px;
+    font-size: 0.95em;
+    color: #888;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .arrow-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 0.9em;
+    color: #f0c040;
+  }
+</style>
+</head>
+<body>
+
+<h1>波包与傅里叶变换</h1>
+<p class="subtitle">一个波包由许多不同频率的平面波叠加而成——拖动滑块观察会发生什么</p>
+
+<div class="plots">
+  <div class="plot-box">
+    <h2>位置空间 ψ(x)</h2>
+    <canvas id="posCanvas" width="420" height="280"></canvas>
+    <div class="arrow-label" id="posLabel"></div>
+  </div>
+  <div class="plot-box">
+    <h2>频率（动量）空间 φ(k)</h2>
+    <canvas id="momCanvas" width="420" height="280"></canvas>
+    <div class="arrow-label" id="momLabel"></div>
+  </div>
+</div>
+
+<div class="controls">
+  <label>波包宽度：</label>
+  <span style="font-size:0.85em; color:#888;">窄</span>
+  <input type="range" id="sigmaSlider" min="0.3" max="4.0" step="0.01" value="1.5">
+  <span style="font-size:0.85em; color:#888;">宽</span>
+</div>
+
+<div class="observation">
+  <span id="obsText">拖动滑块，观察两个图形如何变化……</span>
+</div>
+
+<p class="hint">思考：这个"一窄一宽"的现象是波的数学性质，和有没有人去测量无关。<br>这对微观粒子意味着什么？</p>
+
+<script>
+const posCanvas = document.getElementById('posCanvas');
+const momCanvas = document.getElementById('momCanvas');
+const posCtx = posCanvas.getContext('2d');
+const momCtx = momCanvas.getContext('2d');
+const slider = document.getElementById('sigmaSlider');
+
+function gauss(x, sigma) {
+  return Math.exp(-x * x / (2 * sigma * sigma));
+}
+
+function drawAxis(ctx, W, H, label) {
+  ctx.strokeStyle = '#444';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, H / 2);
+  ctx.lineTo(W, H / 2);
+  ctx.stroke();
+  // small arrow
+  ctx.beginPath();
+  ctx.moveTo(W - 12, H / 2 - 4);
+  ctx.lineTo(W - 2, H / 2);
+  ctx.lineTo(W - 12, H / 2 + 4);
+  ctx.stroke();
+  ctx.fillStyle = '#666';
+  ctx.font = 'italic 14px serif';
+  ctx.fillText(label, W - 16, H / 2 - 10);
+}
+
+function draw() {
+  const sigmaX = parseFloat(slider.value);
+  const sigmaK = 1 / (2 * sigmaX); // Fourier transform pair
+  const k0 = 8;
+  const N = 800;
+
+  // --- Position space ---
+  const W = posCanvas.width, H = posCanvas.height;
+  posCtx.clearRect(0, 0, W, H);
+  drawAxis(posCtx, W, H, 'x');
+
+  const xRange = 10;
+  const ampScale = H / 2 - 25;
+
+  // envelope (probability density shape)
+  posCtx.strokeStyle = 'rgba(240,101,149,0.3)';
+  posCtx.lineWidth = 1;
+  posCtx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const x = -xRange + (2 * xRange * i) / N;
+    const px = (i / N) * W;
+    const env = gauss(x, sigmaX);
+    const py = H / 2 - env * ampScale;
+    i === 0 ? posCtx.moveTo(px, py) : posCtx.lineTo(px, py);
+  }
+  posCtx.stroke();
+
+  // fill envelope
+  posCtx.fillStyle = 'rgba(240,101,149,0.08)';
+  posCtx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const x = -xRange + (2 * xRange * i) / N;
+    const px = (i / N) * W;
+    const env = gauss(x, sigmaX);
+    const py = H / 2 - env * ampScale;
+    i === 0 ? posCtx.moveTo(px, py) : posCtx.lineTo(px, py);
+  }
+  posCtx.lineTo(W, H / 2);
+  posCtx.lineTo(0, H / 2);
+  posCtx.fill();
+
+  // wave (real part)
+  posCtx.strokeStyle = '#4dabf7';
+  posCtx.lineWidth = 1.8;
+  posCtx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const x = -xRange + (2 * xRange * i) / N;
+    const px = (i / N) * W;
+    const env = gauss(x, sigmaX);
+    const wave = env * Math.cos(k0 * x);
+    const py = H / 2 - wave * ampScale;
+    i === 0 ? posCtx.moveTo(px, py) : posCtx.lineTo(px, py);
+  }
+  posCtx.stroke();
+
+  // width indicator
+  const xCenter = W / 2;
+  const dxPx = (sigmaX / xRange) * (W / 2);
+  posCtx.strokeStyle = 'rgba(240,192,64,0.6)';
+  posCtx.lineWidth = 1.5;
+  posCtx.setLineDash([4, 3]);
+  [{x: xCenter - dxPx}, {x: xCenter + dxPx}].forEach(({x}) => {
+    posCtx.beginPath();
+    posCtx.moveTo(x, 15);
+    posCtx.lineTo(x, H - 10);
+    posCtx.stroke();
+  });
+  posCtx.setLineDash([]);
+
+  // width arrow
+  posCtx.strokeStyle = '#f0c040';
+  posCtx.fillStyle = '#f0c040';
+  posCtx.lineWidth = 2;
+  const arrowY = H - 22;
+  posCtx.beginPath();
+  posCtx.moveTo(xCenter - dxPx + 2, arrowY);
+  posCtx.lineTo(xCenter + dxPx - 2, arrowY);
+  posCtx.stroke();
+  // arrowheads
+  [[-1, xCenter - dxPx + 2], [1, xCenter + dxPx - 2]].forEach(([dir, ax]) => {
+    posCtx.beginPath();
+    posCtx.moveTo(ax, arrowY);
+    posCtx.lineTo(ax + dir * 6, arrowY - 3);
+    posCtx.lineTo(ax + dir * 6, arrowY + 3);
+    posCtx.fill();
+  });
+  posCtx.font = 'bold 13px serif';
+  posCtx.fillText('宽度', xCenter - 14, arrowY - 6);
+
+  // --- Momentum space ---
+  const MW = momCanvas.width, MH = momCanvas.height;
+  momCtx.clearRect(0, 0, MW, MH);
+  drawAxis(momCtx, MW, MH, 'k');
+
+  const kRange = 20;
+
+  // fill
+  momCtx.fillStyle = 'rgba(81,207,102,0.1)';
+  momCtx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const k = -kRange + (2 * kRange * i) / N;
+    const px = (i / N) * MW;
+    const env = gauss(k - k0, sigmaK);
+    const py = MH / 2 - env * ampScale;
+    i === 0 ? momCtx.moveTo(px, py) : momCtx.lineTo(px, py);
+  }
+  momCtx.lineTo(MW, MH / 2);
+  momCtx.lineTo(0, MH / 2);
+  momCtx.fill();
+
+  // curve
+  momCtx.strokeStyle = '#51cf66';
+  momCtx.lineWidth = 2.5;
+  momCtx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const k = -kRange + (2 * kRange * i) / N;
+    const px = (i / N) * MW;
+    const env = gauss(k - k0, sigmaK);
+    const py = MH / 2 - env * ampScale;
+    i === 0 ? momCtx.moveTo(px, py) : momCtx.lineTo(px, py);
+  }
+  momCtx.stroke();
+
+  // width indicator
+  const kCenter = ((k0 + kRange) / (2 * kRange)) * MW;
+  const dkPx = (sigmaK / kRange) * (MW / 2);
+  momCtx.strokeStyle = 'rgba(240,192,64,0.6)';
+  momCtx.lineWidth = 1.5;
+  momCtx.setLineDash([4, 3]);
+  [{x: kCenter - dkPx}, {x: kCenter + dkPx}].forEach(({x}) => {
+    momCtx.beginPath();
+    momCtx.moveTo(x, 15);
+    momCtx.lineTo(x, MH - 10);
+    momCtx.stroke();
+  });
+  momCtx.setLineDash([]);
+
+  // width arrow
+  momCtx.strokeStyle = '#f0c040';
+  momCtx.fillStyle = '#f0c040';
+  momCtx.lineWidth = 2;
+  const mArrowY = MH - 22;
+  momCtx.beginPath();
+  momCtx.moveTo(kCenter - dkPx + 2, mArrowY);
+  momCtx.lineTo(kCenter + dkPx - 2, mArrowY);
+  momCtx.stroke();
+  [[-1, kCenter - dkPx + 2], [1, kCenter + dkPx - 2]].forEach(([dir, ax]) => {
+    momCtx.beginPath();
+    momCtx.moveTo(ax, mArrowY);
+    momCtx.lineTo(ax + dir * 6, mArrowY - 3);
+    momCtx.lineTo(ax + dir * 6, mArrowY + 3);
+    momCtx.fill();
+  });
+  momCtx.font = 'bold 13px serif';
+  momCtx.fillText('宽度', kCenter - 14, mArrowY - 6);
+
+  // --- Observation text ---
+  const ratio = sigmaX / 1.5; // relative to default
+  let obsText;
+  if (ratio < 0.5) {
+    obsText = '位置空间波包<span class="highlight">非常窄</span>——频率分布变得<span class="highlight">非常宽</span>';
+  } else if (ratio < 0.85) {
+    obsText = '位置空间波包<span class="highlight">较窄</span>——频率分布<span class="highlight">展宽</span>';
+  } else if (ratio < 1.2) {
+    obsText = '两边宽度适中';
+  } else if (ratio < 2.0) {
+    obsText = '位置空间波包<span class="highlight">较宽</span>——频率分布变<span class="highlight">窄</span>';
+  } else {
+    obsText = '位置空间波包<span class="highlight">非常宽</span>——频率分布变得<span class="highlight">非常窄</span>';
+  }
+  document.getElementById('obsText').innerHTML = obsText;
+}
+
+slider.addEventListener('input', draw);
+draw();
+</script>
+</body>
+</html>

@@ -1005,6 +1005,7 @@ td img { width: 85%; }
 
 ---
 
+
 # §13 不确定关系
 
 需要掌握的知识点：
@@ -1019,9 +1020,25 @@ td img { width: 85%; }
 layout: two-cols
 ---
 
-# 唯像的测不准关系(Observer effect)
+# 观测效应（Observer Effect）
 
-胎压测量时会导致轮胎内部气体的溢出，无法准确的测量轮胎的胎压
+测量本身会干扰被测量的对象，这在经典物理中也存在。
+
+<br>
+
+**例：测胎压**
+
+用气压表测轮胎胎压时，必须放出少量气体，导致轮胎内气压改变，无法精确测量原始胎压。
+
+<div v-click>
+
+<br>
+
+**微观世界更极端：**
+
+要"看见"电子的位置，至少需要一个光子去照亮它。但光子与电子的能量和动量可比拟，观测必然带来显著扰动。
+
+</div>
 
 ::right::
 
@@ -1029,153 +1046,632 @@ layout: two-cols
 
 ---
 
-# 唯像的测不准关系(Observer effect)
+# 海森堡显微镜思想实验
 
-$\Delta p \sim \frac{h}{\lambda}$
+用波长为 $\lambda$ 的光子去测量电子的位置：
 
-对位置的测量总是会对运动物体的速度产生干扰，根据动量守恒，粒子受光量子撞击后，它的动量会产生一种测不准性，其大小同光子的动量差不多
+- **位置的不确定性**取决于光的波长：$\Delta x \sim \lambda$
 
-光子的波长
+  波长越短，"分辨率"越高，位置测得越准
 
-运动物体动量
+<div v-click>
 
-的不确定性
+- **动量的不确定性**取决于光子的动量：$\Delta p \sim \frac{h}{\lambda}$
 
-粒子位置的测不准性取决于光量子的波长 $\Delta x \sim \lambda$
+  光子波长越短，光子动量越大，对电子的"踢"越猛
 
-位置测定得越准确，动量就变得越测不准，反之亦然
+</div>
+
+<div v-click>
+
+<div style="border: 2px solid #C71585; border-radius: 8px; padding: 12px 16px; margin-top: 16px; background: #fef0f5;">
+
+**两者此消彼长**：$\Delta x \cdot \Delta p \sim h$
+
+位置测得越准确，动量就变得越不确定，反之亦然。
+
+</div>
+
+</div>
 
 ---
 layout: two-cols
 ---
 
-# 测不准关系的实验验证（单缝衍射）
+# 单缝衍射验证不确定关系
 
-$\Delta x = a$
+电子束通过宽度为 $a$ 的单缝：
 
-1) 位置的不确定程度
+**1）位置的不确定度**
 
-电子在单缝处的位置
+电子通过缝隙，其 $x$ 方向位置被限制为：
 
-不确定量为 $0 \leq p_x \leq p \sin\theta_1$
+$$\Delta x = a$$
 
-2）单缝处电子的动量的不确定程度
+<div v-click>
 
-忽略次级极大，认为电子都落在中央亮纹内，则：
+**2）动量的不确定度**
 
-$\Delta p_x = p\sin\theta_1$      (1)
+电子通过缝后发生衍射，$x$ 方向获得动量分量。忽略次级极大，认为电子主要落在中央亮纹内：
 
-x方向上的动量不确定量为：
+$$\Delta p_x = p\sin\theta_1$$
+
+</div>
 
 ::right::
 
-<img src="/images/pasted-image-26779.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+<img src="/images/pasted-image-26779.png" style="max-width: 95%; max-height: 160px; object-fit: contain; margin-bottom: 0.5rem;" />
 
-<img src="/images/pasted-image-26786.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
-
-<img src="/images/pasted-image-26793.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+<img src="/images/pasted-image-26793.png" style="max-width: 95%; max-height: 260px; object-fit: contain;" />
 
 ---
 
-# 测不准关系的实验验证（单缝衍射）
+# 单缝衍射验证（续）
 
-$\Delta p_x = p\sin\theta_1$
+考虑到衍射条纹有次级极大，更一般地：$\Delta p_x \geq p\sin\theta_1$
 
-忽略次级极大，认为电子都落在中央亮纹内，则x方向上的动量不确定量为：
+<div v-click>
 
-考虑到衍射条纹的次级极大,可得    $\Delta p_x \geq p\sin\theta_1$   （2）
+**利用衍射条件和德布罗意关系：**
 
-一级最小衍射角  $\sin \theta_1 =\lambda / \Delta x$ ， 以及  $\lambda = h / p$ ，可得
+一级极小的衍射角：$\sin\theta_1 = \dfrac{\lambda}{\Delta x}$
 
-代入(2)式有
+德布罗意关系：$\lambda = \dfrac{h}{p}$
 
-$\sin\theta_1 = \frac{h}{p \Delta x }$    或： $\Delta p \geq \frac{h}{\Delta x }$
+</div>
+
+<div v-click>
+
+代入得：
+
+$$\sin\theta_1 = \frac{h}{p \cdot \Delta x} \quad \Longrightarrow \quad \Delta p_x \geq \frac{h}{\Delta x}$$
+
+即 $\boxed{\Delta x \cdot \Delta p_x \geq h}$
+
+缝越窄（ $\Delta x$ 越小），衍射越宽（ $\Delta p_x$ 越大），<span class="kaiti-accent">不确定关系得到验证！</span>
+
+</div>
 
 ---
 
-# 测不准关系的实验验证（单缝衍射）
+# 单缝衍射实验演示
 
-<video controls style="max-width: 500px;">
+<video controls style="max-width: 80%; max-height: 400px; margin: 10px auto; display: block;">
   <source src="/images/ΦºúΘçèµ╡╖µú«σáíτÜäΣ╕ìτí«σ«ÜµÇºσÄƒτÉå-28705.mp4" />
 </video>
 
----
-
-# 海森堡不确定性原理 1927
-
-$\Delta x \Delta p_{x} \geq \frac{\hbar}{2}$
-
-1924 波粒二象性（德布罗意物质波）
-
-1925 海森堡建立了矩阵力学（量子力学）
-
-1926 薛定谔建立了波动方程（量子力学）
-
-1927 海森堡基于矩阵力学和对易关系
-
-测不准
-
-不确定性原理
-
-1927 肯纳德基于标准差推导出不确定性关系
-
-1929 罗伯逊更普遍意义的不确定性关系
+缝宽减小 → 衍射图样展宽 → 动量不确定度增大
 
 ---
 
-# 海森堡不确定性原理 1927
+# 从"测不准"到"不确定"
 
-<img src="/images/Screenshot 2023-03-20 at 14.44.08-28558.png" style="max-width: 500px; max-height: 400px;" />
+前面的思想实验和单缝衍射似乎在说：**测量行为扰动了粒子**，所以"测不准"。
 
-<img src="/images/Screenshot 2023-03-20 at 14.49.01-28573.png" style="max-width: 500px; max-height: 400px;" />
+<div v-click>
+
+但这只是故事的一半。更深刻的问题是：
+
+**如果我们不去测量，电子是否同时拥有确定的位置和动量？**
+
+</div>
+
+<div v-click>
+
+答案是**否**。不确定性源于波粒二象性的数学本质，与是否有人观测无关。
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">不确定性不是测量的缺陷，而是微观粒子的本性。</span>
+
+海森堡最初称其为"测不准关系"（Unschärferelation），后来物理学界逐渐认识到：这不是"测不准"，而是"本来就不确定"。
+
+</div>
+
+---
+layout: two-cols
+---
+
+# 什么是波包？
+
+§12 中德布罗意告诉我们：动量为 $p$ 的粒子对应波长 $\lambda = h/p$，即平面波 $\psi = Ae^{i(kx-\omega t)}$，其中 $k = p/\hbar$。
+
+但平面波在空间中**无限延伸**，粒子的位置完全不确定！
+
+<div v-click>
+
+**波包**：将多个不同 $k$（不同动量）的德布罗意波叠加，构造出局域化的波形：
+
+$$\psi(x) = \int_{-\infty}^{\infty} \phi(k) \, e^{ikx} \, dk$$
+
+- 波包内部的振荡 → 对应粒子的德布罗意波长（中心动量 $p_0 = \hbar k_0$）
+- 波包的包络宽度 → 对应粒子位置的不确定范围
+
+</div>
+
+<div v-click>
+
+$\phi(k)$ 是各动量成分的权重，叠加的动量越多，波包越窄，位置越确定。
+
+</div>
+
+::right::
+
+<img src="/images/Sequential_superposition_of_plane_waves-25514.gif" style="max-width: 95%; max-height: 240px; object-fit: contain; margin-top: 2rem;" />
+
+<div style="text-align: center; font-size: 0.85em; color: #888; margin-top: 0.5rem;">
+
+逐步叠加德布罗意平面波 → 形成局域波包
+
+</div>
 
 ---
 
-# 海森堡不确定性原理 1927
+# 波包的位置与频率：此消彼长
 
-<img src="/images/Screenshot 2023-03-20 at 15.04.55-28623.png" style="max-width: 500px; max-height: 400px;" />
+<div style="background: #1a1a2e; border-radius: 8px; padding: 10px 16px 8px;">
+<div style="display: flex; gap: 12px; justify-content: center;">
+  <div style="text-align: center;">
+    <div style="color: #ccc; font-size: 0.8em; margin-bottom: 4px;">位置空间 ψ(x)</div>
+    <canvas id="posC" width="380" height="200" style="background: #0d0d1a; border-radius: 6px;"></canvas>
+  </div>
+  <div style="text-align: center;">
+    <div style="color: #ccc; font-size: 0.8em; margin-bottom: 4px;">频率（动量）空间 φ(k)</div>
+    <canvas id="momC" width="380" height="200" style="background: #0d0d1a; border-radius: 6px;"></canvas>
+  </div>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 8px 0 2px; color: #ccc; font-size: 0.85em;">
+  <span>波包宽度：</span>
+  <span style="color:#888; font-size:0.8em;">窄</span>
+  <input type="range" id="sigSlider" min="0.3" max="4.0" step="0.01" value="1.5" style="width: 240px; accent-color: #C71585;">
+  <span style="color:#888; font-size:0.8em;">宽</span>
+  <span id="obsT" style="color: #f0c040; font-size: 0.85em; min-width: 200px;"></span>
+</div>
+<div style="text-align: center; color: #888; font-size: 0.75em; margin-top: 2px;">
+  思考：这个"一窄一宽"是波的数学性质，和有没有人去测量无关。对微观粒子意味着什么？
+</div>
+</div>
 
-<img src="/images/Screenshot 2023-03-20 at 15.05.03-28617.png" style="max-width: 500px; max-height: 400px;" />
+<script setup>
+import { onMounted } from 'vue'
+onMounted(() => {
+  const posC = document.getElementById('posC')
+  const momC = document.getElementById('momC')
+  if (!posC || !momC) return
+  const pCtx = posC.getContext('2d')
+  const mCtx = momC.getContext('2d')
+  const slider = document.getElementById('sigSlider')
+  const obsT = document.getElementById('obsT')
+  const G = (x, s) => Math.exp(-x*x/(2*s*s))
+
+  function drawAxis(ctx, W, H, label) {
+    ctx.strokeStyle = '#444'; ctx.lineWidth = 1
+    ctx.beginPath(); ctx.moveTo(0, H/2); ctx.lineTo(W, H/2); ctx.stroke()
+    ctx.fillStyle = '#666'; ctx.font = 'italic 12px serif'
+    ctx.fillText(label, W-14, H/2-6)
+  }
+
+  function draw() {
+    const sx = parseFloat(slider.value), sk = 1/(2*sx), k0 = 8, N = 600
+    const W = posC.width, H = posC.height, a = H/2-18
+
+    pCtx.clearRect(0,0,W,H); drawAxis(pCtx,W,H,'x')
+    const xR = 10
+    // envelope fill
+    pCtx.fillStyle = 'rgba(240,101,149,0.08)'
+    pCtx.beginPath()
+    for(let i=0;i<=N;i++){const x=-xR+2*xR*i/N; const px=i/N*W; const py=H/2-G(x,sx)*a; i?pCtx.lineTo(px,py):pCtx.moveTo(px,py)}
+    pCtx.lineTo(W,H/2); pCtx.lineTo(0,H/2); pCtx.fill()
+    // envelope
+    pCtx.strokeStyle='rgba(240,101,149,0.3)'; pCtx.lineWidth=1; pCtx.beginPath()
+    for(let i=0;i<=N;i++){const x=-xR+2*xR*i/N; const px=i/N*W; const py=H/2-G(x,sx)*a; i?pCtx.lineTo(px,py):pCtx.moveTo(px,py)}
+    pCtx.stroke()
+    // wave
+    pCtx.strokeStyle='#4dabf7'; pCtx.lineWidth=1.5; pCtx.beginPath()
+    for(let i=0;i<=N;i++){const x=-xR+2*xR*i/N; const px=i/N*W; const py=H/2-G(x,sx)*Math.cos(k0*x)*a; i?pCtx.lineTo(px,py):pCtx.moveTo(px,py)}
+    pCtx.stroke()
+    // Δx lines
+    const xc=W/2, dxP=sx/xR*(W/2)
+    pCtx.strokeStyle='rgba(240,192,64,0.5)'; pCtx.lineWidth=1; pCtx.setLineDash([4,3])
+    ;[xc-dxP,xc+dxP].forEach(x=>{pCtx.beginPath();pCtx.moveTo(x,8);pCtx.lineTo(x,H-6);pCtx.stroke()})
+    pCtx.setLineDash([])
+
+    // momentum
+    const MW=momC.width, MH=momC.height, kR=20
+    mCtx.clearRect(0,0,MW,MH); drawAxis(mCtx,MW,MH,'k')
+    mCtx.fillStyle='rgba(81,207,102,0.1)'; mCtx.beginPath()
+    for(let i=0;i<=N;i++){const k=-kR+2*kR*i/N; const px=i/N*MW; const py=MH/2-G(k-k0,sk)*a; i?mCtx.lineTo(px,py):mCtx.moveTo(px,py)}
+    mCtx.lineTo(MW,MH/2); mCtx.lineTo(0,MH/2); mCtx.fill()
+    mCtx.strokeStyle='#51cf66'; mCtx.lineWidth=2; mCtx.beginPath()
+    for(let i=0;i<=N;i++){const k=-kR+2*kR*i/N; const px=i/N*MW; const py=MH/2-G(k-k0,sk)*a; i?mCtx.lineTo(px,py):mCtx.moveTo(px,py)}
+    mCtx.stroke()
+    const kc=(k0+kR)/(2*kR)*MW, dkP=sk/kR*(MW/2)
+    mCtx.strokeStyle='rgba(240,192,64,0.5)'; mCtx.lineWidth=1; mCtx.setLineDash([4,3])
+    ;[kc-dkP,kc+dkP].forEach(x=>{mCtx.beginPath();mCtx.moveTo(x,8);mCtx.lineTo(x,MH-6);mCtx.stroke()})
+    mCtx.setLineDash([])
+
+    const r=sx/1.5
+    obsT.textContent = r<0.5?'位置窄 → 频率宽':r<0.85?'位置较窄 → 频率较宽':r<1.2?'两边宽度适中':r<2?'位置较宽 → 频率较窄':'位置宽 → 频率窄'
+  }
+  slider.addEventListener('input', draw)
+  draw()
+})
+</script>
 
 ---
 
-# 海森堡不确定性原理 1927
+# 宏观物体也有不确定性吗？
 
-<img src="/images/Screenshot 2023-03-20 at 15.29.00-28662.png" style="max-width: 500px; max-height: 400px;" />
+**问题**：如果动量确定就意味着位置不确定，那宏观物体呢？一个棒球的动量和位置不是都确定的吗？
 
-<img src="/images/Screenshot 2023-03-20 at 15.30.38-28670.png" style="max-width: 500px; max-height: 400px;" />
+<div v-click>
 
----
+**算一算**：一个棒球（$m = 0.145$ kg，$v = 40$ m/s）
 
-# 能量与时间的不确定性关系
+$$\lambda_{\text{dB}} = \frac{h}{mv} = \frac{6.63 \times 10^{-34}}{0.145 \times 40} \approx 10^{-34} \text{ m}$$
 
-$p^{2} c^{2}=E^{2}-m_{0}^{2} c^{4}$
+</div>
 
-可得 $\Delta p=\frac{E}{c^{2} p} \Delta E$
+<div v-click>
 
-粒子可能发生的位移 $v \Delta t=\frac{p}{m} \Delta t=\Delta x$
+即使 $\Delta x$ 小到 $10^{-20}$ m（比原子核还小一万倍），$\Delta p$ 也只有 $\sim 10^{-15}$ kg·m/s，对宏观运动完全可忽略。
 
-能级自然宽度和寿命
+</div>
 
-两边微分可得
+<div v-click>
 
----
+<span class="kaiti-accent">宏观物体不是没有不确定性，而是 $\hbar$ 太小，Δx 和 Δp 可以同时小到无法察觉。</span>
 
-# 练习
+量子效应只在微观尺度显著，原因正在于此：只有当德布罗意波长 $\lambda_{\text{dB}}$ 与物体尺寸可比拟时，波动性才会显现。
 
-$\Delta t=10^{-8}~s$
-
-原子的激发态通常存在约 $\nu=7.1\times 10^{14} \mathrm{~Hz}$ ，估算当原子从激发态跃迁并同时发射平均频率为 $\Delta E \approx \frac{\hbar}{2 \Delta t} \Rightarrow h \Delta f \approx \frac{\hbar}{2 \Delta t} \Rightarrow \Delta f \approx \frac{1}{4 \pi \Delta t}=\frac{1}{4 \pi\left(10^{-8} \mathrm{~s}\right)}=8.0 \times 10^{6} \mathrm{~Hz}$ 的光子时，发射光子频率的不确定性, 发射的辐射是单色的吗？
-
-能量-时间不确定性原理表达了实验观察到，仅存在很短时间的量子态不能具有确定的能量。
+</div>
 
 ---
 
-# 当h=1时
+# 海森堡不确定性原理（1927）
 
-<!-- TODO: 缺失图片 pasted-image-27117.tiff，需从Keynote重新导出 -->
+<div style="border: 2px solid #C71585; border-radius: 10px; padding: 16px 20px; margin: 8px 0; background: #fef0f5; text-align: center; font-size: 1.3em;">
 
-<img src="/images/Screen Shot 2022-03-21 at 10.23.20-27128.png" style="max-width: 500px; max-height: 400px;" />
+$$\Delta x \cdot \Delta p_{x} \geq \frac{\hbar}{2}$$
+
+</div>
+
+| 年份 | 里程碑 |
+|------|--------|
+| 1924 | 德布罗意提出物质波假说 |
+| 1925 | 海森堡建立矩阵力学 |
+| 1926 | 薛定谔建立波动方程 |
+| 1927 | 海森堡提出不确定性原理（基于对易关系 $[\hat{x}, \hat{p}] = i\hbar$） |
+| 1927 | 肯纳德（Kennard）用标准差严格推导 $\sigma_x \sigma_p \geq \hbar/2$ |
+| 1929 | 罗伯逊（Robertson）推广到一般共轭变量 |
+
+---
+layout: two-cols
+---
+
+# 海森堡不确定性原理
+
+<img src="/images/Screenshot 2023-03-20 at 14.44.08-28558.png" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+
+::right::
+
+<img src="/images/Screenshot 2023-03-20 at 14.49.01-28573.png" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+
+---
+layout: two-cols
+---
+
+# 海森堡不确定性原理
+
+<img src="/images/Screenshot 2023-03-20 at 15.04.55-28623.png" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+
+::right::
+
+<img src="/images/Screenshot 2023-03-20 at 15.05.03-28617.png" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+
+---
+layout: two-cols
+---
+
+# 海森堡不确定性原理
+
+<img src="/images/Screenshot 2023-03-20 at 15.29.00-28662.png" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+
+::right::
+
+<img src="/images/Screenshot 2023-03-20 at 15.30.38-28670.png" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+
+---
+
+# 思考：原子为什么不会坍缩？
+
+经典电动力学预言：电子绕核做加速运动，会不断辐射能量，应该在 $\sim 10^{-11}$ s 内螺旋坠入原子核。
+
+**问题**：用不确定性原理解释为什么原子是稳定的，并估算氢原子的大小。
+
+<div v-click>
+
+**解**：设电子被限制在半径 $r$ 的范围内，$\Delta x \sim r$
+
+由 $\Delta x \cdot \Delta p \geq \hbar/2$，得 $\Delta p \geq \dfrac{\hbar}{2r}$
+
+动能的最小估算：$K \sim \dfrac{(\Delta p)^2}{2m} \sim \dfrac{\hbar^2}{8mr^2}$
+
+</div>
+
+<div v-click>
+
+总能量：$E(r) = \dfrac{\hbar^2}{8mr^2} - \dfrac{e^2}{4\pi\varepsilon_0 r}$
+
+- $r$ 很大：势能项主导，$E < 0$，电子被束缚
+- $r$ 很小：动能项（$\propto 1/r^2$）增长更快，能量反而升高
+
+</div>
+
+<div v-click>
+
+对 $r$ 求极小：$\dfrac{dE}{dr} = 0 \Rightarrow r_{\min} \sim \dfrac{4\pi\varepsilon_0 \hbar^2}{me^2} \sim 0.05~\text{nm}$
+
+与玻尔半径 $a_0 = 0.053$ nm 量级一致！$E_{\min} \sim -13.6$ eV
+
+<span class="kaiti-accent">不确定性原理提供了"零点能"，阻止电子坍缩到原子核上。</span>
+
+</div>
+
+---
+
+# 能量-时间不确定性关系
+
+由相对论能量-动量关系：$p^{2} c^{2}=E^{2}-m_{0}^{2} c^{4}$
+
+两边微分：$2pc^2 \, dp = 2E \, dE$，即 $\Delta p = \dfrac{E}{pc^2} \Delta E$
+
+<div v-click>
+
+粒子位移的不确定度：$\Delta x = v \Delta t = \dfrac{p}{m} \Delta t$（其中 $v = p/m$, $E = mc^2$）
+
+</div>
+
+<div v-click>
+
+将 $\Delta x$ 和 $\Delta p$ 代入 $\Delta x \cdot \Delta p \geq \dfrac{\hbar}{2}$：
+
+$$\frac{p}{m}\Delta t \cdot \frac{E}{pc^2}\Delta E = \frac{E}{mc^2}\Delta E \cdot \Delta t = \Delta E \cdot \Delta t \geq \frac{\hbar}{2}$$
+
+</div>
+
+<div v-click>
+
+<div style="border: 2px solid #C71585; border-radius: 10px; padding: 16px 20px; margin-top: 12px; background: #fef0f5; text-align: center; font-size: 1.3em;">
+
+$$\Delta E \cdot \Delta t \geq \frac{\hbar}{2}$$
+
+</div>
+
+**物理意义**：存在时间越短的量子态（$\Delta t$ 小），其能量越不确定（$\Delta E$ 大）。
+
+</div>
+
+---
+
+# 能量-时间不确定性：谱线的自然宽度
+
+**问题**：激发态不是哈密顿量的本征态吗？本征值怎么会有宽度？
+
+<div v-click>
+
+理想的氢原子（纯库仑势 $H_0$）确实有精确的激发态能级，它们是永远稳定的定态。
+
+但现实中，电磁场无处不在。即使没有外加光源，真空中也存在电磁场的零点涨落。原子始终处在与辐射场的耦合之中：$H = H_0 + H_{\text{int}}$
+
+</div>
+
+<div v-click>
+
+因此：
+
+- **有激发，就有辐射场**：激发态会通过自发辐射衰变，不再是完整 $H$ 的本征态
+- **基态不会衰变**（没有更低的态），寿命 $\tau \to \infty$，能量严格确定
+
+</div>
+
+<div v-click>
+
+寿命为 $\tau$ 的激发态，其能级具有自然宽度：
+
+$$\Gamma = \frac{\hbar}{\tau}$$
+
+$\tau$ 越短，谱线越宽。这在实验中可以直接观测到。
+
+</div>
+
+---
+
+# 思考：电子能不能住在原子核里？
+
+早期 β 衰变实验中，原子核释放出电子。物理学家曾争论：电子是本来就住在原子核里，还是衰变时新产生的？
+
+**问题**：用不确定性原理判断电子能否被限制在原子核内（核半径 $r \sim 1~\text{fm} = 10^{-15}~\text{m}$）。
+
+<div v-click>
+
+**解**：若电子被限制在 $\Delta x \sim 10^{-15}$ m 的范围内：
+
+$$\Delta p \geq \frac{\hbar}{2\Delta x} = \frac{1.055 \times 10^{-34}}{2 \times 10^{-15}} \approx 5.3 \times 10^{-20}~\mathrm{kg \cdot m/s}$$
+
+</div>
+
+<div v-click>
+
+对应的动能（需要用相对论）：
+
+$$K = \sqrt{(pc)^2 + (m_ec^2)^2} - m_ec^2 \approx pc \approx 100~\text{MeV}$$
+
+这远远超过核力的典型束缚能（$\sim$几 MeV）。
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">电子不可能被束缚在原子核内。β 衰变中的电子是在衰变过程中新产生的（中子→质子+电子+反中微子）。</span>
+
+对比：质子质量是电子的 1836 倍，$K \sim 0.05$ MeV，可以被核力束缚。
+
+</div>
+
+---
+
+# 练习：激发态的频率不确定性
+
+原子激发态的典型寿命 $\Delta t = 10^{-8}$ s，发射光子的平均频率 $\nu = 7.1 \times 10^{14}$ Hz。
+
+**问题**：发射光子的频率不确定性是多少？辐射是单色的吗？
+
+<div v-click>
+
+**解**：由能量-时间不确定性关系 $\Delta E \geq \dfrac{\hbar}{2\Delta t}$
+
+又 $\Delta E = h \Delta f$，因此：
+
+$$\Delta f \geq \frac{1}{4\pi \Delta t} = \frac{1}{4\pi \times 10^{-8}} \approx 8.0 \times 10^{6} ~\text{Hz}$$
+
+</div>
+
+<div v-click>
+
+**分析**：$\dfrac{\Delta f}{\nu} = \dfrac{8.0 \times 10^6}{7.1 \times 10^{14}} \approx 1.1 \times 10^{-8}$
+
+频率展宽仅约 $10^{-8}$，辐射近似单色，但**严格意义上不存在完美单色光**。
+
+</div>
+
+---
+
+# 爱因斯坦 vs 玻尔：光子箱思想实验
+
+爱因斯坦不接受不确定性原理，在1930年索尔维会议上提出了精巧的**光子箱**思想实验：
+
+一个箱子里装满光子，箱壁有一个由时钟控制的快门。在精确时刻 $t$ 打开快门，放出一个光子。称量箱子的质量变化 $\Delta m$，由 $E = mc^2$ 得到光子能量。
+
+**挑战**：这样不是可以同时精确测量 $E$ 和 $t$，违反 $\Delta E \cdot \Delta t \geq \hbar/2$ 吗？
+
+<div v-click>
+
+**玻尔的反驳**（用爱因斯坦自己的广义相对论！）：
+
+称量质量需要在引力场中测量箱子的位移 $\Delta x$。根据广义相对论，引力场中不同高度的时钟走速不同（引力红移）：
+
+$$\Delta t = \frac{g \Delta x}{c^2} \cdot t$$
+
+</div>
+
+<div v-click>
+
+箱子位置的不确定性 $\Delta x$ 导致时钟读数的不确定性 $\Delta t$，代入计算后恰好满足：
+
+$$\Delta E \cdot \Delta t \geq \frac{\hbar}{2}$$
+
+<span class="kaiti-accent">爱因斯坦被自己创立的理论击败了。此后他不再试图推翻不确定性原理，转而质疑量子力学的完备性（EPR佯谬）。</span>
+
+</div>
+
+---
+
+# 前沿：能否"绕过"不确定性原理？
+
+<div style="font-size: 0.95em;">
+
+**2025年，Science Advances**：悉尼大学 Valahu、Tan 等人用囚禁离子实现了**同时**精确测量位置和动量，精度超越"标准量子极限"。
+
+<div v-click>
+
+**方法**：将离子制备在量子纠错中发展出的**网格态**（grid states）。不确定性并没有消失，而是被"挤"到了粗粒度的大尺度跳跃上，在精细尺度上实现了超越经典极限的测量精度。
+
+**应用前景**：无 GPS 环境的量子导航（潜艇、地下、太空）、生物医学成像、引力探测。
+
+</div>
+
+</div>
+
+<div v-click style="font-size: 0.95em; margin-top: 0.8rem;">
+
+**2026年，Physical Review Research**：维也纳工业大学 Sponar 等人用中子自旋实验发现了新的不确定性关系：
+
+$$\text{correlation}^2 + \text{disturbance}^2 \leq 1$$
+
+测量的**关联度**与**扰动度**之间存在圆形约束，实验数据完美落在理论预言的圆上。为量子测量设备的校准提供了新工具。
+
+</div>
+
+<div style="font-size: 0.7em; color: #888; margin-top: 0.8rem; line-height: 1.5;">
+
+[1] C.H. Valahu et al., "Quantum-enhanced multiparameter sensing in a single mode," *Science Advances* **11**, eadw9757 (2025). DOI: 10.1126/sciadv.adw9757
+
+[2] A. Asadian, F. Gams, S. Sponar, "Covariant correlation-disturbance relation and its experimental realization with spin-1/2 particles," *Phys. Rev. Research* **8** (2026). DOI: 10.1103/llgb-gql9
+
+</div>
+
+---
+
+# 前沿：不确定性原理本身需要修正吗？
+
+所有量子引力理论（弦论、圈量子引力、黑洞物理）都预言：存在一个**最小可测长度**，约为普朗克长度 $\ell_P = \sqrt{\hbar G/c^3} \approx 1.6 \times 10^{-35}$ m。
+
+<div v-click>
+
+这意味着海森堡不确定性原理可能需要修正为**广义不确定性原理**（GUP）：
+
+$$\Delta x \cdot \Delta p \geq \frac{\hbar}{2}\left(1 + \beta \frac{(\Delta p)^2}{M_P^2 c^2}\right)$$
+
+当 $\Delta p$ 接近普朗克尺度时，$\Delta x$ 存在下界，不能无限小！
+
+</div>
+
+<div v-click style="font-size: 0.95em;">
+
+**实验探索**：
+
+- **LIGO 引力波探测器**（2023，*Phys. Rev. X*）：利用量子压缩光突破标准量子极限，灵敏度已接近可能探测到普朗克尺度修正的区域
+- **AURIGA 引力波棒探测器**（Marin et al., *Nature Physics* 2013）：将吨级机械振子冷却到亚毫开尔文，对宏观物体的基态能量的普朗克尺度修正给出了实验上限
+
+</div>
+
+<div v-click style="font-size: 0.95em;">
+
+如果 GUP 被实验证实，将是**量子力学建立百年以来最深刻的修正**，意味着时空本身在最小尺度上是离散的。
+
+</div>
+
+<div style="font-size: 0.7em; color: #888; margin-top: 0.5rem; line-height: 1.5;">
+
+[3] LIGO et al., "Broadband quantum enhancement of the LIGO detectors with frequency-dependent squeezing," *Phys. Rev. X* **13**, 041021 (2023)
+
+[4] F. Marin et al., "Gravitational bar detectors set limits to Planck-scale physics on macroscopic variables," *Nature Phys.* **9**, 71 (2013)
+
+</div>
+
+---
+
+# 如果 $h = 1$……
+
+<div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 0.5rem;">
+<img src="/images/tompkins-cover.png" style="max-height: 360px; object-fit: contain; flex-shrink: 0;" />
+<div>
+<img src="/images/tompkins-billiards.jpg" style="max-width: 100%; max-height: 280px; object-fit: contain;" />
+<div style="font-size: 0.95em; margin-top: 0.8rem;">
+
+如果普朗克常数和日常尺度可比拟，不确定性效应将无处不在：把台球限定在三角框里，它就会剧烈抖动！
+
+</div>
+<div style="font-size: 0.8em; color: #888; margin-top: 0.3rem;">
+
+乔治·伽莫夫《物理世界奇遇记》：汤普金斯先生在一个 $h$ 很大的世界里打台球
+
+</div>
+</div>
+</div>
 
 ---
 
@@ -1183,47 +1679,50 @@ $\Delta t=10^{-8}~s$
 
 <img src="/images/1_799760234_171_85_3_675143862_bd7c9602dcfebe6ce1c760938b27cecb-28678.png" style="max-width: 400px; max-height: 400px;" />
 
+推荐阅读：关于不确定性原理的深入讨论与思考
+
+
 ---
 
 # §14 波函数
 
 需要掌握的知识点：
 
-描述波函数的统计解释
+（1）描述波函数的统计解释
 
-使用波函数来确定概率
+（2）使用波函数来确定概率
 
-计算位置的期望值
-
----
-layout: two-cols
----
-
-# 波函数
-
-问题：那么，粒子性和波动性这两个完全不同的性质又是如何统一到了微观粒子上呢？
-
-::right::
-
-<img src="/images/img-02.proxy.5ce.com-27163.jpeg" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
-
-<img src="/images/pasted-image-27178.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
-
-<img src="/images/pasted-image-27167.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+（3）计算位置的期望值
 
 ---
-layout: two-cols
----
 
-# 子弹、水波和电子分别通过双缝的理想实验
+# 波粒二象性如何统一？
 
-理查德·费曼Richard Feynman（1918－1988）美国物理学家。1965年诺贝尔物理奖得主。
+<img src="/images/pasted-image-27189.jpeg" style="max-width: 90%; max-height: 180px; object-fit: contain; margin: 0 auto; display: block;" />
 
-::right::
+<div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1rem;">
+<div style="flex: 1;">
 
-<img src="/images/pasted-image-27189.jpeg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+粒子性和波动性这两个完全不同的性质，如何统一到微观粒子上？
 
-<img src="/images/pasted-image-27196.jpeg" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+<div v-click>
+
+费曼设计了一组理想实验来回答这个问题：用**子弹、水波、电子**分别通过双缝，比较它们在屏上的分布。
+
+</div>
+
+</div>
+<div style="flex-shrink: 0; text-align: center;">
+<img src="/images/pasted-image-27196.jpeg" style="max-height: 200px; object-fit: contain;" />
+<div style="font-size: 0.75em; color: #888;">
+
+费曼（1918–1988）
+
+1965年诺贝尔物理学奖
+
+</div>
+</div>
+</div>
 
 ---
 layout: two-cols
@@ -1231,15 +1730,17 @@ layout: two-cols
 
 # 子弹的双缝实验
 
-开单缝：
+开单缝：子弹密度分布为 $P_1$ 或 $P_2$
 
-子弹密度分布曲线：P1 和P2。
+开双缝：分布为 $P_{12} = P_1 + P_2$
 
-开双缝：
+<div v-click>
 
-曲线P1 ＋P2。
+子弹是经典粒子，概率直接相加，**没有干涉**。
 
-“非相干叠加”。即主要表现了粒子性。
+这是"非相干叠加"，体现的是**粒子性**。
+
+</div>
 
 ::right::
 
@@ -1251,9 +1752,15 @@ layout: two-cols
 
 # 水波的双缝实验
 
-水波的双缝实验，屏上观察到的分布是否与子弹实验结果一样？
+水波通过双缝后在屏上的分布与子弹相同吗？
 
-因为水波通过双缝时被分为两个相干的次波源，它们在空间将进行相干叠加，所以在屏上将呈现出双缝干涉图样。
+<div v-click>
+
+不同！水波通过双缝时分为两个相干的次波源，在空间进行**相干叠加**，屏上呈现**干涉图样**。
+
+强度：$I_{12} \neq I_1 + I_2$（有交叉项）
+
+</div>
 
 ::right::
 
@@ -1265,19 +1772,26 @@ layout: two-cols
 
 # 电子的双缝实验
 
-每个电子是如何从两个缝通过的，它们又是如何逐渐形成干涉花样的?
+**关键问题**：电子的双缝实验结果像子弹还是像水波？
 
-1). 通过缝时电子是粒子？
+<div v-click>
 
-双缝干涉花样就应该是两个单缝花样的简单叠加。存在干涉就表明每个电子似乎都是从两个缝通过的。
+实验结果：屏上出现了**干涉条纹**！
 
-2). 通过缝时电子已散开成波？
+但每个电子到达屏时都是一个**亮点**（粒子性）。
 
-不可能在到达屏的一瞬间收缩成一个亮点 。
+</div>
 
-经典物理学无法解释
+<div v-click>
 
-经典物理学无法说明粒子性和波动性之间的关系
+**矛盾**：
+
+- 如果电子是粒子，过缝时走一条缝，就不该有干涉
+- 如果电子是波，过缝时弥散开来，就不该打出一个点
+
+经典物理无法调和这个矛盾。
+
+</div>
 
 ::right::
 
@@ -1287,21 +1801,29 @@ layout: two-cols
 
 # 概率波
 
-在量子力学建立的初期，人们对德布罗意波的意义曾提出过各种各样的猜测，例如:
+在量子力学建立的初期，人们对德布罗意波的含义提出过各种猜测：
 
-电子波是一个代表电子实体的波包，
+- 电子波是代表电子实体的波包？
+- 电子本身是弥散于空间的物质波动？
+- 电子的波动性是大量电子之间的相互作用？
 
-电子本身是弥散于空间的物质波动，
+<div v-click>
 
-电子的波动性是大量电子之间的相互作用等。
+这些猜测最终都因不能圆满解释实验现象而被放弃。
 
-但是，这些猜测最终都因不能圆满地解释实验现象而不得不放弃。
+</div>
 
-1926年，玻恩（M.Born）对波粒二象性给出了一种
+<div v-click>
 
-统计诠释，他认为
+1926年，玻恩（M. Born）提出了**统计诠释**：
 
-德布罗意波：是概率波
+<div style="border: 2px solid #C71585; border-radius: 8px; padding: 12px 16px; margin-top: 8px; background: #fef0f5;">
+
+德布罗意波是**概率波**：波函数的模方 $|\Psi|^2$ 代表在该处找到粒子的概率密度。
+
+</div>
+
+</div>
 
 ---
 layout: two-cols
@@ -1309,13 +1831,26 @@ layout: two-cols
 
 # 什么是波函数
 
-宏观上
+宏观的波需要：振幅、波长、相位、含时演化。
 
-波函数需要的信息有相位，波长，振幅，含时演化
+物质波也是波，也应该具备这些信息。
 
-考虑到物质波也是波的一种，也应该具备上述信息
+<div v-click>
 
-但是位置和动量不能同时确定
+量子力学的平面波波函数写为复数形式：
+
+$$\Psi(x, t) = A e^{i(kx - \omega t)}$$
+
+- $k = p/\hbar$（德布罗意关系）
+- $\omega = E/\hbar$（普朗克关系）
+
+</div>
+
+<div v-click>
+
+为什么用复数？因为波函数本身**不可直接测量**，可测量的是概率密度 $|\Psi|^2 = \Psi^* \Psi$。
+
+</div>
 
 ::right::
 
@@ -1329,25 +1864,29 @@ layout: two-cols
 layout: two-cols
 ---
 
-# 光的波函数
+# 光的波函数与概率
 
-$E(x,t)$
+对于光（电磁波）：
 
-波函数 $|E|^2$
+- 波函数是电场 $E(x,t)$
+- 能量密度正比于 $|E|^2$
+- 单个光子的能量 $\varepsilon = h\nu$
 
-能量密度 $E$
+<div v-click>
 
-$\varepsilon_{\text {photon }}=h \nu$ 为电场强度
+因此 $|E|^2$ 正比于光子数密度，也就是光子打在屏幕上某点的**概率**。
 
-单个光子的能量
+爱因斯坦的洞见：光的振幅的平方是光子出现概率的量度。
 
-$|E|^2$
+</div>
 
-￼正比于光子数量
+<div v-click>
 
-光打在屏幕上某点的概率
+玻恩将同样的逻辑推广到物质波：
 
-正比于电场在该点的强度的平方
+$|\Psi(x,t)|^2$ 就是粒子出现在 $x$ 处的概率密度。
+
+</div>
 
 ::right::
 
@@ -1357,15 +1896,23 @@ $|E|^2$
 layout: two-cols
 ---
 
-# 波函数的统计解释（M.Born, 1926）
+# 波函数的统计解释（M. Born, 1926）
 
-$|\Psi(x,t)|^2$
+波函数 $\Psi(x,t)$ 的模方 $|\Psi(x,t)|^2$ 是**概率密度**：
 
-直到1926年，M.Born在认真研究波粒二象性之后，才意识到，类似于爱因斯坦“光振幅的平方为光子密度的概率量度”，波函数的模方是粒子的几率密度！
+在 $t$ 时刻，粒子出现在 $x$ 到 $x+dx$ 区间内的概率为：
 
-即：波函数的模方 $t$ (波在空间某点的强度)与 $x$ 时刻在空间某点 $t$ 处单位体积内发现粒子的几率成正比
+$$P(x, x+dx) = |\Psi(x,t)|^2 \, dx$$
 
-或, $x$ 时刻在 $x+dx$ 到 $P(x, x+d x)$ 的区间内找到粒子的几率 $|\Psi(x,t)|^2 dx$ 与￼成正比
+<div v-click>
+
+**波恩的概率解释**是量子力学的基本原理之一：
+
+- $\Psi$ 是概率幅（不可直接测量）
+- $|\Psi|^2$ 是概率密度（可测量）
+- 1954年诺贝尔物理学奖
+
+</div>
 
 ::right::
 
@@ -1374,70 +1921,66 @@ $|\Psi(x,t)|^2$
 </video>
 
 ---
-layout: two-cols
----
 
-# 波函数的统计解释（M.Born, 1926）
+# 波函数的统计解释（M. Born, 1926）
 
-波恩的波函数几率解释是量子力学基本原理之一
+<img src="/images/CNX_UPhysics_40_01_Prob_Square-1-24588.jpg" style="max-width: 70%; max-height: 350px; margin: 10px auto; display: block;" />
 
-波函数是几率幅，是不可测量，可测量是几率
+<div v-click>
 
-1954年Nobel物理奖
+**波函数坍缩**：当不被观测时，粒子处于各位置的叠加态。一旦测量，波函数"坍缩"到某个确定位置，概率由 $|\Psi|^2$ 给出。
 
-::right::
-
-<img src="/images/CNX_UPhysics_40_01_Prob_Square-1-24588.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+</div>
 
 ---
 
-# 波函数的统计解释（M.Born, 1926）
+# 爱因斯坦 vs 玻恩："上帝掷骰子吗？"
 
-<img src="/images/Screenshot 2023-03-27 at 11.28.58-28926.png" style="max-width: 500px; max-height: 400px;" />
+In a letter to Born on 4 December 1926, Einstein made his famous remark:
 
----
+<div style="border-left: 3px solid #C71585; padding-left: 16px; margin: 12px 0; font-style: italic; font-size: 0.95em;">
 
-# 波函数的统计解释（M.Born, 1926）
+"Quantum mechanics is certainly imposing. But an inner voice tells me that it is not yet the real thing. The theory says a lot, but does not really bring us any closer to the secret of the 'old one'. I, at any rate, am convinced that He is not playing at dice."
 
-<img src="/images/Screenshot 2023-03-27 at 11.28.54-28919.png" style="max-width: 500px; max-height: 400px;" />
+</div>
 
----
+<div v-click>
 
-# 波函数的统计解释（M.Born, 1926）
+This quotation is often paraphrased as **"God does not play dice"**.
 
-In a letter to Born on 4 December 1926, Einstein made his famous remark regarding quantum mechanics:
+Niels Bohr reportedly replied: **"Stop telling God what to do."**
 
-
-Quantum mechanics is certainly imposing. But an inner voice tells me that it is not yet the real thing. The theory says a lot, but does not really bring us any closer to the secret of the 'old one'. I, at any rate, am convinced that He is not playing at dice.
-
-
-This quotation is often paraphrased as 'God does not play dice'.
-
-Niels Bohr reportedly replied to Einstein's later expression of this sentiment by advising him to "stop telling God what to do."
-
----
-
-# 波函数的统计解释（M.Born, 1926）
-
-课外阅读
-
-<img src="/images/1_799760234_171_85_3_677559846_22ee4b7cb5e10a621742b2f0775f6e68-28883.png" style="max-width: 400px; max-height: 400px;" />
-
-<img src="/images/Screenshot 2023-03-27 at 11.18.38-28895.png" style="max-width: 500px; max-height: 400px;" />
-
-<img src="/images/Screenshot 2023-03-27 at 11.22.17-28911.png" style="max-width: 500px; max-height: 400px;" />
+</div>
 
 ---
 
 # 哥本哈根解释
 
-量子态的叠加: 在观测之前，一个量子系统可以同时处于多个可能状态的叠加。这意味着，系统的所有可能性都是同时存在的，直到被测量。
+哥本哈根解释是量子力学最主流的诠释框架，其核心要点：
 
-波函数坍缩: 当对一个量子系统进行测量时，波函数会突然“坍缩”到一个特定的状态，这个过程是不可逆的，而且与测量过程本身有关。
+<div v-click>
 
-互补性原理: 玻尔提出的互补性原理指出，波动性和粒子性是量子现象的两个互补方面，只能在不同的实验安排中分别观察到。
+**量子态的叠加**：观测之前，量子系统可以同时处于多个可能状态的叠加。
 
-不确定性原理: 海森堡提出不确定性原理，指出粒子的位置和动量不能同时被精确地知道。这不是测量技术的限制，而是自然界的基本性质。
+</div>
+
+<div v-click>
+
+**波函数坍缩**：测量时，波函数"坍缩"到某个确定状态，这个过程是不可逆的。
+
+</div>
+
+<div v-click>
+
+**互补性原理**（玻尔）：波动性和粒子性是量子现象的两个互补方面，只能在不同的实验安排中分别观察到。
+
+</div>
+
+<div v-click>
+
+**不确定性原理**（海森堡）：位置和动量不能同时被精确确定，这是自然界的基本性质。
+
+</div>
 
 ---
 layout: two-cols
@@ -1445,7 +1988,9 @@ layout: two-cols
 
 # 量子力学的其他解释
 
-多世界解释: 由休·埃弗雷特提出，认为波函数从不坍缩，而是所有可能的量子事件都在一个广阔的多宇宙中实现，每个可能的历史都在不同的宇宙中发生。
+**多世界解释**（休·埃弗雷特）
+
+波函数从不坍缩，所有可能的量子事件都在多宇宙中实现，每个可能的历史在不同的宇宙中发生。
 
 ::right::
 
@@ -1461,7 +2006,9 @@ layout: two-cols
 
 # 量子力学的其他解释
 
-隐变量理论: 如德布罗意-玻姆理论，提出除了波函数之外还有隐藏的变量决定粒子的行为，这些变量在标准量子力学中没有被考虑。
+**隐变量理论**（德布罗意-玻姆理论）
+
+除了波函数之外还存在隐藏的变量决定粒子的行为，这些变量在标准量子力学中没有被考虑。
 
 ::right::
 
@@ -1475,7 +2022,9 @@ layout: two-cols
 
 # 量子力学的其他解释
 
-客观坍缩理论: 在Penrose解释中，当一个物体的量子态与不同的时空几何相互叠加时，这种叠加状态是不稳定的，会自发地坍缩到一个确定的状态。彭罗斯认为，这种坍缩与引力有关，当量子叠加产生的时空曲率差异达到一个阈值时，就会触发坍缩。
+**客观坍缩理论**（Penrose）
+
+当量子叠加产生的时空曲率差异达到一个阈值时，会自发触发坍缩。彭罗斯认为这种坍缩与引力有关。
 
 ::right::
 
@@ -1485,99 +2034,85 @@ layout: two-cols
 
 # 波函数的性质
 
-$P(-\infty,+\infty)=\int_{-\infty}^{\infty}|\Psi(x, t)|^{2} d x=1$
+波函数 $\Psi(x,t)$ 必须满足以下条件：
 
-波函数必须单值、有限、连续可导
+- **单值**：空间每一点只对应一个概率值
+- **有限**：概率密度不能为无穷大
+- **连续可导**：概率密度一般不发生突变
 
-单值：在任何一点，几率只能有一个值。
+<div v-click>
 
-有限：几率不能无限大。
+**归一化条件**：粒子一定在空间某处出现，在整个空间的总概率为 1：
 
-连续可导：几率一般不发生突变。
+$$\int_{-\infty}^{+\infty} |\Psi(x, t)|^{2} \, dx = 1$$
 
-归一化条件：由于粒子总在空间某处出现，故在整个空间出现的总几率应当为1
+若 $\phi$ 是未归一化的波函数，令 $\Psi = A\phi$，由归一化条件可确定 $A$。
 
----
+</div>
 
-# 波函数的归一化
+<div v-click>
 
-$\int_{\Omega}|\Psi|^{2} d V=1 \quad(\Omega-\text { 全空间 })$
+**注意**：$\Psi$ 和 $e^{i\alpha}\Psi$（$\alpha$ 为实数）描述同一个量子态，概率密度相同。
 
-由于波函数 $\psi(\vec{r}, t)$ 的概率解释, 粒子在整个空间出现的概率为1，所以 $\psi$ 应该满足波函数的归一化条件：
-
-已知 $\phi(\vec{r}, t)$ 是未归一化的波函数，则令 $\psi=A \phi$ ，它们描述同一个状态，有
-
-所以
+</div>
 
 ---
 
 # 波函数的物理意义
 
-$[x, x+\Delta x]$
+$|\Psi(x,y,z,t)|^2$ 是概率密度：
 
-在空间很小的区域  $[y,y+\Delta y]$ ， $[z,z+\Delta z]$ ， $d V=d x d y d z$ 内，波函数可视为不变，粒子在 $|\Psi|^{2}$ 内出现的概率, 正比于 $dV$ 和 $|\psi|^{2}$ 。
+<div v-click>
 
-$t$ －在 $(x,y,z)$ 时刻粒子出现在 $|\psi|^{2} d V$ 点处单位体
+$t$ 时刻，粒子出现在 $(x,y,z)$ 点附近体积元 $dV = dx\,dy\,dz$ 内的概率为：
 
-积内出现的概率密度。
+$$dP = |\Psi|^2 \, dV$$
 
-$t$ －在 $(x,y,z)$ 时刻粒子出现在 $dV$ 点附近  $\int_{V}|\psi|^{2} d V$
+</div>
 
-体积元内出现的概率。
+<div v-click>
 
-$t$ －在 $V$ 时刻粒子出现在 $\alpha$ 体积内的概率。
+$t$ 时刻，粒子出现在体积 $V$ 内的概率为：
 
-当 $\psi$ 为实数时， $e^{i\alpha}\psi$ 与￼代表同一个态
+$$P = \int_V |\Psi|^2 \, dV$$
+
+</div>
 
 ---
 layout: two-cols
 ---
 
-# 电子双缝干涉实验的统计学解释
+# 电子双缝干涉的统计学解释
 
-$\psi_A(r,t)$
+设从 A、B 两缝通过的电子波函数分别为 $\psi_A$ 和 $\psi_B$。
 
-在电子双缝干涉实验中，用波函数 $\psi_B(r,t)$ 和 $\psi(r, t)=\psi_{A}(r, t)+\psi_{B}(r, t)$ 分别表示从A、B缝通过电子的状态。两缝同时开启时，电子的波函数为 $\begin{aligned}
+双缝同时开启时：$\psi = \psi_A + \psi_B$
 
-|\psi(\mathbf{r}, t)|^{2} &=\left|\psi_{A}+\psi_{B}\right|^{2} \\
+<div v-click>
 
-&=\left|\psi_{A}\right|^{2}+\left|\psi_{B}\right|^{2}+\psi_{A}^{*} \psi_{B}+\psi_{B}^{*} \psi_{A}
+概率密度：
 
-\end{aligned}$
+$$|\psi|^2 = |\psi_A + \psi_B|^2 = |\psi_A|^2 + |\psi_B|^2 + \psi_A^* \psi_B + \psi_B^* \psi_A$$
 
-屏上发现电子的概率分布为
+后两项是**干涉项**，正是它产生了干涉条纹。
 
-玻恩用概率解释把微观粒子的波动性和粒子性统一起来，
+</div>
 
-玻恩的统计诠释成为量子力学的一个基本假设。
+<div v-click>
+
+玻恩的概率解释将粒子性和波动性统一起来：粒子逐个到达屏幕（粒子性），大量粒子的统计分布呈现干涉图样（波动性）。
+
+</div>
 
 ::right::
 
-<img src="/images/pasted-image-27416.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
+<img src="/images/pasted-image-27416.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
 
-<img src="/images/pasted-image-27446.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
+<img src="/images/pasted-image-27446.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
 
-<img src="/images/pasted-image-27453.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
+<img src="/images/pasted-image-27453.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
 
-<img src="/images/pasted-image-27459.png" style="max-width: 100%; max-height: 90px; object-fit: contain;" />
-
----
-
-# 如何理解微观粒子的波粒二象性
-
-1) 粒子性
-
-•整体性
-
-•不是经典的粒子 没有“轨道”概念
-
-2) 波动性
-
-•“可叠加性”
-
-•有“干涉”“衍射”“偏振”现象
-
-•不是经典的波 不代表实在物理量的波动
+<img src="/images/pasted-image-27459.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
 
 ---
 layout: two-cols
@@ -1585,7 +2120,10 @@ layout: two-cols
 
 # 电子云
 
-用密或稀表示空间各处概率密度的大小，很像在原子核外有一层疏密不等的“云”，人们把它形象地叫做“电子云”。
+用疏密表示空间各处概率密度的大小，很像在原子核外有一层疏密不等的"云"，形象地称为**电子云**。
+
+- 密处：$|\Psi|^2$ 大，电子出现概率高
+- 疏处：$|\Psi|^2$ 小，电子出现概率低
 
 ::right::
 
@@ -1595,37 +2133,94 @@ layout: two-cols
 layout: two-cols
 ---
 
-# 习题
+# 态叠加原理
 
-$L$
+考虑一个粒子可以在 $x_1$ 或 $x_2$ 处：
 
-球被限制在长度为 $\Psi(x, 0)=A \cos (k x)~(-L / 2<x<L / 2)$ 的管内移动，球优先位于管的中间。表示其波函数的一种方法是使用简单的余弦函数。在管子的最后四分之一处找到球的概率是多少？
+- 宏观上，粒子不是在 $x_1$ 就是在 $x_2$
+- 量子力学中，未测量时粒子处于**叠加态**：$\Psi = c_1\psi_1 + c_2\psi_2$
 
-波函数可以写为
+<div v-click>
 
-$k=2\pi/\lambda$ 为波数，区间外波函数为0
+测量时，粒子以概率 $|c_1|^2$ 出现在 $x_1$，以概率 $|c_2|^2$ 出现在 $x_2$。
 
-应用归一化条件可得 $A \cos (k L / 2)=0$ ，可得
+这就是薛定谔的猫的量子力学基础。
+
+</div>
 
 ::right::
 
-<img src="/images/CNX_UPhysics_40_01_Cosine_Wave-1-24711.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+<img src="/images/CNX_UPhysics_40_01_Two_State-1-25192.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+
+---
+
+# Schrödinger's Joke
+
+<img src="/images/Screen Shot 2024-03-27 at 22.05.33-29212.png" style="max-width: 500px; max-height: 400px; margin: 10px auto; display: block;" />
+
+---
+
+# 期望值计算
+
+在经典力学中，位置 $x(t)$ 是确定的函数。
+
+在量子力学中，只能知道概率密度 $|\Psi(x,t)|^2$，因此位置的**期望值**为：
+
+$$\langle x \rangle = \int_{-\infty}^{\infty} x \, |\Psi(x,t)|^2 \, dx = \int_{-\infty}^{\infty} \Psi^* \, x \, \Psi \, dx$$
+
+<div v-click>
+
+一般地，任何物理量 $Q$ 的期望值：
+
+$$\langle Q \rangle = \int_{-\infty}^{\infty} \Psi^* \, \hat{Q} \, \Psi \, dx$$
+
+其中 $\hat{Q}$ 是 $Q$ 对应的算符。
+
+</div>
+
+---
+
+# 不确定性原理的统计学解释
+
+用标准差代替不确定度：$\Delta x \to \sigma_x$
+
+$$\sigma_x^2 = \langle x^2 \rangle - \langle x \rangle^2, \quad \sigma_p^2 = \langle p^2 \rangle - \langle p \rangle^2$$
+
+<img src="/images/Standard_deviation_diagram.svg-25326.png" style="max-width: 60%; max-height: 250px; margin: 10px auto; display: block;" />
+
+<div v-click>
+
+不确定性原理的严格表述：$\sigma_x \cdot \sigma_p \geq \dfrac{\hbar}{2}$
+
+高斯波包取等号（**最小不确定态**）。
+
+</div>
 
 ---
 layout: two-cols
 ---
 
-# 习题
+# 习题：估算氢原子基态能量
 
-$L$
+利用不确定性原理估算氢原子基态能量。
 
-球被限制在长度为 $A=\sqrt{2 / L}$ 的管内移动，球优先位于管的中间。表示其波函数的一种方法是使用简单的余弦函数。在管子的最后四分之一处找到球的概率是多少？
+设电子被限制在半径 $a$ 的范围内，$\sigma_x \approx a$。
 
-应用归一化条件可得 $\Psi(x, 0)=\sqrt{\frac{2}{L}} \cos (\pi x / L), \quad-L / 2<x<L / 2$ ，可得
+<div v-click>
 
-最后四分之一处找到球的概率
+由 $\sigma_x \sigma_p = \dfrac{\hbar}{2}$ 得 $\sigma_p = \dfrac{\hbar}{2a}$
 
-小球的波长
+电子来回运动，$\bar{p} = 0$，因此 $\langle p^2 \rangle = \sigma_p^2 = \dfrac{\hbar^2}{4a^2}$
+
+</div>
+
+<div v-click>
+
+总能量：$E(a) = \dfrac{\langle p^2 \rangle}{2m} - \dfrac{e^2}{4\pi\varepsilon_0 a} = \dfrac{\hbar^2}{8ma^2} - \dfrac{e^2}{4\pi\varepsilon_0 a}$
+
+对 $a$ 求极小值，可得基态能量估算值 $E \sim -13.6$ eV，与精确解一致！
+
+</div>
 
 ::right::
 
@@ -1634,124 +2229,20 @@ $L$
 <img src="/images/v2-4fcebba5e210f33cd800759166c495fe_720w.webp-24870.gif" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
 
 ---
-layout: two-cols
----
-
-# 态叠加原理
-
-$x_1$
-
-考虑一个粒子可以在盒子 $x_2$ 或 $x_1$ 处
-
-宏观上，粒子不是在 $x_2$ 就是在 $x_1$
-
-量子力学中，当不被测量时，粒子既在 $x_2$ ，又在 $x_1$ ，处于 $x_2$ 与￼的叠加态
-
-薛定谔的猫
-
-::right::
-
-<img src="/images/CNX_UPhysics_40_01_Two_State-1-25192.jpg" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
-
----
-
-# Schrödinger’s Joke
-
-<img src="/images/Screen Shot 2024-03-27 at 22.05.33-29212.png" style="max-width: 500px; max-height: 400px;" />
-
----
-
-# 什么是波函数
-
-$\Psi(x, t)=A \sin (k x-\omega t)$
-
-量子上 $\Psi(x,t)$
-
-一个数学函数，它可用于确定做位置测量时粒子可能在哪里。
-
-波函数如何用于预测？如果有必要找出在某个区间内发现粒子的概率，则对波函数求平方并在感兴趣的区间上积分。
-
-如果物质波波函数为 $(x=-\infty,+\infty)$ ，那么粒子究竟在哪？
-
-当不被观测时，粒子无处不在 $(x, x+d x)$
-
-当被观测时，粒子“跳入”特定的状态 $P(x, x+d x)=|\Psi(x, t)|^{2} d x$ ，概率为￼，这个过程叫做“坍缩”
-
----
-
-# 波函数的复数形式
-
-$\Psi(x, t)=A \cos (k x-\omega t)+i A \sin (k x-\omega t) = A e^{i(kx-\omega t)} = Ae^{i\phi}$
-
-量子力学的平面波波函数可以写为
-
-相对于宏观的机械波、声波，物质波波函数不可测，因此需要写成复数形式
-
-用复共轭的方式计算概率
-
----
-
-# 期望值计算
-
-$x(t)$
-
-宏观上，运动方程的解是一个可测量量的函数，例如  $x$ ，其中 $t$ 是位置， $t$ 是时间。请注意，粒子在任何时间 $\Psi(x,t)$ 都有一个位置值。
-
-在量子力学中，运动方程的解是波函数 $t$ 。粒子在任何时间 $|\Psi(x,t)|^2$ 都有许多位置值，并且只能知道找到粒子的概率密度 $\langle x\rangle=\int_{-\infty}^{\infty} x P(x, t) d x=\int_{-\infty}^{\infty} x \Psi *(x, t) \Psi(x, t) d x$ 。粒子的位置平均值为
-
----
-
-# 不确定性原理的统计学解释
-
-$\Delta x \to \sigma_x$
-
-使用标准差代替不确定度
-
-<img src="/images/Standard_deviation_diagram.svg-25326.png" style="max-width: 500px; max-height: 400px;" />
-
----
-
-# 习题
-
-$\sigma_{x} \sigma_{p}=\frac{\hbar}{2}$
-
-利用不确定性原理估算氢原子的基态能量（假设氢原子的直径为0.1 nm）
-
-其中
-
-电子在左右来回运动， $\sigma_{x}^{2}=x^{2}-\bar{x}^{2} \text { and } \sigma_{p}^{2}=p^{2}-\bar{p}^{2}$ ；位置的不确定性近似为原子的半径 $\bar{p}= 0$ ，因此基态能量可以估算为
-
-为了方便计算，
-
----
-
-# 波包
-
-$\Psi(x, t)= A e^{i(kx-\omega t)}$
-
-平面波波函数（确定动量 $p=\hbar k$ ）
-
-确定动量时，粒子完全无法确定位置，无处不在
-
-波包是平面波在 $|\Psi(x,t)|^2 =|A|^2$ 区间内的叠加态
-
-<img src="/images/reality_wavepacket-25511.gif" style="max-width: 313px;" />
-
-<img src="/images/Sequential_superposition_of_plane_waves-25514.gif" style="max-width: 360px;" />
-
----
 
 # 小结
 
-在量子力学中，系统的状态由波函数表示。
+- 量子力学中，系统的状态由**波函数** $\Psi(x,t)$ 表示
 
-在玻恩的解释中，粒子波函数的平方表示在空间中特定位置附近找到粒子的概率密度。
+- 玻恩的统计解释：$|\Psi|^2$ 表示粒子出现的概率密度
 
-在使用波函数进行预测之前，必须首先对波函数进行归一化。
+- 波函数必须满足归一化条件 $\int |\Psi|^2 dx = 1$
 
-期望值是一种平均值，它的计算需要波函数的形式和进行积分运算
+- 期望值：$\langle Q \rangle = \int \Psi^* \hat{Q} \Psi \, dx$
 
----
+- 态叠加原理：未测量时，粒子可以同时处于多个态的叠加
+
+
 
 # §15 薛定谔方程
 
