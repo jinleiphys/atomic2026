@@ -1885,14 +1885,3 @@ Hg原子从第一激发态跃迁到基态，可观察到一条光谱，测得的
 
 </div>
 
----
-layout: two-cols
----
-
-# 补充：瑞利-金斯公式
-
-$$\Phi(\lambda, T)\mathrm{d}\lambda = \frac{8\pi kT}{\lambda^4}\mathrm{d}\lambda$$
-
-::right::
-
-<img src="/images/CNX_UPhysics_39_01_rayleigh-1-18998.jpg" style="width: 90%; max-height: 300px; object-fit: contain; margin: 10px auto; display: block;" />

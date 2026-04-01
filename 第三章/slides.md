@@ -839,7 +839,7 @@ td img { width: 85%; }
 <v-click>
 <div class="frontier">
 
-**2026年1月**：同一团队将记录推至含 **7000+原子的钠纳米粒子**（170,000道尔顿，直径~8nm），质量已接近小型**病毒**！
+**2026年1月**（*Nature*）：同一团队将记录推至含 **7000+原子的钠纳米粒子**（170,000道尔顿，直径~8nm），质量已接近小型**病毒**！
 
 </div>
 </v-click>
@@ -1815,7 +1815,7 @@ layout: two-cols
 
 <div v-click>
 
-1926年，玻恩（M. Born）提出了**统计诠释**：
+1926年，玻恩（M. Born）提出了**统计诠释** [1]：
 
 <div style="border: 2px solid #C71585; border-radius: 8px; padding: 12px 16px; margin-top: 8px; background: #fef0f5;">
 
@@ -1983,32 +1983,69 @@ Niels Bohr reportedly replied: **"Stop telling God what to do."**
 </div>
 
 ---
+
+# 量子力学的其他解释：多世界解释
+
+<div style="display: flex; gap: 2rem; align-items: flex-start;">
+<div style="flex: 1;">
+
+**多世界解释**（休·埃弗雷特，1957）
+
+<div v-click>
+
+波函数**从不坍缩**。每次量子测量时，宇宙"分裂"为所有可能结果对应的分支，每个分支中的观测者只看到一个结果。
+
+</div>
+
+<div v-click>
+
+薛定谔的猫不再是悖论：宇宙分裂成两个分支，一个分支中猫活着，另一个中猫死了。
+
+</div>
+
+<div v-click>
+
+数学上最简洁（无额外假设），但无法实验验证其他"世界"的存在。近年来在量子计算领域越来越受欢迎。
+
+</div>
+
+</div>
+<div style="flex-shrink: 0; width: 280px; text-align: center;">
+
+<img src="/images/Schroedingers_cat_film.svg-29098.png" style="max-width: 100%; max-height: 120px; object-fit: contain;" />
+
+<img src="/images/9780691645926.jpg-29105.jpeg" style="max-width: 80%; max-height: 150px; object-fit: contain; margin-top: 0.5rem;" />
+
+<img src="/images/1_340818701_171_85_3_824378794_c0eab89545593cfdca20f31f5498b98c-29121.png" style="max-width: 90%; max-height: 90px; object-fit: contain; margin-top: 0.5rem;" />
+
+</div>
+</div>
+
+---
 layout: two-cols
 ---
 
 # 量子力学的其他解释
 
-**多世界解释**（休·埃弗雷特）
+**隐变量理论**（德布罗意-玻姆理论，1952）
 
-波函数从不坍缩，所有可能的量子事件都在多宇宙中实现，每个可能的历史在不同的宇宙中发生。
+<div v-click>
 
-::right::
+核心思想：粒子在任何时刻都有**确定的位置和轨迹**，但受到一个"导航波"（pilot wave）的引导。波函数是真实存在的物理场，引导粒子运动。
 
-<img src="/images/Schroedingers_cat_film.svg-29098.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+</div>
 
-<img src="/images/9780691645926.jpg-29105.jpeg" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+<div v-click>
 
-<img src="/images/1_340818701_171_85_3_824378794_c0eab89545593cfdca20f31f5498b98c-29121.png" style="max-width: 100%; max-height: 130px; object-fit: contain;" />
+与哥本哈根解释的根本区别：概率不是内禀的，而是**认识论**上的。粒子始终有确定轨迹，量子力学的随机性仅仅来自我们不知道初始位置，类似经典统计力学。
 
----
-layout: two-cols
----
+</div>
 
-# 量子力学的其他解释
+<div v-click>
 
-**隐变量理论**（德布罗意-玻姆理论）
+1964年，贝尔（J. Bell）证明了著名的**贝尔不等式** [2]：任何"定域"隐变量理论的预测与量子力学不同。实验证实量子力学正确 [6]，排除了定域隐变量，但玻姆理论 [3] 是**非定域**的，不受贝尔定理限制。
 
-除了波函数之外还存在隐藏的变量决定粒子的行为，这些变量在标准量子力学中没有被考虑。
+</div>
 
 ::right::
 
@@ -2022,9 +2059,25 @@ layout: two-cols
 
 # 量子力学的其他解释
 
-**客观坍缩理论**（Penrose）
+**客观坍缩理论**（GRW / Penrose）
 
-当量子叠加产生的时空曲率差异达到一个阈值时，会自发触发坍缩。彭罗斯认为这种坍缩与引力有关。
+<div v-click>
+
+核心思想：波函数坍缩是一个**真实的物理过程**，不需要观测者介入。当量子叠加涉及的质量或能量差异达到某个阈值时，坍缩会自发发生。
+
+</div>
+
+<div v-click>
+
+**GRW理论**（1986）[4]：波函数会以极低的概率自发坍缩到某个位置。对单个粒子几乎不影响，但宏观物体包含 $\sim 10^{23}$ 个粒子，叠加态在极短时间内就会坍缩，这就解释了为什么我们看不到宏观叠加态。
+
+</div>
+
+<div v-click>
+
+**彭罗斯方案**：引力是坍缩的根源。两个叠加态对应不同的质量分布，产生不同的时空弯曲，当时空曲率差异达到阈值时触发坍缩。这是少数可以实验检验的量子引力效应之一。
+
+</div>
 
 ::right::
 
@@ -2058,6 +2111,38 @@ $$\int_{-\infty}^{+\infty} |\Psi(x, t)|^{2} \, dx = 1$$
 
 ---
 
+# 例题：波函数的归一化
+
+设粒子的波函数为 $\phi(x) = A e^{-\alpha |x|}$（$\alpha > 0$），求归一化常数 $A$。
+
+<div v-click>
+
+由归一化条件：
+
+$$\int_{-\infty}^{+\infty} |A|^2 e^{-2\alpha |x|} \, dx = 2|A|^2 \int_0^{\infty} e^{-2\alpha x} \, dx = 2|A|^2 \cdot \frac{1}{2\alpha} = \frac{|A|^2}{\alpha} = 1$$
+
+</div>
+
+<div v-click>
+
+因此 $A = \sqrt{\alpha}$，归一化波函数为：
+
+$$\Psi(x) = \sqrt{\alpha} \, e^{-\alpha |x|}$$
+
+</div>
+
+<div v-click>
+
+粒子出现在 $[-a, a]$ 区间内的概率：
+
+$$P = \int_{-a}^{a} \alpha e^{-2\alpha |x|} dx = 1 - e^{-2\alpha a}$$
+
+当 $a = 1/\alpha$ 时，$P = 1 - e^{-2} \approx 86.5\%$。
+
+</div>
+
+---
+
 # 波函数的物理意义
 
 $|\Psi(x,y,z,t)|^2$ 是概率密度：
@@ -2078,41 +2163,39 @@ $$P = \int_V |\Psi|^2 \, dV$$
 
 </div>
 
----
-layout: two-cols
+<div v-click>
+
+在球坐标下（原子物理中最常用），$dV = r^2 \sin\theta \, dr \, d\theta \, d\phi$，归一化条件变为：
+
+$$\int_0^{\infty} \int_0^{\pi} \int_0^{2\pi} |\Psi(r,\theta,\phi)|^2 \, r^2 \sin\theta \, dr \, d\theta \, d\phi = 1$$
+
+这就是我们后面求解氢原子波函数时使用的形式。
+
+</div>
+
 ---
 
 # 电子双缝干涉的统计学解释
 
-设从 A、B 两缝通过的电子波函数分别为 $\psi_A$ 和 $\psi_B$。
-
-双缝同时开启时：$\psi = \psi_A + \psi_B$
+从 A、B 两缝通过的电子波函数为 $\psi_A$ 和 $\psi_B$。两缝同时开启时：$\psi = \psi_A + \psi_B$
 
 <div v-click>
 
-概率密度：
+屏上电子的概率分布：
 
-$$|\psi|^2 = |\psi_A + \psi_B|^2 = |\psi_A|^2 + |\psi_B|^2 + \psi_A^* \psi_B + \psi_B^* \psi_A$$
-
-后两项是**干涉项**，正是它产生了干涉条纹。
+$$|\psi|^2 = \underbrace{|\psi_A|^2}_{\text{只开A缝}} + \underbrace{|\psi_B|^2}_{\text{只开B缝}} + \underbrace{\psi_A^* \psi_B + \psi_B^* \psi_A}_{\text{干涉项：产生条纹的原因}}$$
 
 </div>
 
 <div v-click>
 
-玻恩的概率解释将粒子性和波动性统一起来：粒子逐个到达屏幕（粒子性），大量粒子的统计分布呈现干涉图样（波动性）。
+<div style="border: 2px solid #C71585; border-radius: 8px; padding: 10px 16px; margin-top: 12px; background: #fef0f5; text-align: center;">
+
+玻恩用概率解释把波动性和粒子性统一起来：粒子逐个到达屏幕（**粒子性**），大量粒子的统计分布呈现干涉图样（**波动性**）。
 
 </div>
 
-::right::
-
-<img src="/images/pasted-image-27416.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
-
-<img src="/images/pasted-image-27446.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
-
-<img src="/images/pasted-image-27453.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
-
-<img src="/images/pasted-image-27459.png" style="max-width: 100%; max-height: 100px; object-fit: contain;" />
+</div>
 
 ---
 layout: two-cols
@@ -2124,6 +2207,18 @@ layout: two-cols
 
 - 密处：$|\Psi|^2$ 大，电子出现概率高
 - 疏处：$|\Psi|^2$ 小，电子出现概率低
+
+<div v-click>
+
+电子云的形状由量子数 $(n, l, m)$ 决定：
+
+- $l=0$（s 态）：球对称
+- $l=1$（p 态）：哑铃形
+- $l=2$（d 态）：花瓣形
+
+这些形状就是化学中熟悉的**原子轨道**。
+
+</div>
 
 ::right::
 
@@ -2154,9 +2249,21 @@ layout: two-cols
 
 ---
 
-# Schrödinger's Joke
+# Schrödinger's Cat
 
-<img src="/images/Screen Shot 2024-03-27 at 22.05.33-29212.png" style="max-width: 500px; max-height: 400px; margin: 10px auto; display: block;" />
+<img src="/images/Screen Shot 2024-03-27 at 22.05.33-29212.png" style="max-width: 500px; max-height: 300px; margin: 10px auto; display: block;" />
+
+<div v-click>
+
+薛定谔（1935）提出这个思想实验，本意是**嘲讽**哥本哈根解释的荒谬：如果量子叠加可以通过放大机制传递到宏观世界，那么一只猫就可以处于"既死又活"的叠加态，这显然违背常识。
+
+</div>
+
+<div v-click>
+
+现代物理的回答：**退相干**（decoherence）。宏观物体与环境的相互作用会在极短时间内（$\sim 10^{-20}$ s）破坏量子相干性，使叠加态表现为经典的确定态。猫永远不会真正处于叠加态。
+
+</div>
 
 ---
 
@@ -2230,7 +2337,147 @@ layout: two-cols
 
 ---
 
-# 小结
+# 思考：双缝实验中"偷看"会怎样？
+
+在电子双缝实验中，如果我们在缝旁放一个探测器，试图确定电子究竟通过了哪条缝，干涉条纹会发生什么？
+
+<div v-click>
+
+**答**：干涉条纹**消失**！一旦确定电子走哪条缝，波函数就"坍缩"到 $\psi_A$ 或 $\psi_B$，不再是叠加态 $\psi_A + \psi_B$，干涉项 $\psi_A^*\psi_B + \psi_B^*\psi_A = 0$。
+
+</div>
+
+<div v-click>
+
+这不是探测器"打扰"了电子那么简单。即使用极弱的光去探测，只要获取了"哪条路径"的信息，干涉就消失。
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">量子力学中，获取信息本身就会改变系统的状态。互补性原理：路径信息和干涉条纹不可兼得。</span>
+
+</div>
+
+---
+
+# 思考：概率幅 vs 概率
+
+经典概率论中，两个互斥事件的概率直接相加：$P = P_1 + P_2$。量子力学中为什么不能这样做？
+
+<div v-click>
+
+**答**：量子力学中相加的不是概率，而是**概率幅**（波函数）：
+
+$$\psi = \psi_1 + \psi_2, \quad P = |\psi_1 + \psi_2|^2 \neq |\psi_1|^2 + |\psi_2|^2$$
+
+</div>
+
+<div v-click>
+
+"先加概率幅，再取模方"与"先取模方，再加概率"，结果不同！差别正是干涉项。
+
+| | 经典概率 | 量子概率 |
+|---|---|---|
+| **相加对象** | 概率 $P$ | 概率幅 $\psi$ |
+| **计算** | $P = P_1 + P_2$ | $P = |\psi_1 + \psi_2|^2$ |
+| **干涉** | 无 | 有 |
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">这是量子力学与经典物理最本质的区别：自然界的基本规律是概率幅叠加，不是概率叠加。</span>
+
+</div>
+
+---
+
+# 思考：波函数是"真实"的吗？
+
+波函数 $\Psi$ 是一个复数，不可直接测量。它只是方便计算的数学工具，还是代表了某种物理实在？
+
+<div v-click>
+
+**观点一（工具论）**：$\Psi$ 只是编码我们对系统知识的工具，真正有物理意义的只有 $|\Psi|^2$。
+
+**观点二（实在论）**：$\Psi$ 代表真实的物理场。2012年 Pusey 等人 [5] 从数学上证明：如果量子力学的预测正确，波函数不可能只是"知识的编码"，它必须反映物理实在。
+
+</div>
+
+<div v-click>
+
+**想一想**：如果波函数只是数学工具，如何解释干涉实验中 $\psi_A$ 和 $\psi_B$ 的叠加产生了可观测的条纹？纯粹的"知识"怎么会发生干涉？
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">这个问题至今没有定论，是量子力学基础研究的前沿课题。不同的量子力学诠释给出不同的回答。</span>
+
+</div>
+
+---
+
+# 前沿：2022年诺贝尔物理学奖
+
+<div style="display: flex; gap: 2rem; align-items: flex-start;">
+<div style="flex: 1;">
+
+Aspect、Clauser、Zeilinger 因**纠缠光子实验、验证贝尔不等式的违反以及开创量子信息科学**获2022年诺贝尔物理学奖 [6]。
+
+<div v-click>
+
+**贝尔不等式**（1964）：如果存在定域隐变量，实验中纠缠粒子的关联度有一个上限。量子力学预言这个上限会被突破。
+
+</div>
+
+<div v-click>
+
+三位科学家先后用越来越严格的实验堵住了所有漏洞，明确证实：**自然界违反贝尔不等式**，定域隐变量理论被实验排除。
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">这是20世纪物理学最深刻的实验之一：量子力学的非定域性不是理论假设，而是实验事实。</span>
+
+</div>
+
+</div>
+</div>
+
+---
+
+# 前沿：Born规则能被实验检验吗？
+
+Born规则（$P = |\Psi|^2$）是量子力学的基本公设。能否设计实验来检验它？
+
+<div v-click>
+
+**Sorkin（1994）[7] 的方案**：在双缝实验中，$P_{12} = P_1 + P_2 +$ 干涉项。但如果 Born 规则有偏差，**三缝**实验会出现额外的高阶干涉项。
+
+定义 Sorkin 参数：$\kappa = P_{123} - P_{12} - P_{13} - P_{23} + P_1 + P_2 + P_3$
+
+Born 规则预言 $\kappa = 0$，任何偏差都意味着量子力学不完备。
+
+</div>
+
+<div v-click>
+
+实验结果 [8]：多个独立实验验证 $\kappa$ 在 $10^{-4}$ 精度内为零，Born 规则经受住了考验。
+
+</div>
+
+<div v-click>
+
+<span class="kaiti-accent">"概率等于振幅的模方"不是不可检验的信条，而是经过精密实验验证的物理规律。</span>
+
+</div>
+
+---
+
+# §14 小结
 
 - 量子力学中，系统的状态由**波函数** $\Psi(x,t)$ 表示
 
@@ -2242,300 +2489,342 @@ layout: two-cols
 
 - 态叠加原理：未测量时，粒子可以同时处于多个态的叠加
 
+---
 
+# §14 参考文献
+
+<div style="font-size: 0.7em; line-height: 1.6;">
+
+[1] M. Born, "Zur Quantenmechanik der Stoßvorgänge," *Z. Phys.* **37**, 863 (1926). — 波函数的统计解释（1954年诺贝尔物理学奖）
+
+[2] J. S. Bell, "On the Einstein Podolsky Rosen paradox," *Physics Physique Физика* **1**, 195 (1964). — 贝尔不等式
+
+[3] D. Bohm, "A Suggested Interpretation of the Quantum Theory in Terms of 'Hidden' Variables," *Phys. Rev.* **85**, 166 (1952). — 德布罗意-玻姆导航波理论
+
+[4] G. C. Ghirardi, A. Rimini, T. Weber, "Unified dynamics for microscopic and macroscopic systems," *Phys. Rev. D* **34**, 470 (1986). — GRW 客观坍缩理论
+
+[5] M. F. Pusey, J. Barrett, T. Rudolph, "On the reality of the quantum state," *Nature Phys.* **8**, 475 (2012). — 波函数实在性定理
+
+[6] A. Aspect, J. Clauser, A. Zeilinger, **2022年诺贝尔物理学奖**："纠缠光子实验，建立贝尔不等式的违反，开创量子信息科学"
+
+[7] R. D. Sorkin, "Quantum mechanics as quantum measure theory," *Mod. Phys. Lett. A* **9**, 3119 (1994). — Born 规则三缝检验方案
+
+[8] U. Sinha et al., "Ruling Out Multi-Order Interference in Quantum Mechanics," *Science* **329**, 418 (2010). — Born 规则实验检验
+
+[9] S. Gerlich et al., "Probing quantum mechanics with nanoparticle matter-wave interferometry," *Nature* (2026). — 17万道尔顿纳米粒子量子干涉
+
+</div>
+
+---
 
 # §15 薛定谔方程
 
 需要掌握的知识点：
 
-描述薛定谔方程在量子力学中的作用
+（1）描述薛定谔方程在量子力学中的作用
 
-解释与时间依赖和与时间无关的薛定谔方程之间的区别
+（2）区分含时薛定谔方程与定态薛定谔方程
 
-解释薛定谔方程的解
+（3）理解薛定谔方程的解的物理意义
+
+---
+
+# 寻找量子世界的运动方程
+
+宏观世界中，经典的波满足波动方程，经典的粒子满足牛顿力学。
+
+那么，具有**波粒二象性**的微观粒子呢？用什么描述？满足什么方程？
+
+<div v-click>
+
+1925年，维也纳大学的德拜（P. Debye）在薛定谔讲解德布罗意论文后提醒他：
+
+<div style="border-left: 3px solid #C71585; padding-left: 16px; margin: 8px 0; font-style: italic;">
+
+"对于波，应该有一个波动方程。"
+
+</div>
+
+薛定谔受此启发，在1926年提出了非相对论性的波动方程。
+
+</div>
 
 ---
 
 # 薛定谔方程
 
-宏观上
+薛定谔（1926）提出的含时薛定谔方程：
 
-经典的波：用波函数描述，满足经典的波动方程
+$$i \hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^{2}}{2 m}\left(\frac{\partial^{2} \Psi}{\partial x^{2}}+\frac{\partial^{2} \Psi}{\partial y^{2}}+\frac{\partial^{2} \Psi}{\partial z^{2}}\right)+U(x, y, z, t) \Psi$$
 
-经典的波、经典粒子都满足牛顿力学
+<div v-click>
 
-那么，具有波粒二象性的粒子呢？
+简写为：$i\hbar \dfrac{\partial \Psi}{\partial t} = \hat{H} \Psi$，其中 $\hat{H} = -\dfrac{\hbar^2}{2m}\nabla^2 + U$ 称为**哈密顿算符**。
 
-用什么描述？满足什么方程？
+</div>
 
-这是1925年维也纳大学的P.Debye和E.Schrodinger遇到的问题，也是玻尔的弟子们W.Heisenberg等人的问题！
+<div v-click>
 
----
+薛定谔方程的地位类似于经典力学中的**牛顿第二定律**：给定初始波函数 $\Psi(x,0)$ 和势能 $U(x,t)$，薛定谔方程决定了波函数在此后任何时刻的演化。
 
-# 问题的提出
+</div>
 
-$-\frac{\hbar^{2}}{2 m}\left(\frac{\partial^{2} \Psi}{\partial x^{2}}+\frac{\partial^{2} \Psi}{\partial y^{2}}+\frac{\partial^{2} \Psi}{\partial z^{2}}\right)+U(x, y, z, t) \Psi=i \hbar \frac{\partial \Psi}{\partial t}$
-
-德拜:问薛定谔能不能讲一讲De Broglie的那篇学位论文呢？
-
-德拜提醒薛定谔:“对于波，应该有一个波动方程”
-
-薛定谔（1926）提出了非相对论性的薛定谔方程：
-
-<img src="/images/pasted-image-27833.png" style="max-width: 500px; max-height: 400px;" />
+<img src=”/images/pasted-image-27833.png” style=”max-width: 400px; max-height: 200px; margin: 0 auto; display: block;” />
 
 ---
 
-# 薛定谔方程
+# 薛定谔方程的历史
 
-<img src="/images/Screen Shot 2022-02-14 at 19.28.56-25712.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screen Shot 2022-02-14 at 19.28.56-25712.png" style="max-width: 80%; max-height: 400px; margin: 0 auto; display: block;" />
 
 ---
 
-# 薛定谔方程
+# 薛定谔方程：原始论文
 
-<img src="/images/Screenshot 2023-03-29 at 10.29.30-28961.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screenshot 2023-03-29 at 10.29.30-28961.png" style="max-width: 45%; max-height: 350px; display: inline-block; vertical-align: top;" />
 
-<img src="/images/Screenshot 2023-03-29 at 10.32.17-28966.png" style="max-width: 500px; max-height: 400px;" />
+<img src="/images/Screenshot 2023-03-29 at 10.32.17-28966.png" style="max-width: 45%; max-height: 350px; display: inline-block; vertical-align: top;" />
 
 ---
 
 # 自由粒子的波动方程
 
-$\frac{\partial^{2} \Psi}{\partial x^{2}}=-k^2 \Psi(x, t), \quad \frac{\partial \Psi}{\partial t}=\frac{E}{i \hbar} \Psi(x, t)$
+自由粒子的平面波 $\Psi(x,t) = Ae^{i(kx - \omega t)}$，对其求偏导：
 
-与经典波相似，自由粒子波函数分别对时间、空间求偏导，可以得到其满足的波动方程：
+$$\frac{\partial^{2} \Psi}{\partial x^{2}}=-k^2 \Psi, \quad \frac{\partial \Psi}{\partial t}=-i\omega \Psi$$
 
-或 $E \Psi(x, t)=i \hbar \frac{\partial \Psi}{\partial t}$
+<div v-click>
 
-考虑到： $E= \frac{(\hbar k)^2}{2m}$ ，有
+利用德布罗意关系 $E = \hbar\omega$，$p = \hbar k$，以及 $E = \dfrac{p^2}{2m} = \dfrac{\hbar^2 k^2}{2m}$，得到：
 
----
+$$i\hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}$$
 
-# 非自由粒子的波函数
+</div>
 
-$\Psi(x,y,z,t)$
+<div v-click>
 
-对非自由粒子，由于受外场作用, 其波函数与自由粒子的不同。
+这就是**自由粒子**（$U = 0$）的薛定谔方程。
 
-一般情况下，是一个坐标与时间的函数￼,  但具体形式要根据具体问题来确定。
-
-用波函数描述微观粒子的状态，这是量子力学的基本假设之一,  这种新的描述方法, 充分体现了粒子的波粒二象性。
+</div>
 
 ---
 
-# 非自由粒子的波动方程
+# 非自由粒子的薛定谔方程
 
-$\Psi(x,t)$
+对非自由粒子，受势场 $U(x,t)$ 作用，波函数 $\Psi(x,y,z,t)$ 的具体形式由势场决定。
 
-非自由粒子受到势场作用，其波函数 $i \hbar \frac{\partial}{\partial t} \Psi(x, t)=\left[-\frac{\hbar^{2}}{2 m} \frac{\partial^{2}}{\partial x^{2}}+U(x, t)\right] \Psi(x, t)$ 的形式与具体的势场有关，其满足的波动方程应加势能项：
+<div v-click>
+
+在自由粒子方程的基础上加入势能项：
+
+$$i \hbar \frac{\partial}{\partial t} \Psi(x, t)=\left[-\frac{\hbar^{2}}{2 m} \frac{\partial^{2}}{\partial x^{2}}+U(x, t)\right] \Psi(x, t)$$
+
+</div>
+
+<div v-click>
 
 三维情况下，波动方程变为：
 
-薛定谔方程是量子力学的基本方程
+$$i \hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^{2}}{2 m} \nabla^2 \Psi + U(\vec{r}, t) \Psi$$
 
-类比牛顿第二定律在宏观的作用
+其中 $\nabla^2 = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2}$ 是拉普拉斯算符。
+
+</div>
+
+<div v-click>
+
+薛定谔方程是量子力学的基本方程，地位等同于经典力学中的牛顿第二定律。
+
+</div>
 
 ---
 
 # 经典力学与量子力学的对比
 
-$\frac{d\vec{p}}{dt}=m\frac{d^2\vec{r}}{dt^2}$
+| | 经典力学 | 量子力学 |
+|---|---|---|
+| **状态描述** | 位置 $\vec{r}(t)$，动量 $\vec{p}(t)$ | 波函数 $\Psi(\vec{r}, t)$ |
+| **运动方程** | $\vec{F} = m\dfrac{d^2\vec{r}}{dt^2}$ | $i\hbar\dfrac{\partial \Psi}{\partial t} = \hat{H}\Psi$ |
+| **可观测量** | 确定值 | 期望值 $\langle \hat{Q} \rangle$ |
+| **确定性** | 完全确定 | 概率性预测 |
 
 ---
 
 # 定态薛定谔方程
 
-$U$
+当势能 $U$ 不依赖于时间时，可以用**分离变量法**求解。
 
-当势能项 $\Psi(x, t)= A e^{i(kx-\omega t)}$ 不依赖于时间时，我们可以根据平面波波函数的形式 $\Psi(x, t)=\psi(x) e^{-i \omega t}$ ，猜测（ansatz）
+<div v-click>
 
-不依赖于时间
+猜测（ansatz）波函数的形式为：$\Psi(x, t)=\psi(x) \cdot e^{-i \omega t}$
 
-不依赖于空间
+- $\psi(x)$：只依赖于空间
+- $e^{-i\omega t}$：只依赖于时间
 
-满足定态薛定谔方程
+</div>
 
-波函数 $-\frac{\hbar^{2}}{2 m} \frac{d^{2} \psi(x)}{d x^{2}}+U(x) \psi(x)=E \psi(x)$ : 单值、有限、连续、可归一
+<div v-click>
 
----
+代入含时薛定谔方程，可得**定态薛定谔方程**：
 
-# Ansatz
+$$-\frac{\hbar^{2}}{2 m} \frac{d^{2} \psi(x)}{d x^{2}}+U(x) \psi(x)=E \psi(x)$$
 
-$y''(x) + 2 y'(x) + 3 y(x) = x^3$
+这是一个关于 $\psi(x)$ 的**本征值方程**，$E$ 为能量本征值。
 
-is an educated guess or an additional assumption made to help solve a problem, and which may later be verified to be part of the solution by its results.
+</div>
 
-假设
+<div v-click>
 
-代入上式求解系数 $y(x) = a x^3 + b x^2 + c x + d$
+波函数 $\psi(x)$ 必须满足标准条件：**单值、有限、连续、可归一**。
 
----
-
-# 定态薛定谔方程
-
-$\psi(x)$
-
-解出定态波函数 $\Psi(x, t)=\psi(x) e^{-i \omega t}$ 后可得总波函数为：
-
-概率密度为
-
-即在定态下概率分布不随时间改变，这正是定态这一名称的由来。
-
-<img src="/images/pasted-image-27914.png" style="max-width: 332px; max-height: 400px;" />
+</div>
 
 ---
 
-# 定态薛定谔方程的意义：
+# 什么是 Ansatz？
 
-$-\frac{\hbar^{2}}{2 m} \nabla^{2} \psi+U \psi=E \psi$
+Ansatz（德语"假设"）：对方程解的形式做一个有根据的猜测，代入方程验证并求解。
 
-对波函数进行某种运算或作用的符号称为算符。
+<div v-click>
 
-若 $H \psi = \lambda \psi$ ，则 $\psi$ 是算符 $H$ 的本征函数，数值λ称为算符  $H$ 的本征值， $H \psi = \lambda \psi$ 称为算符 $H$ 的本征方程。因此，定态薛定谔方程也称为哈密顿算符的本征方程，或能量算符的本征方程。
+**例子**：求解 $y''(x) + 2 y'(x) + 3 y(x) = x^3$
 
-利用薛定谔方程，再加上波函数标准条件，可以 “自然地” 得到微观粒子的重要特征—量子化结果, 而不须象普朗克假设那样强制假定量子化。薛定谔方程的结果，已被无数实验所证实。
+猜测 $y(x) = a x^3 + b x^2 + c x + d$，代入方程后比较各次幂系数，即可确定 $a, b, c, d$。
+
+</div>
+
+<div v-click>
+
+**薛定谔方程中的 Ansatz**：
+
+猜测 $\Psi(x,t) = \psi(x) e^{-i\omega t}$（时空可分离），代入含时方程后得到定态方程。这不是随意的猜测，而是基于对平面波 $Ae^{i(kx-\omega t)}$ 形式的类比。
+
+</div>
 
 ---
 
-# 态叠加原理
+# 定态的物理含义
 
-$\psi_1$
+解出 $\psi(x)$ 后，总波函数为：$\Psi(x, t)=\psi(x) \, e^{-iEt/\hbar}$
 
-如果 $\psi_2$ , $\psi_n$ ,⋅⋅⋅, $\Psi=C_{1} \psi_{1}+C_{2} \psi_{2}+\cdots+C_{n} \psi_{n}$ 等都是体系的可能状态或称基矢，那么，它们的线性叠加态也是这个体系的一个可能状态。
+<div v-click>
 
-即       $C_1,\  C_2,\ ...,\  C_n$
+概率密度：
 
-其中的系数 $1=\sum_{n} C_{n}^{2}$  为复数，它们模平方是在对应态粒子出现的概率。
+$$|\Psi(x,t)|^2 = |\psi(x)|^2 \cdot |e^{-iEt/\hbar}|^2 = |\psi(x)|^2$$
 
-它们满足：           
+概率分布**不随时间改变**，这正是"定态"名称的由来。
+
+</div>
+
+<div v-click>
+
+<img src="/images/pasted-image-27914.png" style="max-width: 300px; max-height: 250px; margin: 0 auto; display: block;" />
+
+虽然波函数本身随时间振荡（含 $e^{-iEt/\hbar}$ 因子），但所有可观测量都不随时间变化。
+
+</div>
+
 ---
+
+# 定态薛定谔方程的意义
+
+定态薛定谔方程 $\hat{H} \psi = E \psi$ 是一个**本征值方程**：
+
+<div v-click>
+
+- **算符** $\hat{H} = -\dfrac{\hbar^{2}}{2 m} \nabla^{2} + U$：对波函数进行运算的数学操作
+- **本征函数** $\psi$：满足 $\hat{H}\psi = E\psi$ 的特解
+- **本征值** $E$：对应的能量值
+
+</div>
+
+<div v-click>
+
+关键意义：利用薛定谔方程加上波函数标准条件（单值、有限、连续、可归一），**量子化自然而然地出现**，不再需要像普朗克那样人为假定。
+
+</div>
+
+<div v-click>
+
+这就是为什么薛定谔方程如此重要：它从一个统一的框架中推导出所有的量子化结果，已被无数实验证实。
+
+</div>
+
+---
+
+# 态叠加原理（薛定谔方程视角）
+
+如果 $\psi_1, \psi_2, \ldots, \psi_n$ 都是薛定谔方程的解，那么它们的线性叠加也是一个可能状态：
+
+$$\Psi = C_1 \psi_1 + C_2 \psi_2 + \cdots + C_n \psi_n$$
+
+<div v-click>
+
+系数 $C_1, C_2, \ldots, C_n$ 为复数，$|C_n|^2$ 表示测量时发现粒子处于 $\psi_n$ 态的概率。
+
+归一化要求：$\sum_n |C_n|^2 = 1$
+
+</div>
+
+<div v-click>
+
+这是因为薛定谔方程是**线性方程**，线性叠加性是量子力学最深刻的特征之一。
+
+</div>
+
+---
+
 
 # 为什么波函数用复数表示
 
-$(E-H) \Psi = 0$
+薛定谔方程中含有虚数单位 $i$：$i\hbar \dfrac{\partial \Psi}{\partial t} = \hat{H}\Psi$
 
-考虑定态薛定谔方程 $H=T+V$ ，其中 $(E-T) \Psi = V \Psi$
+<div v-click>
 
-通过变换可得 $E <0$
+这意味着即使初始条件是实函数，时间演化后也会变成复函数。复数是薛定谔方程的**内在要求**，不是人为选择。
 
-当 $\Psi = \frac{1}{E-T} V \Psi$ 时， $E >0$
+</div>
 
-当 $\Psi = \lim_{\epsilon -> 0}\frac{1}{E-T+i\epsilon} V \Psi$ 时，
+<div v-click>
+
+从散射理论的角度看：定态薛定谔方程 $(E - \hat{H})\Psi = 0$ 可改写为 $\Psi = \dfrac{1}{E - T} V\Psi$
+
+当 $E > 0$ 时，算符 $\dfrac{1}{E-T}$ 在 $E = T$ 处发散，必须引入无穷小虚部 $i\epsilon$ 来选择物理解：
+
+$$\Psi = \lim_{\epsilon \to 0}\frac{1}{E-T+i\epsilon} V \Psi$$
+
+</div>
+
+<div v-click>
+
+$+i\epsilon$ 对应出射波（因果律），$-i\epsilon$ 对应入射波。复数在量子力学中不可或缺。
+
+</div>
 ---
 
-# 总结
+# 第三章总结（一）
 
-$E=h \nu \quad \text { and } \quad p=h / \lambda$
+- **德布罗意关系**：$E = h\nu$，$p = h/\lambda$，或 $E = \hbar\omega$，$p = \hbar k$
 
-德布罗意关系式： $\Rightarrow$
+- **德布罗意对角动量量子化的解释**：驻波条件 $\Rightarrow$ 波长量子化 $\Rightarrow$ 角动量量子化
 
-德布罗意对角动量量子化的解释：局域内的波函数 $\Rightarrow$ 波长的量子化 $|\Psi|^{2}=$ 角动量的量子化
+- **戴维孙-革末实验**：物质波的第一个实验证据
 
-戴维孙-革末实验：物质波的第一个证据
+- **波函数的统计解释**（玻恩）：$|\Psi|^2$ 是概率密度
 
-波函数的统计解释： $\lambda=2 \pi / k , \quad \nu=\omega / 2 \pi=1 / T, \quad
-
-v=\lambda \nu$ 概率密度
-
-正弦波的参数： $\omega$
-
-$k$ 和 $E=\hbar \omega, \quad  p=\hbar k$ 表达下的德布罗意关系：
-波包：在某个有限区域之外为零（或极小）的波
-
----
-
-# 总结
-
-$\int_{\Omega}|\Psi|^{2} d V=1 \quad(\Omega-\text { 全空间 })$
-
-波函数的性质以及归一化： $\begin{align}
-
-& \Delta x \Delta k \geq 1 / 2, \quad \Delta t \Delta \omega \geq 1 / 2 \\
-
-& \Delta x \Delta p \geq \hbar / 2, \quad \Delta t \Delta E \geq \hbar / 2
-
-\end{align}$
-
-不确定性关系： $\sigma  \equiv \sqrt{E[X^2]-(E[X])^2}$
-
-不确定性原理的统计学解释：
-经典力学与量子力学的对比：特点，状态描述，运动方程，联系
+- **波包**：在有限区域之外为零（或极小）的波，描述局域化粒子
 
 ---
 
-<!-- 此页内容待补充 -->
+# 第三章总结（二）
 
----
+- **波函数的性质**：单值、有限、连续，归一化 $\displaystyle\int_{\Omega}|\Psi|^{2} dV = 1$
 
-<!-- 此页内容待补充 -->
+- **不确定性关系**：$\Delta x \Delta p \geq \hbar/2$，$\Delta t \Delta E \geq \hbar/2$
 
----
+- **薛定谔方程**：$i\hbar \dfrac{\partial \Psi}{\partial t} = \hat{H}\Psi$（量子力学的基本方程）
 
-<!-- 此页内容待补充 -->
+- **定态薛定谔方程**：$\hat{H}\psi = E\psi$（本征值问题）
 
----
-
-# 不确定性关系与傅里叶变换
-
-吉他发声可以看成是主弦的频率和腔体反射声音频率的干涉叠加
-
-因此，吉他（以及任何其他乐器，包括你的声音）发出的声音是由具有不同频率和振幅的纯正弦波组成的
-
-<img src="/images/acoustic_guitar_techniques_article_image_2021-28709.jpg" style="max-width: 500px; max-height: 400px;" />
-
----
-
-# 不确定性关系与傅里叶变换
-
-$$$
-
-\hat{f}(s)=\int_{-\infty}^{\infty} f(t) e^{-2 \pi i s t} d t
-
-$$$
-
-当我们描述这样一个复杂的信号时，我们可以选择两种相等的方式来表示它。我们可以选择用一个时间轴来描述所有产生干涉图样的波是如何同时相互作用的，或者我们可以选择用构成它的纯波的频率来描述它。这两种方式被称为双重关系（dual relationship）。
-
-它们之间满足傅里叶变换
-
----
-
-# 不确定性关系与傅里叶变换
-
-$$$
-
-\hat{f}(s)=\int_{-\infty}^{\infty} f(t) e^{-2 \pi i s t} d t
-
-$$$
-
-它们之间满足傅里叶变换
-
-傅里叶逆变换
-
-<img src="/images/1*ww6y2-OzmWfB5M_igMwuog-28805.gif" style="max-width: 500px;" />
-
----
-
-# 不确定性关系与傅里叶变换
-
-那么对时间的缩放会导致
-
-<img src="/images/1*8q2WxhGVG4mKBfo_rmvD1w-28848.png" style="max-width: 500px; max-height: 400px;" />
-
----
-
-# 不确定性关系与傅里叶变换
-
-那么对时间的缩放会导致
-
-<img src="/images/1*emjh1NtMFdAjPpKpxfaILQ-28854.png" style="max-width: 500px; max-height: 400px;" />
-
----
-
-# 不确定性关系与傅里叶变换
-
-那么对时间的缩放会导致
-
-傅里叶变换的缩放特性意味着如果我们在时间上压缩信号，那么这对应于在频率上扩展信号，反之亦然
-
-<img src="/images/1*0CJpPOjjAwQwbiuLKbVgEw-28863.png" style="max-width: 373px; max-height: 400px;" />
+- **经典与量子的对比**：牛顿方程 $\leftrightarrow$ 薛定谔方程，轨道 $\leftrightarrow$ 波函数，确定值 $\leftrightarrow$ 概率
