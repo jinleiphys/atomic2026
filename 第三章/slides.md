@@ -1815,7 +1815,7 @@ layout: two-cols
 
 <div v-click>
 
-1926年，玻恩（M. Born）提出了**统计诠释** [1]：
+1926年，玻恩（M. Born）提出了**统计诠释** ：
 
 <div style="border: 2px solid #C71585; border-radius: 8px; padding: 12px 16px; margin-top: 8px; background: #fef0f5;">
 
@@ -2043,15 +2043,15 @@ layout: two-cols
 
 <div v-click>
 
-1964年，贝尔（J. Bell）证明了著名的**贝尔不等式** [2]：任何"定域"隐变量理论的预测与量子力学不同。实验证实量子力学正确 [6]，排除了定域隐变量，但玻姆理论 [3] 是**非定域**的，不受贝尔定理限制。
+1964年，贝尔（J. Bell）证明了著名的**贝尔不等式**：任何"定域"隐变量理论的预测与量子力学不同。实验证实量子力学正确，排除了定域隐变量，但玻姆理论 是**非定域**的，不受贝尔定理限制。
 
 </div>
 
 ::right::
 
-<img src="/images/Screen Shot 2024-03-27 at 21.37.11-29145.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+<img src="/images/Screen Shot 2024-03-27 at 21.37.11-29145.png" style="max-width: 100%; max-height: 350px; object-fit: contain;" />
 
-<img src="/images/Screen Shot 2024-03-27 at 21.37.19-29152.png" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+<img src="/images/Screen Shot 2024-03-27 at 21.37.19-29152.png" style="max-width: 100%; max-height: 350px; object-fit: contain;" />
 
 ---
 layout: two-cols
@@ -2069,7 +2069,7 @@ layout: two-cols
 
 <div v-click>
 
-**GRW理论**（1986）[4]：波函数会以极低的概率自发坍缩到某个位置。对单个粒子几乎不影响，但宏观物体包含 $\sim 10^{23}$ 个粒子，叠加态在极短时间内就会坍缩，这就解释了为什么我们看不到宏观叠加态。
+**GRW理论**（1986）：波函数会以极低的概率自发坍缩到某个位置。对单个粒子几乎不影响，但宏观物体包含 $\sim 10^{23}$ 个粒子，叠加态在极短时间内就会坍缩，这就解释了为什么我们看不到宏观叠加态。
 
 </div>
 
