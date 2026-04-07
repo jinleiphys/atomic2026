@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@slidev/cli": "latest",
+    "@slidev/theme-default": "^0.25.0",
     "katex": "latest"
   }
 }
