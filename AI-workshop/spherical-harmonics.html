@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>球谐函数交互式可视化</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Kaiti SC', 'STKaiti', serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    overflow: hidden;
+    height: 100vh;
+  }
+  #container { width: 100vw; height: 100vh; position: relative; }
+  canvas { display: block; }
+
+  /* Control panel */
+  #controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(20, 20, 30, 0.92);
+    border: 1px solid rgba(199, 21, 133, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 280px;
+    backdrop-filter: blur(10px);
+  }
+  #controls h2 {
+    font-size: 1.3em;
+    color: #C71585;
+    margin-bottom: 12px;
+    font-weight: normal;
+  }
+  .control-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+  }
+  .control-row label {
+    font-size: 1.1em;
+    min-width: 80px;
+    color: #ccc;
+  }
+  .control-row .value {
+    font-size: 1.2em;
+    color: #C71585;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+  }
+  input[type="range"] {
+    flex: 1;
+    accent-color: #C71585;
+    height: 6px;
+  }
+
+  /* Info panel */
+  #info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(20, 20, 30, 0.92);
+    border: 1px solid rgba(199, 21, 133, 0.3);
+    border-radius: 12px;
+    padding: 18px;
+    min-width: 260px;
+    backdrop-filter: blur(10px);
+    font-size: 0.95em;
+    line-height: 1.6;
+  }
+  #info .formula {
+    font-size: 1.05em;
+    color: #C71585;
+    margin: 8px 0;
+    text-align: center;
+  }
+  #info .stat { color: #aaa; }
+  #info .stat span { color: #e0e0e0; }
+  #orbital-name {
+    font-size: 1.5em;
+    color: #C71585;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  /* Mode buttons */
+  .mode-buttons {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .mode-btn {
+    flex: 1;
+    padding: 6px 10px;
+    background: rgba(199, 21, 133, 0.15);
+    border: 1px solid rgba(199, 21, 133, 0.4);
+    border-radius: 6px;
+    color: #ccc;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9em;
+    transition: all 0.2s;
+  }
+  .mode-btn.active {
+    background: rgba(199, 21, 133, 0.4);
+    color: #fff;
+    border-color: #C71585;
+  }
+  .mode-btn:hover { background: rgba(199, 21, 133, 0.3); }
+
+  /* Bottom hint */
+  #hint {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 0.85em;
+  }
+
+  /* Quick select grid */
+  #quick-select {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-top: 12px;
+  }
+  .qlabel {
+    font-size: 0.75em;
+    color: #888;
+    text-align: center;
+    padding: 2px;
+  }
+  .qbtn {
+    padding: 4px;
+    background: rgba(199, 21, 133, 0.1);
+    border: 1px solid rgba(199, 21, 133, 0.25);
+    border-radius: 4px;
+    color: #ccc;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8em;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .qbtn:hover { background: rgba(199, 21, 133, 0.3); }
+  .qbtn.active {
+    background: rgba(199, 21, 133, 0.5);
+    color: #fff;
+    border-color: #C71585;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div id="controls">
+    <h2>球谐函数 Y<sub>ℓ</sub><sup>m</sup></h2>
+    <div class="control-row">
+      <label>ℓ =</label>
+      <input type="range" id="slider-l" min="0" max="4" value="1" step="1">
+      <span class="value" id="val-l">1</span>
+    </div>
+    <div class="control-row">
+      <label>m =</label>
+      <input type="range" id="slider-m" min="-1" max="1" value="0" step="1">
+      <span class="value" id="val-m">0</span>
+    </div>
+    <div class="mode-buttons">
+      <button class="mode-btn active" data-mode="shape">变形球面</button>
+      <button class="mode-btn" data-mode="color">球面着色</button>
+    </div>
+    <div id="quick-select"></div>
+  </div>
+
+  <div id="info">
+    <div id="orbital-name">p<sub>z</sub></div>
+    <div class="stat">角动量量子数: <span id="info-l">ℓ = 1</span></div>
+    <div class="stat">磁量子数: <span id="info-m">m = 0</span></div>
+    <div class="stat">|<b>L</b>| = <span id="info-L">√2 ħ</span></div>
+    <div class="stat">L<sub>z</sub> = <span id="info-Lz">0</span></div>
+    <div class="stat">节线总数: <span id="info-nodes">1</span></div>
+    <div class="stat" style="margin-top: 6px; font-size: 0.85em; color: #777;">
+      经线节线 <span id="info-meridian">0</span> 条,
+      纬线节线 <span id="info-latitude">1</span> 条
+    </div>
+  </div>
+
+  <div id="hint">鼠标拖拽旋转, 滚轮缩放</div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// --- Math: Associated Legendre polynomials and spherical harmonics ---
+
+function factorial(n) {
+  let r = 1;
+  for (let i = 2; i <= n; i++) r *= i;
+  return r;
+}
+
+// Associated Legendre polynomial P_l^m(x), m >= 0
+function assocLegendre(l, m, x) {
+  if (m > l) return 0;
+  // Start with P_m^m
+  let pmm = 1.0;
+  if (m > 0) {
+    const somx2 = Math.sqrt((1 - x) * (1 + x));
+    let fact = 1.0;
+    for (let i = 1; i <= m; i++) {
+      pmm *= -fact * somx2;
+      fact += 2.0;
+    }
+  }
+  if (l === m) return pmm;
+
+  // P_{m+1}^m
+  let pmmp1 = x * (2 * m + 1) * pmm;
+  if (l === m + 1) return pmmp1;
+
+  // Recurrence
+  let pll = 0;
+  for (let ll = m + 2; ll <= l; ll++) {
+    pll = (x * (2 * ll - 1) * pmmp1 - (ll + m - 1) * pmm) / (ll - m);
+    pmm = pmmp1;
+    pmmp1 = pll;
+  }
+  return pll;
+}
+
+// Real spherical harmonic Y_l^m(theta, phi)
+// Returns real value for visualization
+function sphericalHarmonic(l, m, theta, phi) {
+  const absm = Math.abs(m);
+  const norm = Math.sqrt(
+    ((2 * l + 1) / (4 * Math.PI)) *
+    factorial(l - absm) / factorial(l + absm)
+  );
+  const plm = assocLegendre(l, absm, Math.cos(theta));
+
+  if (m > 0) {
+    return Math.SQRT2 * norm * plm * Math.cos(m * phi);
+  } else if (m < 0) {
+    return Math.SQRT2 * norm * plm * Math.sin(absm * phi);
+  }
+  return norm * plm;
+}
+
+// --- Scene setup ---
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(3, 2, 3);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setClearColor(0x0a0a0a);
+document.getElementById('container').appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 1.5;
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+scene.add(ambientLight);
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+dirLight.position.set(5, 5, 5);
+scene.add(dirLight);
+const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+dirLight2.position.set(-3, -2, -3);
+scene.add(dirLight2);
+
+// Axes helper (subtle)
+const axesGroup = new THREE.Group();
+const axisMat = (color) => new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.3 });
+const axisLen = 2.2;
+for (const [dir, color] of [[[1,0,0], 0xff4444], [[0,1,0], 0x44ff44], [[0,0,1], 0x4488ff]]) {
+  const geo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0,0,0),
+    new THREE.Vector3(dir[0]*axisLen, dir[1]*axisLen, dir[2]*axisLen)
+  ]);
+  axesGroup.add(new THREE.Line(geo, axisMat(color)));
+}
+scene.add(axesGroup);
+
+// Add axis labels
+function makeTextSprite(text, color) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 64; canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = color;
+  ctx.font = 'bold 40px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, 32, 32);
+  const texture = new THREE.CanvasTexture(canvas);
+  const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.5 });
+  return new THREE.Sprite(mat);
+}
+const labelX = makeTextSprite('x', '#ff4444');
+labelX.position.set(axisLen + 0.2, 0, 0);
+labelX.scale.set(0.3, 0.3, 0.3);
+axesGroup.add(labelX);
+const labelY = makeTextSprite('y', '#44ff44');
+labelY.position.set(0, axisLen + 0.2, 0);
+labelY.scale.set(0.3, 0.3, 0.3);
+axesGroup.add(labelY);
+const labelZ = makeTextSprite('z', '#4488ff');
+labelZ.position.set(0, 0, axisLen + 0.2);
+labelZ.scale.set(0.3, 0.3, 0.3);
+axesGroup.add(labelZ);
+
+// --- Spherical harmonic mesh ---
+const N_THETA = 80;
+const N_PHI = 120;
+let currentL = 1, currentM = 0;
+let mode = 'shape'; // 'shape' or 'color'
+
+function buildGeometry(l, m) {
+  const positions = [];
+  const colors = [];
+  const indices = [];
+
+  // Precompute Y values and find max for normalization
+  const Y = [];
+  let maxY = 0;
+  for (let i = 0; i <= N_THETA; i++) {
+    Y[i] = [];
+    const theta = (i / N_THETA) * Math.PI;
+    for (let j = 0; j <= N_PHI; j++) {
+      const phi = (j / N_PHI) * 2 * Math.PI;
+      const y = sphericalHarmonic(l, m, theta, phi);
+      Y[i][j] = y;
+      if (Math.abs(y) > maxY) maxY = Math.abs(y);
+    }
+  }
+  if (maxY === 0) maxY = 1;
+
+  const posColor = new THREE.Color(0xC71585); // magenta
+  const negColor = new THREE.Color(0x1585C7); // blue
+
+  for (let i = 0; i <= N_THETA; i++) {
+    const theta = (i / N_THETA) * Math.PI;
+    const sinT = Math.sin(theta);
+    const cosT = Math.cos(theta);
+
+    for (let j = 0; j <= N_PHI; j++) {
+      const phi = (j / N_PHI) * 2 * Math.PI;
+      const y = Y[i][j];
+      const yNorm = y / maxY;
+
+      let r;
+      if (mode === 'shape') {
+        r = 0.3 + 1.2 * Math.abs(yNorm);
+      } else {
+        r = 1.2;
+      }
+
+      // Spherical to Cartesian (note: Three.js Y is up)
+      const x3 = r * sinT * Math.cos(phi);
+      const z3 = r * sinT * Math.sin(phi);
+      const y3 = r * cosT;
+      positions.push(x3, y3, z3);
+
+      // Color
+      const t = Math.abs(yNorm);
+      const c = y >= 0 ? posColor.clone() : negColor.clone();
+      if (mode === 'shape') {
+        c.lerp(new THREE.Color(0x333333), 1 - t * 0.8);
+      } else {
+        if (y >= 0) {
+          c.setRGB(
+            0.15 + 0.63 * t,
+            0.05 + 0.08 * t,
+            0.15 + 0.37 * t
+          );
+        } else {
+          c.setRGB(
+            0.08 + 0.08 * t,
+            0.15 + 0.37 * t,
+            0.15 + 0.63 * t
+          );
+        }
+      }
+      colors.push(c.r, c.g, c.b);
+    }
+  }
+
+  // Indices
+  for (let i = 0; i < N_THETA; i++) {
+    for (let j = 0; j < N_PHI; j++) {
+      const a = i * (N_PHI + 1) + j;
+      const b = a + N_PHI + 1;
+      indices.push(a, b, a + 1);
+      indices.push(b, b + 1, a + 1);
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setIndex(indices);
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  geo.computeVertexNormals();
+  return geo;
+}
+
+const material = new THREE.MeshPhongMaterial({
+  vertexColors: true,
+  side: THREE.DoubleSide,
+  shininess: 30,
+  transparent: true,
+  opacity: 0.92,
+});
+
+let mesh = new THREE.Mesh(buildGeometry(currentL, currentM), material);
+scene.add(mesh);
+
+// Wireframe sphere for reference in color mode
+const wireGeo = new THREE.SphereGeometry(1.2, 24, 16);
+const wireMat = new THREE.MeshBasicMaterial({
+  color: 0x444444,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.08,
+});
+const wireSphere = new THREE.Mesh(wireGeo, wireMat);
+wireSphere.visible = false;
+scene.add(wireSphere);
+
+// --- Update ---
+function updateMesh() {
+  scene.remove(mesh);
+  mesh.geometry.dispose();
+  mesh = new THREE.Mesh(buildGeometry(currentL, currentM), material);
+  scene.add(mesh);
+  wireSphere.visible = (mode === 'color');
+  updateInfo();
+}
+
+// Orbital names
+const orbitalNames = {
+  '0,0': 's',
+  '1,0': 'p<sub>z</sub>',
+  '1,1': 'p<sub>x</sub>',
+  '1,-1': 'p<sub>y</sub>',
+  '2,0': 'd<sub>z²</sub>',
+  '2,1': 'd<sub>xz</sub>',
+  '2,-1': 'd<sub>yz</sub>',
+  '2,2': 'd<sub>x²-y²</sub>',
+  '2,-2': 'd<sub>xy</sub>',
+  '3,0': 'f<sub>z³</sub>',
+  '4,0': 'g',
+};
+const spectroscopic = ['s', 'p', 'd', 'f', 'g'];
+
+function updateInfo() {
+  const l = currentL, m = currentM;
+  const key = `${l},${m}`;
+  const name = orbitalNames[key] || `${spectroscopic[l] || 'ℓ='+l} (m=${m})`;
+  document.getElementById('orbital-name').innerHTML = name;
+  document.getElementById('info-l').textContent = `ℓ = ${l}`;
+  document.getElementById('info-m').textContent = `m = ${m}`;
+
+  const Lmag = l === 0 ? '0' : `√${l*(l+1)} ħ ≈ ${Math.sqrt(l*(l+1)).toFixed(2)} ħ`;
+  document.getElementById('info-L').textContent = Lmag;
+  document.getElementById('info-Lz').textContent = m === 0 ? '0' : `${m} ħ`;
+  document.getElementById('info-nodes').textContent = l;
+  document.getElementById('info-meridian').textContent = Math.abs(m);
+  document.getElementById('info-latitude').textContent = l - Math.abs(m);
+}
+
+// --- Quick select grid ---
+function buildQuickSelect() {
+  const container = document.getElementById('quick-select');
+  container.innerHTML = '';
+
+  // Header row
+  const corner = document.createElement('div');
+  corner.className = 'qlabel';
+  corner.textContent = 'ℓ\\m';
+  container.appendChild(corner);
+  for (let m = -3; m <= 3; m++) {
+    // We'll only show relevant columns
+  }
+  // Actually, let's do a simpler grid: rows = ℓ, cols = m
+  container.style.gridTemplateColumns = `40px repeat(9, 1fr)`;
+
+  for (let l = 0; l <= 4; l++) {
+    const label = document.createElement('div');
+    label.className = 'qlabel';
+    label.textContent = `ℓ=${l}`;
+    label.style.lineHeight = '28px';
+    container.appendChild(label);
+
+    for (let m = -4; m <= 4; m++) {
+      if (Math.abs(m) <= l) {
+        const btn = document.createElement('button');
+        btn.className = 'qbtn';
+        btn.textContent = `${m}`;
+        btn.dataset.l = l;
+        btn.dataset.m = m;
+        if (l === currentL && m === currentM) btn.classList.add('active');
+        btn.addEventListener('click', () => {
+          currentL = l;
+          currentM = m;
+          sliderL.value = l;
+          sliderM.min = -l;
+          sliderM.max = l;
+          sliderM.value = m;
+          valL.textContent = l;
+          valM.textContent = m;
+          updateMesh();
+          updateQuickSelectHighlight();
+        });
+        container.appendChild(btn);
+      } else {
+        const empty = document.createElement('div');
+        container.appendChild(empty);
+      }
+    }
+  }
+}
+
+function updateQuickSelectHighlight() {
+  document.querySelectorAll('.qbtn').forEach(btn => {
+    btn.classList.toggle('active',
+      parseInt(btn.dataset.l) === currentL && parseInt(btn.dataset.m) === currentM
+    );
+  });
+}
+
+// --- Controls ---
+const sliderL = document.getElementById('slider-l');
+const sliderM = document.getElementById('slider-m');
+const valL = document.getElementById('val-l');
+const valM = document.getElementById('val-m');
+
+sliderL.addEventListener('input', () => {
+  currentL = parseInt(sliderL.value);
+  valL.textContent = currentL;
+  // Adjust m range
+  sliderM.min = -currentL;
+  sliderM.max = currentL;
+  if (currentM > currentL) currentM = currentL;
+  if (currentM < -currentL) currentM = -currentL;
+  sliderM.value = currentM;
+  valM.textContent = currentM;
+  updateMesh();
+  updateQuickSelectHighlight();
+});
+
+sliderM.addEventListener('input', () => {
+  currentM = parseInt(sliderM.value);
+  valM.textContent = currentM;
+  updateMesh();
+  updateQuickSelectHighlight();
+});
+
+// Mode buttons
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    mode = btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateMesh();
+  });
+});
+
+buildQuickSelect();
+updateInfo();
+
+// --- Animation loop ---
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+// Resize
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>

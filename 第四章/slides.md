@@ -487,6 +487,94 @@ $$\boxed{\;\hat L^2\, Y_\ell^m = \ell(\ell+1)\hbar^2\, Y_\ell^m, \quad \hat L_z\
 
 ---
 
+# 量子化的物理根源
+
+数物课上你们从微分方程出发解出了球谐函数。现在换一个角度：**为什么必须量子化？**
+
+<img src="/images/standing-waves-1d-2d-3d.svg" style="max-width: 82%; max-height: 155px; margin: 0 auto; display: block;" />
+
+<v-click>
+
+**$m$ 量子化**：$\varphi$ 方向是环，$\psi(\varphi + 2\pi) = \psi(\varphi)$ → $m$ 必须是整数。
+
+</v-click>
+
+<v-click>
+
+**$\ell$ 量子化**：$\theta$ 方向的 Legendre 方程，幂级数解 $y = \sum a_k x^k$（$x = \cos\theta$）的递推关系为
+
+$$a_{k+2} = a_k \cdot \frac{k(k+1) - \ell(\ell+1)}{(k+1)(k+2)}$$
+
+不截断则两极发散。截断要求分子为零：$k = \ell$ → $\ell$ 必须是非负整数。
+
+</v-click>
+
+<v-click>
+
+<div style="background: rgba(199,21,133,0.06); border-radius: 8px; padding: 0.15em 0.8em; border-left: 3px solid #C71585; font-size: 0.85em;">
+
+谐振子同理：Hermite 不截断则发散，截断给出 $n=0,1,2,\ldots$。**有限性 → 分子为零 → 量子数取整数。**
+
+</div>
+
+</v-click>
+
+---
+
+# 用节线理解球谐函数
+
+球谐函数 $Y_\ell^m(\theta, \varphi)$ 可以用**节线**（波函数为零的线）来直观理解：
+
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+**节线的规则**
+
+- $\ell$ = 节线总数
+- $|m|$ = 经线方向的节线数（过两极）
+- $\ell - |m|$ = 纬线方向的节线数
+
+<v-click>
+
+| $\ell$ | $m$ | 经线节线 | 纬线节线 | 轨道名 |
+|---|---|---|---|---|
+| 0 | 0 | 0 | 0 | $s$ |
+| 1 | 0 | 0 | 1 | $p_z$ |
+| 1 | $\pm 1$ | 1 | 0 | $p_\pm$ |
+
+</v-click>
+
+</div>
+
+<div>
+
+**节线越多，角动量越大**
+
+节线多 → 角向"波长"短 → 角动量大。$\ell$ 大的态对应更高的角动量，和鼓面振动模式的逻辑一样：模式越复杂，频率越高。
+
+<v-click>
+
+**实验验证**：Stern-Gerlach 实验中，原子束分裂成恰好 $2\ell+1$ 个离散点，而非连续条纹。这个数字直接来自 $m = -\ell, \ldots, \ell$ 的取值个数。
+
+</v-click>
+
+</div>
+
+</div>
+
+<v-click>
+
+<div style="background: rgba(199,21,133,0.06); border-radius: 8px; padding: 0.2em 0.8em; border-left: 3px solid #C71585; margin-top: 0.1em; font-size: 0.88em;">
+
+**思考题**：为什么 $|\vec L| = \sqrt{\ell(\ell+1)}\hbar$ 而不是 $\ell\hbar$？提示：如果 $|\vec L|=\ell\hbar$，当 $m=\ell$ 时角动量完全沿 $z$ 轴，$L_x=L_y=0$，这和测不准关系矛盾。
+
+</div>
+
+</v-click>
+
+---
+
 # 角动量量子化：经典 vs 量子
 
 | | **经典力学** | **量子力学** |
@@ -512,6 +600,10 @@ $$[\hat L_x, \hat L_y] = i\hbar\, \hat L_z, \quad [\hat L_y, \hat L_z] = i\hbar\
 
 </v-click>
 
+<v-click>
+
+</v-click>
+
 ---
 
 # 球谐函数：低阶公式表
@@ -533,81 +625,33 @@ $$[\hat L_x, \hat L_y] = i\hbar\, \hat L_z, \quad [\hat L_y, \hat L_z] = i\hbar\
 
 ---
 
-# 球谐函数：静态可视化
+# 球谐函数：交互式 3D 可视化
 
-红色：$Y_\ell^m > 0$，蓝色：$Y_\ell^m < 0$
+<div style="text-align: center; margin-top: 1em;">
 
-<img src="/images/Screen Shot 2022-04-06 at 22.34.28-32655.png" style="max-width: 600px; max-height: 380px; margin: 0 auto; display: block;" />
+<img src="/images/Screen Shot 2022-04-06 at 22.34.28-32655.png" style="max-width: 550px; max-height: 300px; margin: 0 auto; display: block;" />
+
+</div>
 
 <v-click>
 
-每个 $(\ell, m)$ 都对应一种独特的"角向形状"。$\ell$ 越大，节面越多（角向上的"波长"越短），对应更高的角动量。
+<div style="text-align: center; margin-top: 1em;">
 
-$\ell = 0$（$s$ 态）球对称，$\ell = 1$（$p$ 态）有一个节面，$\ell = 2$（$d$ 态）有两个节面，依此类推。
+<a href="/AI-workshop/spherical-harmonics.html" target="_blank" style="display: inline-block; padding: 12px 32px; background: rgba(199,21,133,0.2); border: 2px solid #C71585; border-radius: 8px; color: #C71585; font-size: 1.2em; text-decoration: none; font-weight: bold; transition: all 0.2s;">
+打开交互式演示 →
+</a>
+
+</div>
+
+调整 $\ell$ 和 $m$，实时观察球谐函数的3D形状变化。支持拖拽旋转，两种可视化模式（变形球面/球面着色）。
 
 </v-click>
 
----
-
-# 球谐函数：3D 旋转动画
-
-<div class="grid grid-cols-2 gap-4">
-
-<div>
-
-<img src="/images/Rotating_spherical_harmonics-26522.gif" style="max-width: 100%; max-height: 320px; object-fit: contain;" />
-
-**3D 旋转**
-
-显示完整的角度分布
-
-</div>
-
-<div>
-
-<img src="/images/Sphericalfunctions.svg-2-26756.png" style="max-width: 100%; max-height: 320px; object-fit: contain;" />
-
-**多个轨道并排**
-
-按 $\ell, m$ 排列
-
-</div>
-
-</div>
-
 <v-click>
 
-**两种主要可视化方法**：
-- **等高线图**：在球面上画 $|Y|^2$ 的颜色分布
-- **变形球面**：把半径变成 $r = |Y|$ 或 $r + |Y|$，得到"花瓣形"
-
-两种方法都能反映同一个数学对象，但视觉直觉非常不同。
-
-</v-click>
-
----
-
-# 球谐函数的现代应用：地球重力场
-
-球谐函数不只是量子力学的工具，它是**任何 2-球面上的函数**的天然展开基。地球重力场的反常分布就用 $Y_\ell^m$ 展开：
-
-$$\Delta g(\theta, \varphi) = \sum_{\ell, m} c_{\ell m}\, Y_\ell^m(\theta, \varphi)$$
-
-<div class="grid grid-cols-2 gap-4">
-
-<img src="/images/ICGEM_-15_years_of_successful_collection_and_distr-26851.jpg" style="max-width: 100%; max-height: 240px; object-fit: contain;" />
-
-<img src="/images/ICGEM_-15_years_of_successful_collection_and_distr-26872.jpg" style="max-width: 100%; max-height: 240px; object-fit: contain;" />
-
-</div>
-
-<p style="text-align: center; font-size: 0.8em; color: #555; margin-top: 0.5em;">
-图：欧空局 ICGEM 项目，地球重力反常的球谐展开。Earth Syst. Sci. Data, 11, 647 (2019)
-</p>
-
-<v-click>
-
-**同一个数学工具**，从亚原子尺度的氢原子电子云，到行星尺度的地球重力场，都在用。这就是球谐函数的普适性。CMB 微波背景、地震学、天体物理、信号处理也都依赖它。
+**两种可视化方法**：
+- **变形球面**：半径 $r \propto |Y_\ell^m|$，得到"花瓣形"，直观看节线
+- **球面着色**：固定球面上画颜色分布，品红色为正，蓝色为负
 
 </v-click>
 
@@ -703,47 +747,29 @@ $$\boxed{\;E_0 = \frac{m_e e^4}{2 (4\pi\epsilon_0)^2 \hbar^2} = 13.6\ \mathrm{eV
 
 ---
 
-# 求解：渐近行为 + 多项式
+# 求解径向方程：又是级数截断
 
-**Step 1：$\rho \to \infty$ 渐近**
+求解思路和角动量完全一样：渐近分析 → 代换 → 幂级数 → 截断。
 
-方程退化为 $u'' = \lambda^2 u$，束缚态解 $u \to e^{-\lambda \rho}$。
-
-<v-click>
-
-**Step 2：Ansatz** $u(\rho) = e^{-\lambda \rho}\, v(\rho)$，代入得
-
-$$\frac{d^2 v}{d\rho^2} - 2\lambda \frac{dv}{d\rho} + \!\left[\frac{2}{\rho} - \frac{\ell(\ell+1)}{\rho^2}\right] v = 0$$
-
-</v-click>
+**渐近行为**：$\rho \to \infty$ 时 $u'' = \lambda^2 u$，束缚态解 $u \to e^{-\lambda\rho}$。$\rho \to 0$ 时离心势垒主导，$u \sim \rho^{\ell+1}$。
 
 <v-click>
 
-**Step 3：幂级数展开** $v(\rho) = \rho^{\ell+1} \sum_{q=0}^\infty c_q\, \rho^{q}$（$\rho^{\ell+1}$ 是因为 $\rho \to 0$ 时离心势垒主导，$u \sim \rho^{\ell+1}$）。
-
-代入比较系数得递推关系：
+**Ansatz**：$u(\rho) = e^{-\lambda\rho}\, \rho^{\ell+1} \sum_{q=0}^\infty c_q\, \rho^q$，代入比较系数得递推关系：
 
 $$\frac{c_q}{c_{q-1}} = \frac{2[\lambda(q + \ell) - 1]}{q(q + 2\ell + 1)}$$
 
 </v-click>
 
----
-
-# 截断条件 + 主量子数 $n$
-
-如果级数不截断，$v(\rho) \sim e^{2\lambda\rho}$ 发散，整个 $u = e^{-\lambda\rho}v$ 也发散，**违反可归一化条件**。
-
 <v-click>
 
-要求级数在某个 $q = j$ 截断，$c_{j+1} = 0$，导出：
+和 Legendre 方程一样的故事：**级数不截断则发散**。截断条件是分子为零：
 
-$$\lambda(j + \ell) = 1 \quad\Longrightarrow\quad \lambda = \frac{1}{j + \ell}$$
+$$\lambda(j + \ell) = 1 \quad\Longrightarrow\quad \lambda = \frac{1}{n}, \quad n \equiv j + \ell = 1, 2, 3, \ldots$$
 
 </v-click>
 
 <v-click>
-
-**定义主量子数** $n \equiv j + \ell$，于是 $\lambda = 1/n$。
 
 由 $\lambda = \sqrt{-E/E_0}$ 立即得到
 
@@ -753,45 +779,11 @@ $$\boxed{\;E_n = -\frac{E_0}{n^2} = -\frac{13.6\ \mathrm{eV}}{n^2}, \qquad n = 1
 
 <v-click>
 
-<div style="background: rgba(255,140,0,0.10); border-radius: 10px; padding: 0.7em 1em; border-left: 3px solid #ff8c00; margin-top: 0.6em;">
+<div style="background: rgba(255,140,0,0.10); border-radius: 8px; padding: 0.3em 0.8em; border-left: 3px solid #ff8c00; font-size: 0.88em;">
 
-**与玻尔模型完全一致**！但这次：
-
-- 不需要"角动量量子化"假设
-- 不需要"电子轨道"概念
-- 主量子数 $n$ 来自**波函数可归一化的数学要求**
-
-这是 1926 年薛定谔的胜利。
+角动量：有限性 → $k(k+1)=\ell(\ell+1)$ → $\ell$ 取整数。径向：可归一 → $\lambda(j+\ell)=1$ → $n$ 取整数。**同一个数学机制，两次量子化。**
 
 </div>
-
-</v-click>
-
----
-
-# 量子化的自然涌现
-
-<div style="background: rgba(199,21,133,0.06); border-radius: 12px; padding: 1em 1.2em; border-left: 4px solid #C71585; margin-top: 0.5em;">
-
-**核心洞察**
-
-氢原子的能级量子化、角动量量子化、轨道形状、谱线 Rydberg 公式，全部从一个方程
-
-$$\left[-\frac{\hbar^2}{2 m_e}\nabla^2 - \frac{e^2}{4\pi\epsilon_0 r}\right]\psi = E\, \psi$$
-
-加上波函数标准条件（**单值、连续、有限、可归一**）**自然涌现**。
-
-</div>
-
-<v-click>
-
-这就是 §15 强调的"量子化的自然涌现"。普朗克 1900 年人为假设 $E = h\nu$，玻尔 1913 年人为假设 $L = n\hbar$，薛定谔 1926 年**什么都不需要假设**，所有量子化结果都从一个方程的边值条件自动出现。
-
-</v-click>
-
-<v-click>
-
-<img src="/images/Screen Shot 2023-04-10 at 19.59.32-36094.png" style="max-width: 480px; max-height: 240px; margin: 0.5em auto; display: block;" />
 
 </v-click>
 
@@ -828,45 +820,27 @@ $$\sum_{\ell=0}^{n-1}(2\ell + 1) = n^2$$
 
 ---
 
-# 三个量子数 $(n, \ell, m)$ 的物理意义
-
-| 量子数 | 名称 | 取值 | 物理意义 |
-|---|---|---|---|
-| $n$ | 主量子数 | $1, 2, 3, \ldots$ | 决定能量 $E_n = -E_0/n^2$，也决定平均距离 $\langle r \rangle \sim n^2 a_0$ |
-| $\ell$ | 角量子数 | $0, 1, \ldots, n-1$ | 决定 $\|\vec L\| = \sqrt{\ell(\ell+1)}\hbar$，决定轨道"形状" |
-| $m$ | 磁量子数 | $-\ell, \ldots, \ell$ | 决定 $L_z = m\hbar$，决定轨道在空间中的"取向" |
-
-<v-click>
-
-**关键事实**：能级 $E_n$ 只依赖 $n$，与 $\ell, m$ 无关。这是库仑势的特殊性质。
-
-</v-click>
-
-<img src="/images/CNX_UPhysics_41_01_EOrbitals-1-27608.jpg" style="max-width: 540px; max-height: 240px; margin: 0.4em auto; display: block;" />
-
----
-
-# 完整波函数 $\psi_{n\ell m}$
+# 完整波函数与三个量子数
 
 $$\boxed{\;\psi_{n\ell m}(r, \theta, \varphi) = R_{n\ell}(r)\, Y_\ell^m(\theta, \varphi)\;}$$
 
+| 量子数 | 取值 | 决定什么 |
+|---|---|---|
+| $n$（主） | $1, 2, 3, \ldots$ | 能量 $E_n = -E_0/n^2$，平均距离 $\langle r \rangle \sim n^2 a_0$ |
+| $\ell$（角） | $0, 1, \ldots, n-1$ | $|\vec L| = \sqrt{\ell(\ell+1)}\hbar$，轨道"形状"（$s,p,d,f$） |
+| $m$（磁） | $-\ell, \ldots, \ell$ | $L_z = m\hbar$，轨道在空间中的"取向" |
+
 <v-click>
 
-径向部分 $R_{n\ell}(r)$ 是 **Laguerre 多项式**乘以指数衰减：
+径向部分 $R_{n\ell}(r)$ 是 Laguerre 多项式乘指数衰减。前几个：
 
-$$R_{n\ell}(r) = N_{n\ell}\, \left(\frac{2 r}{n a_0}\right)^\ell L_{n-\ell-1}^{2\ell+1}\!\left(\frac{2 r}{n a_0}\right) e^{-r/(n a_0)}$$
+$$R_{10} = \frac{2}{a_0^{3/2}} e^{-r/a_0}, \quad R_{20} = \frac{1}{2\sqrt 2\, a_0^{3/2}}\!\left(2 - \frac{r}{a_0}\right) e^{-r/(2a_0)}, \quad R_{21} = \frac{1}{2\sqrt 6\, a_0^{3/2}} \frac{r}{a_0} e^{-r/(2a_0)}$$
 
 </v-click>
 
 <v-click>
 
-**前几个径向波函数**：
-
-$$R_{10}(r) = \frac{2}{a_0^{3/2}}\, e^{-r/a_0} \quad (1s)$$
-
-$$R_{20}(r) = \frac{1}{2\sqrt 2\, a_0^{3/2}}\!\left(2 - \frac{r}{a_0}\right) e^{-r/(2 a_0)} \quad (2s)$$
-
-$$R_{21}(r) = \frac{1}{2\sqrt 6\, a_0^{3/2}}\, \frac{r}{a_0}\, e^{-r/(2 a_0)} \quad (2p)$$
+<img src="/images/CNX_UPhysics_41_01_EOrbitals-1-27608.jpg" style="max-width: 500px; max-height: 200px; margin: 0.3em auto; display: block;" />
 
 </v-click>
 
@@ -908,21 +882,19 @@ $$P(r)\, dr = r^2 |R(r)|^2\, dr\int |Y|^2 d\Omega = r^2 |R(r)|^2\, dr$$
 
 ---
 
-# 完整的氢原子轨道可视化
+# 氢原子轨道可视化
 
-<img src="/images/Screen Shot 2023-04-10 at 20.41.04-36228.png" style="max-width: 700px; max-height: 380px; margin: 0 auto; display: block;" />
-
-<v-click>
-
-每个 $(n, \ell, m)$ 都对应一种独特的电子云形状。$1s$ 球对称，$2p$ 哑铃形，$3d$ 花瓣形，$4f$ 更复杂。
-
-化学的整个**周期表**，就是这些轨道按能量顺序填充的结果。
-
-</v-click>
+<img src="/images/Screen Shot 2023-04-10 at 20.41.04-36228.png" style="max-width: 650px; max-height: 320px; margin: 0 auto; display: block;" />
 
 <v-click>
 
-<img src="/images/Screen Shot 2023-04-10 at 20.35.10-36204.png" style="max-width: 480px; max-height: 200px; margin: 0.4em auto; display: block;" />
+每个 $(n, \ell, m)$ 对应一种电子云形状。化学的**周期表**就是这些轨道按能量顺序填充的结果。
+
+<div style="text-align: center; margin-top: 0.5em;">
+<a href="/AI-workshop/spherical-harmonics.html" target="_blank" style="display: inline-block; padding: 8px 24px; background: rgba(199,21,133,0.15); border: 1.5px solid #C71585; border-radius: 6px; color: #C71585; font-size: 1em; text-decoration: none; transition: all 0.2s;">
+交互式球谐函数演示 →
+</a>
+</div>
 
 </v-click>
 
