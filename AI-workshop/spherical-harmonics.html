@@ -291,7 +291,7 @@ scene.add(dirLight2);
 const axesGroup = new THREE.Group();
 const axisMat = (color) => new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.3 });
 const axisLen = 2.2;
-for (const [dir, color] of [[[1,0,0], 0xff4444], [[0,1,0], 0x44ff44], [[0,0,1], 0x4488ff]]) {
+for (const [dir, color] of [[[1,0,0], 0xff4444], [[0,0,1], 0x44ff44], [[0,1,0], 0x4488ff]]) {
   const geo = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(0,0,0),
     new THREE.Vector3(dir[0]*axisLen, dir[1]*axisLen, dir[2]*axisLen)
@@ -319,11 +319,11 @@ labelX.position.set(axisLen + 0.2, 0, 0);
 labelX.scale.set(0.3, 0.3, 0.3);
 axesGroup.add(labelX);
 const labelY = makeTextSprite('y', '#44ff44');
-labelY.position.set(0, axisLen + 0.2, 0);
+labelY.position.set(0, 0, axisLen + 0.2);
 labelY.scale.set(0.3, 0.3, 0.3);
 axesGroup.add(labelY);
 const labelZ = makeTextSprite('z', '#4488ff');
-labelZ.position.set(0, 0, axisLen + 0.2);
+labelZ.position.set(0, axisLen + 0.2, 0);
 labelZ.scale.set(0.3, 0.3, 0.3);
 axesGroup.add(labelZ);
 
