@@ -1102,78 +1102,65 @@ $$2 r - \frac{2 r^2}{a_0} = 0 \quad\Longrightarrow\quad r_\max = a_0$$
 
 ---
 
-# 回顾：概率流密度
+# §18 原子轨道磁矩
 
-§17 我们反复强调：电子没有经典轨道，只有概率分布 $|\psi|^2$。那**磁性从哪来**？
+<div style="background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.7em 1em; border-left: 3px solid #C71585; margin-bottom: 0.6em; font-size: 0.95em;">
 
-要回答这个问题，需要回顾量子力学的一个基本概念。$|\psi|^2$ 描述"电子在哪里"，但电子还可以"在流动"。类比电荷守恒的连续性方程 $\partial\rho/\partial t + \nabla\cdot\vec J = 0$，概率也满足连续性方程：
-
-$$\frac{\partial|\psi|^2}{\partial t} + \nabla\cdot\vec j = 0$$
-
-<v-click>
-
-其中**概率流密度**为
-
-$$\vec j = \frac{\hbar}{2m_e i}\!\left(\psi^*\nabla\psi - \psi\nabla\psi^*\right)$$
-
-它的物理含义：单位时间内概率穿过单位面积的流量，描述了概率"往哪个方向流"。
-
-</v-click>
-
----
-
-# 概率流密度 = 相位梯度
-
-$\vec j$ 的公式看起来复杂，但把波函数写成模和相位的形式就清楚了。设 $\psi = |\psi|\, e^{i\chi}$，其中 $\chi(\vec r)$ 是实的相位函数，则
-
-$$\nabla\psi = \left(\nabla|\psi| + i\,|\psi|\,\nabla\chi\right) e^{i\chi}$$
-
-<v-click>
-
-代入 $\vec j$ 的定义：
-
-$$\psi^*\nabla\psi - \psi\nabla\psi^* = 2i\,|\psi|^2\,\nabla\chi$$
-
-$$\boxed{\;\vec j = \frac{\hbar}{m_e}\,|\psi|^2\,\nabla\chi\;}$$
-
-</v-click>
-
-<v-click>
-
-物理图像一目了然：**概率流密度 = 概率密度 $\times$ 相位梯度**。
-
-- $m = 0$ 时，$e^{im\phi} = 1$，波函数 $\psi = R(r)\,\Theta(\theta)$ 是实函数，相位 $\chi$ 处处为零，$\nabla\chi = 0$，所以 $\vec j = 0$，概率不流动
-- $m \neq 0$ 时，$\psi$ 含 $e^{im\phi}$，相位 $\chi = m\phi$。$\chi$ 只依赖于 $\phi$，回忆球坐标下梯度的 $\phi$ 分量 $(\nabla f)_\phi = \dfrac{1}{r\sin\theta}\dfrac{\partial f}{\partial\phi}$，得 $\nabla\chi = \dfrac{m}{r\sin\theta}\,\hat\phi$，概率绕 $z$ 轴流动
-
-</v-click>
-
-<v-click>
-
-<div style="background: rgba(255,140,0,0.10); border-radius: 8px; padding: 0.4em 0.8em; border-left: 3px solid #ff8c00; font-size: 0.88em;">
-
-相位 $\chi$ 在量子力学中的地位：$|\psi|^2$ 决定"在哪里"，$\nabla\chi$ 决定"往哪流"。正是那个看似"不可观测"的相位，藏着运动的信息。
+**核心问题**：§17 我们得到了氢原子的完整量子数 $(n, \ell, m)$。量子数 $m$ 叫"磁量子数"，为什么带个"磁"字？电子没有经典轨道，原子的**磁性从哪来**？
 
 </div>
 
+本节目标：
+
+（1）从波函数的相位出发，理解量子磁性的起源：$e^{im\phi}$ → 概率流 → 电流 → 磁矩
+
+（2）用经典电流回路建立直觉，推导旋磁比 $e/(2m_e)$
+
+（3）定义原子磁性的自然单位：玻尔磁子 $\mu_B$
+
+（4）用量子数 $\ell, m$ 给出磁矩大小和 $z$ 投影的具体数值
+
+（5）为 §19 Stern-Gerlach 实验和 §22 塞曼效应做铺垫
+
+---
+
+# 磁性藏在波函数的相位里
+
+$|\psi|^2$ 告诉我们电子"在哪里"，但电子还可以"在流动"。量子力学定义**概率流密度**，类比电荷守恒 $\partial\rho/\partial t + \nabla\cdot\vec J = 0$：
+
+$$\frac{\partial|\psi|^2}{\partial t} + \nabla\cdot\vec j = 0, \qquad \vec j = \frac{\hbar}{2m_e i}\!\left(\psi^*\nabla\psi - \psi\nabla\psi^*\right)$$
+
+<v-click>
+
+把波函数写成模和相位 $\psi = |\psi|\, e^{i\chi}$，代入可以化简（推导见附注）：
+
+$$\boxed{\;\vec j = \frac{\hbar}{m_e}\,|\psi|^2\,\nabla\chi\;}$$
+
+**概率流密度 = 概率密度 $\times$ 相位梯度**。$|\psi|^2$ 决定"在哪里"，$\nabla\chi$ 决定"往哪流"。
+
+</v-click>
+
+<v-click>
+
+对氢原子：
+- $m = 0$：波函数 $\psi = R(r)\Theta(\theta)$ 是实函数，$\chi = 0$，$\vec j = 0$，概率不流动
+- $m \neq 0$：$\psi$ 含 $e^{im\phi}$，$\chi = m\phi$，球坐标下 $\nabla\chi = \dfrac{m}{r\sin\theta}\hat\phi$，概率绕 $z$ 轴环形流动
+
 </v-click>
 
 ---
 
-# 波函数里藏着磁性
+# 概率流 → 电流 → 磁矩
 
-§17 求解角向方程得到 $\psi$ 中包含因子 $e^{im\phi}$，相位 $\chi = m\phi$。代入上页结果：
+$m \neq 0$ 时，概率流就是环形"电流"。量子力学不需要经典轨道，波函数自己就产生了磁性。
 
-$$\vec j = \frac{\hbar}{m_e}\,|\psi|^2\,\frac{m}{r\sin\theta}\,\hat\phi$$
-
-当 $m \neq 0$ 时，概率绕 $z$ 轴**环形流动**。量子力学不需要经典轨道，波函数自己就产生了"电流"。
-
-<v-click>
-
-电子带电荷 $-e$，概率流就是电流。电流密度 $\vec J = -e\vec j$，代入 $\vec j$：
+电子带电荷 $-e$，电流密度 $\vec J = -e\vec j$，代入上页的 $\vec j$：
 
 $$\vec J = -\frac{e\hbar}{m_e}\,|\psi|^2\,\frac{m}{r\sin\theta}\,\hat\phi$$
 
-磁偶极矩的定义是 $\vec\mu = \frac{1}{2}\int \vec r \times \vec J\, d^3r$。而量子力学中角动量的期望值定义为 $\langle\hat{\vec L}\rangle = \int \psi^*\,\hat{\vec L}\,\psi\, d^3r$。将 $\vec J$ 代入 $\vec\mu$ 的积分，经过计算（见 Griffiths §4.3）可以证明：
+<v-click>
+
+磁偶极矩定义为 $\vec\mu = \frac{1}{2}\int \vec r \times \vec J\, d^3r$，角动量期望值为 $\langle\hat{\vec L}\rangle = \int \psi^*\,\hat{\vec L}\,\psi\, d^3r$。将 $\vec J$ 代入 $\vec\mu$ 的积分，经过计算（见 Griffiths §4.3）可以证明：
 
 $$\boxed{\;\vec\mu = -\frac{e}{2m_e}\langle\hat{\vec L}\rangle\;}$$
 
@@ -1183,7 +1170,7 @@ $$\boxed{\;\vec\mu = -\frac{e}{2m_e}\langle\hat{\vec L}\rangle\;}$$
 
 <div style="background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.5em 1em; border-left: 3px solid #C71585; font-size: 0.88em;">
 
-**这就是量子磁性的起源**：$e^{im\phi}$ 中的量子数 $m$ 驱动概率环形流动 → 等效电流 → 磁矩。"磁量子数"这个名字，原来是波函数自己告诉我们的。
+**量子磁性的完整链条**：$e^{im\phi}$ → 相位梯度 $\nabla\chi$ → 概率环形流动 → 等效电流 → 磁矩。"磁量子数"这个名字，原来是波函数自己告诉我们的。
 
 </div>
 
@@ -1191,29 +1178,9 @@ $$\boxed{\;\vec\mu = -\frac{e}{2m_e}\langle\hat{\vec L}\rangle\;}$$
 
 ---
 
-# §18 原子轨道磁矩
-
-<div style="background: rgba(199,21,133,0.06); border-radius: 10px; padding: 0.7em 1em; border-left: 3px solid #C71585; margin-bottom: 0.6em; font-size: 0.95em;">
-
-**核心问题**：§17 我们得到了氢原子的完整量子数 $(n, \ell, m)$。前面从概率流密度看到，$m \neq 0$ 的态自带环形概率流，原子就是一个**量子小磁铁**。$m$ 决定了它在外磁场中的行为，这就是"磁量子数"名称的由来。
-
-</div>
-
-本节目标：
-
-（1）用经典电流回路建立直觉，推导旋磁比 $e/(2m_e)$，再验证量子力学给出同样的结果
-
-（2）定义原子磁性的自然单位：玻尔磁子 $\mu_B$
-
-（3）用量子数 $\ell, m$ 给出磁矩大小和 $z$ 投影的具体数值
-
-（4）为 §19 Stern-Gerlach 实验和 §22 塞曼效应做铺垫
-
----
-
 # 经典直觉：电流回路与旋磁比
 
-前面从概率流密度出发，严格导出了 $\vec\mu = -\frac{e}{2m_e}\langle\hat{\vec L}\rangle$。现在我们用经典图像理解**为什么**比例系数恰好是 $e/(2m_e)$。
+上面从概率流密度出发，严格导出了 $\vec\mu = -\frac{e}{2m_e}\langle\hat{\vec L}\rangle$。现在用经典图像理解**为什么**比例系数恰好是 $e/(2m_e)$。
 
 <img src="/images/CNX_UPhysics_41_02_AtomicLoop-1-27950.jpg" style="max-width: 320px; max-height: 200px; margin: 0.2em auto; display: block;" />
 
@@ -1246,7 +1213,7 @@ $$\boxed{\;\vec\mu = -\frac{e}{2m_e}\,\vec L\;}$$
 
 # 量子化：玻尔磁子 $\mu_B$
 
-无论从概率流密度还是经典电流回路，都给出 $\vec\mu = -\frac{e}{2m_e}\vec L$。现在代入量子力学给出的角动量：
+概率流推导和经典电流回路都给出同样的旋磁比。现在代入量子力学给出的角动量：
 
 $$|\vec L| = \sqrt{\ell(\ell+1)}\,\hbar, \qquad L_z = m\hbar$$
 
