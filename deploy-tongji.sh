@@ -45,6 +45,11 @@ else
     npx slidev build --base /ch4/dist/
     echo "  第四章构建完成"
 
+    echo "  构建复习 Slidev..."
+    cd "$PROJECT_DIR/复习"
+    npx slidev build --base /review/dist/
+    echo "  复习构建完成"
+
     echo "  构建 AI-workshop-slides Slidev..."
     cd "$PROJECT_DIR/AI-workshop-slides"
     npx slidev build --base /ai-ws/dist/
@@ -60,6 +65,7 @@ echo "  - index.html (修正链接路径)"
 sed -e 's|第二章/dist/index.html|ch2/dist/index.html|g' \
     -e 's|第三章/dist/index.html|ch3/dist/index.html|g' \
     -e 's|第四章/dist/index.html|ch4/dist/index.html|g' \
+    -e 's|复习/dist/index.html|review/dist/index.html|g' \
     -e 's|AI-workshop-slides/dist/index.html|ai-ws/dist/index.html|g' \
     "$PROJECT_DIR/index.html" > /tmp/index-tongji.html
 rsync -az /tmp/index-tongji.html $REMOTE:$REMOTE_DIR/index.html
@@ -122,6 +128,22 @@ else
     echo "  警告: 第四章/dist 不存在，跳过"
 fi
 
+# Step 5b: 同步复习构建产物
+echo -e "${YELLOW}[5b] 同步复习 dist...${NC}"
+if [ -d "$PROJECT_DIR/复习/dist" ]; then
+    tar czf /tmp/review-dist.tar.gz -C "$PROJECT_DIR/复习/dist" .
+    scp -q /tmp/review-dist.tar.gz $REMOTE:/tmp/
+    ssh $REMOTE "mkdir -p $REMOTE_DIR/review/dist && \
+                 rm -rf $REMOTE_DIR/review/dist/* && \
+                 cd $REMOTE_DIR/review/dist && \
+                 tar xzf /tmp/review-dist.tar.gz && \
+                 rm /tmp/review-dist.tar.gz"
+    rm /tmp/review-dist.tar.gz
+    echo "  上传完成"
+else
+    echo "  警告: 复习/dist 不存在，跳过"
+fi
+
 # Step 6: 同步 AI-workshop-slides 构建产物
 echo -e "${YELLOW}[6/7] 同步 AI-workshop-slides dist...${NC}"
 if [ -d "$PROJECT_DIR/AI-workshop-slides/dist" ]; then
@@ -165,6 +187,8 @@ class SPAHandler(http.server.SimpleHTTPRequestHandler):
                 self.path = '/ch3/dist/index.html'
             elif self.path.startswith('/ch4/dist/'):
                 self.path = '/ch4/dist/index.html'
+            elif self.path.startswith('/review/dist/'):
+                self.path = '/review/dist/index.html'
             elif self.path.startswith('/ai-ws/dist/'):
                 self.path = '/ai-ws/dist/index.html'
         super().do_GET()
@@ -197,5 +221,6 @@ echo "访问: http://192.168.50.11:8888/"
 echo "第二章: http://192.168.50.11:8888/ch2/dist/"
 echo "第三章: http://192.168.50.11:8888/ch3/dist/"
 echo "第四章: http://192.168.50.11:8888/ch4/dist/"
+echo "复习: http://192.168.50.11:8888/review/dist/"
 echo "AI Workshop: http://192.168.50.11:8888/AI-workshop/"
 echo "Vibe Coding: http://192.168.50.11:8888/ai-ws/dist/"

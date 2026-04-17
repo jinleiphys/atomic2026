@@ -28,6 +28,7 @@ jobs:
             第二章/package-lock.json
             第三章/package-lock.json
             第四章/package-lock.json
+            复习/package-lock.json
             AI-workshop-slides/package-lock.json
 
       # Build chapter 2 (Slidev)
@@ -58,6 +59,13 @@ jobs:
           npm ci
           npx slidev build --base /atomic2026/第四章/dist/ --out dist
 
+      # Build review (Slidev)
+      - name: Build review
+        working-directory: 复习
+        run: |
+          npm ci
+          npx slidev build --base /atomic2026/复习/dist/ --out dist
+
       # Assemble site
       - name: Prepare site
         run: |
@@ -84,6 +92,10 @@ jobs:
           # Chapter 4 (Slidev build output only)
           mkdir -p _site/第四章/dist
           cp -r 第四章/dist/* _site/第四章/dist/
+
+          # Review (Slidev build output only)
+          mkdir -p _site/复习/dist
+          cp -r 复习/dist/* _site/复习/dist/
 
           # AI workshop (static HTML demos)
           if [ -d "AI-workshop" ]; then
